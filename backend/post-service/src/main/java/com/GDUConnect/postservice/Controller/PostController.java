@@ -1,11 +1,13 @@
 package com.GDUConnect.postservice.Controller;
 
 import com.GDUConnect.postservice.DTO.PostDTO;
+import com.GDUConnect.postservice.event.PostEvent;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -16,6 +18,7 @@ import java.util.concurrent.CompletableFuture;
 @RequiredArgsConstructor
 public class PostController {
     public final WebClient.Builder webClientBuilder;
+    public final KafkaTemplate<String, PostEvent> kafkaTemplate;
 
     @PostMapping("")
     @CircuitBreaker(name = "user", fallbackMethod = "fallbackMethod")
@@ -24,6 +27,7 @@ public class PostController {
     public CompletableFuture<ResponseEntity<String>> getPosts(@RequestBody PostDTO postDTO) {
         return CompletableFuture.supplyAsync(() -> {
             String user = webClientBuilder.build().get().uri("http://user-service/api/v1/user").retrieve().bodyToMono(String.class).block();
+            kafkaTemplate.send("notificationTopic", new PostEvent("123"));
             return ResponseEntity.ok().body(postDTO.getTitle() + " " + user);
         });
     }
