@@ -1,4 +1,4 @@
-package com.GDUConnect.postservice.event;
+package com.GDUConnect.postservice.Event;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostEvent {
-    private String postId;
+    private int postId;
 }
