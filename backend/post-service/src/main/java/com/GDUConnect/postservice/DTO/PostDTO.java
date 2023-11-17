@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor

@@ -9,8 +9,10 @@ import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.io.IOException;
@@ -31,15 +33,12 @@ public class PostController {
     public CompletableFuture<ResponseEntity<String>> createPost(@ModelAttribute PostDTO postDTO
     ) {
         return CompletableFuture.supplyAsync(() -> {
-            String user = webClientBuilder.build().get().uri("http://user-service/api/v1/user/" + postDTO.getUserId()).retrieve().bodyToMono(String.class).block();
-            kafkaTemplate.send("notificationTopic", new PostEvent(postDTO.getUserId()));
-            String url = null;
             try {
-                url = postService.createPost(postDTO);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                kafkaTemplate.send("notificationTopic", new PostEvent(postDTO.getUserId()));
+                return postService.createPost(postDTO);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            return ResponseEntity.ok().body(url);
         });
     }
 
