@@ -1,0 +1,127 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 70px 0 0 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 70px;
+  z-index: 998;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgb(188, 188, 188);
+}
+.navbar .logo {
+  font-size: 24px;
+  max-width: 150px;
+  font-weight: 600;
+}
+.navbar .middle-section {
+  display: flex;
+  justify-content: space-between;
+}
+.navbar .middle-section a {
+  margin: 0 12px;
+  font-size: 14px;
+  position: relative;
+}
+.navbar .middle-section a::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 0%;
+  left: 0;
+  right: 0;
+  background-color: black;
+  bottom: -1px;
+  transition: all 0.5s;
+}
+.navbar .middle-section a:hover::after {
+  width: 100%;
+}
+.navbar .right-section {
+  max-width: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.navbar .right-section .material-symbols-outlined {
+  display: none;
+}
+.navbar .right-section button {
+  border: 1px solid black;
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 9px 14px;
+  transition: all 0.5s;
+}
+.navbar .right-section button:hover {
+  background-color: black;
+}
+.navbar .right-section button:hover a {
+  color: white;
+}
+.navbar .right-section button:active {
+  opacity: 0.5;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 380px;
+  z-index: 999;
+  backdrop-filter: blur(5px);
+  background-color: transparent;
+  display: none;
+  flex-direction: column;
+  padding: 0 70px;
+  border-left: 1px solid rgb(188, 188, 188);
+}
+.sidebar a {
+  margin: 10px 12px;
+  font-size: 16px;
+  position: relative;
+}
+.sidebar a::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 0%;
+  left: 0;
+  right: 0;
+  background-color: black;
+  bottom: -1px;
+  transition: all 0.5s;
+}
+.sidebar a:hover::after {
+  width: 100%;
+}
