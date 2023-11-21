@@ -3,7 +3,8 @@ package com.GDUConnect.postservice.DTO;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@Data
+import java.util.List;
+
 @Builder
 @Getter
 @Setter
@@ -12,5 +13,5 @@ import org.springframework.web.multipart.MultipartFile;
 public class PostDTO {
     private int userId;
     private String content;
-    private MultipartFile file;
+    private List<MultipartFile> file;
 }

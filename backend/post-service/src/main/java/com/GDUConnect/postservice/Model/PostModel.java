@@ -1,7 +1,10 @@
 package com.GDUConnect.postservice.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Post")
@@ -10,7 +13,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostModel {
+public class PostModel extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +23,11 @@ public class PostModel {
 
     private String content;
 
-    @Column(name = "image_url")
-    private String imageURL;
+    @OneToMany(mappedBy = "postId")
+    @JsonManagedReference
+    private List<ImageModel> images;
+
+    @OneToMany(mappedBy = "postId")
+    @JsonManagedReference
+    private List<CommentModel> comments;
 }
