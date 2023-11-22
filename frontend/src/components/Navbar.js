@@ -1,32 +1,55 @@
 import React from "react";
+function OpenMenu() {
+  document.querySelector(".sidebar").classList.add("active");
+}
+function CloseMenu() {
+  document.querySelector(".sidebar").classList.remove("active");
+}
 function Nav() {
   return (
     <>
-      <a href="/">Bài Đăng</a>
-      <a href="/room">Phòng Trọ</a>
-      <a href="/shop">Buôn Bán</a>
-      <a href="/competition">Cuộc Thi</a>
+      <ul>
+        <li>
+          <a href="/">Bài Đăng</a>
+        </li>
+        <li>
+          <a href="/room">Phòng Trọ</a>
+        </li>
+        <li>
+          <a href="/shop">Buôn Bán</a>
+        </li>
+        <li>
+          <a href="/competition">Cuộc Thi</a>
+        </li>
+      </ul>
     </>
   );
 }
-
 const Navbar = () => {
   return (
     <>
       <div className="navbar">
-        <h1 className="logo">GDUConnect</h1>
+        <h1 className="logo">
+          <a href="/">
+            <span>GDU</span>Connect
+          </a>
+        </h1>
         <div className="middle-section">
           <Nav />
         </div>
         <div className="right-section">
-          <span class="material-symbols-outlined">menu</span>
           <button type="button">
             <a href="#">Đăng Nhập</a>
           </button>
+          <span onClick={OpenMenu} class="material-symbols-outlined">
+            menu
+          </span>
         </div>
       </div>
       <div className="sidebar">
-        <span class="material-symbols-outlined">close</span>
+        <span onClick={CloseMenu} class="material-symbols-outlined">
+          close
+        </span>
         <Nav />
       </div>
     </>
