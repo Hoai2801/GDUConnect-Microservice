@@ -8,5 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostEvent {
-    private int postId;
+    private String status;
 }

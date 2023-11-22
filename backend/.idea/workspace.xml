@@ -6,13 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="b96bbe25-348a-4bc6-8f82-500b06dc13c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discovery-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/GDUConnect/notificationservice/NotificationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/GDUConnect/notificationservice/NotificationServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/GDUConnect/notificationservice/PostEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/GDUConnect/notificationservice/PostEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/DTO/PostDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/DTO/PostDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Event/PostEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Event/PostEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Model/PostModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Model/PostModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Repository/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Repository/PostRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Navbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -42,27 +51,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/talos/Desktop/GDUConnect",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/talos/Desktop/GDUConnectMicroservice/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api-gateway/src/main/java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.GDUConnect.postservice.Model" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -124,6 +141,15 @@
       <workItem from="1700063178740" duration="476000" />
       <workItem from="1700214664274" duration="27000" />
       <workItem from="1700215860980" duration="4733000" />
+      <workItem from="1700273544809" duration="1765000" />
+      <workItem from="1700283998029" duration="12806000" />
+      <workItem from="1700399851300" duration="2371000" />
+      <workItem from="1700441109011" duration="5823000" />
+      <workItem from="1700461659438" duration="5483000" />
+      <workItem from="1700480107805" duration="1153000" />
+      <workItem from="1700481275196" duration="5762000" />
+      <workItem from="1700487178425" duration="1215000" />
+      <workItem from="1700567746466" duration="575000" />
     </task>
     <servers />
   </component>
@@ -146,10 +172,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/UserController.java</url>
-          <line>10</line>
+          <line>11</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="List&lt;MultipartFile&gt; files" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

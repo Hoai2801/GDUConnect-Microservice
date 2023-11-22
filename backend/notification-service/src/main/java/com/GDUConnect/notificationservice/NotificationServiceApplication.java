@@ -18,6 +18,6 @@ public class NotificationServiceApplication {
 	public void handleNotification(PostEvent postEvent) {
 
 		// send out an email notification
-		log.info("Received Notification for Order - {}", postEvent.getPostId());
+		log.info("Create status: {}", postEvent.getStatus());
 	}
 }
