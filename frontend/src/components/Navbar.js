@@ -39,6 +39,7 @@ function Nav() {
 }
 const Navbar = () => {
   return (
+<<<<<<< HEAD
     <>
       <div className="navbar">
         <h1 className="logo">
