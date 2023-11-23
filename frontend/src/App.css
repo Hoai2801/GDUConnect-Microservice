@@ -44,6 +44,7 @@ h6 {
 }
 .navbar .material-symbols-outlined {
   cursor: pointer;
+  margin-left: 5px;
 }
 .navbar .logo {
   font-size: 24px;
@@ -90,6 +91,15 @@ h6 {
   align-items: center;
   justify-content: end;
 }
+.navbar .right-section img {
+  height: 24px;
+  width: 24px;
+  object-fit: cover;
+}
+.navbar .right-section p {
+  font-size: 15px;
+  margin-right: 5px;
+}
 .navbar .right-section .material-symbols-outlined {
   display: none;
 }
@@ -101,6 +111,7 @@ h6 {
   padding: 5px 10px;
   transition: all 0.7s;
   position: relative;
+  margin-right: 5px;
 }
 .navbar .right-section button:hover {
   background-color: black;
@@ -122,13 +133,13 @@ h6 {
   backdrop-filter: blur(5px);
   background-color: transparent;
   display: flex;
-  transform: translateX(800px);
   padding-top: 60px;
+  transform: translateX(800px);
   justify-content: start;
   align-items: center;
   flex-direction: column;
   border-left: 1px solid rgb(188, 188, 188);
-  transition: transform 1200ms;
+  transition: transform 1000ms;
 }
 .sidebar .material-symbols-outlined {
   cursor: pointer;
@@ -158,10 +169,6 @@ h6 {
   right: 35px;
 }
 
-.active {
-  transform: translateX(0);
-}
-
 @media (max-width: 1024px) {
   .navbar {
     padding: 0 40px;
@@ -186,6 +193,9 @@ h6 {
   .navbar .right-section {
     width: auto;
   }
+  .navbar .right-section p {
+    font-size: 13px;
+  }
   .navbar .right-section button {
     font-size: 12px;
   }
@@ -199,7 +209,6 @@ h6 {
   }
   .navbar .right-section .material-symbols-outlined {
     display: block;
-    margin-left: 10px;
   }
   .sidebar {
     width: 100%;
@@ -208,18 +217,28 @@ h6 {
     display: none;
   }
   .sidebar ul li {
-    margin-top: 12px;
+    margin-top: 30px;
   }
 }
 @media (max-width: 425px) {
   .navbar .logo {
     font-size: 16px;
   }
+  .navbar .right-section p {
+    font-size: 12px;
+  }
+  .navbar .right-section img {
+    height: 22px;
+    width: 22px;
+  }
   .navbar .right-section button {
     font-size: 10px;
   }
   .navbar .right-section .material-symbols-outlined {
     font-size: 22px;
+  }
+  .sidebar {
+    transform: translateX(500px);
   }
 }
 @media (max-width: 375px) {
@@ -235,4 +254,7 @@ h6 {
   .sidebar .material-symbols-outlined {
     right: 20px;
   }
+}
+.active {
+  transform: translateX(0);
 }

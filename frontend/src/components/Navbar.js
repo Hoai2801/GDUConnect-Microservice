@@ -1,9 +1,21 @@
 import React from "react";
 function OpenMenu() {
-  document.querySelector(".sidebar").classList.add("active");
+  document.querySelector(".sidebar").classList.toggle("active");
 }
-function CloseMenu() {
-  document.querySelector(".sidebar").classList.remove("active");
+function User() {
+  const user = 0;
+  if (!user)
+    return (
+      <button type="button">
+        <a href="#">Đăng Nhập</a>
+      </button>
+    );
+  return (
+    <>
+      <p></p>
+      <img src="#"></img>
+    </>
+  );
 }
 function Nav() {
   return (
@@ -38,16 +50,14 @@ const Navbar = () => {
           <Nav />
         </div>
         <div className="right-section">
-          <button type="button">
-            <a href="#">Đăng Nhập</a>
-          </button>
-          <span onClick={OpenMenu} class="material-symbols-outlined">
+          <User />
+          <span onClick={OpenMenu} className="material-symbols-outlined menu">
             menu
           </span>
         </div>
       </div>
       <div className="sidebar">
-        <span onClick={CloseMenu} class="material-symbols-outlined">
+        <span onClick={OpenMenu} className="material-symbols-outlined close">
           close
         </span>
         <Nav />

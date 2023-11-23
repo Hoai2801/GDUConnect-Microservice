@@ -38,6 +38,7 @@ h6 {
   border-bottom: 1px solid rgb(188, 188, 188);
   .material-symbols-outlined {
     cursor: pointer;
+    margin-left: 5px;
   }
   .logo {
     font-size: 24px;
@@ -83,6 +84,15 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: end;
+    img {
+      height: 24px;
+      width: 24px;
+      object-fit: cover;
+    }
+    p {
+      font-size: 15px;
+      margin-right: 5px;
+    }
     .material-symbols-outlined {
       display: none;
     }
@@ -94,6 +104,7 @@ h6 {
       padding: 5px 10px;
       transition: all 0.7s;
       position: relative;
+      margin-right: 5px;
       &:hover {
         background-color: black;
         a {
@@ -116,13 +127,13 @@ h6 {
   backdrop-filter: blur(5px);
   background-color: transparent;
   display: flex;
-  transform: translateX(800px);
   padding-top: 60px;
+  transform: translateX(800px);
   justify-content: start;
   align-items: center;
   flex-direction: column;
   border-left: 1px solid rgb(188, 188, 188);
-  transition: transform 1200ms;
+  transition: transform 1000ms;
   .material-symbols-outlined {
     cursor: pointer;
   }
@@ -150,9 +161,6 @@ h6 {
     top: 18px;
     right: 35px;
   }
-}
-.active {
-  transform: translateX(0);
 }
 @media (max-width: 1024px) {
   .navbar {
@@ -182,6 +190,9 @@ h6 {
     }
     .right-section {
       width: auto;
+      p {
+        font-size: 13px;
+      }
       button {
         font-size: 12px;
         &:active {
@@ -203,7 +214,6 @@ h6 {
     .right-section {
       .material-symbols-outlined {
         display: block;
-        margin-left: 10px;
       }
     }
   }
@@ -216,7 +226,7 @@ h6 {
     }
     ul {
       li {
-        margin-top: 12px;
+        margin-top: 30px;
       }
     }
   }
@@ -227,6 +237,13 @@ h6 {
       font-size: 16px;
     }
     .right-section {
+      p {
+        font-size: 12px;
+      }
+      img {
+        height: 22px;
+        width: 22px;
+      }
       button {
         font-size: 10px;
       }
@@ -234,6 +251,9 @@ h6 {
         font-size: 22px;
       }
     }
+  }
+  .sidebar {
+    transform: translateX(500px);
   }
 }
 @media (max-width: 375px) {
@@ -253,4 +273,7 @@ h6 {
       right: 20px;
     }
   }
+}
+.active {
+  transform: translateX(0);
 }
