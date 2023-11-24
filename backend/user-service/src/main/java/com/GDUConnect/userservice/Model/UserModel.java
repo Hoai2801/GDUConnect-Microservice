@@ -5,6 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -21,4 +27,8 @@ public class UserModel {
     private String classroom;
     private String studentCode;
     private String department;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    private String password;
 }

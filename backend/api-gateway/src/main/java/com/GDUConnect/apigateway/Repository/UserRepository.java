@@ -1,6 +1,6 @@
-package com.GDUConnect.userservice.Repository;
+package com.GDUConnect.apigateway.Repository;
 
-import com.GDUConnect.userservice.Model.UserModel;
+import com.GDUConnect.apigateway.Model.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
