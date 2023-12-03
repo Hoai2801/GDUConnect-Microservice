@@ -1,4 +1,5 @@
 import React from "react";
+import GroupList from "../components/GroupList";
 import Post from "../components/Post";
 
 const Home = () => {
@@ -75,11 +76,9 @@ const Home = () => {
     },
   ];
   return (
-    <div className="home-post grid grid-cols-4">
-      <div className="clb">
-        <div className="clb-box">Danh sách các câu lạc bộ</div>
-      </div>
-      <div className="post-section col-span-2" align="center">
+    <div className="grid grid-cols-4">
+      <GroupList />
+      <div className="col-span-2">
         {/* nếu biến posts có data thì truyền data vào component Post,
         nếu không thì thể hiện Loading ... */}
         {posts ? (
