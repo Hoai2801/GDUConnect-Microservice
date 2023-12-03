@@ -1,9 +1,7 @@
 .clb {
-  position: relative;
-  .clb-box {
-    position: fixed;
-    overflow-y: scroll;
-    left: 30px;
+  padding-top: 16px;
+  .avt-clb {
+    clip-path: circle();
   }
 }
 .survey {
@@ -64,6 +62,89 @@
               color: white;
             }
           }
+        }
+      }
+    }
+    .imagecontainer-2 {
+      column-gap: 3px;
+      img {
+        object-fit: cover;
+        max-height: 300px;
+        width: 100%;
+      }
+    }
+    .imagecontainer-3 {
+      column-gap: 3px;
+      row-gap: 3px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 300px;
+        &:nth-child(1) {
+          grid-column: span 2;
+        }
+      }
+    }
+    .imagecontainer-4 {
+      column-gap: 3px;
+      row-gap: 3px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 300px;
+      }
+    }
+    .imagecontainer-5 {
+      column-gap: 3px;
+      row-gap: 3px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 300px;
+        &:nth-child(1),
+        &:nth-child(2) {
+          grid-column: span 3;
+        }
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5) {
+          grid-column: span 2;
+          max-height: 200px;
+        }
+      }
+    }
+    .imagecontainer-6 {
+      column-gap: 3px;
+      row-gap: 3px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 300px;
+        &:nth-child(1),
+        &:nth-child(2) {
+          grid-column: span 3;
+        }
+        &:nth-child(3),
+        &:nth-child(4) {
+          grid-column: span 2;
+          max-height: 200px;
+        }
+      }
+      div {
+        grid-column: span 2;
+        position: relative;
+        max-height: 200px;
+        justify-content: center;
+        align-items: center;
+        .plus {
+          position: absolute;
+          background-color: rgba(0, 0, 0, 0.7);
+          color: white;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          font-size: 20px;
         }
       }
     }

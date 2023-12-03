@@ -3,7 +3,7 @@ function OpenMenu() {
   document.querySelector(".sidebar").classList.toggle("active");
 }
 function User() {
-  const user = 1;
+  const user = 0;
   if (!user)
     return (
       <div className="user-register flex">

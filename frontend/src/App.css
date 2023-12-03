@@ -277,12 +277,10 @@ h6 {
 }
 
 .clb {
-  position: relative;
+  padding-top: 16px;
 }
-.clb .clb-box {
-  position: fixed;
-  overflow-y: scroll;
-  left: 30px;
+.clb .avt-clb {
+  clip-path: circle();
 }
 
 .survey {
@@ -346,6 +344,84 @@ h6 {
 .home-post .post-box .image .imagecontainer div:hover button {
   background-color: transparent;
   color: white;
+}
+.home-post .post-box .imagecontainer-2 {
+  column-gap: 3px;
+}
+.home-post .post-box .imagecontainer-2 img {
+  object-fit: cover;
+  max-height: 300px;
+  width: 100%;
+}
+.home-post .post-box .imagecontainer-3 {
+  column-gap: 3px;
+  row-gap: 3px;
+}
+.home-post .post-box .imagecontainer-3 img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 300px;
+}
+.home-post .post-box .imagecontainer-3 img:nth-child(1) {
+  grid-column: span 2;
+}
+.home-post .post-box .imagecontainer-4 {
+  column-gap: 3px;
+  row-gap: 3px;
+}
+.home-post .post-box .imagecontainer-4 img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 300px;
+}
+.home-post .post-box .imagecontainer-5 {
+  column-gap: 3px;
+  row-gap: 3px;
+}
+.home-post .post-box .imagecontainer-5 img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 300px;
+}
+.home-post .post-box .imagecontainer-5 img:nth-child(1), .home-post .post-box .imagecontainer-5 img:nth-child(2) {
+  grid-column: span 3;
+}
+.home-post .post-box .imagecontainer-5 img:nth-child(3), .home-post .post-box .imagecontainer-5 img:nth-child(4), .home-post .post-box .imagecontainer-5 img:nth-child(5) {
+  grid-column: span 2;
+  max-height: 200px;
+}
+.home-post .post-box .imagecontainer-6 {
+  column-gap: 3px;
+  row-gap: 3px;
+}
+.home-post .post-box .imagecontainer-6 img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 300px;
+}
+.home-post .post-box .imagecontainer-6 img:nth-child(1), .home-post .post-box .imagecontainer-6 img:nth-child(2) {
+  grid-column: span 3;
+}
+.home-post .post-box .imagecontainer-6 img:nth-child(3), .home-post .post-box .imagecontainer-6 img:nth-child(4) {
+  grid-column: span 2;
+  max-height: 200px;
+}
+.home-post .post-box .imagecontainer-6 div {
+  grid-column: span 2;
+  position: relative;
+  max-height: 200px;
+  justify-content: center;
+  align-items: center;
+}
+.home-post .post-box .imagecontainer-6 div .plus {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 20px;
 }
 .home-post .post-box .title-box {
   padding: 12px 16px 0 16px;

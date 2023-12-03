@@ -77,7 +77,7 @@ const Post = (props) => {
       );
     if (data.images[0].url.length === 3)
       return (
-        <div className="imagecontainer-3 grid grid-cols-3">
+        <div className="imagecontainer-3 grid grid-cols-2">
           <img src={data.images[0].url[0]}></img>
           <img src={data.images[0].url[1]}></img>
           <img src={data.images[0].url[2]}></img>
@@ -85,7 +85,7 @@ const Post = (props) => {
       );
     if (data.images[0].url.length === 4)
       return (
-        <div className="imagecontainer-4 grid grid-cols-4">
+        <div className="imagecontainer-4 grid grid-cols-2">
           <img src={data.images[0].url[0]}></img>
           <img src={data.images[0].url[1]}></img>
           <img src={data.images[0].url[2]}></img>
@@ -111,8 +111,8 @@ const Post = (props) => {
           <img src={data.images[0].url[3]}></img>
           <div>
             <img src={data.images[0].url[4]}></img>
+            <div className="flex plus">{data.images[0].url.length - 5}+</div>
           </div>
-          <div></div>
         </div>
       );
     return (
