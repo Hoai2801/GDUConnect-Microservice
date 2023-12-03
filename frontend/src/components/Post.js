@@ -20,9 +20,7 @@ const Post = (props) => {
       <>
         <img src={data.user[0].avatar} loading="lazy"></img>
         <div>
-          <span>{data.user[0].fullname}</span>
-          <br />
-          Khoa {data.user[0].department}
+          {data.user[0].fullname} - Khoa {data.user[0].department} <br />
         </div>
       </>
     );
@@ -71,46 +69,46 @@ const Post = (props) => {
     if (data.images[0].url.length === 2)
       return (
         <div className="imagecontainer-2 grid grid-cols-2">
-          <img src={data.images[0].url[0]}></img>
-          <img src={data.images[0].url[1]}></img>
+          <img src={data.images[0].url[0]} loading="lazy"></img>
+          <img src={data.images[0].url[1]} loading="lazy"></img>
         </div>
       );
     if (data.images[0].url.length === 3)
       return (
         <div className="imagecontainer-3 grid grid-cols-2">
-          <img src={data.images[0].url[0]}></img>
-          <img src={data.images[0].url[1]}></img>
-          <img src={data.images[0].url[2]}></img>
+          <img src={data.images[0].url[0]} loading="lazy"></img>
+          <img src={data.images[0].url[1]} loading="lazy"></img>
+          <img src={data.images[0].url[2]} loading="lazy"></img>
         </div>
       );
     if (data.images[0].url.length === 4)
       return (
         <div className="imagecontainer-4 grid grid-cols-2">
-          <img src={data.images[0].url[0]}></img>
-          <img src={data.images[0].url[1]}></img>
-          <img src={data.images[0].url[2]}></img>
-          <img src={data.images[0].url[3]}></img>
+          <img src={data.images[0].url[0]} loading="lazy"></img>
+          <img src={data.images[0].url[1]} loading="lazy"></img>
+          <img src={data.images[0].url[2]} loading="lazy"></img>
+          <img src={data.images[0].url[3]} loading="lazy"></img>
         </div>
       );
     if (data.images[0].url.length === 5)
       return (
         <div className="imagecontainer-5 grid grid-cols-6">
-          <img src={data.images[0].url[0]}></img>
-          <img src={data.images[0].url[1]}></img>
-          <img src={data.images[0].url[2]}></img>
-          <img src={data.images[0].url[3]}></img>
-          <img src={data.images[0].url[4]}></img>
+          <img src={data.images[0].url[0]} loading="lazy"></img>
+          <img src={data.images[0].url[1]} loading="lazy"></img>
+          <img src={data.images[0].url[2]} loading="lazy"></img>
+          <img src={data.images[0].url[3]} loading="lazy"></img>
+          <img src={data.images[0].url[4]} loading="lazy"></img>
         </div>
       );
     if (data.images[0].url.length > 5)
       return (
         <div className="imagecontainer-6 grid grid-cols-6">
-          <img src={data.images[0].url[0]}></img>
-          <img src={data.images[0].url[1]}></img>
-          <img src={data.images[0].url[2]}></img>
-          <img src={data.images[0].url[3]}></img>
+          <img src={data.images[0].url[0]} loading="lazy"></img>
+          <img src={data.images[0].url[1]} loading="lazy"></img>
+          <img src={data.images[0].url[2]} loading="lazy"></img>
+          <img src={data.images[0].url[3]} loading="lazy"></img>
           <div>
-            <img src={data.images[0].url[4]}></img>
+            <img src={data.images[0].url[4]} loading="lazy"></img>
             <div className="flex plus">{data.images[0].url.length - 5}+</div>
           </div>
         </div>

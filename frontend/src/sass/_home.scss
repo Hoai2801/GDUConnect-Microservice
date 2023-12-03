@@ -1,7 +1,9 @@
-.clb {
-  padding-top: 16px;
+$subcolor: rgb(101, 103, 107);
+.clb-box {
   .avt-clb {
     clip-path: circle();
+    height: 60px;
+    width: 60px;
   }
 }
 .survey {
@@ -163,12 +165,9 @@
       }
       div {
         font-size: 13px;
-        color: rgb(101, 103, 107);
-        span {
-          font-size: 15px;
-          color: black;
-          font-weight: 600;
-        }
+        font-size: 15px;
+        color: black;
+        font-weight: 600;
       }
     }
     .content-box {

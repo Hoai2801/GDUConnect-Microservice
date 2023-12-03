@@ -276,11 +276,10 @@ h6 {
   transform: translateX(0);
 }
 
-.clb {
-  padding-top: 16px;
-}
-.clb .avt-clb {
+.clb-box .avt-clb {
   clip-path: circle();
+  height: 60px;
+  width: 60px;
 }
 
 .survey {
@@ -439,9 +438,6 @@ h6 {
 }
 .home-post .post-box .title-box div {
   font-size: 13px;
-  color: rgb(101, 103, 107);
-}
-.home-post .post-box .title-box div span {
   font-size: 15px;
   color: black;
   font-weight: 600;

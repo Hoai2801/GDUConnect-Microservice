@@ -128,7 +128,7 @@ const GroupList = () => {
   ];
 
   return (
-    <div className="ml-5 h-[90vh] rounded-lg w-[80%] pr-5 overflow-scroll shadow-lg lg:block hidden clb">
+    <div className="ml-5 h-[90vh] rounded-lg  pr-5 overflow-scroll shadow-lg lg:block hidden clb-box">
       {data.map((group) => (
         <div key={group.id}>
           <Link to={"/group/" + group.id}>
