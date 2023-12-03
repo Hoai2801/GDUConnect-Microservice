@@ -1,4 +1,4 @@
-package com.GDUConnect.userservice.Model;
+package com.GDUConnect.apigateway.Model;
 
 public enum Role {
     USER,

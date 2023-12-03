@@ -3,7 +3,7 @@ function OpenMenu() {
   document.querySelector(".sidebar").classList.toggle("active");
 }
 function User() {
-  const user = 0;
+  const user = 1;
   if (!user)
     return (
       <button type="button">
@@ -39,7 +39,6 @@ function Nav() {
 }
 const Navbar = () => {
   return (
-<<<<<<< HEAD
     <>
       <div className="navbar">
         <h1 className="logo">

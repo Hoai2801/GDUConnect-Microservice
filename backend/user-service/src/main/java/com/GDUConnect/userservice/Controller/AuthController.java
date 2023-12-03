@@ -24,7 +24,7 @@ public class AuthController {
             @RequestBody RegisterDTO registerDTO
     ) {
         return ResponseEntity.ok().body("Register");
-//        return ResponseEntity.ok().body(authenticationService.register(registerDTO));
+        return ResponseEntity.ok().body(authenticationService.register(registerDTO));
     }
 
     @PostMapping("/login")
@@ -32,7 +32,6 @@ public class AuthController {
     public ResponseEntity<?> login(
             @RequestBody LoginDTO loginDTO
     ) {
-//        return ResponseEntity.ok().body(authenticationService.login(loginDTO));
-        return ResponseEntity.ok().body("Login");
+        return ResponseEntity.ok().body(authenticationService.login(loginDTO));
     }
 }

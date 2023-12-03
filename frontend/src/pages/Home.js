@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from '../components/Post'
+import GroupList from '../components/GroupList'
 
 const Home = () => {
   const posts = [
@@ -69,9 +70,7 @@ const Home = () => {
   ]
   return (
     <div  className='grid grid-cols-4'>
-      <div>
-          Danh sách các câu lạc bộ
-      </div>
+      <GroupList />
       <div className='col-span-2'>
         {/* nếu biến posts có data thì truyền data vào component Post,
         nếu không thì thể hiện Loading ... */}
