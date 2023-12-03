@@ -6,40 +6,49 @@ function User() {
   const user = 0;
   if (!user)
     return (
-      <button type="button">
-        <a href="#">Đăng Nhập</a>
-      </button>
+      <div className="user-register flex">
+        <span onClick={OpenMenu} className="material-symbols-outlined menu">
+          sort
+        </span>
+        <a href="/">GDU</a>
+        <button type="button">
+          <a href="#">Đăng Nhập</a>
+        </button>
+      </div>
     );
   return (
-    <>
-      <p></p>
-      <img src="#"></img>
-    </>
+    <div className="user-register flex">
+      <span onClick={OpenMenu} className="material-symbols-outlined menu">
+        sort
+      </span>
+      <a href="/">GDU</a>
+      <div className="user-border">
+        <p></p>
+        <img src="#"></img>
+      </div>
+    </div>
   );
 }
 function Nav() {
   return (
-    <>
-      <ul>
-        <li>
-          <a href="/">Bài Đăng</a>
-        </li>
-        <li>
-          <a href="/room">Phòng Trọ</a>
-        </li>
-        <li>
-          <a href="/shop">Buôn Bán</a>
-        </li>
-        <li>
-          <a href="/competition">Cuộc Thi</a>
-        </li>
-      </ul>
-    </>
+    <ul>
+      <li>
+        <a href="/">Bài Đăng</a>
+      </li>
+      <li>
+        <a href="/room">Phòng Trọ</a>
+      </li>
+      <li>
+        <a href="/shop">Buôn Bán</a>
+      </li>
+      <li>
+        <a href="/competition">Cuộc Thi</a>
+      </li>
+    </ul>
   );
 }
 const Navbar = () => {
   return (
-<<<<<<< HEAD
     <>
       <div className="navbar">
         <h1 className="logo">
@@ -52,9 +61,6 @@ const Navbar = () => {
         </div>
         <div className="right-section">
           <User />
-          <span onClick={OpenMenu} className="material-symbols-outlined menu">
-            menu
-          </span>
         </div>
       </div>
       <div className="sidebar">
