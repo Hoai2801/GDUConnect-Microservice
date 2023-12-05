@@ -13,5 +13,6 @@ import java.util.List;
 public class PostDTO {
     private int userId;
     private String content;
+    private int groupId;
     private List<MultipartFile> file;
 }

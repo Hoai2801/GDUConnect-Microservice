@@ -41,8 +41,13 @@ public class PostService {
             return ResponseEntity.badRequest().body("Cannot find user!");
         }
 
-        PostModel createdPost = savePost(user, postDTO.getContent());
-        saveImages(postDTO.getFile(), createdPost.getId());
+        PostModel postModel = PostModel.builder()
+                .userId(postDTO.getUserId())
+                .content(postDTO.getContent())
+                .groupId(postDTO.getGroupId())
+                .build();
+        Long newPostId = postRepository.save(postModel).getId();
+        saveImages(postDTO.getFile(), newPostId);
 
         kafkaTemplate.send("notificationTopic", new PostEvent("Success"));
         return ResponseEntity.ok().body("Created post successfully!");
@@ -84,15 +89,6 @@ public class PostService {
                 .retrieve()
                 .bodyToMono(Integer.class)
                 .block();
-    }
-
-    // save post into repository
-    private PostModel savePost(int userId, String content) {
-        PostModel postModel = PostModel.builder()
-                .userId(userId)
-                .content(content)
-                .build();
-        return postRepository.save(postModel);
     }
 
     // save image into repository

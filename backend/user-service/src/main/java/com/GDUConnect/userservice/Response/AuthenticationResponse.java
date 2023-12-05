@@ -1,4 +1,4 @@
-package com.GDUConnect.apigateway.Response;
+package com.GDUConnect.userservice.Response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
