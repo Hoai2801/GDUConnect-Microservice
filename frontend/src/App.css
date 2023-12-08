@@ -279,8 +279,12 @@ h6 {
 .clb-box {
   border-radius: 16px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
 }
 .clb-box:hover {
+  padding: 0 4px 0 20px;
   overflow-y: scroll;
 }
 .clb-box .avt-clb {
@@ -301,7 +305,7 @@ h6 {
 .home-post {
   height: 90vh;
   overflow-y: scroll;
-  padding-top: 16px;
+  padding-top: 15px;
 }
 .home-post::-webkit-scrollbar {
   display: none;

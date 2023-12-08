@@ -2,7 +2,11 @@ $subcolor: rgb(101, 103, 107);
 .clb-box {
   border-radius: 16px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
   &:hover {
+    padding: 0 4px 0 20px;
     overflow-y: scroll;
   }
   .avt-clb {
@@ -22,7 +26,7 @@ $subcolor: rgb(101, 103, 107);
 .home-post {
   height: 90vh;
   overflow-y: scroll;
-  padding-top: 16px;
+  padding-top: 15px;
   &::-webkit-scrollbar {
     display: none;
   }
