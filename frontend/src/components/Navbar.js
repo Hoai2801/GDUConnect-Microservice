@@ -50,7 +50,7 @@ function Nav() {
 const Navbar = () => {
   return (
     <>
-      <div className="navbar">
+      <nav className="navbar">
         <h1 className="logo">
           <a href="/">
             <span>GDU</span>Connect
@@ -62,7 +62,7 @@ const Navbar = () => {
         <div className="right-section">
           <User />
         </div>
-      </div>
+      </nav>
       <div className="sidebar">
         <span onClick={OpenMenu} className="material-symbols-outlined close">
           close

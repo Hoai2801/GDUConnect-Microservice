@@ -34,11 +34,9 @@ const Home = () => {
       likes: [
         {
           id: 23,
+          avatar:
+            "https://images.unsplash.com/photo-1700317440743-ffe7b2134276?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1OHx8fGVufDB8fHx8fA%3D%3D",
           fullname: "Alex Samuel",
-        },
-        {
-          id: 24,
-          fullname: "Alax Sumuel",
         },
       ],
       comments: [
@@ -77,6 +75,64 @@ const Home = () => {
         },
       ],
       created_at: "2023-03-26 09:08:44",
+    },
+    {
+      post_id: 2,
+      // người đăng bài
+      user: [
+        {
+          id: 23,
+          fullname: "Alex Samuel",
+          avatar:
+            "https://images.unsplash.com/photo-1700317440743-ffe7b2134276?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1OHx8fGVufDB8fHx8fA%3D%3D",
+          department: "Công nghệ thông tin",
+        },
+      ],
+      content: "Chúc sinh viên buổi sáng vui vẻ",
+      images: [
+        {
+          url: [
+            "https://images.unsplash.com/photo-1633895136488-5a28683473a1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8",
+            "https://images.unsplash.com/photo-1700317440743-ffe7b2134276?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1OHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
+          ],
+        },
+      ],
+      // số người đã like
+      // length like: 2
+      likes: [
+        {
+          id: 23,
+          avatar:
+            "https://images.unsplash.com/photo-1700317440743-ffe7b2134276?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1OHx8fGVufDB8fHx8fA%3D%3D",
+          fullname: "Alex Samuel",
+        },
+        {
+          id: 24,
+          avatar:
+            "https://images.unsplash.com/photo-1700495525887-7554f360c531?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5OXx8fGVufDB8fHx8fA%3D%3D",
+          fullname: "Alax Sumuel",
+        },
+      ],
+      comments: [
+        {
+          user: [
+            {
+              id: 52,
+              fullname: "Alax Sumuel",
+              avatar:
+                "https://images.unsplash.com/photo-1700495525887-7554f360c531?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5OXx8fGVufDB8fHx8fA%3D%3D",
+              department: "Kinh tế",
+            },
+          ],
+          content: "nhớ like và share nha cả nhà 2",
+          image: {
+            url: "https://images.unsplash.com/photo-1657586640569-4a3d4577328c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
+          },
+          created_at: "2023-03-26 09:08:44",
+        },
+      ],
+      created_at: "2023-03-26 09:08:49",
     },
   ];
   return (
