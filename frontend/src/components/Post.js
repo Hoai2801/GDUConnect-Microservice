@@ -135,7 +135,6 @@ const Post = (props) => {
   console.log(data.images[0].url.length);
   return (
     <>
-      {/* cách lấy data */}
       <div className="post-box">
         <div className="title-box" align="left">
           <User />
