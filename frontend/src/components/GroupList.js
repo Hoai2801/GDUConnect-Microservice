@@ -33,7 +33,7 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
     {
       id: 3,
@@ -53,7 +53,7 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
     {
       id: 3,
@@ -63,7 +63,7 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
     {
       id: 3,
@@ -73,7 +73,7 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
     {
       id: 3,
@@ -83,7 +83,7 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
     {
       id: 3,
@@ -93,7 +93,7 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
     {
       id: 3,
@@ -103,7 +103,7 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
     {
       id: 3,
@@ -113,7 +113,7 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
     {
       id: 3,
@@ -123,17 +123,17 @@ const GroupList = () => {
       discord: "",
       otherLink: "",
       avatar:
-        "https://scontent.fsgn6-1.fna.fbcdn.net/v/t39.30808-1/376827570_635964728638325_4651782039819255769_n.jpg?stp=dst-jpg_p320x320&_nc_cat=106&ccb=1-7&_nc_sid=596444&_nc_ohc=rScaDcVNndYAX8KH_Qe&_nc_ht=scontent.fsgn6-1.fna&oh=00_AfCTZugEOAAQ2Qy73O5I4AqtGCcIyGvgsrMLYSRVumvjwg&oe=65722F87",
+        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
   ];
 
   return (
-    <div className="ml-5 h-[90vh] rounded-lg shadow-lg lg:block hidden clb-box">
+    <div className="ml-5 h-[90vh] rounded-lg px-5 overflow-scroll shadow-lg lg:block hidden clb-box">
       {data.map((group) => (
         <div key={group.id}>
           <Link to={"/group/" + group.id}>
             <div
-              className="flex rounded-lg my-3"
+              className="flex rounded-lg my-3 bg-white px-5 shadow-lg"
               style={{ alignItems: "center" }}
             >
               <div

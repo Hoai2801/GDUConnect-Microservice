@@ -148,7 +148,6 @@ const Post = (props) => {
   }
   return (
     <div key={data.post_id}>
-      {/* cách lấy data */}
       <article className="post-box">
         <div className="title-box" align="left">
           <User />

@@ -7,7 +7,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Post")
+@Table(name = "post")
 @Getter
 @Setter
 @Builder
@@ -22,6 +22,9 @@ public class PostModel extends BaseEntity {
     private int userId;
 
     private String content;
+
+    @Column(name = "group_id")
+    private int groupId;
 
     @OneToMany(mappedBy = "postId")
     @JsonManagedReference

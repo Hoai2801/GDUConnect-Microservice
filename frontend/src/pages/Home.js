@@ -1,6 +1,7 @@
 import React from "react";
 import GroupList from "../components/GroupList";
 import Post from "../components/Post";
+import CreatePost from "../components/CreatePost";
 
 const Home = () => {
   const posts = [
@@ -138,15 +139,19 @@ const Home = () => {
   return (
     <div className="grid grid-cols-4">
       <GroupList />
-      <div className="col-span-2 home-post" align="center">
-        {/* nếu biến posts có data thì truyền data vào component Post,
-        nếu không thì thể hiện Loading ... */}
-        {posts ? (
-          posts.map((post) => <Post postData={post} />)
-        ) : (
-          // viết một component loading để thể hiện trực quan hơn
-          <p>Loading ...</p>
-        )}
+      {/* px-5: add padding x 20px */}
+      <div className="col-span-2 px-5">    
+        <CreatePost/>
+        <div className="home-post" align="center">
+          {/* nếu biến posts có data thì truyền data vào component Post,
+          nếu không thì thể hiện Loading ... */}
+          {posts ? (
+            posts.map((post) => <Post postData={post} />)
+          ) : (
+            // viết một component loading để thể hiện trực quan hơn
+            <p>Loading ...</p>
+          )}
+        </div>
       </div>
       <div className="survey">
         <div className="survey-box">Khảo sát</div>

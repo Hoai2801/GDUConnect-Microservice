@@ -74,7 +74,7 @@ public class PostController {
     @PostMapping("/comment/{id}")
     public ResponseEntity<?> createComment(@PathVariable Long id,
                                            @RequestBody CommentDTO commentDTO
-                                           ) {
+    ) {
         try {
             PostModel post = postService.getPostWithId(id);
             if (post.toString() != null) {

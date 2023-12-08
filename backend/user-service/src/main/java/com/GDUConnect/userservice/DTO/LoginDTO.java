@@ -1,4 +1,4 @@
-package com.GDUConnect.apigateway.DTO;
+package com.GDUConnect.userservice.DTO;
 
 import lombok.*;
 
