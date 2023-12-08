@@ -138,7 +138,7 @@ const GroupList = () => {
             >
               <div
                 className="w-[80px] h-[80px] overflow-hidden flex"
-                style={{ alignItems: "center", justifyContent: "center" }}
+                style={{ alignItems: "center" }}
               >
                 <img
                   src={group.avatar}
@@ -146,7 +146,7 @@ const GroupList = () => {
                   className="w-full avt-clb"
                 />
               </div>
-              <p className="text-[15px] w-[210px]">{group.name}</p>
+              <p className="text-[16px] w-full">{group.name}</p>
             </div>
           </Link>
         </div>

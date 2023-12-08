@@ -1,7 +1,7 @@
 import React from "react";
+import CreatePost from "../components/CreatePost";
 import GroupList from "../components/GroupList";
 import Post from "../components/Post";
-import CreatePost from "../components/CreatePost";
 
 const Home = () => {
   const posts = [
@@ -140,9 +140,9 @@ const Home = () => {
     <div className="grid grid-cols-4">
       <GroupList />
       {/* px-5: add padding x 20px */}
-      <div className="col-span-2 px-5">    
-        <CreatePost/>
+      <div className="col-span-2 px-5">
         <div className="home-post" align="center">
+          <CreatePost />
           {/* nếu biến posts có data thì truyền data vào component Post,
           nếu không thì thể hiện Loading ... */}
           {posts ? (
