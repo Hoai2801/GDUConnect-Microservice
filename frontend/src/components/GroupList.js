@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const GroupList = () => {
-  // get real api
+  // --> get real api <--
   // const [data, setData] = useState([]);
 
   // useEffect(() => {

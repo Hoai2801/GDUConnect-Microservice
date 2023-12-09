@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 // Link dùng để điều hướng bài viết
 const Post = (props) => {
-  const [index, setindex] = useState(0);
+  const [index, setIndex] = useState(0);
   const data = props.postData;
-  var a = "2023-03-26 09:08:44";
-  var today = new Date();
-  var date =
+
+  // state quản lý trạng thái đóng mở của detail images component
+  const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
+  // var: hạn chế sử dụng
+  // let: sử dụng khi biến có thể thay đổi
+  // const: nên dùng
+  let a = "2023-03-26 09:08:44";
+  let today = new Date();
+  let date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  var time =
+  let time =
     today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var datetime = date + " " + time;
+  let datetime = date + " " + time;
   console.log(Date.parse(datetime) - Date.parse(a));
   function OpenPopUpImage() {
-    document.querySelector(".pop-up-post").classList.toggle("active-pop-up");
+    // document.querySelector(".pop-up-post").classList.toggle("active-pop-up");
+    setDetailImagesOpen(!isDetailImagesOpen);
   }
   function OpenPopUpLike() {
-    document.querySelector(".pop-up-like").classList.toggle("active-pop-up");
+    // document.querySelector(".pop-up-like").classList.toggle("active-pop-up");
+    setDetailImagesOpen(!isDetailImagesOpen);
   }
   function cong() {
-    setindex((i) => {
+    setIndex((i) => {
       if (i === data.images[0].url.length - 1) return 0;
       return i + 1;
     });
   }
   function tru() {
-    setindex((i) => {
+    setIndex((i) => {
       if (i === 0) return data.images[0].url.length - 1;
       return i - 1;
     });
@@ -200,10 +208,10 @@ const Post = (props) => {
             </div>
           </div>
         </div>
-        <div className="pop-up-post grid grid-cols-3" key={data.post_id}>
+        <div className={`pop-up-post grid grid-cols-3 ${isDetailImagesOpen ? "" : "hidden"}`} key={data.post_id}>
           <div className="image">
             <div className="image-container flex w-full h-full">
-              <img src={data.images[0].url[index]}></img>
+              <img src={data.images[0].url[index]}  alt="" />
               <div
                 style={{ left: 0, position: "absolute" }}
                 onClick={tru}

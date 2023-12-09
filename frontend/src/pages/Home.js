@@ -89,13 +89,13 @@ const Home = () => {
           department: "Công nghệ thông tin",
         },
       ],
-      content: "Chúc sinh viên buổi sáng vui vẻ",
+      content: "Chúc sinh viên buổi toi vui vẻ",
       images: [
         {
           url: [
-            "https://images.unsplash.com/photo-1633895136488-5a28683473a1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8",
+            "https://images.unsplash.com/photo-1682686581663-179efad3cd2f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8",
             "https://images.unsplash.com/photo-1700317440743-ffe7b2134276?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1OHx8fGVufDB8fHx8fA%3D%3D",
-            "https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1656464868371-602be27fd4c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
           ],
         },
       ],
@@ -146,7 +146,7 @@ const Home = () => {
           {/* nếu biến posts có data thì truyền data vào component Post,
           nếu không thì thể hiện Loading ... */}
           {posts ? (
-            posts.map((post) => <Post postData={post} />)
+            posts.map((post) => <Post postData={post} key={post.post_id} />)
           ) : (
             // viết một component loading để thể hiện trực quan hơn
             <p>Loading ...</p>
