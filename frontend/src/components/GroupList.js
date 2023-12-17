@@ -128,12 +128,12 @@ const GroupList = () => {
   ];
 
   return (
-    <div className="ml-5 h-[90vh] rounded-lg overflow-scroll shadow-lg lg:block hidden clb-box">
+    <div className="ml-5 h-[90vh] rounded-lg overflow-scroll  lg:block hidden clb-box">
       {data.map((group) => (
         <div key={group.id}>
           <Link to={"/group/" + group.id}>
             <div
-              className="flex rounded-lg my-3 bg-white px-5 shadow-lg"
+              className="flex rounded-lg my-3 bg-white px-5 shadow-lg max-w-[290px]"
               style={{ alignItems: "center" }}
             >
               <div

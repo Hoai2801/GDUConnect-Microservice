@@ -1,0 +1,151 @@
+@media (max-width: 1024px) {
+  .navbar {
+    .middle-section {
+      a {
+        margin: 0 10px;
+      }
+    }
+  }
+  .clb-box {
+    display: none;
+  }
+  .home {
+    grid-column: span 3;
+  }
+}
+@media (max-width: 950px) {
+  .pop-up-post .comment-container {
+    margin-top: 0;
+    max-height: 100vh;
+    height: 100vh;
+  }
+}
+@media (max-width: 900px) {
+  .survey {
+    display: none;
+  }
+  .home {
+    grid-column: span 4;
+  }
+}
+@media (max-width: 825px) {
+  .navbar {
+    .right-section {
+      width: auto;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 8px;
+    .middle-section {
+      a {
+        margin: 0 6px;
+        font-size: 13px;
+      }
+    }
+    .right-section {
+      width: auto;
+      p {
+        font-size: 13px;
+      }
+      button {
+        font-size: 12px;
+        &:active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 620px) {
+  .navbar {
+    .middle-section {
+      ul {
+        li {
+          display: none;
+        }
+      }
+    }
+    .right-section {
+      .material-symbols-outlined {
+        display: block;
+      }
+    }
+  }
+  .sidebar {
+    width: 100%;
+    p {
+      a {
+        display: none;
+      }
+    }
+    ul {
+      li {
+        margin-top: 30px;
+      }
+    }
+  }
+}
+@media (max-width: 425px) {
+  .navbar {
+    .logo {
+      font-size: 18px;
+    }
+    .right-section {
+      p {
+        font-size: 12px;
+      }
+      img {
+        height: 22px;
+        width: 22px;
+      }
+      .user-register {
+        a {
+          font-size: 11px;
+        }
+        button {
+          a {
+            font-size: 11px;
+          }
+        }
+      }
+      .material-symbols-outlined {
+        font-size: 20px;
+      }
+    }
+  }
+  .sidebar {
+    transform: translateX(500px);
+  }
+}
+@media (max-width: 375px) {
+  .sidebar {
+    ul {
+      li {
+        margin-bottom: 15px;
+      }
+    }
+    .material-symbols-outlined {
+      right: 20px;
+    }
+  }
+}
+.home-post {
+  .post-box {
+    .reaction {
+      .box {
+        font-size: 14px;
+        span {
+          margin-right: 2px;
+        }
+        .material-symbols-outlined {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+.active {
+  transform: translateX(0);
+}
