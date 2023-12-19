@@ -16,7 +16,7 @@ const CreatePost = () => {
 
   return (
     <div
-      className="shadow-lg border-black rounded-lg md:w-[500px] max-w-[500px] w-[90vw] h-[150px] mx-auto bg-white flex gap-2 flex-col items-center px-5"
+      className="shadow-lg border-black rounded-lg md:w-[500px] max-w-[500px] w-[90vw] h-[150px] mx-auto bg-white flex gap-2 flex-col items-center px-5 create-post"
       style={{ marginBottom: "16px" }}
     >
       <div className="flex gap-5 mt-8">

@@ -298,18 +298,25 @@ img {
   right: 0;
   .image {
     background-color: black;
-    grid-column: span 2;
+    grid-column: span 3;
     .image-container {
       align-items: center;
       justify-content: center;
       position: relative;
+      .btn-close {
+        cursor: pointer;
+      }
       img {
         object-fit: contain;
-        max-height: 100vh;
+        max-height: 90vh;
+        cursor: default;
       }
-      .button-img {
+      .btn-img-right,
+      .btn-img-left {
         top: 0;
         bottom: 0;
+      }
+      .btn-img {
         align-items: center;
         justify-content: center;
         width: 70px;
@@ -323,7 +330,7 @@ img {
           }
         }
         button {
-          background-color: rgb(134, 134, 134);
+          background-color: rgb(156, 156, 156);
           color: black;
           transition: all 0.5s;
           clip-path: circle();
@@ -336,10 +343,25 @@ img {
     }
   }
   .comment-container {
-    max-height: 90vh;
+    max-height: 100vh;
     background-color: white;
-    margin-top: 60px;
     flex-direction: column;
+    grid-column: span 2;
+    .login-vissible {
+      background-color: white;
+      border-bottom: 1px solid rgb(186, 186, 186);
+      padding: 0 15px;
+      .logo {
+        justify-content: end;
+        font-size: 24px;
+        font-weight: 900;
+        font-style: italic;
+        color: rgb(1, 124, 182);
+        span {
+          color: rgb(252, 210, 0);
+        }
+      }
+    }
     .comment {
       margin-top: 10px;
       overflow: hidden;

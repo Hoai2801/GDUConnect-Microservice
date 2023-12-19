@@ -8,7 +8,7 @@ function User() {
     return (
       <div className="user-register flex">
         <span onClick={OpenMenu} className="material-symbols-outlined menu">
-          sort
+          menu
         </span>
         <a href="/">GDU</a>
         <button type="button">
@@ -63,12 +63,12 @@ const Navbar = () => {
           <User />
         </div>
       </nav>
-      <div className="sidebar">
+      <aside className="sidebar">
         <span onClick={OpenMenu} className="material-symbols-outlined close">
           close
         </span>
         <Nav />
-      </div>
+      </aside>
     </>
   );
 };

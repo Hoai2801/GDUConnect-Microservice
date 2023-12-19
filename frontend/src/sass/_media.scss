@@ -27,6 +27,26 @@
   .home {
     grid-column: span 4;
   }
+  .pop-up-post {
+    grid-template-columns: 1fr;
+    overflow-y: scroll;
+  }
+  .pop-up-post .image .image-container .btn-img-right {
+    top: 50px;
+    padding-bottom: 50px;
+  }
+  .pop-up-post .image .image-container .btn-img button span {
+    font-size: 30px;
+  }
+  .btn-close {
+    display: block;
+    color: white;
+    width: 30px;
+    height: 30px;
+  }
+}
+.login-vissible {
+  display: none;
 }
 @media (max-width: 825px) {
   .navbar {
@@ -36,6 +56,9 @@
   }
 }
 @media (max-width: 768px) {
+  .pop-up-post .comment-container .comment {
+    overflow-y: scroll;
+  }
   .navbar {
     padding: 0 8px;
     .middle-section {
@@ -87,7 +110,22 @@
     }
   }
 }
+@media (max-width: 540px) {
+  .home {
+    padding: 0;
+    .home-post {
+      .create-post,
+      .post-box {
+        width: 100vw;
+        border-radius: 0;
+      }
+    }
+  }
+}
 @media (max-width: 425px) {
+  .pop-up-post .image .image-container .btn-img button span {
+    font-size: 25px;
+  }
   .navbar {
     .logo {
       font-size: 18px;
@@ -120,6 +158,9 @@
   }
 }
 @media (max-width: 375px) {
+  .pop-up-post .image .image-container .btn-img button span {
+    font-size: 25px;
+  }
   .sidebar {
     ul {
       li {

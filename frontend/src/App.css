@@ -109,7 +109,6 @@ h6 {
   font-size: 12px;
 }
 .navbar .right-section .user-register button {
-  border: 1px solid rgb(186, 186, 186);
   border-radius: 20px;
   background-color: black;
   font-size: 14px;
@@ -484,20 +483,27 @@ img {
 }
 .pop-up-post .image {
   background-color: black;
-  grid-column: span 2;
+  grid-column: span 3;
 }
 .pop-up-post .image .image-container {
   align-items: center;
   justify-content: center;
   position: relative;
 }
+.pop-up-post .image .image-container .btn-close {
+  cursor: pointer;
+}
 .pop-up-post .image .image-container img {
   object-fit: contain;
-  max-height: 100vh;
+  max-height: 90vh;
+  cursor: default;
 }
-.pop-up-post .image .image-container .button-img {
+.pop-up-post .image .image-container .btn-img-right,
+.pop-up-post .image .image-container .btn-img-left {
   top: 0;
   bottom: 0;
+}
+.pop-up-post .image .image-container .btn-img {
   align-items: center;
   justify-content: center;
   width: 70px;
@@ -505,27 +511,42 @@ img {
   transition: all 0.5s;
   cursor: pointer;
 }
-.pop-up-post .image .image-container .button-img:hover {
+.pop-up-post .image .image-container .btn-img:hover {
   width: 60px;
 }
-.pop-up-post .image .image-container .button-img:hover button {
+.pop-up-post .image .image-container .btn-img:hover button {
   background-color: white;
 }
-.pop-up-post .image .image-container .button-img button {
-  background-color: rgb(134, 134, 134);
+.pop-up-post .image .image-container .btn-img button {
+  background-color: rgb(156, 156, 156);
   color: black;
   transition: all 0.5s;
   clip-path: circle();
   padding: 10px 5px 5px 5px;
 }
-.pop-up-post .image .image-container .button-img button span {
+.pop-up-post .image .image-container .btn-img button span {
   font-size: 40px;
 }
 .pop-up-post .comment-container {
-  max-height: 90vh;
+  max-height: 100vh;
   background-color: white;
-  margin-top: 60px;
   flex-direction: column;
+  grid-column: span 2;
+}
+.pop-up-post .comment-container .login-vissible {
+  background-color: white;
+  border-bottom: 1px solid rgb(186, 186, 186);
+  padding: 0 15px;
+}
+.pop-up-post .comment-container .login-vissible .logo {
+  justify-content: end;
+  font-size: 24px;
+  font-weight: 900;
+  font-style: italic;
+  color: rgb(1, 124, 182);
+}
+.pop-up-post .comment-container .login-vissible .logo span {
+  color: rgb(252, 210, 0);
 }
 .pop-up-post .comment-container .comment {
   margin-top: 10px;
@@ -643,13 +664,37 @@ img {
   .home {
     grid-column: span 4;
   }
+  .pop-up-post {
+    grid-template-columns: 1fr;
+    overflow-y: scroll;
+  }
+  .pop-up-post .image .image-container .btn-img-right {
+    top: 50px;
+    padding-bottom: 50px;
+  }
+  .pop-up-post .image .image-container .btn-img button span {
+    font-size: 30px;
+  }
+  .btn-close {
+    display: block;
+    color: white;
+    width: 30px;
+    height: 30px;
+  }
 }
+.login-vissible {
+  display: none;
+}
+
 @media (max-width: 825px) {
   .navbar .right-section {
     width: auto;
   }
 }
 @media (max-width: 768px) {
+  .pop-up-post .comment-container .comment {
+    overflow-y: scroll;
+  }
   .navbar {
     padding: 0 8px;
   }
@@ -687,7 +732,20 @@ img {
     margin-top: 30px;
   }
 }
+@media (max-width: 540px) {
+  .home {
+    padding: 0;
+  }
+  .home .home-post .create-post,
+  .home .home-post .post-box {
+    width: 100vw;
+    border-radius: 0;
+  }
+}
 @media (max-width: 425px) {
+  .pop-up-post .image .image-container .btn-img button span {
+    font-size: 25px;
+  }
   .navbar .logo {
     font-size: 18px;
   }
@@ -712,6 +770,9 @@ img {
   }
 }
 @media (max-width: 375px) {
+  .pop-up-post .image .image-container .btn-img button span {
+    font-size: 25px;
+  }
   .sidebar ul li {
     margin-bottom: 15px;
   }

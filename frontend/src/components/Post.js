@@ -42,7 +42,7 @@ const Post = (props) => {
     return (
       <>
         <img src={data.user[0].avatar} loading="lazy"></img>
-        <div>
+        <div style={{ textAlign: "start" }}>
           {data.user[0].fullname} <br />{" "}
           <span>Khoa {data.user[0].department} </span>
           {/* <span>{data.created_at}</span> */}
@@ -50,15 +50,15 @@ const Post = (props) => {
       </>
     );
   }
-  function UserLikesList() {
-    return (
-      <ul>
-        {data.likes.map((like) => (
-          <li key={like.id}>{like.fullname}</li>
-        ))}
-      </ul>
-    );
-  }
+  // function UserLikesList() {
+  //   return (
+  //     <ul>
+  //       {data.likes.map((like) => (
+  //         <li key={like.id}>{like.fullname}</li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
   // function UserLikes() {
   //   return (
   //     <>
@@ -86,7 +86,7 @@ const Post = (props) => {
     return (
       <>
         {data.comments.map((Comment) => (
-          <div key={Comment} className="comment-details flex">
+          <div key={Comment.id} className="comment-details flex">
             <img
               className="avatar"
               src={Comment.user[0].avatar}
@@ -95,12 +95,16 @@ const Post = (props) => {
             <div>
               <div className="details flex">
                 <div className="text-[15px] name">
-                  {Comment.user[0].department}
+                  <p style={{ textAlign: "start" }}>
+                    {Comment.user[0].fullname}
+                  </p>
+                  <p>{Comment.user[0].department}</p>
                 </div>
-                <p>{Comment.content}</p>
+                <p style={{ textAlign: "start" }}>{Comment.content}</p>
                 <img src={Comment.imageURL} loading="lazy"></img>
               </div>
               <ul className="text-[12px] flex">
+                <li>{Comment.createdAt}</li>
                 <li>Thích</li>
                 <li>Phản hồi</li>
               </ul>
@@ -183,44 +187,43 @@ const Post = (props) => {
       );
   }
   return (
-    <div key={data.id}>
-      <article className="post-box">
-        <div className="title-box" align="left">
-          <User />
+    <article className="post-box">
+      <div className="title-box" align="left">
+        <User />
+      </div>
+      <div className="content-box" align="left">
+        {data.content}
+      </div>
+      <ImgContent />
+      <div className="reaction-details flex">
+        <div className="box" align="left">
+          <p>
+            Thích: {data.likes.length}
+            {/* <UserLikesList /> */}
+          </p>
         </div>
-        <div className="content-box" align="left">
-          {data.content}
+        <div className="box" align="right" onClick={OpenPopUpImage}>
+          <p>
+            Bình luận: {data.comments.length}
+            <UserCommentsList />
+          </p>
         </div>
-        <ImgContent />
-        <div className="reaction-details flex">
-          <div className="box" align="left">
-            <p>
-              Thích: {data.likes.length}
-              <UserLikesList />
-            </p>
-          </div>
-          <div className="box" align="right" onClick={OpenPopUpImage}>
-            <p>
-              Bình luận: {data.comments.length}
-              <UserCommentsList />
-            </p>
-          </div>
+      </div>
+      <div className="reaction flex">
+        <div className="box">
+          <span className="material-symbols-outlined">thumb_up</span>
+          Thích
         </div>
-        <div className="reaction flex">
-          <div className="box">
-            <span className="material-symbols-outlined">thumb_up</span>
-            Thích
-          </div>
-          <div className="box">
-            <span className="material-symbols-outlined">mode_comment</span>
-            Bình Luận
-          </div>
-          <div className="box">
-            <span class="material-symbols-outlined">share</span>
-            Chia sẻ
-          </div>
+        <div className="box">
+          <span className="material-symbols-outlined">mode_comment</span>
+          Bình Luận
         </div>
-        {/* <div
+        <div className="box">
+          <span class="material-symbols-outlined">share</span>
+          Chia sẻ
+        </div>
+      </div>
+      {/* <div
           className={`pop-up-like grid ${isDetailLikesOpen ? "" : "hidden"}`}
           key={data.post_id}
         >
@@ -238,97 +241,107 @@ const Post = (props) => {
             </div>
           </div>
         </div> */}
-        <div
-          className={`pop-up-post grid grid-cols-3 ${
-            isDetailImagesOpen ? "" : "hidden"
-          }`}
-          key={data.post_id}
-        >
-          <div className="image">
-            <div className="image-container flex w-full h-full">
-              <img src={data.images[index].imageURL} alt="" />
-              <div
-                style={{ left: 0, position: "absolute" }}
-                onClick={tru}
-                className="button-img flex"
-              >
-                <button>
-                  <span class="material-symbols-outlined">chevron_left</span>
-                </button>
-              </div>
-              <div
-                style={{ right: 0, position: "absolute" }}
-                onClick={cong}
-                className="button-img flex"
-              >
-                <button>
-                  <span class="material-symbols-outlined">chevron_right</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="comment-container w-full flex">
+      <div
+        className={`pop-up-post grid grid-cols-5 ${
+          isDetailImagesOpen ? "" : "hidden"
+        }`}
+        key={data.post_id}
+      >
+        <div className="image">
+          <div className="image-container flex w-full h-[90vh]">
+            <img src={data.images[index].imageURL} alt="" />
             <div
-              className="flex title-container"
-              style={{
-                justifyContent: "space-between",
-                margin: `20px 0 10px 0`,
-                padding: "0 15px",
-              }}
+              style={{ left: 0, position: "absolute" }}
+              onClick={tru}
+              className="btn-img flex btn-img-left"
             >
-              <div className="title flex">
-                <User />
-              </div>
-              <span
-                className="material-symbols-outlined"
-                onClick={OpenPopUpImage}
-              >
-                close
-              </span>
+              <button>
+                <span class="material-symbols-outlined">chevron_left</span>
+              </button>
             </div>
+            <span
+              className="material-symbols-outlined hidden btn-close text-[25px]"
+              style={{ right: "20px", position: "absolute", top: "20px" }}
+              onClick={OpenPopUpImage}
+            >
+              close
+            </span>
             <div
-              className="flex text-[15px]"
-              align="start"
-              style={{ padding: "0 0 10px 15px" }}
+              style={{ right: 0, position: "absolute" }}
+              onClick={cong}
+              className="btn-img flex btn-img-right"
             >
-              {data.content}
-            </div>
-            <div
-              className="count-length flex"
-              style={{
-                justifyContent: "space-between",
-                padding: "0 15px 10px 15px",
-                borderBottom: "1px solid rgb(186,186,186)",
-              }}
-            >
-              <div className="text-[14px]" style={{ color: "#65666B" }}>
-                Thích: {data.likes.length}
-              </div>
-              <div className="text-[14px]" style={{ color: "#65666B" }}>
-                Bình luận: {data.comments.length}
-              </div>
-            </div>
-            <div className="reaction flex" style={{ paddingTop: "10px" }}>
-              <div className="box">
-                <span className="material-symbols-outlined">thumb_up</span>
-                Thích
-              </div>
-              <div className="box">
-                <span className="material-symbols-outlined">mode_comment</span>
-                Bình Luận
-              </div>
-              <div className="box">
-                <span class="material-symbols-outlined">share</span>
-                Chia sẻ
-              </div>
-            </div>
-            <div className="comment">
-              <UserComments />
+              <button>
+                <span class="material-symbols-outlined">chevron_right</span>
+              </button>
             </div>
           </div>
         </div>
-      </article>
-    </div>
+        <div className="comment-container w-full flex">
+          <div className="h-[60px] login-vissible">
+            <h1 className="logo text-[24px] flex">
+              <span>GDU</span>Connect
+            </h1>
+          </div>
+          <div
+            className="flex title-container"
+            style={{
+              justifyContent: "space-between",
+              margin: `20px 0 10px 0`,
+              padding: "0 15px",
+            }}
+          >
+            <div className="title flex">
+              <User />
+            </div>
+            <span
+              className="material-symbols-outlined"
+              onClick={OpenPopUpImage}
+            >
+              close
+            </span>
+          </div>
+          <div
+            className="flex text-[15px]"
+            style={{ padding: "0 0 10px 15px", textAlign: "start" }}
+          >
+            {data.content}
+          </div>
+          <div
+            className="count-length flex"
+            style={{
+              justifyContent: "space-between",
+              padding: "0 15px 10px 15px",
+              borderBottom: "1px solid rgb(186,186,186)",
+            }}
+          >
+            <div className="text-[14px]" style={{ color: "#65666B" }}>
+              Thích: {data.likes.length}
+            </div>
+            <div className="text-[14px]" style={{ color: "#65666B" }}>
+              Bình luận: {data.comments.length}
+            </div>
+          </div>
+          <div className="reaction flex" style={{ paddingTop: "10px" }}>
+            <div className="box">
+              <span className="material-symbols-outlined">thumb_up</span>
+              Thích
+            </div>
+            <div className="box">
+              <span className="material-symbols-outlined">mode_comment</span>
+              Bình Luận
+            </div>
+            <div className="box">
+              <span class="material-symbols-outlined">share</span>
+              Chia sẻ
+            </div>
+          </div>
+          <div className="comment">
+            <UserComments />
+          </div>
+        </div>
+      </div>
+    </article>
   );
 };
 export default Post;
