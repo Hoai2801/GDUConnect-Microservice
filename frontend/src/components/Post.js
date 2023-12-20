@@ -10,14 +10,38 @@ const Post = (props) => {
   // var: hạn chế sử dụng
   // let: sử dụng khi biến có thể thay đổi
   // const: nên dùng
-  let a = "2023-03-26 09:08:44";
-  let today = new Date();
-  let date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  let time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  let datetime = date + " " + time;
-  console.log(Date.parse(datetime) - Date.parse(a));
+  function CreatePostTime(TimePost) {
+    let today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let datetime = date + " " + time;
+    let timespaces = Date.parse(datetime) - Date.parse(TimePost);
+    if (timespaces < 60000) {
+      let resuit = Math.floor(timespaces / 1000);
+      return `${resuit} giây`;
+    } else if (timespaces < 3600000) {
+      let resuit = Math.floor(timespaces / 60000);
+      return `${resuit} phút`;
+    } else if (timespaces < 86400000) {
+      let resuit = Math.floor(timespaces / 3600000);
+      return `${resuit} giờ`;
+    } else if (timespaces < 604800000) {
+      let resuit = Math.floor(timespaces / 86400000);
+      return `${resuit} ngày`;
+    } else if (timespaces < 604800000 * 48) {
+      let resuit = Math.floor(timespaces / 604800000);
+      return `${resuit} tuần`;
+    } else {
+      let resuit = Math.floor(timespaces / (604800000 * 48));
+      return `${resuit} năm`;
+    }
+  }
   function OpenPopUpImage() {
     // document.querySelector(".pop-up-post").classList.toggle("active-pop-up");
     setDetailImagesOpen(!isDetailImagesOpen);
@@ -104,7 +128,7 @@ const Post = (props) => {
                 <img src={Comment.imageURL} loading="lazy"></img>
               </div>
               <ul className="text-[12px] flex">
-                <li>{Comment.createdAt}</li>
+                <li>{CreatePostTime(Comment.createdAt)}</li>
                 <li>Thích</li>
                 <li>Phản hồi</li>
               </ul>

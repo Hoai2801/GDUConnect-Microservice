@@ -21,10 +21,10 @@ function User() {
       <span onClick={OpenMenu} className="material-symbols-outlined menu">
         sort
       </span>
-      <a href="/">GDU</a>
       <div className="user-border">
-        <p></p>
         <img src="#"></img>
+        <p></p>
+        <span></span>
       </div>
     </div>
   );
