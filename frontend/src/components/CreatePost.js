@@ -19,10 +19,10 @@ const CreatePost = () => {
       className="shadow-lg border-black rounded-lg md:w-[500px] max-w-[500px] w-[90vw] h-[150px] mx-auto bg-white flex gap-2 flex-col items-center px-5 create-post"
       style={{ marginBottom: "16px" }}
     >
-      <div className="flex gap-5 mt-8">
+      <div className="flex gap-5 mt-8 avatar-box">
         {/* avatar */}
-        <div className="w-[50px] h-[50px] rounded-[50%] overflow-hidden">
-          <img src={user.avatar} alt="" className="w-full" />
+        <div className="overflow-hidden avatar-cp">
+          <img src={user.avatar} alt="" />
         </div>
         {/* input */}
         <div className="h-[45px]">

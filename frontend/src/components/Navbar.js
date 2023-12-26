@@ -10,7 +10,6 @@ function User() {
         <span onClick={OpenMenu} className="material-symbols-outlined menu">
           menu
         </span>
-        <a href="/">GDU</a>
         <button type="button">
           <a href="#">Đăng Nhập</a>
         </button>
@@ -51,16 +50,18 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <h1 className="logo">
+        <h1 className="logo text-[38px]">
           <a href="/">
             <span>GDU</span>Connect
           </a>
         </h1>
-        <div className="middle-section">
-          <Nav />
-        </div>
-        <div className="right-section">
-          <User />
+        <div className="flex" style={{ alignItems: "center" }}>
+          <div className="middle-section">
+            <Nav />
+          </div>
+          <div className="right-section">
+            <User />
+          </div>
         </div>
       </nav>
       <aside className="sidebar">

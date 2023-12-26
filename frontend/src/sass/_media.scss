@@ -1,5 +1,6 @@
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .navbar {
+    padding: 16px;
     .middle-section {
       a {
         margin: 0 10px;
@@ -7,10 +8,21 @@
     }
   }
   .clb-box {
-    display: none;
+    height: 50vh;
+    margin-left: -10vw;
+    grid-column-start: 4;
+    overflow-y: scroll;
   }
   .home {
+    grid-row-start: 1;
     grid-column: span 3;
+    margin-left: -10vw;
+    grid-row-end: 3;
+  }
+  .survey {
+    grid-column-start: 4;
+    margin-left: -10vw;
+    height: 50vh;
   }
 }
 @media (max-width: 950px) {
@@ -23,6 +35,12 @@
 @media (max-width: 900px) {
   .survey {
     display: none;
+  }
+  .clb-box {
+    display: none;
+  }
+  .home {
+    margin: 0;
   }
   .home {
     grid-column: span 4;
@@ -59,12 +77,16 @@
   .pop-up-post .comment-container .comment {
     overflow-y: scroll;
   }
+  footer {
+    display: none;
+  }
   .navbar {
     padding: 0 8px;
     .middle-section {
+      margin-right: 5px;
       a {
         margin: 0 6px;
-        font-size: 13px;
+        font-size: 14px;
       }
     }
     .right-section {
@@ -73,7 +95,9 @@
         font-size: 13px;
       }
       button {
-        font-size: 12px;
+        a {
+          font-size: 12px;
+        }
         &:active {
           opacity: 1;
         }
@@ -82,6 +106,11 @@
   }
 }
 @media (max-width: 620px) {
+  .navbar .right-section .user-register {
+    padding-left: 5px;
+    border: 1px solid rgb(186, 186, 186);
+    border-radius: 20px;
+  }
   .navbar {
     .middle-section {
       ul {
@@ -128,7 +157,7 @@
   }
   .navbar {
     .logo {
-      font-size: 18px;
+      font-size: 30px;
     }
     .right-section {
       p {
@@ -140,11 +169,11 @@
       }
       .user-register {
         a {
-          font-size: 11px;
+          font-size: 10px;
         }
         button {
           a {
-            font-size: 11px;
+            font-size: 10px;
           }
         }
       }
@@ -160,6 +189,15 @@
 @media (max-width: 375px) {
   .pop-up-post .image .image-container .btn-img button span {
     font-size: 25px;
+  }
+  .home-post {
+    .create-post {
+      .avatar-box {
+        .avatar-cp img {
+          height: 45px;
+        }
+      }
+    }
   }
   .sidebar {
     ul {

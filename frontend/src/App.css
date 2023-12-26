@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Birthstone&display=swap");
+img {
+  cursor: pointer;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   margin: 60px 0 0 0;
@@ -48,10 +53,7 @@ h6 {
   margin-left: 5px;
 }
 .navbar .logo {
-  font-size: 24px;
-  max-width: 150px;
-  font-weight: 900;
-  font-style: italic;
+  font-family: "Birthstone", cursive;
 }
 .navbar .logo a {
   color: rgb(1, 124, 182);
@@ -87,16 +89,14 @@ h6 {
   width: 100%;
 }
 .navbar .right-section {
-  width: 160px;
   display: flex;
   align-items: center;
   justify-content: end;
 }
 .navbar .right-section .user-register {
-  border: 1px solid rgb(186, 186, 186);
-  border-radius: 20px;
-  padding: 3px 0 3px 5px;
+  padding: 3px 0;
   align-items: center;
+  justify-content: center;
 }
 .navbar .right-section .user-register .user-border {
   border-radius: 20px;
@@ -106,7 +106,7 @@ h6 {
 }
 .navbar .right-section .user-register a {
   padding-left: 5px;
-  font-size: 12px;
+  font-size: 13px;
 }
 .navbar .right-section .user-register button {
   border-radius: 20px;
@@ -114,14 +114,15 @@ h6 {
   font-size: 14px;
   padding: 5px 10px;
   transition: all 0.7s;
-  margin-left: 7px;
   position: relative;
-  margin-right: 5px;
+  margin: 0 5px;
+  border: 1px solid transparent;
 }
 .navbar .right-section .user-register button a {
   color: #ffffff;
 }
 .navbar .right-section .user-register button:hover {
+  border-color: black;
   background-color: #ffffff;
 }
 .navbar .right-section .user-register button:hover a {
@@ -191,10 +192,6 @@ h6 {
   right: 20px;
 }
 
-img {
-  cursor: pointer;
-}
-
 .clb-box {
   border-radius: 16px;
   overflow: hidden;
@@ -211,19 +208,15 @@ img {
   width: 50px;
 }
 
-.survey {
-  position: relative;
-}
-.survey .survey-box {
-  right: 30px;
-  position: fixed;
-  overflow-y: scroll;
-}
-
 .home-post {
-  height: 90vh;
+  height: 100vh;
   overflow-y: scroll;
   padding-top: 15px;
+}
+.home-post .create-post .avatar-box .avatar-cp img {
+  height: 50px;
+  clip-path: circle();
+  object-fit: contain;
 }
 .home-post::-webkit-scrollbar {
   display: none;
@@ -495,7 +488,7 @@ img {
 }
 .pop-up-post .image .image-container img {
   object-fit: contain;
-  max-height: 90vh;
+  max-height: 100vh;
   cursor: default;
 }
 .pop-up-post .image .image-container .btn-img-right,
@@ -639,15 +632,29 @@ img {
   object-fit: cover;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 16px;
+  }
   .navbar .middle-section a {
     margin: 0 10px;
   }
   .clb-box {
-    display: none;
+    height: 50vh;
+    margin-left: -10vw;
+    grid-column-start: 4;
+    overflow-y: scroll;
   }
   .home {
+    grid-row-start: 1;
     grid-column: span 3;
+    margin-left: -10vw;
+    grid-row-end: 3;
+  }
+  .survey {
+    grid-column-start: 4;
+    margin-left: -10vw;
+    height: 50vh;
   }
 }
 @media (max-width: 950px) {
@@ -660,6 +667,12 @@ img {
 @media (max-width: 900px) {
   .survey {
     display: none;
+  }
+  .clb-box {
+    display: none;
+  }
+  .home {
+    margin: 0;
   }
   .home {
     grid-column: span 4;
@@ -695,12 +708,18 @@ img {
   .pop-up-post .comment-container .comment {
     overflow-y: scroll;
   }
+  footer {
+    display: none;
+  }
   .navbar {
     padding: 0 8px;
   }
+  .navbar .middle-section {
+    margin-right: 5px;
+  }
   .navbar .middle-section a {
     margin: 0 6px;
-    font-size: 13px;
+    font-size: 14px;
   }
   .navbar .right-section {
     width: auto;
@@ -708,7 +727,7 @@ img {
   .navbar .right-section p {
     font-size: 13px;
   }
-  .navbar .right-section button {
+  .navbar .right-section button a {
     font-size: 12px;
   }
   .navbar .right-section button:active {
@@ -716,6 +735,11 @@ img {
   }
 }
 @media (max-width: 620px) {
+  .navbar .right-section .user-register {
+    padding-left: 5px;
+    border: 1px solid rgb(186, 186, 186);
+    border-radius: 20px;
+  }
   .navbar .middle-section ul li {
     display: none;
   }
@@ -747,7 +771,7 @@ img {
     font-size: 25px;
   }
   .navbar .logo {
-    font-size: 18px;
+    font-size: 30px;
   }
   .navbar .right-section p {
     font-size: 12px;
@@ -757,10 +781,10 @@ img {
     width: 22px;
   }
   .navbar .right-section .user-register a {
-    font-size: 11px;
+    font-size: 10px;
   }
   .navbar .right-section .user-register button a {
-    font-size: 11px;
+    font-size: 10px;
   }
   .navbar .right-section .material-symbols-outlined {
     font-size: 20px;
@@ -772,6 +796,9 @@ img {
 @media (max-width: 375px) {
   .pop-up-post .image .image-container .btn-img button span {
     font-size: 25px;
+  }
+  .home-post .create-post .avatar-box .avatar-cp img {
+    height: 45px;
   }
   .sidebar ul li {
     margin-bottom: 15px;

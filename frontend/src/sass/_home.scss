@@ -1,7 +1,3 @@
-$subcolor: rgb(101, 103, 107);
-img {
-  cursor: pointer;
-}
 .clb-box {
   border-radius: 16px;
   overflow: hidden;
@@ -17,18 +13,19 @@ img {
     width: 50px;
   }
 }
-.survey {
-  position: relative;
-  .survey-box {
-    right: 30px;
-    position: fixed;
-    overflow-y: scroll;
-  }
-}
 .home-post {
-  height: 90vh;
+  height: 100vh;
   overflow-y: scroll;
   padding-top: 15px;
+  .create-post {
+    .avatar-box {
+      .avatar-cp img {
+        height: 50px;
+        clip-path: circle();
+        object-fit: contain;
+      }
+    }
+  }
   &::-webkit-scrollbar {
     display: none;
   }
@@ -308,7 +305,7 @@ img {
       }
       img {
         object-fit: contain;
-        max-height: 90vh;
+        max-height: 100vh;
         cursor: default;
       }
       .btn-img-right,

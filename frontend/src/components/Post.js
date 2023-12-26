@@ -24,7 +24,7 @@ const Post = (props) => {
     let timespaces = Date.parse(datetime) - Date.parse(TimePost);
     if (timespaces < 60000) {
       let resuit = Math.floor(timespaces / 1000);
-      return `${resuit} giây`;
+      return `${resuit} mới đây`;
     } else if (timespaces < 3600000) {
       let resuit = Math.floor(timespaces / 60000);
       return `${resuit} phút`;
@@ -67,9 +67,12 @@ const Post = (props) => {
       <>
         <img src={data.user[0].avatar} loading="lazy"></img>
         <div style={{ textAlign: "start" }}>
-          {data.user[0].fullname} <br />{" "}
-          <span>Khoa {data.user[0].department} </span>
-          {/* <span>{data.created_at}</span> */}
+          {data.user[0].fullname}
+          <br />
+          <span>
+            Khoa {data.user[0].department} &#8226;{" "}
+            {CreatePostTime(data.createdAt)}
+          </span>
         </div>
       </>
     );
@@ -272,7 +275,7 @@ const Post = (props) => {
         key={data.post_id}
       >
         <div className="image">
-          <div className="image-container flex w-full h-[90vh]">
+          <div className="image-container flex w-full h-[100vh]">
             <img src={data.images[index].imageURL} alt="" />
             <div
               style={{ left: 0, position: "absolute" }}

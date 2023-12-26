@@ -68,6 +68,7 @@ const Home = () => {
           userId: 1,
         },
       ],
+      createdAt: "2023-12-19 20:17:40",
     },
     {
       id: 5,
@@ -128,7 +129,7 @@ const Home = () => {
           content: "wowjaljcoac",
           imageURL:
             "https://images.unsplash.com/photo-1702165640016-bf7b60521f16?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHx8",
-          createdAt: "2023-12-10 20:17:40",
+          createdAt: "2023-12-10 22:31:40",
         },
       ],
       likes: [
@@ -137,6 +138,7 @@ const Home = () => {
           userId: 1,
         },
       ],
+      createdAt: "2023-12-21 22:31:40",
     },
   ];
   return (
@@ -156,7 +158,7 @@ const Home = () => {
           )}
         </div>
       </div>
-      <div className="survey">
+      <div className="survey" style={{ textAlign: "end" }}>
         <div className="survey-box">Khảo sát</div>
       </div>
     </div>
