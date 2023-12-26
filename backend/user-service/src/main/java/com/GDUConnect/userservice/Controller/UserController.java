@@ -11,6 +11,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("api/v1/user")
 @RequiredArgsConstructor
+@CrossOrigin
 public class UserController {
     private final UserService userService;
     @GetMapping("/{id}")
