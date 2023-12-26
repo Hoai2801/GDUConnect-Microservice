@@ -5,6 +5,7 @@ import Room from './pages/Room';
 import Shop from './pages/Shop';
 import Competition from './pages/Competition';
 import Home from './pages/Home';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path='/room' element={<Room />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/competition' element={<Competition />} />
-        {/* <Route path='/room' element={<Room />} /> */}
+        <Route path='/auth' element={<Login />} />
       </Route>
     </Routes>
   );

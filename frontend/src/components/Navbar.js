@@ -1,10 +1,15 @@
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import React from "react";
 function OpenMenu() {
   document.querySelector(".sidebar").classList.toggle("active");
 }
 function User() {
-  const user = 0;
-  if (!user)
+  const token = Cookies.get('token');
+  const decoded = jwtDecode(token);
+
+console.log(decoded);
+  if (!decoded.sub)
     return (
       <div className="user-register flex">
         <span onClick={OpenMenu} className="material-symbols-outlined menu">
@@ -23,7 +28,7 @@ function User() {
       </span>
       <div className="user-border">
         <img src="#"></img>
-        <p></p>
+        <p>{decoded.sub}</p>
         <span></span>
       </div>
     </div>

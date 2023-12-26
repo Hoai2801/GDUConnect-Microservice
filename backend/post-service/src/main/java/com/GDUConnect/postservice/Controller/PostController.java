@@ -10,6 +10,7 @@ import com.GDUConnect.postservice.Service.PostService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +45,19 @@ public class PostController {
         });
     }
 
+  public static String read(final HttpServletRequest request) {
+
+    var header = request.getHeader("Authorization");
+    if (header != null) {
+      var parts = header.split(" ");
+      if (parts.length == 2 && parts[0].equalsIgnoreCase("Bearer")) {
+        return parts[1];
+      }
+    }
+
+    return null;
+  }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePost(@PathVariable Long id) {
         try {
@@ -55,8 +69,9 @@ public class PostController {
     }
 
     @GetMapping("")
-    public ResponseEntity<?> getAllPost() {
+    public ResponseEntity<?> getAllPost(HttpServletRequest request) {
         try {
+          log.info(read(request));
             return ResponseEntity.ok().body(postService.getAllPosts());
         } catch (Exception e) {
             log.error("Failed to get all posts due to an IOException: {}", e);
