@@ -1,9 +1,11 @@
 package com.GDUConnect.postservice.Controller;
 
 import com.GDUConnect.postservice.DTO.CommentDTO;
+import com.GDUConnect.postservice.DTO.LikeDTO;
 import com.GDUConnect.postservice.DTO.PostDTO;
 import com.GDUConnect.postservice.Event.PostEvent;
 import com.GDUConnect.postservice.Model.PostModel;
+import com.GDUConnect.postservice.Service.LikeService;
 import com.GDUConnect.postservice.Service.PostService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
@@ -21,16 +23,17 @@ import java.util.concurrent.CompletableFuture;
 @RequestMapping("api/v1/post")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin
 public class PostController {
     public final KafkaTemplate<String, PostEvent> kafkaTemplate;
     public final PostService postService;
+    public final LikeService likeService;
 
     @PostMapping("")
     @CircuitBreaker(name = "user", fallbackMethod = "fallbackMethodCreate")
     @TimeLimiter(name = "user")
     @Retry(name = "user")
-    public CompletableFuture<ResponseEntity<String>> createPost(@ModelAttribute PostDTO postDTO
-    ) {
+    public CompletableFuture<ResponseEntity<String>> createPost(@ModelAttribute PostDTO postDTO) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return postService.createPost(postDTO);
@@ -73,13 +76,12 @@ public class PostController {
 
     @PostMapping("/comment/{id}")
     public ResponseEntity<?> createComment(@PathVariable Long id,
-                                           @RequestBody CommentDTO commentDTO
+                                           @ModelAttribute CommentDTO commentDTO
     ) {
         try {
             PostModel post = postService.getPostWithId(id);
             if (post.toString() != null) {
-                postService.createComment(commentDTO, id);
-                return ResponseEntity.ok().body("Created comment successfully!");
+                return postService.createComment(commentDTO, id);
             }
             return ResponseEntity.badRequest().body("Cannot find the post!");
         } catch (Exception e) {
@@ -100,5 +102,23 @@ public class PostController {
     // fallback method
     public CompletableFuture<String> fallbackMethodCreate(@ModelAttribute PostDTO postDTO, RuntimeException runtimeException) {
         return CompletableFuture.supplyAsync(() -> "Opps! cannot create post, try again!");
+    }
+
+    @PostMapping("/like")
+    public ResponseEntity<?> likePostWithId(@RequestBody LikeDTO likeDTO) {
+        try {
+            return likeService.likePostWithId(likeDTO);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/unlike")
+    public ResponseEntity<?> unlikePostWithId(@RequestBody LikeDTO likeDTO) {
+        try {
+            return likeService.unlikePostWithId(likeDTO);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

@@ -50,7 +50,7 @@ function Nav() {
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar shadow-lg">
         <h1 className="logo">
           <a href="/">
             <span>GDU</span>Connect
