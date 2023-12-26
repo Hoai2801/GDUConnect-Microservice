@@ -23,7 +23,7 @@ const Post = (props) => {
     const years = Math.floor(timespaces / (604800000 * 48));
 
     if (timespaces < 60000) {
-      return `${minutes} mới đây`;
+      return `${minutes} giây`;
     } else if (timespaces < 3600000) {
       return `${minutes} phút`;
     } else if (timespaces < 86400000) {
@@ -251,7 +251,7 @@ const Post = (props) => {
         key={data.post_id}
       >
         <div className="image">
-          <div className="image-container flex w-full h-[100vh]">
+          <div className="image-container flex w-full h-[90vh]">
             <img src={data.images[index].imageURL} alt="" />
             <div
               style={{ left: 0, position: "absolute" }}

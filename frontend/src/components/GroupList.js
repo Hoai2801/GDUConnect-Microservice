@@ -6,21 +6,21 @@ const GroupList = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-      const fetchData = async () => {
+    const fetchData = async () => {
       try {
-          const response = await fetch('http://localhost:8080/api/v1/group/all');
-          if (!response.ok) {
-          throw new Error('Network response was not ok');
-          }
+        const response = await fetch("http://localhost:8080/api/v1/group/all");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
 
-          const result = await response.json();
-          setData(result);
+        const result = await response.json();
+        setData(result);
       } catch (error) {
-          console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
-      };
+    };
 
-      fetchData();
+    fetchData();
   }, []);
 
   // mock data

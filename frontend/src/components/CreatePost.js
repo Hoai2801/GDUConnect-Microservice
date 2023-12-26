@@ -19,9 +19,9 @@ const CreatePost = () => {
       className="shadow-lg border-black rounded-lg md:w-[600px] max-w-[600px] w-full h-fit py-5 bg-white flex px-5 create-post"
       style={{ marginBottom: "16px" }}
     >
-      <div className="flex gap-5 w-full avatar-box">
+      <div className="flex gap-5 w-full">
         {/* avatar */}
-        <div className="h-[50px] w-[50px] min-w-[50px] rounded-full overflow-hidden avatar-cp">
+        <div className="h-[50px] w-[50px] min-w-[50px] rounded-full overflow-hidden">
           <img src={user.avatar} alt="" className="w-full object-cover" />
         </div>
         {/* input */}
