@@ -445,30 +445,30 @@ img {
   place-items: center;
   z-index: 5;
 }
-.pop-up-like .like-container {
+.like-container {
   border-radius: 10px;
   padding: 16px;
   background-color: white;
   max-width: 550px;
   max-height: 440px;
 }
-.pop-up-like .like-container div .material-symbols-outlined {
+.material-symbols-outlined {
   cursor: pointer;
 }
-.pop-up-like .like-container .like-content {
+.like-content {
   overflow: hidden;
 }
-.pop-up-like .like-container .like-content:hover {
+.like-content:hover {
   overflow-y: scroll;
 }
-.pop-up-like .like-container .like-content .container .avatar-user {
+.avatar-user {
   margin: 8px 12px 8px 0;
 }
-.pop-up-like .like-container .like-content .container .avatar-user img {
+.avatar-user img {
   clip-path: circle();
   object-fit: cover;
 }
-.pop-up-like .like-container .like-content .container .name-user {
+.name-user {
   font-size: 15px;
   align-items: center;
 }

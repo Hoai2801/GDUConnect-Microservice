@@ -1,9 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CreatePost from "../components/CreatePost";
 import GroupList from "../components/GroupList";
 import Post from "../components/Post";
 
 const Home = () => {
+  // const posts = [
+  //   {
+  //       "id": 4,
+  //       "user": {
+  //           "id": 1,
+  //           "fullname": "Nguyen Van A",
+  //           "avatar": "google.com",
+  //           "department": "Cong Nghe Thong tin"
+  //       },
+  //       "content": "Hello nha",
+  //       "images": [
+  //           {
+  //               "id": 7,
+  //               "imageURL": "https://images.unsplash.com/photo-1702165640016-bf7b60521f16?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHx8"
+  //           },
+  //           {
+  //               "id": 8,
+  //               "imageURL": "https://images.unsplash.com/photo-1702165640016-bf7b60521f16?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHx8"
+  //           },
+  //           {
+  //               "id": 9,
+  //               "imageURL": "https://images.unsplash.com/photo-1702165640016-bf7b60521f16?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHx8"
+  //           },
+  //           {
+  //               "id": 10,
+  //               "imageURL": "https://images.unsplash.com/photo-1702165640016-bf7b60521f16?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHx8"
+  //           },
+  //           {
+  //               "id": 11,
+  //               "imageURL": "https://images.unsplash.com/photo-1702165640016-bf7b60521f16?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHx8"
+  //           }
+  //       ],
+  //       "comments": [
+  //           {
+  //               "id": 4,
+  //               "user": {
+  //                   "id": 1,
+  //                   "fullname": "Hoaiagafafa",
+  //                   "avatar": "google.com",
+  //                   "department": "kinh te - quan tri"
+  //               },
+  //               "content": "wowjaljcoac",
+  //               "imageURL": "https://images.unsplash.com/photo-1702165640016-bf7b60521f16?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHx8",
+  //               "createdAt": "2023-12-10T20:17:40"
+  //           }
+  //       ],
+  //       "likes": [
+  //           {
+  //               "id": 6,
+  //               "userId": 1
+  //           }
+  //       ]
+  //   }
+  // ]
   const posts = [
     {
       id: 4,
@@ -139,6 +193,26 @@ const Home = () => {
       ],
     },
   ];
+  // real api
+  // const [posts, setPosts] = useState([]);
+
+  // useEffect(() => {
+  //     const fetchData = async () => {
+  //     try {
+  //         const response = await fetch('http://localhost:8080/api/v1/post');
+  //         if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //         }
+
+  //         const result = await response.json();
+  //         setPosts(result);
+  //     } catch (error) {
+  //         console.error('Error fetching data:', error);
+  //     }
+  //     };
+
+  //     fetchData();
+  // }, []);
   return (
     <div className="grid grid-cols-4">
       <GroupList />
