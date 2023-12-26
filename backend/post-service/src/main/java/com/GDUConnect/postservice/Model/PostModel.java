@@ -1,5 +1,6 @@
 package com.GDUConnect.postservice.Model;
 
+import com.GDUConnect.postservice.DTO.UserDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,11 +17,13 @@ import java.util.List;
 public class PostModel extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "user_id")
-    private int userId;
+    private int user;
 
+    @JsonManagedReference("contentt")
     private String content;
 
     @Column(name = "group_id")
@@ -33,4 +36,8 @@ public class PostModel extends BaseEntity {
     @OneToMany(mappedBy = "postId")
     @JsonManagedReference
     private List<CommentModel> comments;
+
+    @OneToMany(mappedBy = "postId")
+    @JsonManagedReference
+    private List<LikeModel> likes;
 }

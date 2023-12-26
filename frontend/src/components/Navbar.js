@@ -49,7 +49,7 @@ function Nav() {
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar shadow-lg">
         <h1 className="logo text-[38px]">
           <a href="/">
             <span>GDU</span>Connect

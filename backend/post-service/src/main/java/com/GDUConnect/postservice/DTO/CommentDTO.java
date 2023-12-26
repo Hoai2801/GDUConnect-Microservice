@@ -1,9 +1,8 @@
 package com.GDUConnect.postservice.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Builder
 @Getter
@@ -11,8 +10,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentDTO {
-    @JsonProperty("user_id")
     private int userId;
 
     private String content;
+
+    private MultipartFile image;
 }

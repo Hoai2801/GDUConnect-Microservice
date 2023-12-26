@@ -16,16 +16,16 @@ const CreatePost = () => {
 
   return (
     <div
-      className="shadow-lg border-black rounded-lg md:w-[500px] max-w-[500px] w-[90vw] h-[150px] mx-auto bg-white flex gap-2 flex-col items-center px-5 create-post"
+      className="shadow-lg border-black rounded-lg md:w-[600px] max-w-[600px] w-full h-fit py-5 bg-white flex px-5 create-post"
       style={{ marginBottom: "16px" }}
     >
-      <div className="flex gap-5 mt-8 avatar-box">
+      <div className="flex gap-5 w-full avatar-box">
         {/* avatar */}
-        <div className="overflow-hidden avatar-cp">
-          <img src={user.avatar} alt="" />
+        <div className="h-[50px] w-[50px] min-w-[50px] rounded-full overflow-hidden avatar-cp">
+          <img src={user.avatar} alt="" className="w-full object-cover" />
         </div>
         {/* input */}
-        <div className="h-[45px]">
+        <div className="h-[45px] w-full mt-1">
           <input
             type="text"
             name=""
@@ -36,17 +36,20 @@ const CreatePost = () => {
         </div>
       </div>
       {/* button */}
-      <div className="flex justify-end px-5 w-full gap-2">
+      <div className="flex justify-end px-5 w-[40%] gap-5">
         <input type="file" onChange={null} id="actual-btn" hidden multiple />
-        <label for="actual-btn" className=" hover:cursor-pointer">
+        <label htmlFor="actual-btn" className=" hover:cursor-pointer">
           <img
             src="https://cdn.icon-icons.com/icons2/510/PNG/512/image_icon-icons.com_50366.png"
             alt=""
-            className="w-10 h-10"
+            className="w-10 h-10 mt-2"
           />
         </label>
         {/* submit the post */}
-        <button onClick={null} className="bg-blue-400 px-3 py-2 rounded-lg">
+        <button
+          onClick={null}
+          className="bg-blue-400 px-1 h-fit py-2 mt-2 rounded-lg"
+        >
           Submit
         </button>
       </div>

@@ -1,17 +1,27 @@
-//package com.GDUConnect.userservice.Service;
-//
-//import com.GDUConnect.userservice.Model.UserModel;
-//import com.GDUConnect.userservice.Repository.UserRepository;
-//import lombok.RequiredArgsConstructor;
+package com.GDUConnect.userservice.Service;
+
+import com.GDUConnect.userservice.Model.UserModel;
+import com.GDUConnect.userservice.Repository.UserRepository;
+import com.GDUConnect.userservice.Response.UserResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 //import org.springframework.security.authentication.AuthenticationManager;
 //import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-//
-//import java.util.Optional;
-//
-//@RequiredArgsConstructor
-//public class UserService {
+
+@RequiredArgsConstructor
+@Service
+public class UserService {
 //    private final AuthenticationManager authenticationManager;
-//    private final UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserResponse findUserWithId(Long id) {
+        UserModel userModel = userRepository.findById(id).orElseThrow(null);
+        return UserResponse.builder()
+                .id(userModel.getId())
+                .department(userModel.getDepartment())
+                .fullname(userModel.getFullname())
+                .build();
+    }
 //    private
 //
 //    public String login(String studentId, String password) throws Exception {
@@ -27,4 +37,4 @@
 //        authenticationManager.authenticate(authenticationToken);
 //        return jwtTokenUtil.generateToken(existingUser);
 //    }
-//}
+}

@@ -5,27 +5,21 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "post_like")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentModel extends BaseEntity {
+public class LikeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
     private int userId;
 
     @ManyToOne
     @JoinColumn(name = "post_id")
     @JsonBackReference
     private PostModel postId;
-
-    private String content;
-
-    @Column(name = "image_url")
-    private String imgURL;
 }

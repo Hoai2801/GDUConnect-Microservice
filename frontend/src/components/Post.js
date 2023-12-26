@@ -1,137 +1,111 @@
 import React, { useState } from "react";
-// Link dùng để điều hướng bài viết
+
 const Post = (props) => {
   const [index, setIndex] = useState(0);
   const data = props.postData;
 
   // state quản lý trạng thái đóng mở của detail images component
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
-  // const [isDetailLikesOpen, setDetailLikesOpen] = useState(false);
-  // var: hạn chế sử dụng
-  // let: sử dụng khi biến có thể thay đổi
-  // const: nên dùng
+
+  /**
+   * Returns a string representing the time difference between the current time and the given time.
+   * @param {string} TimePost - The time to compare to the current time.
+   * @returns {string} - A string representing the time difference.
+   */
   function CreatePostTime(TimePost) {
-    let today = new Date();
-    let date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    let time =
-      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    let datetime = date + " " + time;
-    let timespaces = Date.parse(datetime) - Date.parse(TimePost);
+    const today = new Date();
+    const timespaces = today - new Date(TimePost);
+
+    const minutes = Math.floor(timespaces / 60000);
+    const hours = Math.floor(timespaces / 3600000);
+    const days = Math.floor(timespaces / 86400000);
+    const weeks = Math.floor(timespaces / 604800000);
+    const years = Math.floor(timespaces / (604800000 * 48));
+
     if (timespaces < 60000) {
-      let resuit = Math.floor(timespaces / 1000);
-      return `${resuit} mới đây`;
+      return `${minutes} mới đây`;
     } else if (timespaces < 3600000) {
-      let resuit = Math.floor(timespaces / 60000);
-      return `${resuit} phút`;
+      return `${minutes} phút`;
     } else if (timespaces < 86400000) {
-      let resuit = Math.floor(timespaces / 3600000);
-      return `${resuit} giờ`;
+      return `${hours} giờ`;
     } else if (timespaces < 604800000) {
-      let resuit = Math.floor(timespaces / 86400000);
-      return `${resuit} ngày`;
+      return `${days} ngày`;
     } else if (timespaces < 604800000 * 48) {
-      let resuit = Math.floor(timespaces / 604800000);
-      return `${resuit} tuần`;
+      return `${weeks} tuần`;
     } else {
-      let resuit = Math.floor(timespaces / (604800000 * 48));
-      return `${resuit} năm`;
+      return `${years} năm`;
     }
   }
-  function OpenPopUpImage() {
-    // document.querySelector(".pop-up-post").classList.toggle("active-pop-up");
+
+  // Toggle the visibility of the pop-up image.
+  function togglePopUpImage() {
     setDetailImagesOpen(!isDetailImagesOpen);
   }
-  // function OpenPopUpLike() {
-  //   // document.querySelector(".pop-up-like").classList.toggle("active-pop-up");
-  //   setDetailLikesOpen(!isDetailLikesOpen);
-  // }
-  function cong() {
-    setIndex((i) => {
-      if (i === data.images.length - 1) return 0;
-      return i + 1;
-    });
+
+  //  Increments the index to display the next image.
+  function nextImage() {
+    setIndex((currentIndex) =>
+      currentIndex === data.images.length - 1 ? 0 : currentIndex + 1
+    );
   }
-  function tru() {
+
+  //  Decrements the index to display the previous image.
+  function previousImage() {
     setIndex((i) => {
-      if (i === 0) return data.images.length - 1;
+      if (i === 0) {
+        // If the current index is 0, wrap around to the last index.
+        return data.images.length - 1;
+      }
+      // Decrement the index by 1.
       return i - 1;
     });
   }
   function User() {
     return (
       <>
-        <img src={data.user[0].avatar} loading="lazy"></img>
+        <img src={data.user.avatar} loading="lazy" alt="" />
         <div style={{ textAlign: "start" }}>
-          {data.user[0].fullname}
-          <br />
-          <span>
-            Khoa {data.user[0].department} &#8226;{" "}
-            {CreatePostTime(data.createdAt)}
-          </span>
+          {data.user.fullname} <br /> <span>Khoa {data.user.department} </span>
+          {/* <span>{data.created_at}</span> */}
         </div>
       </>
     );
   }
-  // function UserLikesList() {
-  //   return (
-  //     <ul>
-  //       {data.likes.map((like) => (
-  //         <li key={like.id}>{like.fullname}</li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
-  // function UserLikes() {
-  //   return (
-  //     <>
-  //       {data.likes.map((like) => (
-  //         <div key={like.id} className="container flex">
-  //           <div className="avatar-user">
-  //             <img src={like.avatar} className="w-[40px] h-[40px] "></img>
-  //           </div>
-  //           <div className="name-user flex">{like.fullname}</div>
-  //         </div>
-  //       ))}
-  //     </>
-  //   );
-  // }
+
+  // Renders a list of user comments.
   function UserCommentsList() {
     return (
       <ul>
-        {data.comments.map((userid) => (
-          <li key={userid.id}>{userid.user[0].fullname}</li>
+        {data.comments.map((comment) => (
+          <li key={comment.id}>{comment.user.fullname}</li>
         ))}
       </ul>
     );
   }
+
+  // Render the user comments.
   function UserComments() {
     return (
       <>
-        {data.comments.map((Comment) => (
-          <div key={Comment.id} className="comment-details flex">
+        {data.comments.map((comment) => (
+          <div key={comment.id} className="comment-details flex">
             <img
               className="avatar"
-              src={Comment.user[0].avatar}
+              src={comment.user.avatar}
               loading="lazy"
-            ></img>
+              alt=""
+            />
             <div>
               <div className="details flex">
                 <div className="text-[15px] name">
-                  <p style={{ textAlign: "start" }}>
-                    {Comment.user[0].fullname}
-                  </p>
-                  <p>{Comment.user[0].department}</p>
+                  <p style={{ textAlign: "start" }}>{comment.user.fullname}</p>
+                  <p>{comment.user.department}</p>
                 </div>
-                <p style={{ textAlign: "start" }}>{Comment.content}</p>
-                <img src={Comment.imageURL} loading="lazy"></img>
+                <p style={{ textAlign: "start" }}>{comment.content}</p>
+                <img src={comment.imageURL} loading="lazy" alt="" />
               </div>
               <ul className="text-[12px] flex">
-                <li>{CreatePostTime(Comment.createdAt)}</li>
+                <li>{CreatePostTime(comment.createdAt)}</li>
                 <li>Thích</li>
                 <li>Phản hồi</li>
               </ul>
@@ -147,72 +121,74 @@ const Post = (props) => {
         <img
           src={data.images[0].imageURL}
           loading="lazy"
-          onClick={OpenPopUpImage}
-        ></img>
+          onClick={togglePopUpImage}
+          alt=""
+        />
       );
     if (data.images.length === 2)
       return (
         <div
           className="imagecontainer-2 grid grid-cols-2"
-          onClick={OpenPopUpImage}
+          onClick={togglePopUpImage}
         >
-          <img src={data.images[0].imageURL} loading="lazy"></img>
-          <img src={data.images[1].imageURL} loading="lazy"></img>
+          <img src={data.images[0].imageURL} loading="lazy" alt="" />
+          <img src={data.images[1].imageURL} loading="lazy" alt="" />
         </div>
       );
     if (data.images.length === 3)
       return (
         <div
           className="imagecontainer-3 grid grid-cols-2"
-          onClick={OpenPopUpImage}
+          onClick={togglePopUpImage}
         >
-          <img src={data.images[0].imageURL} loading="lazy"></img>
-          <img src={data.images[1].imageURL} loading="lazy"></img>
-          <img src={data.images[2].imageURL} loading="lazy"></img>
+          <img src={data.images[0].imageURL} loading="lazy" alt="" />
+          <img src={data.images[1].imageURL} loading="lazy" alt="" />
+          <img src={data.images[2].imageURL} loading="lazy" alt="" />
         </div>
       );
     if (data.images.length === 4)
       return (
         <div
           className="imagecontainer-4 grid grid-cols-2"
-          onClick={OpenPopUpImage}
+          onClick={togglePopUpImage}
         >
-          <img src={data.images[0].imageURL} loading="lazy"></img>
-          <img src={data.images[1].imageURL} loading="lazy"></img>
-          <img src={data.images[2].imageURL} loading="lazy"></img>
-          <img src={data.images[3].imageURL} loading="lazy"></img>
+          <img src={data.images[0].imageURL} loading="lazy" alt="" />
+          <img src={data.images[1].imageURL} loading="lazy" alt="" />
+          <img src={data.images[2].imageURL} loading="lazy" alt="" />
+          <img src={data.images[3].imageURL} loading="lazy" alt="" />
         </div>
       );
     if (data.images.length === 5)
       return (
         <div
           className="imagecontainer-5 grid grid-cols-6"
-          onClick={OpenPopUpImage}
+          onClick={togglePopUpImage}
         >
-          <img src={data.images[0].imageURL} loading="lazy"></img>
-          <img src={data.images[1].imageURL} loading="lazy"></img>
-          <img src={data.images[2].imageURL} loading="lazy"></img>
-          <img src={data.images[3].imageURL} loading="lazy"></img>
-          <img src={data.images[4].imageURL} loading="lazy"></img>
+          <img src={data.images[0].imageURL} loading="lazy" alt="" />
+          <img src={data.images[1].imageURL} loading="lazy" alt="" />
+          <img src={data.images[2].imageURL} loading="lazy" alt="" />
+          <img src={data.images[3].imageURL} loading="lazy" alt="" />
+          <img src={data.images[4].imageURL} loading="lazy" alt="" />
         </div>
       );
     if (data.images.length > 5)
       return (
         <div
           className="imagecontainer-6 grid grid-cols-6"
-          onClick={OpenPopUpImage}
+          onClick={togglePopUpImage}
         >
-          <img src={data.images[0].imageURL} loading="lazy"></img>
-          <img src={data.images[1].imageURL} loading="lazy"></img>
-          <img src={data.images[2].imageURL} loading="lazy"></img>
-          <img src={data.images[3].imageURL} loading="lazy"></img>
+          <img src={data.images[0].imageURL} loading="lazy" alt="" />
+          <img src={data.images[1].imageURL} loading="lazy" alt="" />
+          <img src={data.images[2].imageURL} loading="lazy" alt="" />
+          <img src={data.images[3].imageURL} loading="lazy" alt="" />
           <div>
-            <img src={data.images[4].imageURL} loading="lazy"></img>
+            <img src={data.images[4].imageURL} loading="lazy" alt="" />
             <div className="flex plus">+{data.images.length - 5}</div>
           </div>
         </div>
       );
   }
+
   return (
     <article className="post-box">
       <div className="title-box" align="left">
@@ -229,11 +205,11 @@ const Post = (props) => {
             {/* <UserLikesList /> */}
           </p>
         </div>
-        <div className="box" align="right" onClick={OpenPopUpImage}>
-          <p>
+        <div className="box" align="right" onClick={togglePopUpImage}>
+          <div>
             Bình luận: {data.comments.length}
-            <UserCommentsList />
-          </p>
+            {/* <UserCommentsList /> */}
+          </div>
         </div>
       </div>
       <div className="reaction flex">
@@ -241,12 +217,12 @@ const Post = (props) => {
           <span className="material-symbols-outlined">thumb_up</span>
           Thích
         </div>
-        <div className="box">
+        <div className="box" onClick={togglePopUpImage}>
           <span className="material-symbols-outlined">mode_comment</span>
           Bình Luận
         </div>
         <div className="box">
-          <span class="material-symbols-outlined">share</span>
+          <span className="material-symbols-outlined">share</span>
           Chia sẻ
         </div>
       </div>
@@ -279,27 +255,27 @@ const Post = (props) => {
             <img src={data.images[index].imageURL} alt="" />
             <div
               style={{ left: 0, position: "absolute" }}
-              onClick={tru}
+              onClick={previousImage}
               className="btn-img flex btn-img-left"
             >
               <button>
-                <span class="material-symbols-outlined">chevron_left</span>
+                <span className="material-symbols-outlined">chevron_left</span>
               </button>
             </div>
             <span
               className="material-symbols-outlined hidden btn-close text-[25px]"
               style={{ right: "20px", position: "absolute", top: "20px" }}
-              onClick={OpenPopUpImage}
+              onClick={togglePopUpImage}
             >
               close
             </span>
             <div
               style={{ right: 0, position: "absolute" }}
-              onClick={cong}
+              onClick={nextImage}
               className="btn-img flex btn-img-right"
             >
               <button>
-                <span class="material-symbols-outlined">chevron_right</span>
+                <span className="material-symbols-outlined">chevron_right</span>
               </button>
             </div>
           </div>
@@ -323,7 +299,7 @@ const Post = (props) => {
             </div>
             <span
               className="material-symbols-outlined"
-              onClick={OpenPopUpImage}
+              onClick={togglePopUpImage}
             >
               close
             </span>
@@ -354,12 +330,12 @@ const Post = (props) => {
               <span className="material-symbols-outlined">thumb_up</span>
               Thích
             </div>
-            <div className="box">
+            <div className="box" onClick={togglePopUpImage}>
               <span className="material-symbols-outlined">mode_comment</span>
               Bình Luận
             </div>
             <div className="box">
-              <span class="material-symbols-outlined">share</span>
+              <span className="material-symbols-outlined">share</span>
               Chia sẻ
             </div>
           </div>
