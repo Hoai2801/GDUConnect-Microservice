@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b96bbe25-348a-4bc6-8f82-500b06dc13c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config/ApplicationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Model/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Model/UserModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Service/JwtService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,11 +28,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/6.1.5/spring-security-core-6.1.5.jar!/org/springframework/security/authentication/AbstractAuthenticationToken.class" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -70,7 +66,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/talos/Desktop/GDUConnectMicroservice/backend&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/talos/Desktop/GDUConnectMicroservice/backend/api-gateway/src/main/java/com/GDUConnect/apigateway&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -80,7 +76,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3505747&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -98,14 +94,16 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway" />
+      <recent name="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config/DTO" />
+      <recent name="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config" />
+      <recent name="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config" />
       <recent name="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/config" />
-      <recent name="$PROJECT_DIR$/auth-service/src/main/java/com/GDUConnect/authservice/Model" />
-      <recent name="$PROJECT_DIR$/api-gateway/src/main/java" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.GDUConnect.discoveryservice.config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.GDUConnect.apigateway.Config" />
       <recent name="com.GDUConnect.authservice.Repository" />
       <recent name="com.GDUConnect.authservice.Config" />
       <recent name="com.GDUConnect.postservice.Model" />
@@ -116,12 +114,10 @@
       <set>
         <option value="MicronautRunConfigurationType" />
         <option value="QuarkusRunConfigurationType" />
-        <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
-    <option name="openRunningConfigInTab" value="true" />
   </component>
-  <component name="RunManager" selected="Spring Boot.PostServiceApplication">
+  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="api-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.GDUConnect.apigateway.ApiGatewayApplication" />
@@ -232,7 +228,23 @@
       <workItem from="1703510298478" duration="410000" />
       <workItem from="1703558624508" duration="1402000" />
       <workItem from="1703572704569" duration="4915000" />
-      <workItem from="1703588575782" duration="5361000" />
+      <workItem from="1703588575782" duration="7318000" />
+      <workItem from="1703597518906" duration="3332000" />
+      <workItem from="1703601042032" duration="12000" />
+      <workItem from="1703601059408" duration="148000" />
+      <workItem from="1703601271920" duration="804000" />
+      <workItem from="1703642473934" duration="5335000" />
+      <workItem from="1703669323544" duration="12728000" />
+      <workItem from="1703691281671" duration="82000" />
+      <workItem from="1703691369598" duration="68000" />
+      <workItem from="1703691477617" duration="2180000" />
+      <workItem from="1703693695690" duration="178000" />
+      <workItem from="1703693880246" duration="4000" />
+      <workItem from="1703693923029" duration="1888000" />
+      <workItem from="1703754457315" duration="656000" />
+      <workItem from="1703763980389" duration="1127000" />
+      <workItem from="1703765456416" duration="1000" />
+      <workItem from="1703767025746" duration="347000" />
     </task>
     <servers />
   </component>
@@ -280,6 +292,10 @@
           <line>40</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/6.1.5/spring-security-core-6.1.5.jar!/org/springframework/security/core/userdetails/UserDetailsService.class</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -287,5 +303,9 @@
         <watch expression="List&lt;MultipartFile&gt; files" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
