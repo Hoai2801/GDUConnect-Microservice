@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Birthstone&display=swap");
 body {
   font-family: "Poppins", sans-serif;
   margin: 60px 0 0 0;
@@ -43,36 +44,33 @@ h6 {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgb(188, 188, 188);
 }
- .material-symbols-outlined {
+.navbar .material-symbols-outlined {
   cursor: pointer;
   margin-left: 5px;
 }
- .logo {
-  font-size: 24px;
-  max-width: 150px;
-  font-weight: 900;
-  font-style: italic;
+.navbar .logo {
+  font-family: "Birthstone", cursive;
 }
- .logo a {
+.navbar .logo a {
   color: rgb(1, 124, 182);
 }
- .logo span {
+.navbar .logo span {
   color: rgb(252, 210, 0);
 }
- .middle-section {
+.navbar .middle-section {
   display: flex;
   justify-content: space-between;
 }
- .middle-section ul {
+.navbar .middle-section ul {
   display: flex;
 }
- .middle-section a {
+.navbar .middle-section a {
   margin: 0 10px;
   font-weight: 400;
   font-size: 15px;
   position: relative;
 }
- .middle-section a::after {
+.navbar .middle-section a::after {
   content: "";
   position: absolute;
   height: 1px;
@@ -83,60 +81,59 @@ h6 {
   bottom: -1px;
   transition: all 0.5s;
 }
- .middle-section a:hover::after {
+.navbar .middle-section a:hover::after {
   width: 100%;
 }
- .right-section {
-  width: 160px;
+.navbar .right-section {
   display: flex;
   align-items: center;
   justify-content: end;
 }
- .right-section .user-register {
-  border: 1px solid rgb(186, 186, 186);
-  border-radius: 20px;
-  padding: 3px 0 3px 5px;
+.navbar .right-section .user-register {
+  padding: 3px 0;
   align-items: center;
+  justify-content: center;
 }
- .right-section .user-register .user-border {
+.navbar .right-section .user-register .user-border {
   border-radius: 20px;
 }
- .right-section .user-register span {
+.navbar .right-section .user-register span {
   color: rgb(143, 143, 143);
 }
- .right-section .user-register a {
+.navbar .right-section .user-register a {
   padding-left: 5px;
-  font-size: 12px;
+  font-size: 13px;
 }
- .right-section .user-register button {
+.navbar .right-section .user-register button {
   border-radius: 20px;
   background-color: black;
   font-size: 14px;
   padding: 5px 10px;
   transition: all 0.7s;
-  margin-left: 7px;
   position: relative;
-  margin-right: 5px;
+  margin: 0 5px;
+  border: 1px solid transparent;
 }
- .right-section .user-register button a {
+.navbar .right-section .user-register button a {
   color: #ffffff;
 }
- .right-section .user-register button:hover {
+.navbar .right-section .user-register button:hover {
+  border-color: black;
   background-color: #ffffff;
 }
- .right-section .user-register button:hover a {
+.navbar .right-section .user-register button:hover a {
   color: black;
 }
- .right-section img {
+.navbar .right-section img {
   height: 24px;
   width: 24px;
   object-fit: cover;
 }
- .right-section p {
+.navbar .right-section p {
   font-size: 15px;
   margin-right: 5px;
 }
- .right-section .material-symbols-outlined {
+.navbar .right-section .material-symbols-outlined {
   display: none;
 }
 
@@ -191,10 +188,6 @@ h6 {
   right: 20px;
 }
 
-img {
-  cursor: pointer;
-}
-
 .clb-box {
   border-radius: 16px;
   overflow: hidden;
@@ -211,34 +204,30 @@ img {
   width: 50px;
 }
 
-.survey {
-  position: relative;
-}
-.survey .survey-box {
-  right: 30px;
-  position: fixed;
-  overflow-y: scroll;
-}
-
 .home-post {
-  height: 90vh;
+  height: 100vh;
   overflow-y: scroll;
   padding-top: 15px;
+}
+.home-post .create-post .avatar-box .avatar-cp img {
+  height: 50px;
+  clip-path: circle();
+  object-fit: contain;
 }
 .home-post::-webkit-scrollbar {
   display: none;
 }
-.post-box {
+.home-post .post-box {
   background-color: white;
   margin-bottom: 16px;
   display: flex;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  max-width: 600px;
+  max-width: 500px;
   flex-direction: column;
   padding-bottom: 12px;
 }
- .image .imagecontainer {
+.home-post .post-box .image .imagecontainer {
   background-color: black;
   position: relative;
   display: flex;
@@ -246,11 +235,11 @@ img {
   justify-content: center;
   flex-direction: column;
 }
- .image .imagecontainer img {
+.home-post .post-box .image .imagecontainer img {
   max-height: 600px;
   object-fit: cover;
 }
- .image .imagecontainer div {
+.home-post .post-box .image .imagecontainer div {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -263,95 +252,100 @@ img {
   cursor: pointer;
   transition: all 0.5s;
 }
- .image .imagecontainer div button {
+.home-post .post-box .image .imagecontainer div button {
   height: 30px;
   width: 30px;
   padding-top: 2px;
   border-radius: 50%;
   background-color: rgba(186, 186, 186, 0.534);
 }
- .image .imagecontainer div:hover {
+.home-post .post-box .image .imagecontainer div:hover {
   background-color: rgba(0, 0, 0, 0.479);
   width: 50px;
 }
- .image .imagecontainer div:hover button {
+.home-post .post-box .image .imagecontainer div:hover button {
   background-color: transparent;
   color: white;
 }
- .imagecontainer-2 {
+.home-post .post-box .imagecontainer-2 {
   column-gap: 3px;
 }
- .imagecontainer-2 img {
+.home-post .post-box .imagecontainer-2 img {
   object-fit: cover;
   max-height: 300px;
   height: 100%;
   width: 100%;
+  cursor: pointer;
 }
- .imagecontainer-3 {
+.home-post .post-box .imagecontainer-3 {
   column-gap: 3px;
   row-gap: 3px;
 }
- .imagecontainer-3 img {
+.home-post .post-box .imagecontainer-3 img {
   object-fit: cover;
+  cursor: pointer;
   width: 100%;
   max-height: 300px;
   height: 100%;
 }
- .imagecontainer-3 img:nth-child(1) {
+.home-post .post-box .imagecontainer-3 img:nth-child(1) {
   grid-column: span 2;
 }
- .imagecontainer-4 {
+.home-post .post-box .imagecontainer-4 {
   column-gap: 3px;
   row-gap: 3px;
 }
- .imagecontainer-4 img {
+.home-post .post-box .imagecontainer-4 img {
   object-fit: cover;
+  cursor: pointer;
   width: 100%;
   height: 100%;
   max-height: 300px;
 }
- .imagecontainer-5 {
+.home-post .post-box .imagecontainer-5 {
   column-gap: 3px;
   row-gap: 3px;
 }
- .imagecontainer-5 img {
+.home-post .post-box .imagecontainer-5 img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  cursor: pointer;
   max-height: 300px;
 }
- .imagecontainer-5 img:nth-child(1),  .imagecontainer-5 img:nth-child(2) {
+.home-post .post-box .imagecontainer-5 img:nth-child(1), .home-post .post-box .imagecontainer-5 img:nth-child(2) {
   grid-column: span 3;
 }
- .imagecontainer-5 img:nth-child(3),  .imagecontainer-5 img:nth-child(4),  .imagecontainer-5 img:nth-child(5) {
+.home-post .post-box .imagecontainer-5 img:nth-child(3), .home-post .post-box .imagecontainer-5 img:nth-child(4), .home-post .post-box .imagecontainer-5 img:nth-child(5) {
   grid-column: span 2;
   max-height: 200px;
 }
- .imagecontainer-6 {
+.home-post .post-box .imagecontainer-6 {
   column-gap: 3px;
   row-gap: 3px;
 }
- .imagecontainer-6 img {
+.home-post .post-box .imagecontainer-6 img {
   object-fit: cover;
   height: 100%;
+  cursor: pointer;
   width: 100%;
   max-height: 300px;
 }
- .imagecontainer-6 img:nth-child(1),  .imagecontainer-6 img:nth-child(2) {
+.home-post .post-box .imagecontainer-6 img:nth-child(1), .home-post .post-box .imagecontainer-6 img:nth-child(2) {
   grid-column: span 3;
 }
- .imagecontainer-6 img:nth-child(3),  .imagecontainer-6 img:nth-child(4) {
+.home-post .post-box .imagecontainer-6 img:nth-child(3), .home-post .post-box .imagecontainer-6 img:nth-child(4) {
   grid-column: span 2;
   max-height: 200px;
 }
- .imagecontainer-6 div {
+.home-post .post-box .imagecontainer-6 div {
   grid-column: span 2;
   position: relative;
   max-height: 200px;
   justify-content: center;
   align-items: center;
 }
- .imagecontainer-6 div .plus {
+.home-post .post-box .imagecontainer-6 div .plus {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
@@ -361,56 +355,57 @@ img {
   bottom: 0;
   font-size: 20px;
 }
- .title-box {
+.home-post .post-box .title-box {
   padding: 12px 16px 0 16px;
   display: flex;
   margin-bottom: 12px;
   align-items: center;
 }
- .title-box img {
+.home-post .post-box .title-box img {
   clip-path: circle();
   width: 40px;
+  height: 40px;
   object-fit: cover;
   margin-right: 10px;
 }
- .title-box div {
+.home-post .post-box .title-box div {
   font-size: 14px;
   color: black;
   font-weight: 600;
 }
- .title-box div span {
+.home-post .post-box .title-box div span {
   color: rgb(101, 103, 107);
   font-size: 12px;
 }
- .content-box {
+.home-post .post-box .content-box {
   padding: 4px 16px 16px 16px;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
 }
- .reaction-details {
+.home-post .post-box .reaction-details {
   color: rgb(101, 103, 107);
   margin: 0 16px;
   padding: 10px 0;
   justify-content: space-between;
   border-bottom: 1px solid rgb(101, 103, 107);
 }
-.box P {
+.home-post .post-box .reaction-details .box P {
   font-size: 14px;
   cursor: pointer;
   position: relative;
   transition: all 0.5s;
 }
-.box P ul {
+.home-post .post-box .reaction-details .box P ul {
   display: none;
 }
-.box P ul li {
+.home-post .post-box .reaction-details .box P ul li {
   text-wrap: nowrap;
 }
-.box P:hover {
+.home-post .post-box .reaction-details .box P:hover {
   text-decoration: underline;
 }
-.box P:hover ul {
+.home-post .post-box .reaction-details .box P:hover ul {
   display: inline-block;
   position: absolute;
   background-color: rgba(26, 26, 26, 0.836);
@@ -420,18 +415,18 @@ img {
   border-radius: 5px;
   left: 0;
 }
- .reaction {
+.home-post .post-box .reaction {
   color: rgb(101, 103, 107);
   padding: 10px 16px 0 16px;
   justify-content: space-around;
   font-size: 15px;
 }
- .reaction .box {
+.home-post .post-box .reaction .box {
   align-items: center;
   display: flex;
   cursor: pointer;
 }
- .reaction .box span {
+.home-post .post-box .reaction .box span {
   margin-right: 5px;
 }
 
@@ -445,30 +440,30 @@ img {
   place-items: center;
   z-index: 5;
 }
-.like-container {
+.pop-up-like .like-container {
   border-radius: 10px;
   padding: 16px;
   background-color: white;
   max-width: 550px;
   max-height: 440px;
 }
-.material-symbols-outlined {
+.pop-up-like .like-container div .material-symbols-outlined {
   cursor: pointer;
 }
-.like-content {
+.pop-up-like .like-container .like-content {
   overflow: hidden;
 }
-.like-content:hover {
+.pop-up-like .like-container .like-content:hover {
   overflow-y: scroll;
 }
-.avatar-user {
+.pop-up-like .like-container .like-content .container .avatar-user {
   margin: 8px 12px 8px 0;
 }
-.avatar-user img {
+.pop-up-like .like-container .like-content .container .avatar-user img {
   clip-path: circle();
   object-fit: cover;
 }
-.name-user {
+.pop-up-like .like-container .like-content .container .name-user {
   font-size: 15px;
   align-items: center;
 }
@@ -495,7 +490,7 @@ img {
 }
 .pop-up-post .image .image-container img {
   object-fit: contain;
-  max-height: 90vh;
+  max-height: 100vh;
   cursor: default;
 }
 .pop-up-post .image .image-container .btn-img-right,
@@ -583,11 +578,14 @@ img {
   align-items: start;
 }
 .pop-up-post .comment-container .comment .comment-details .details .name {
-  font-weight: 600;
   font-size: 13px;
 }
+.pop-up-post .comment-container .comment .comment-details .details span {
+  color: rgb(101, 103, 107);
+  font-size: 12px;
+}
 .pop-up-post .comment-container .comment .comment-details .details p {
-  font-size: 15px;
+  font-size: 14px;
 }
 .pop-up-post .comment-container .comment .comment-details .details img {
   border-radius: 12px;
@@ -639,15 +637,29 @@ img {
   object-fit: cover;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 16px;
+  }
   .navbar .middle-section a {
     margin: 0 10px;
   }
   .clb-box {
-    display: none;
+    height: 50vh;
+    margin-left: -10vw;
+    grid-column-start: 4;
+    overflow-y: scroll;
   }
   .home {
+    grid-row-start: 1;
     grid-column: span 3;
+    margin-left: -10vw;
+    grid-row-end: 3;
+  }
+  .survey {
+    grid-column-start: 4;
+    margin-left: -10vw;
+    height: 50vh;
   }
 }
 @media (max-width: 950px) {
@@ -660,6 +672,12 @@ img {
 @media (max-width: 900px) {
   .survey {
     display: none;
+  }
+  .clb-box {
+    display: none;
+  }
+  .home {
+    margin: 0;
   }
   .home {
     grid-column: span 4;
@@ -695,12 +713,26 @@ img {
   .pop-up-post .comment-container .comment {
     overflow-y: scroll;
   }
+  .avatar-cp {
+    height: 40px;
+    width: 40px;
+    clip-path: circle();
+  }
+  .box-cp {
+    min-width: auto;
+  }
+  .create-post {
+    padding: 20px 16px;
+  }
   .navbar {
     padding: 0 8px;
   }
+  .navbar .middle-section {
+    margin-right: 5px;
+  }
   .navbar .middle-section a {
     margin: 0 6px;
-    font-size: 13px;
+    font-size: 14px;
   }
   .navbar .right-section {
     width: auto;
@@ -708,7 +740,7 @@ img {
   .navbar .right-section p {
     font-size: 13px;
   }
-  .navbar .right-section button {
+  .navbar .right-section button a {
     font-size: 12px;
   }
   .navbar .right-section button:active {
@@ -716,6 +748,11 @@ img {
   }
 }
 @media (max-width: 620px) {
+  .navbar .right-section .user-register {
+    padding-left: 5px;
+    border: 1px solid rgb(186, 186, 186);
+    border-radius: 20px;
+  }
   .navbar .middle-section ul li {
     display: none;
   }
@@ -739,6 +776,7 @@ img {
   .home .home-post .create-post,
   .home .home-post .post-box {
     width: 100vw;
+    border-radius: 0;
   }
 }
 @media (max-width: 425px) {
@@ -746,7 +784,7 @@ img {
     font-size: 25px;
   }
   .navbar .logo {
-    font-size: 18px;
+    font-size: 30px;
   }
   .navbar .right-section p {
     font-size: 12px;
@@ -756,10 +794,10 @@ img {
     width: 22px;
   }
   .navbar .right-section .user-register a {
-    font-size: 11px;
+    font-size: 10px;
   }
   .navbar .right-section .user-register button a {
-    font-size: 11px;
+    font-size: 10px;
   }
   .navbar .right-section .material-symbols-outlined {
     font-size: 20px;
@@ -771,6 +809,17 @@ img {
 @media (max-width: 375px) {
   .pop-up-post .image .image-container .btn-img button span {
     font-size: 25px;
+  }
+  .home-post .create-post .avatar-box .avatar-cp img {
+    height: 45px;
+  }
+  .create-post {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: end;
+  }
+  .btn-cp {
+    width: 200px;
   }
   .sidebar ul li {
     margin-bottom: 15px;

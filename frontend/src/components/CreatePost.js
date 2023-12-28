@@ -16,13 +16,17 @@ const CreatePost = () => {
 
   return (
     <div
-      className="shadow-lg border-black rounded-lg md:w-[600px] max-w-[600px] w-full h-fit py-5 bg-white flex px-5 create-post"
+      className="shadow-lg border-black rounded-lg md:w-[600px] max-w-[500px] w-full h-fit py-5 bg-white flex px-5 create-post"
       style={{ marginBottom: "16px" }}
     >
       <div className="flex gap-5 w-full">
         {/* avatar */}
-        <div className="h-[50px] w-[50px] min-w-[50px] rounded-full overflow-hidden">
-          <img src={user.avatar} alt="" className="w-full object-cover" />
+        <div className="h-[50px] w-[50px] min-w-[50px] rounded-full overflow-hidden flex items-center box-cp">
+          <img
+            src={user.avatar}
+            alt=""
+            className="w-full object-cover avatar-cp"
+          />
         </div>
         {/* input */}
         <div className="h-[45px] w-full mt-1">
@@ -36,7 +40,10 @@ const CreatePost = () => {
         </div>
       </div>
       {/* button */}
-      <div className="flex justify-end px-5 w-[40%] gap-5">
+      <div
+        className="flex justify-end px-1 w-[40%] gap-5 max-w-[130px] btn-cp"
+        style={{ marginLeft: "10px", flexShrink: "0" }}
+      >
         <input type="file" onChange={null} id="actual-btn" hidden multiple />
         <label htmlFor="actual-btn" className=" hover:cursor-pointer">
           <img

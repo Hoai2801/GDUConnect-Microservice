@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import axios from "axios";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import React, { useState } from "react";
 
 const Login = () => {
   // State variables to track email and password input
@@ -25,13 +25,13 @@ const Login = () => {
       studentCode: studentCode,
       password: password,
     };
-    console.log(data)
+    console.log(data);
 
     axios
       .post(url, data)
       .then((response) => {
         console.log(response.data);
-        Cookies.set('token', response.data.token);
+        Cookies.set("token", response.data.token);
       })
       .catch((error) => {
         console.error(error);

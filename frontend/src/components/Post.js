@@ -16,23 +16,22 @@ const Post = (props) => {
     const today = new Date();
     const timespaces = today - new Date(TimePost);
 
-    const minutes = Math.floor(timespaces / 60000);
-    const hours = Math.floor(timespaces / 3600000);
-    const days = Math.floor(timespaces / 86400000);
-    const weeks = Math.floor(timespaces / 604800000);
-    const years = Math.floor(timespaces / (604800000 * 48));
-
     if (timespaces < 60000) {
-      return `${minutes} giây`;
+      return `mới đây`;
     } else if (timespaces < 3600000) {
+      const minutes = Math.floor(timespaces / 60000);
       return `${minutes} phút`;
     } else if (timespaces < 86400000) {
+      const hours = Math.floor(timespaces / 3600000);
       return `${hours} giờ`;
     } else if (timespaces < 604800000) {
+      const days = Math.floor(timespaces / 86400000);
       return `${days} ngày`;
     } else if (timespaces < 604800000 * 48) {
+      const weeks = Math.floor(timespaces / 604800000);
       return `${weeks} tuần`;
     } else {
+      const years = Math.floor(timespaces / (604800000 * 48));
       return `${years} năm`;
     }
   }
@@ -51,21 +50,26 @@ const Post = (props) => {
 
   //  Decrements the index to display the previous image.
   function previousImage() {
-    setIndex((i) => {
-      if (i === 0) {
-        // If the current index is 0, wrap around to the last index.
-        return data.images.length - 1;
-      }
-      // Decrement the index by 1.
-      return i - 1;
-    });
+    setIndex((i) => (i === 0 ? data.images.length - 1 : i - 1));
+    // setIndex((i) => {
+    //   if (i === 0) {
+    //     // If the current index is 0, wrap around to the last index.
+    //     return data.images.length - 1;
+    //   }
+    //   // Decrement the index by 1.
+    //   return i - 1;
+    // });
   }
   function User() {
     return (
       <>
-        <img src={data.user.avatar} loading="lazy" alt="" />
+        <img src={data.user[0].avatar} loading="lazy" alt="" />
         <div style={{ textAlign: "start" }}>
-          {data.user.fullname} <br /> <span>Khoa {data.user.department} </span>
+          {data.user[0].fullname} <br />{" "}
+          <span>
+            Khoa {data.user[0].department} &#x2022;{"  "}
+            {CreatePostTime(data.createdAt)}
+          </span>
           {/* <span>{data.created_at}</span> */}
         </div>
       </>
@@ -77,7 +81,7 @@ const Post = (props) => {
     return (
       <ul>
         {data.comments.map((comment) => (
-          <li key={comment.id}>{comment.user.fullname}</li>
+          <li key={comment.id}>{comment.user[0].fullname}</li>
         ))}
       </ul>
     );
@@ -91,15 +95,18 @@ const Post = (props) => {
           <div key={comment.id} className="comment-details flex">
             <img
               className="avatar"
-              src={comment.user.avatar}
+              src={comment.user[0].avatar}
               loading="lazy"
               alt=""
             />
             <div>
               <div className="details flex">
                 <div className="text-[15px] name">
-                  <p style={{ textAlign: "start" }}>{comment.user.fullname}</p>
-                  <p>{comment.user.department}</p>
+                  <p style={{ textAlign: "start" }}>
+                    {comment.user[0].fullname} &#x2022;{" "}
+                    {comment.user[0].department}
+                  </p>
+                  <span></span>
                 </div>
                 <p style={{ textAlign: "start" }}>{comment.content}</p>
                 <img src={comment.imageURL} loading="lazy" alt="" />
@@ -251,7 +258,7 @@ const Post = (props) => {
         key={data.post_id}
       >
         <div className="image">
-          <div className="image-container flex w-full h-[90vh]">
+          <div className="image-container flex w-full h-[100vh]">
             <img src={data.images[index].imageURL} alt="" />
             <div
               style={{ left: 0, position: "absolute" }}

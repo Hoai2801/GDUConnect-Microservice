@@ -1,26 +1,23 @@
-import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
 import React from "react";
 function OpenMenu() {
   document.querySelector(".sidebar").classList.toggle("active");
 }
 function User() {
-  const token = Cookies.get('token');
-  const decoded = jwtDecode(token);
+  //   const token = Cookies.get('token');
+  //   const decoded = jwtDecode(token);
 
-console.log(decoded);
-  if (!decoded.sub)
-    return (
-      <div className="user-register flex">
-        <span onClick={OpenMenu} className="material-symbols-outlined menu">
-          menu
-        </span>
-        <a href="/">GDU</a>
-        <button type="button">
-          <a href="#">Đăng Nhập</a>
-        </button>
-      </div>
-    );
+  // console.log(decoded);
+  // if (!decoded.sub)
+  return (
+    <div className="user-register flex">
+      <span onClick={OpenMenu} className="material-symbols-outlined menu">
+        menu
+      </span>
+      <button type="button">
+        <a href="/auth">Đăng Nhập</a>
+      </button>
+    </div>
+  );
   return (
     <div className="user-register flex">
       <span onClick={OpenMenu} className="material-symbols-outlined menu">
@@ -28,7 +25,7 @@ console.log(decoded);
       </span>
       <div className="user-border">
         <img src="#"></img>
-        <p>{decoded.sub}</p>
+        {/* <p>{decoded.sub}</p> */}
         <span></span>
       </div>
     </div>
@@ -56,16 +53,18 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar shadow-lg">
-        <h1 className="logo">
+        <h1 className="logo text-[38px]">
           <a href="/">
             <span>GDU</span>Connect
           </a>
         </h1>
-        <div className="middle-section">
-          <Nav />
-        </div>
-        <div className="right-section">
-          <User />
+        <div className="flex" style={{ alignItems: "center" }}>
+          <div className="middle-section">
+            <Nav />
+          </div>
+          <div className="right-section">
+            <User />
+          </div>
         </div>
       </nav>
       <aside className="sidebar">

@@ -77,8 +77,16 @@
   .pop-up-post .comment-container .comment {
     overflow-y: scroll;
   }
-  footer {
-    display: none;
+  .avatar-cp {
+    height: 40px;
+    width: 40px;
+    clip-path: circle();
+  }
+  .box-cp {
+    min-width: auto;
+  }
+  .create-post {
+    padding: 20px 16px;
   }
   .navbar {
     padding: 0 8px;
@@ -198,6 +206,14 @@
         }
       }
     }
+  }
+  .create-post {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: end;
+  }
+  .btn-cp {
+    width: 200px;
   }
   .sidebar {
     ul {
