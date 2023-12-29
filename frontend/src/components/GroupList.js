@@ -8,7 +8,7 @@ const GroupList = () => {
   useEffect(() => {
       const fetchData = async () => {
       try {
-          const response = await fetch('http://localhost:8080/api/v1/group/all');
+          const response = await fetch('http://localhost:8080/api/v1/group');
           if (!response.ok) {
           throw new Error('Network response was not ok');
           }
