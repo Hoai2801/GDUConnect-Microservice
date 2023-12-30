@@ -63,7 +63,7 @@ function CreatePostTime(TimePost) {
   function User() {
     return (
       <>
-        <img src={data.user.avatar} loading="lazy" alt=""/>
+        <img src={data.user.avatar || "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"} loading="lazy" alt=""/>
         <div style={{ textAlign: "start" }}>
           {data.user.fullname} <br />{" "}
           <span>Khoa {data.user.department} </span>
@@ -88,6 +88,7 @@ function CreatePostTime(TimePost) {
   function UserComments() {
     return (
       <>
+      {data.comments.length === 0 && <h3 className="text-[15px] font-bold">Bài viết chưa có bình luận nào, bạn hãy trở thành người đầu tiên</h3>}
         {data.comments.map((comment) => (
           <div key={comment.id} className="comment-details flex">
             <img
@@ -248,14 +249,14 @@ function CreatePostTime(TimePost) {
           </div>
         </div> */}
       <div
-        className={`pop-up-post grid grid-cols-5 ${
-          isDetailImagesOpen ? "" : "hidden"
-        }`}
+        className={`pop-up-post grid grid-cols-5 
+        ${isDetailImagesOpen ? "" : "hidden"}
+        ${data.images.length !== 0 ? "" : "bg-slate-800 bg-opacity-90"} `}
         key={data.post_id}
       >
-        <div className="image">
+        <div className={`image ${data.images.length !== 0 ? " " : "hidden"} `}>
           <div className="image-container flex w-full h-[90vh]">
-            <img src={data.images[index].imageURL} alt="" />
+            <img src={data.images.length !== 0 ? data.images[index].imageURL : ""} alt="" />
             <div
               style={{ left: 0, position: "absolute" }}
               onClick={previousImage}
@@ -283,7 +284,7 @@ function CreatePostTime(TimePost) {
             </div>
           </div>
         </div>
-        <div className="comment-container w-full flex">
+        <div className={`comment-container w-full h-full flex ${data.images.length !== 0 ? "col-span-2" : "absolute left-[50%] translate-x-[-50%] lg:w-[40%] md:w-[60%] "}`}>
           <div className="h-[60px] login-vissible">
             <h1 className="logo text-[24px] flex">
               <span>GDU</span>Connect

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/v1/group")
 @RequiredArgsConstructor
-@CrossOrigin
 public class GroupController {
     private final GroupService groupService;
 

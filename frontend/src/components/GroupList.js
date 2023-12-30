@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,13 +9,8 @@ const GroupList = () => {
   useEffect(() => {
       const fetchData = async () => {
       try {
-          const response = await fetch('http://localhost:8080/api/v1/group');
-          if (!response.ok) {
-          throw new Error('Network response was not ok');
-          }
-
-          const result = await response.json();
-          setData(result);
+          const response = await axios.get('http://localhost:8080/api/v1/group');
+          setData(response.data);
       } catch (error) {
           console.error('Error fetching data:', error);
       }

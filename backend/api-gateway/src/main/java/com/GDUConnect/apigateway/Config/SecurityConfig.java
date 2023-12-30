@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.List;
 
 @Configuration
 @EnableWebFluxSecurity
@@ -18,12 +21,16 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 public class SecurityConfig {
 
   private final JwtAuthenticationFilter jwtAuthFilter;
-  private final AuthenticationProvider authenticationProvider;
 
   @Bean
   public SecurityWebFilterChain securityFilterChain(ServerHttpSecurity http) {
-    log.info(http.toString());
+    CorsConfiguration corsConfiguration = new CorsConfiguration();
+    corsConfiguration.setAllowedHeaders(List.of("*"));
+    corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000"));
+    corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
+    corsConfiguration.setAllowCredentials(true);
     http
+      .cors().configurationSource(request -> corsConfiguration).and()
       .csrf().disable()
       .authorizeExchange(auth -> {
           auth.pathMatchers("/api/v1/auth/**").permitAll();

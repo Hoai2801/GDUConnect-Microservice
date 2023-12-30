@@ -6,17 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b96bbe25-348a-4bc6-8f82-500b06dc13c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/JwtAuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/DTO/LoginDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/DTO/RegisterDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/DTO/UserLoginDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Response/AuthenticationResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Response/UserResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Controller/GroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/GroupList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/GroupList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +122,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ApiGatewayApplication">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="api-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.GDUConnect.apigateway.ApiGatewayApplication" />
@@ -255,6 +251,7 @@
       <workItem from="1703765456416" duration="1000" />
       <workItem from="1703767025746" duration="2057000" />
       <workItem from="1703833801770" duration="996000" />
+      <workItem from="1703932797806" duration="1809000" />
     </task>
     <servers />
   </component>

@@ -24,7 +24,6 @@ import java.util.concurrent.CompletableFuture;
 @RequestMapping("api/v1/post")
 @RequiredArgsConstructor
 @Slf4j
-@CrossOrigin
 public class PostController {
     public final KafkaTemplate<String, PostEvent> kafkaTemplate;
     public final PostService postService;
