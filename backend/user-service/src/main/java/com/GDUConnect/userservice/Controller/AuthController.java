@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
-@CrossOrigin
 public class AuthController {
 
     private final AuthenticationService authenticationService;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
-//    public ResponseEntity<?> register(
             @RequestBody RegisterDTO registerDTO
     ) {
         return ResponseEntity.ok().body(authenticationService.register(registerDTO));
@@ -26,7 +24,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(
-//    public ResponseEntity<?> login(
             @RequestBody LoginDTO loginDTO
     ) {
         return ResponseEntity.ok().body(authenticationService.login(loginDTO));

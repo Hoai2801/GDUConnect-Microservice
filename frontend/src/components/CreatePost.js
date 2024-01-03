@@ -1,12 +1,30 @@
-import React from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+import React, { useEffect, useState } from "react";
 
 const CreatePost = () => {
   // mock api of user
-  const user = {
-    avatar:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww",
-    name: "Nguyen Van Toan",
-  };
+  const [user, setUser] = useState("");
+
+  const token = Cookies.get("token");
+  const jwt = token ? jwtDecode(token) : "";
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/v1/user/" + jwt.id
+        );
+        setUser(response.data);
+        console.log(response);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   // get last name of user from session or cookies
   const getLastName = (name) => {
@@ -23,7 +41,11 @@ const CreatePost = () => {
         {/* avatar */}
         <div className="h-[50px] w-[50px] min-w-[50px] rounded-full overflow-hidden flex items-center box-cp">
           <img
-            src={user.avatar}
+            src={
+              user && user.avatar
+                ? user.avatar
+                : "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
+            }
             alt=""
             className="w-full object-cover avatar-cp"
           />
@@ -34,7 +56,9 @@ const CreatePost = () => {
             type="text"
             name=""
             id=""
-            placeholder={`Chào ${getLastName(user.name)}, chia sẻ một chút nhé`}
+            placeholder={`Chào ${getLastName(
+              user ? user.fullname : ""
+            )}, chia sẻ một chút nhé`}
             className="w-full h-full bg-gray-200 rounded-md p-5 input-cp"
           />
         </div>

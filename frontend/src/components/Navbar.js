@@ -1,23 +1,25 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 function OpenMenu() {
   document.querySelector(".sidebar").classList.toggle("active");
 }
 function User() {
-  //   const token = Cookies.get('token');
-  //   const decoded = jwtDecode(token);
+  const token = Cookies.get("token");
+  const decoded = jwtDecode(token);
 
-  // console.log(decoded);
-  // if (!decoded.sub)
-  return (
-    <div className="user-register flex">
-      <span onClick={OpenMenu} className="material-symbols-outlined menu">
-        menu
-      </span>
-      <button type="button">
-        <a href="/auth">Đăng Nhập</a>
-      </button>
-    </div>
-  );
+  console.log(decoded);
+  if (!decoded.sub)
+    return (
+      <div className="user-register flex">
+        <span onClick={OpenMenu} className="material-symbols-outlined menu">
+          menu
+        </span>
+        <a href="/">GDU</a>
+        <button type="button">
+          <a href="#">Đăng Nhập</a>
+        </button>
+      </div>
+    );
   return (
     <div className="user-register flex">
       <span onClick={OpenMenu} className="material-symbols-outlined menu">
@@ -33,20 +35,56 @@ function User() {
 }
 function Nav() {
   return (
-    <ul>
-      <li>
-        <a href="/">Bài Đăng</a>
-      </li>
-      <li>
-        <a href="/room">Phòng Trọ</a>
-      </li>
-      <li>
-        <a href="/shop">Buôn Bán</a>
-      </li>
-      <li>
-        <a href="/competition">Cuộc Thi</a>
-      </li>
-    </ul>
+    <div>
+      <NavLink
+        to="/"
+        className={({ isActive, isPending, isTransitioning }) =>
+          [
+            isPending ? "pending" : "",
+            isActive ? "text-red-400" : "",
+            isTransitioning ? "transitioning" : "",
+          ].join(" ")
+        }
+      >
+        Trang chủ
+      </NavLink>
+      <NavLink
+        to="/room"
+        className={({ isActive, isPending, isTransitioning }) =>
+          [
+            isPending ? "pending" : "",
+            isActive ? "text-red-400" : "",
+            isTransitioning ? "transitioning" : "",
+          ].join(" ")
+        }
+      >
+        Phòng trọ
+      </NavLink>
+      <NavLink
+        to="/shop"
+        className={({ isActive, isPending, isTransitioning }) =>
+          [
+            isPending ? "pending" : "",
+            isActive ? "text-red-400" : "",
+            isTransitioning ? "transitioning" : "",
+          ].join(" ")
+        }
+      >
+        Buôn bán
+      </NavLink>
+      <NavLink
+        to="/competition"
+        className={({ isActive, isPending, isTransitioning }) =>
+          [
+            isPending ? "pending" : "",
+            isActive ? "text-red-400" : "",
+            isTransitioning ? "transitioning" : "",
+          ].join(" ")
+        }
+      >
+        Cuộc thi
+      </NavLink>
+    </div>
   );
 }
 const Navbar = () => {
