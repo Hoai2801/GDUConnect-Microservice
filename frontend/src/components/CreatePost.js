@@ -16,7 +16,7 @@ const CreatePost = () => {
 
   return (
     <div
-      className="shadow-lg border-black rounded-lg md:w-[600px] max-w-[500px] w-full h-fit py-5 bg-white flex px-5 create-post"
+      className="shadow-lg border-black rounded-lg max-w-[600px] w-full h-fit py-5 bg-white flex px-5 create-post"
       style={{ marginBottom: "16px" }}
     >
       <div className="flex gap-5 w-full">
@@ -35,7 +35,7 @@ const CreatePost = () => {
             name=""
             id=""
             placeholder={`Chào ${getLastName(user.name)}, chia sẻ một chút nhé`}
-            className="w-full h-full bg-gray-200 rounded-md p-5"
+            className="w-full h-full bg-gray-200 rounded-md p-5 input-cp"
           />
         </div>
       </div>
@@ -49,13 +49,13 @@ const CreatePost = () => {
           <img
             src="https://cdn.icon-icons.com/icons2/510/PNG/512/image_icon-icons.com_50366.png"
             alt=""
-            className="w-10 h-10 mt-2"
+            className="w-10 h-10 mt-2 add-img"
           />
         </label>
         {/* submit the post */}
         <button
           onClick={null}
-          className="bg-blue-400 px-1 h-fit py-2 mt-2 rounded-lg"
+          className="bg-blue-400 px-1 h-fit py-2 mt-2 rounded-lg btn-submit"
         >
           Submit
         </button>

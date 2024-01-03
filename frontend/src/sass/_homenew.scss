@@ -1,0 +1,53 @@
+.header-home {
+  border-bottom: 1px solid rgb(107, 114, 128);
+}
+.nav {
+  background-color: rgb(17, 24, 39);
+}
+.nav-list-item {
+  color: #9ca3af;
+  transition: all 0.3s;
+  svg {
+    fill: #9ca3af;
+  }
+  &:hover {
+    background-color: rgb(31, 41, 55);
+    color: white;
+    svg {
+      fill: white;
+    }
+  }
+}
+.avt-nav-home {
+  clip-path: circle();
+}
+.avt-box {
+  border-left: 1px solid rgb(17 24 39 / 0.1);
+}
+#main {
+  grid-template-columns: 2fr 1fr;
+  background-color: #f0f2f5;
+}
+.post,
+.group-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.grid-home {
+  grid-template-columns: 288px 2fr 1fr;
+}
+.menubar-home {
+  display: none;
+}
+.sidebar-home {
+  position: fixed;
+  transition: transform 500ms;
+  transform: translateX(-400px);
+  background-color: rgb(17, 24, 39);
+}
+.blurbg {
+  transition: all 500ms ease-in-out;
+  background-color: transparent;
+  z-index: 29;
+}

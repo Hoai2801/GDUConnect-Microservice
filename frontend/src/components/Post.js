@@ -16,22 +16,23 @@ const Post = (props) => {
     const today = new Date();
     const timespaces = today - new Date(TimePost);
 
+    const minutes = Math.floor(timespaces / 60000);
+    const hours = Math.floor(timespaces / 3600000);
+    const days = Math.floor(timespaces / 86400000);
+    const weeks = Math.floor(timespaces / 604800000);
+    const years = Math.floor(timespaces / (604800000 * 48));
+
     if (timespaces < 60000) {
-      return `mới đây`;
+      return `${minutes} giây`;
     } else if (timespaces < 3600000) {
-      const minutes = Math.floor(timespaces / 60000);
       return `${minutes} phút`;
     } else if (timespaces < 86400000) {
-      const hours = Math.floor(timespaces / 3600000);
       return `${hours} giờ`;
     } else if (timespaces < 604800000) {
-      const days = Math.floor(timespaces / 86400000);
       return `${days} ngày`;
     } else if (timespaces < 604800000 * 48) {
-      const weeks = Math.floor(timespaces / 604800000);
       return `${weeks} tuần`;
     } else {
-      const years = Math.floor(timespaces / (604800000 * 48));
       return `${years} năm`;
     }
   }
@@ -50,26 +51,28 @@ const Post = (props) => {
 
   //  Decrements the index to display the previous image.
   function previousImage() {
-    setIndex((i) => (i === 0 ? data.images.length - 1 : i - 1));
-    // setIndex((i) => {
-    //   if (i === 0) {
-    //     // If the current index is 0, wrap around to the last index.
-    //     return data.images.length - 1;
-    //   }
-    //   // Decrement the index by 1.
-    //   return i - 1;
-    // });
+    setIndex((i) => {
+      if (i === 0) {
+        // If the current index is 0, wrap around to the last index.
+        return data.images.length - 1;
+      }
+      // Decrement the index by 1.
+      return i - 1;
+    });
   }
   function User() {
     return (
       <>
-        <img src={data.user[0].avatar} loading="lazy" alt="" />
+        <img
+          src={
+            data.user.avatar ||
+            "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
+          }
+          loading="lazy"
+          alt=""
+        />
         <div style={{ textAlign: "start" }}>
-          {data.user[0].fullname} <br />{" "}
-          <span>
-            Khoa {data.user[0].department} &#x2022;{"  "}
-            {CreatePostTime(data.createdAt)}
-          </span>
+          {data.user.fullname} <br /> <span>Khoa {data.user.department} </span>
           {/* <span>{data.created_at}</span> */}
         </div>
       </>
@@ -81,7 +84,7 @@ const Post = (props) => {
     return (
       <ul>
         {data.comments.map((comment) => (
-          <li key={comment.id}>{comment.user[0].fullname}</li>
+          <li key={comment.id}>{comment.user.fullname}</li>
         ))}
       </ul>
     );
@@ -91,22 +94,24 @@ const Post = (props) => {
   function UserComments() {
     return (
       <>
+        {data.comments.length === 0 && (
+          <h3 className="text-[15px] font-bold">
+            Bài viết chưa có bình luận nào, bạn hãy trở thành người đầu tiên
+          </h3>
+        )}
         {data.comments.map((comment) => (
           <div key={comment.id} className="comment-details flex">
             <img
               className="avatar"
-              src={comment.user[0].avatar}
+              src={comment.user.avatar}
               loading="lazy"
               alt=""
             />
             <div>
               <div className="details flex">
                 <div className="text-[15px] name">
-                  <p style={{ textAlign: "start" }}>
-                    {comment.user[0].fullname} &#x2022;{" "}
-                    {comment.user[0].department}
-                  </p>
-                  <span></span>
+                  <p style={{ textAlign: "start" }}>{comment.user.fullname}</p>
+                  <p>{comment.user.department}</p>
                 </div>
                 <p style={{ textAlign: "start" }}>{comment.content}</p>
                 <img src={comment.imageURL} loading="lazy" alt="" />
@@ -252,14 +257,17 @@ const Post = (props) => {
           </div>
         </div> */}
       <div
-        className={`pop-up-post grid grid-cols-5 ${
-          isDetailImagesOpen ? "" : "hidden"
-        }`}
+        className={`pop-up-post grid grid-cols-5 
+        ${isDetailImagesOpen ? "" : "hidden"}
+        ${data.images.length !== 0 ? "" : "bg-slate-800 bg-opacity-90"} `}
         key={data.post_id}
       >
-        <div className="image">
-          <div className="image-container flex w-full h-[100vh]">
-            <img src={data.images[index].imageURL} alt="" />
+        <div className={`image ${data.images.length !== 0 ? " " : "hidden"} `}>
+          <div className="image-container flex w-full h-[90vh]">
+            <img
+              src={data.images.length !== 0 ? data.images[index].imageURL : ""}
+              alt=""
+            />
             <div
               style={{ left: 0, position: "absolute" }}
               onClick={previousImage}
@@ -287,7 +295,13 @@ const Post = (props) => {
             </div>
           </div>
         </div>
-        <div className="comment-container w-full flex">
+        <div
+          className={`comment-container w-full h-full flex ${
+            data.images.length !== 0
+              ? "col-span-2"
+              : "absolute left-[50%] translate-x-[-50%] lg:w-[40%] md:w-[60%] "
+          }`}
+        >
           <div className="h-[60px] login-vissible">
             <h1 className="logo text-[24px] flex">
               <span>GDU</span>Connect
