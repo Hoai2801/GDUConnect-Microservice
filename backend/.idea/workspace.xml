@@ -4,121 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b96bbe25-348a-4bc6-8f82-500b06dc13c6" name="Changes" comment="">
+    <list default="true" id="b8d5aea4-48a8-450f-a2f3-671d400e632c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Controller/GroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/GroupList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/GroupList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/CreatePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/CreatePost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Navbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="Enum" />
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/6.1.5/spring-security-core-6.1.5.jar!/org/springframework/security/authentication/AbstractAuthenticationToken.class" root0="SKIP_INSPECTION" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2Y9DcTw2dXLRyFlpWpyyYVh4wRm" />
+  <component name="ProjectId" id="2aRVVLBU8qRgjjTRdDzNu9awelO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Application.Hoai.executor&quot;: &quot;Run&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.DiscoveryServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.GroupServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.NotificationServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.PostServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/talos/Desktop/GDUConnectMicroservice/backend/api-gateway/src/main/java/com/GDUConnect/apigateway&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3505747&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
-    ]
+    &quot;last_opened_file_path&quot;: &quot;/home/talos/Desktop/GDUConnectMicroservice/backend&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="ReactorSettings">
-    <option name="notificationShown" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.GDUConnect.userservice.Model" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway" />
-      <recent name="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config/DTO" />
-      <recent name="$PROJECT_DIR$/user-service/src/main/java/com/GDUConnect/userservice/Config" />
-      <recent name="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config" />
-      <recent name="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/config" />
-    </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="com.GDUConnect.discoveryservice.config" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.GDUConnect.apigateway.Service" />
-      <recent name="com.GDUConnect.apigateway.Controller" />
-      <recent name="com.GDUConnect.apigateway.Config" />
-      <recent name="com.GDUConnect.authservice.Repository" />
-      <recent name="com.GDUConnect.authservice.Config" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
         <option value="MicronautRunConfigurationType" />
         <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
   </component>
@@ -166,153 +105,22 @@
       </method>
     </configuration>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.9-corretto-17.0.9-8336523bb0d9-9b5c8e75" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b96bbe25-348a-4bc6-8f82-500b06dc13c6" name="Changes" comment="" />
-      <created>1699928982621</created>
+      <changelist id="b8d5aea4-48a8-450f-a2f3-671d400e632c" name="Changes" comment="" />
+      <created>1704281401941</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1699928982621</updated>
-      <workItem from="1699928985717" duration="262000" />
-      <workItem from="1699974543325" duration="5609000" />
-      <workItem from="1700009984253" duration="6112000" />
-      <workItem from="1700030408017" duration="625000" />
-      <workItem from="1700057218053" duration="4896000" />
-      <workItem from="1700063178740" duration="476000" />
-      <workItem from="1700214664274" duration="27000" />
-      <workItem from="1700215860980" duration="4733000" />
-      <workItem from="1700273544809" duration="1765000" />
-      <workItem from="1700283998029" duration="12806000" />
-      <workItem from="1700399851300" duration="2371000" />
-      <workItem from="1700441109011" duration="5823000" />
-      <workItem from="1700461659438" duration="5483000" />
-      <workItem from="1700480107805" duration="1153000" />
-      <workItem from="1700481275196" duration="5762000" />
-      <workItem from="1700487178425" duration="1215000" />
-      <workItem from="1700567746466" duration="2886000" />
-      <workItem from="1700624586133" duration="8711000" />
-      <workItem from="1700634037895" duration="1210000" />
-      <workItem from="1700637207494" duration="1602000" />
-      <workItem from="1700638816525" duration="6738000" />
-      <workItem from="1700713423544" duration="12000" />
-      <workItem from="1700713442012" duration="913000" />
-      <workItem from="1700722412917" duration="9411000" />
-      <workItem from="1700738397566" duration="1771000" />
-      <workItem from="1700740911215" duration="1437000" />
-      <workItem from="1700789205476" duration="19208000" />
-      <workItem from="1700813090794" duration="6688000" />
-      <workItem from="1700829637008" duration="1077000" />
-      <workItem from="1700911006002" duration="4255000" />
-      <workItem from="1701072630997" duration="388000" />
-      <workItem from="1701074727417" duration="10000" />
-      <workItem from="1701150773547" duration="27000" />
-      <workItem from="1701594147482" duration="10094000" />
-      <workItem from="1701670031037" duration="657000" />
-      <workItem from="1701782388281" duration="2261000" />
-      <workItem from="1701784656443" duration="2297000" />
-      <workItem from="1701865474696" duration="28000" />
-      <workItem from="1701867132271" duration="692000" />
-      <workItem from="1701942313197" duration="774000" />
-      <workItem from="1702019633036" duration="2073000" />
-      <workItem from="1702201518825" duration="17775000" />
-      <workItem from="1702256408914" duration="749000" />
-      <workItem from="1702602353128" duration="12000" />
-      <workItem from="1702602590921" duration="11000" />
-      <workItem from="1703402835305" duration="818000" />
-      <workItem from="1703509138144" duration="562000" />
-      <workItem from="1703509705636" duration="119000" />
-      <workItem from="1703509830576" duration="358000" />
-      <workItem from="1703510298478" duration="410000" />
-      <workItem from="1703558624508" duration="1402000" />
-      <workItem from="1703572704569" duration="4915000" />
-      <workItem from="1703588575782" duration="7318000" />
-      <workItem from="1703597518906" duration="3332000" />
-      <workItem from="1703601042032" duration="12000" />
-      <workItem from="1703601059408" duration="148000" />
-      <workItem from="1703601271920" duration="804000" />
-      <workItem from="1703642473934" duration="5335000" />
-      <workItem from="1703669323544" duration="12728000" />
-      <workItem from="1703691281671" duration="82000" />
-      <workItem from="1703691369598" duration="68000" />
-      <workItem from="1703691477617" duration="2180000" />
-      <workItem from="1703693695690" duration="178000" />
-      <workItem from="1703693880246" duration="4000" />
-      <workItem from="1703693923029" duration="1888000" />
-      <workItem from="1703754457315" duration="656000" />
-      <workItem from="1703763980389" duration="1127000" />
-      <workItem from="1703765456416" duration="1000" />
-      <workItem from="1703767025746" duration="2057000" />
-      <workItem from="1703833801770" duration="996000" />
-      <workItem from="1703932797806" duration="1809000" />
+      <updated>1704281401941</updated>
+      <workItem from="1704281402990" duration="695000" />
+      <workItem from="1704349914998" duration="29000" />
+      <workItem from="1704355718952" duration="123000" />
+      <workItem from="1704355848626" duration="89000" />
+      <workItem from="1704370679471" duration="484000" />
+      <workItem from="1704373438574" duration="359000" />
+      <workItem from="1704378274607" duration="2312000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
-    <option featureType="dependencySupport" implementationName="java:org.apache.kafka:kafka_2.13" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
-    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />
-    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
-    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
-    <option featureType="dependencySupport" implementationName="executable:docker" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.ws.rs:jakarta.ws.rs-api" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/auth-service/src/main/java/com/GDUConnect/authservice/Controller/AuthController.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/auth-service/src/main/java/com/GDUConnect/authservice/Service/AuthenticationService.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/6.1.5/spring-security-core-6.1.5.jar!/org/springframework/security/core/userdetails/UserDetailsService.class</url>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="List&lt;MultipartFile&gt; files" language="JAVA" />
-      </configuration>
-    </watches-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

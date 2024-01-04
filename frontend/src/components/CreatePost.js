@@ -7,6 +7,35 @@ const CreatePost = () => {
   // mock api of user
   const [user, setUser] = useState("");
 
+  const [postText, setPostText] = useState('');
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const handleInputChange = (e) => {
+    setPostText(e.target.value);
+  };
+
+  const handleFileChange = (e) => {
+    // Handle multiple file selection
+    const files = Array.from(e.target.files);
+    setSelectedFiles(files);
+  };
+
+  const handleSubmit = async() => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+  };
+  console.log(selectedFiles)
+    const data = {
+      userId: jwt.id,
+      content: postText,
+      groupId: 1,
+      file: "",
+    }
+    const response = await axios.post("http://localhost:8080/api/v1/post", data, config);
+    
+    console.log(response.data);
+  };
+
   const token = Cookies.get("token");
   const jwt = token ? jwtDecode(token) : "";
 
@@ -56,6 +85,7 @@ const CreatePost = () => {
             type="text"
             name=""
             id=""
+            onChange={handleInputChange}
             placeholder={`Chào ${getLastName(
               user ? user.fullname : ""
             )}, chia sẻ một chút nhé`}
@@ -68,7 +98,7 @@ const CreatePost = () => {
         className="flex justify-end px-1 w-[40%] gap-5 max-w-[130px] btn-cp"
         style={{ marginLeft: "10px", flexShrink: "0" }}
       >
-        <input type="file" onChange={null} id="actual-btn" hidden multiple />
+        <input type="file" onChange={handleFileChange} id="actual-btn" hidden multiple />
         <label htmlFor="actual-btn" className=" hover:cursor-pointer">
           <img
             src="https://cdn.icon-icons.com/icons2/510/PNG/512/image_icon-icons.com_50366.png"
@@ -78,11 +108,14 @@ const CreatePost = () => {
         </label>
         {/* submit the post */}
         <button
-          onClick={null}
+          onClick={handleSubmit}
           className="bg-blue-400 px-1 h-fit py-2 mt-2 rounded-lg btn-submit"
         >
           Submit
         </button>
+      </div>
+      <div>
+          
       </div>
     </div>
   );

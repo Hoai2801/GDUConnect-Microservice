@@ -44,19 +44,6 @@ public class PostController {
         });
     }
 
-  public static String read(final HttpServletRequest request) {
-
-    var header = request.getHeader("Authorization");
-    if (header != null) {
-      var parts = header.split(" ");
-      if (parts.length == 2 && parts[0].equalsIgnoreCase("Bearer")) {
-        return parts[1];
-      }
-    }
-
-    return null;
-  }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePost(@PathVariable Long id) {
         try {
@@ -68,9 +55,8 @@ public class PostController {
     }
 
     @GetMapping("")
-    public ResponseEntity<?> getAllPost(HttpServletRequest request) {
+    public ResponseEntity<?> getAllPost() {
         try {
-          log.info(read(request));
             return ResponseEntity.ok().body(postService.getAllPosts());
         } catch (Exception e) {
             log.error("Failed to get all posts due to an IOException: {}", e);

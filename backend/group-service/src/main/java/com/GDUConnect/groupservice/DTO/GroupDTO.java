@@ -17,5 +17,4 @@ public class GroupDTO {
     @JsonProperty("other-link")
     private String otherLink;
     private String avatar;
-
 }
