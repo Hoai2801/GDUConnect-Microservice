@@ -84,6 +84,9 @@ const CreatePost = () => {
           Submit
         </button>
       </div>
+      <div>
+          
+      </div>
     </div>
   );
 };
