@@ -158,6 +158,9 @@
   }
 }
 @media (max-width: 620px) {
+  .sidebar {
+    display: flex;
+  }
   .header-home input {
     display: none;
   }
@@ -168,6 +171,9 @@
   }
   #main {
     padding: 0;
+  }
+  .navlink {
+    display: none;
   }
   .navbar {
     .middle-section {

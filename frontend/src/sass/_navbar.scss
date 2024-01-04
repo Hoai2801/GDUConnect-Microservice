@@ -1,15 +1,5 @@
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30px;
   z-index: 3;
-  background-color: white;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgb(188, 188, 188);
   .material-symbols-outlined {
@@ -26,8 +16,6 @@
     }
   }
   .middle-section {
-    display: flex;
-    justify-content: space-between;
     ul {
       display: flex;
     }
@@ -53,9 +41,6 @@
     }
   }
   .right-section {
-    display: flex;
-    align-items: center;
-    justify-content: end;
     .user-register {
       padding: 3px 0;
       align-items: center;
@@ -106,21 +91,12 @@
   }
 }
 .sidebar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 380px;
+  display: none;
   z-index: 4;
   backdrop-filter: blur(5px);
   background-color: rgba($color: rgb(26, 26, 26), $alpha: 1);
-  display: flex;
   color: white;
-  padding-top: 60px;
   transform: translateX(800px);
-  justify-content: start;
-  align-items: center;
-  flex-direction: column;
   transition: transform 1000ms;
   .material-symbols-outlined {
     cursor: pointer;

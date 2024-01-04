@@ -4,6 +4,9 @@
   display: flex;
   background-color: #f0f2f5;
   flex-direction: column;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   &:hover {
     overflow-y: scroll;
   }
@@ -27,14 +30,8 @@
 }
 
 .post-box {
-  background-color: white;
-  margin-bottom: 16px;
-  display: flex;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  max-width: 600px;
-  flex-direction: column;
-  padding-bottom: 12px;
   .image {
     .imagecontainer {
       background-color: black;
@@ -172,9 +169,6 @@
   }
   .title-box {
     padding: 12px 16px 0 16px;
-    display: flex;
-    margin-bottom: 12px;
-    align-items: center;
     img {
       clip-path: circle();
       width: 40px;
@@ -194,15 +188,10 @@
   }
   .content-box {
     padding: 4px 16px 16px 16px;
-    font-size: 14px;
-    font-weight: 400;
     line-height: 20px;
   }
   .reaction-details {
     color: rgb(101, 103, 107);
-    margin: 0 16px;
-    padding: 10px 0;
-    justify-content: space-between;
     border-bottom: 1px solid rgb(101, 103, 107);
     .box {
       P {
@@ -235,7 +224,6 @@
   .reaction {
     color: rgb(101, 103, 107);
     padding: 10px 16px 0 16px;
-    justify-content: space-around;
     font-size: 15px;
     .box {
       align-items: center;
@@ -290,12 +278,7 @@
   }
 }
 .pop-up-post {
-  position: fixed;
   z-index: 5;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   .image {
     background-color: black;
     grid-column: span 3;
@@ -343,18 +326,9 @@
     }
   }
   .comment-container {
-    max-height: 100vh;
-    background-color: white;
-    flex-direction: column;
-    grid-column: span 2;
     .login-vissible {
-      background-color: white;
       border-bottom: 1px solid rgb(186, 186, 186);
-      padding: 0 15px;
       .logo {
-        justify-content: end;
-        font-size: 24px;
-        font-weight: 900;
         font-style: italic;
         color: rgb(1, 124, 182);
         span {
@@ -364,12 +338,11 @@
     }
     .comment {
       margin-top: 10px;
-      overflow: hidden;
-      &:hover {
-        overflow-y: scroll;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none;
       }
       .comment-details {
-        margin-bottom: 15px;
         padding-left: 20px;
         .avatar {
           height: 32px;
@@ -427,13 +400,10 @@
       }
     }
     .title-container {
-      align-items: center;
-      padding-bottom: 20px;
       .material-symbols-outlined {
         cursor: pointer;
       }
       .title {
-        font-size: 14px;
         div {
           margin-left: 10px;
           display: flex;

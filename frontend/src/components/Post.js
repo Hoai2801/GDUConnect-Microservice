@@ -72,7 +72,8 @@ const Post = (props) => {
           alt=""
         />
         <div style={{ textAlign: "start" }}>
-          {data.user.fullname} <br /> <span>Khoa {data.user.department} </span>
+          {data.user[0].fullname} <br />{" "}
+          <span>Khoa {data.user[0].department} </span>
           {/* <span>{data.created_at}</span> */}
         </div>
       </>
@@ -84,7 +85,7 @@ const Post = (props) => {
     return (
       <ul>
         {data.comments.map((comment) => (
-          <li key={comment.id}>{comment.user.fullname}</li>
+          <li key={comment.id}>{comment.user[0].fullname}</li>
         ))}
       </ul>
     );
@@ -100,27 +101,64 @@ const Post = (props) => {
           </h3>
         )}
         {data.comments.map((comment) => (
-          <div key={comment.id} className="comment-details flex">
+          <div
+            key={comment.id}
+            className="comment-details flex pb-[56px] pr-[20px]"
+          >
             <img
               className="avatar"
-              src={comment.user.avatar}
+              src={comment.user[0].avatar}
               loading="lazy"
               alt=""
             />
-            <div>
+            <div align="start" style={{}}>
               <div className="details flex">
                 <div className="text-[15px] name">
-                  <p style={{ textAlign: "start" }}>{comment.user.fullname}</p>
-                  <p>{comment.user.department}</p>
+                  <p style={{ textAlign: "start" }}>
+                    {comment.user[0].fullname}
+                  </p>
+                  <p>{comment.user[0].department}</p>
                 </div>
                 <p style={{ textAlign: "start" }}>{comment.content}</p>
-                <img src={comment.imageURL} loading="lazy" alt="" />
               </div>
+              {comment.imageURL ? (
+                <img
+                  className="rounded-xl"
+                  src={comment.imageURL}
+                  loading="lazy"
+                  alt=""
+                />
+              ) : (
+                " "
+              )}
               <ul className="text-[12px] flex">
                 <li>{CreatePostTime(comment.createdAt)}</li>
-                <li>Thích</li>
-                <li>Phản hồi</li>
+                <li className="cursor-pointer">Thích</li>
+                <li className="cursor-pointer">Phản hồi</li>
               </ul>
+              <div className="flex pl-[20px] pt-[10px] pb-[10px] bg-slate-50">
+                <img
+                  src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
+                  className="h-[24px] w-[24px]"
+                  alt=""
+                ></img>
+                <div className="flex justify-center items-center w-full">
+                  <textarea
+                    className="ml-[15px] w-full rounded px-2 py-1 "
+                    style={{ backgroundColor: " #F0F2F5" }}
+                    placeholder="Viết bình luận..."
+                  ></textarea>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                    className="cursor-pointer"
+                  >
+                    <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -202,29 +240,33 @@ const Post = (props) => {
   }
 
   return (
-    <article className="post-box">
-      <div className="title-box" align="left">
+    <article className="post-box bg-slate-50 mb-[16px] flex max-w-[600px] flex-col pb-[12px]">
+      <div className="title-box flex mb-[12px] items-center" align="left">
         <User />
       </div>
-      <div className="content-box" align="left">
+      <div className="content-box text-[14px]" align="left">
         {data.content}
       </div>
       <ImgContent />
-      <div className="reaction-details flex">
+      <div className="reaction-details flex mx-[16px] py-[10px] justify-between">
         <div className="box" align="left">
           <p>
             Thích: {data.likes.length}
             {/* <UserLikesList /> */}
           </p>
         </div>
-        <div className="box" align="right" onClick={togglePopUpImage}>
+        <div
+          className="box cursor-pointer"
+          align="right"
+          onClick={togglePopUpImage}
+        >
           <div>
             Bình luận: {data.comments.length}
             {/* <UserCommentsList /> */}
           </div>
         </div>
       </div>
-      <div className="reaction flex">
+      <div className="reaction flex justify-around">
         <div className="box">
           <span className="material-symbols-outlined">thumb_up</span>
           Thích
@@ -257,13 +299,13 @@ const Post = (props) => {
           </div>
         </div> */}
       <div
-        className={`pop-up-post grid grid-cols-5 
+        className={`pop-up-post grid grid-cols-5 fixed inset-0
         ${isDetailImagesOpen ? "" : "hidden"}
         ${data.images.length !== 0 ? "" : "bg-slate-800 bg-opacity-90"} `}
         key={data.post_id}
       >
         <div className={`image ${data.images.length !== 0 ? " " : "hidden"} `}>
-          <div className="image-container flex w-full h-[90vh]">
+          <div className="image-container flex w-full h-[100vh]">
             <img
               src={data.images.length !== 0 ? data.images[index].imageURL : ""}
               alt=""
@@ -278,16 +320,14 @@ const Post = (props) => {
               </button>
             </div>
             <span
-              className="material-symbols-outlined hidden btn-close text-[25px]"
-              style={{ right: "20px", position: "absolute", top: "20px" }}
+              className="material-symbols-outlined hidden btn-close text-[25px] right-[20px] absolute top-[20px]"
               onClick={togglePopUpImage}
             >
               close
             </span>
             <div
-              style={{ right: 0, position: "absolute" }}
               onClick={nextImage}
-              className="btn-img flex btn-img-right"
+              className="btn-img flex btn-img-right absolute right-0"
             >
               <button>
                 <span className="material-symbols-outlined">chevron_right</span>
@@ -296,72 +336,96 @@ const Post = (props) => {
           </div>
         </div>
         <div
-          className={`comment-container w-full h-full flex ${
-            data.images.length !== 0
-              ? "col-span-2"
-              : "absolute left-[50%] translate-x-[-50%] lg:w-[40%] md:w-[60%] "
+          className={`comment-container max-h-[100vh] bg-slate-50 flex-col w-full h-full flex justify-between relative ${
+            data.images.length !== 0 ? "col-span-2" : "col-start-2 col-end-5"
           }`}
         >
-          <div className="h-[60px] login-vissible">
-            <h1 className="logo text-[24px] flex">
-              <span>GDU</span>Connect
-            </h1>
-          </div>
-          <div
-            className="flex title-container"
-            style={{
-              justifyContent: "space-between",
-              margin: `20px 0 10px 0`,
-              padding: "0 15px",
-            }}
-          >
-            <div className="title flex">
-              <User />
+          <div>
+            <div className="h-[60px] login-vissible bg-slate-50 px-[15px]">
+              <h1 className="logo text-[24px] flex justify-end text-black text-[24px]">
+                <span>GDU</span>Connect
+              </h1>
             </div>
-            <span
-              className="material-symbols-outlined"
-              onClick={togglePopUpImage}
+            <div
+              className="flex title-container items-center pt-[20px] justify-between"
+              style={{
+                margin: `20px 0 10px 0`,
+                padding: "0 15px",
+              }}
             >
-              close
-            </span>
+              <div className="title flex text-[14px]">
+                <User />
+              </div>
+              <span
+                className="material-symbols-outlined"
+                onClick={togglePopUpImage}
+              >
+                close
+              </span>
+            </div>
+            <div
+              className="flex text-[15px]"
+              style={{ padding: "0 0 10px 15px", textAlign: "start" }}
+            >
+              {data.content}
+            </div>
+            <div
+              className="count-length flex justify-between"
+              style={{
+                padding: "0 15px 10px 15px",
+                borderBottom: "1px solid rgb(186,186,186)",
+              }}
+            >
+              <div className="text-[14px]" style={{ color: "#65666B" }}>
+                Thích: {data.likes.length}
+              </div>
+              <div className="text-[14px]" style={{ color: "#65666B" }}>
+                Bình luận: {data.comments.length}
+              </div>
+            </div>
+            <div className="reaction flex" style={{ paddingTop: "10px" }}>
+              <div className="box">
+                <span className="material-symbols-outlined">thumb_up</span>
+                Thích
+              </div>
+              <div className="box" onClick={togglePopUpImage}>
+                <span className="material-symbols-outlined">mode_comment</span>
+                Bình Luận
+              </div>
+              <div className="box">
+                <span className="material-symbols-outlined">share</span>
+                Chia sẻ
+              </div>
+            </div>
+            <div className="comment max-h-[320px]">
+              <UserComments />
+            </div>
           </div>
           <div
-            className="flex text-[15px]"
-            style={{ padding: "0 0 10px 15px", textAlign: "start" }}
+            className="flex pl-[20px] pt-[10px] absolute bottom-0 left-0 right-0 pb-[10px] bg-slate-50"
+            style={{ borderTop: "1px solid rgb(186, 186, 186)" }}
           >
-            {data.content}
-          </div>
-          <div
-            className="count-length flex"
-            style={{
-              justifyContent: "space-between",
-              padding: "0 15px 10px 15px",
-              borderBottom: "1px solid rgb(186,186,186)",
-            }}
-          >
-            <div className="text-[14px]" style={{ color: "#65666B" }}>
-              Thích: {data.likes.length}
+            <img
+              src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
+              className="h-[24px] w-[24px]"
+              alt=""
+            ></img>
+            <div className="flex justify-center items-center w-full">
+              <textarea
+                className="ml-[15px] w-full rounded px-2 py-1 "
+                style={{ backgroundColor: " #F0F2F5" }}
+                placeholder="Viết bình luận..."
+              ></textarea>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+                className="cursor-pointer"
+              >
+                <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+              </svg>
             </div>
-            <div className="text-[14px]" style={{ color: "#65666B" }}>
-              Bình luận: {data.comments.length}
-            </div>
-          </div>
-          <div className="reaction flex" style={{ paddingTop: "10px" }}>
-            <div className="box">
-              <span className="material-symbols-outlined">thumb_up</span>
-              Thích
-            </div>
-            <div className="box" onClick={togglePopUpImage}>
-              <span className="material-symbols-outlined">mode_comment</span>
-              Bình Luận
-            </div>
-            <div className="box">
-              <span className="material-symbols-outlined">share</span>
-              Chia sẻ
-            </div>
-          </div>
-          <div className="comment">
-            <UserComments />
           </div>
         </div>
       </div>
