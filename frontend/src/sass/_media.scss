@@ -103,9 +103,25 @@
     width: 30px;
     height: 30px;
   }
+  .login-vissible {
+    display: none;
+  }
 }
-.login-vissible {
-  display: none;
+@media (max-width: 850px) {
+  .middle-section {
+    display: none;
+  }
+  .navbar {
+    .right-section {
+      .material-symbols-outlined {
+        display: block;
+        color: #9ca3af;
+      }
+    }
+  }
+  .sidebar {
+    display: flex;
+  }
 }
 @media (max-width: 825px) {
   .navbar {
@@ -158,9 +174,6 @@
   }
 }
 @media (max-width: 620px) {
-  .sidebar {
-    display: flex;
-  }
   .header-home input {
     display: none;
   }
@@ -183,11 +196,6 @@
         }
       }
     }
-    .right-section {
-      .material-symbols-outlined {
-        display: block;
-      }
-    }
   }
   .sidebar {
     width: 100%;
@@ -204,6 +212,10 @@
   }
 }
 @media (max-width: 540px) {
+  .avt-menu {
+    bottom: -45px;
+    font-size: 14px;
+  }
   .home {
     padding: 0;
     .home-post {
@@ -233,15 +245,15 @@
   }
   .navbar {
     .logo {
-      font-size: 32px;
+      font-size: 24px;
     }
     .right-section {
       p {
         font-size: 12px;
       }
       img {
-        height: 22px;
-        width: 22px;
+        height: 30px;
+        width: 30px;
       }
       .user-register {
         a {
@@ -263,6 +275,9 @@
   }
 }
 @media (max-width: 375px) {
+  .logo {
+    font-size: 16px;
+  }
   .grid-home {
     grid-template-columns: 1fr;
     width: 100%;
@@ -337,6 +352,15 @@
     }
   }
 }
+.blurbg {
+  transition: all 500ms ease-in-out;
+  background-color: transparent;
+  z-index: 29;
+}
+.blurbg2 {
+  transition: all 500ms ease-in-out;
+  background-color: transparent;
+}
 .active {
   transform: translateX(0);
 }
@@ -344,4 +368,9 @@
   background-color: rgb(17 24 39 / 0.8);
   transition: all 500ms ease-in-out;
   z-index: 40;
+}
+.activeblur2 {
+  background-color: rgb(17 24 39 / 0.8);
+  transition: all 500ms ease-in-out;
+  z-index: 39;
 }

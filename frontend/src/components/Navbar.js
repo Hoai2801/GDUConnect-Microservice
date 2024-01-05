@@ -1,41 +1,78 @@
-import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
+// import Cookies from "js-cookie";
+// import { jwtDecode } from "jwt-decode";
 import React from "react";
 import { NavLink } from "react-router-dom";
 function OpenMenu() {
+  document.querySelector(".blurbg2").classList.toggle("activeblur2");
   document.querySelector(".sidebar").classList.toggle("active");
 }
 function CloseMenu() {
   document.querySelector(".sidebar").classList.remove("active");
+  document.querySelector(".blurbg2").classList.remove("activeblur2");
+}
+function HideNone() {
+  document.querySelector(".avt-menu").classList.toggle("hidden");
 }
 function User() {
+  const u = 1;
   // const token = Cookies.get("token");
   // const decoded = jwtDecode(token);
 
   // console.log(decoded);
   // if (!decoded.sub)
+  if (!u) {
+    return (
+      <div className="user-register flex">
+        <span onClick={OpenMenu} className="material-symbols-outlined menu">
+          menu
+        </span>
+        <a href="/auth">
+          <button type="button">
+            <a href="#">Đăng Nhập</a>
+          </button>
+        </a>
+      </div>
+    );
+  }
   return (
-    <div className="user-register flex">
-      <span onClick={OpenMenu} className="material-symbols-outlined menu">
+    <div className="flex items-center ml-[15px] px-[15px] avt-box w-full relative">
+      <span onClick={OpenMenu} className="material-symbols-outlined menu mr-2">
         menu
       </span>
-      <a href="/auth">
-        <button type="button">
-          <a href="#">Đăng Nhập</a>
-        </button>
-      </a>
-    </div>
-  );
-  return (
-    <div className="user-register flex">
-      <span onClick={OpenMenu} className="material-symbols-outlined menu">
-        sort
-      </span>
-      <div className="user-border">
-        <img src="#"></img>
-        {/* <p>{decoded.sub}</p> */}
-        <span></span>
+      <img
+        className="w-[35px] h-[35px] object-contain avt-nav-home"
+        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww"
+      ></img>
+      <div className="ml-[7px]">
+        <p className="text-[13px] mb-[-4px]">Nguyen Van Toan</p>
+        <span className="text-[12px]">Khoa công nghệ thông tin</span>
       </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="30"
+        viewBox="0 -960 960 960"
+        width="30"
+        className="cursor-pointer"
+        style={{ fill: "#9CA3AF" }}
+        onClick={HideNone}
+      >
+        <path d="M480-360 280-560h400L480-360Z" />
+      </svg>
+      <a href="/auth">
+        <div className="absolute bottom-[-35px] right-0 flex bg-slate-50 shadow-lg rounded px-2 py-1 cursor-pointer avt-menu hidden hover:bg-slate-200 transition items-center justify-center w-[150px]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 -960 960 960"
+            width="24"
+            className="mr-[10px]"
+            style={{ fill: "#9CA3AF" }}
+          >
+            <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+          </svg>
+          Đăng xuất
+        </div>
+      </a>
     </div>
   );
 }
@@ -97,7 +134,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar fixed inset-0 h-[60px] flex justify-between items-center px-[30px] bg-slate-50">
-        <h1 className="logo text-[38px]">
+        <h1 className="logo text-[28px] italic font-black">
           <a href="/">
             <span>GDU</span>Connect
           </a>
@@ -111,7 +148,8 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <aside className="sidebar justify-center top-0 h-[100vh] w-[380px] pb-8 flex flex-col items-center fixed">
+      <div className="blurbg2 inset-0 fixed z-0"></div>
+      <aside className="sidebar justify-center top-0 h-[100vh] right-0 w-[341px] pb-8 flex flex-col items-center fixed z-40">
         <span onClick={OpenMenu} className="material-symbols-outlined close">
           close
         </span>

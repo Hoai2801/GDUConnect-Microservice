@@ -28,16 +28,6 @@ const Home = () => {
               <span className="text-[12px]">Khoa công nghệ thông tin</span>
             </div>
           </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24"
-            viewBox="0 -960 960 960"
-            width="24"
-            style={{ fill: "#9CA3AF" }}
-            className="cursor-pointer"
-          >
-            <path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z" />
-          </svg>
         </>
       );
     }
@@ -392,19 +382,21 @@ const Home = () => {
           Cài đặt
         </div>
         {userlogin ? (
-          <div className="flex justify-start items-center p-2 nav-list-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 -960 960 960"
-              width="24"
-              className="mr-[10px]"
-              style={{ fill: "#9CA3AF" }}
-            >
-              <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
-            </svg>
-            Đăng xuất
-          </div>
+          <a href="/auth">
+            <div className="flex justify-start items-center p-2 nav-list-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="30"
+                viewBox="0 -960 960 960"
+                width="30"
+                className="mr-[10px]"
+                style={{ fill: "#9CA3AF" }}
+              >
+                <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+              </svg>
+              Đăng xuất
+            </div>
+          </a>
         ) : (
           ""
         )}
@@ -413,7 +405,6 @@ const Home = () => {
         className="px-[40px] grid col-start-2 col-end-4 row-start-2 row-end-3 z-30"
         id="main"
       >
-        {" "}
         <div
           className="col-end-2 col-start-1 max-h-[90vh] overflow-y-scroll post mt-[0.75rem]"
           align="center"
@@ -547,19 +538,21 @@ const Home = () => {
           Cài đặt
         </div>
         {userlogin ? (
-          <div className="flex justify-start items-center p-2 nav-list-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 -960 960 960"
-              width="24"
-              className="mr-[10px]"
-              style={{ fill: "#9CA3AF" }}
-            >
-              <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
-            </svg>
-            Đăng xuất
-          </div>
+          <a href="/auth">
+            <div className="flex justify-start items-center p-2 nav-list-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="30"
+                viewBox="0 -960 960 960"
+                width="30"
+                className="mr-[10px]"
+                style={{ fill: "#9CA3AF" }}
+              >
+                <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+              </svg>
+              Đăng xuất
+            </div>
+          </a>
         ) : (
           ""
         )}

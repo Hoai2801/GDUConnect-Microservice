@@ -7,7 +7,7 @@
     margin-left: 5px;
   }
   .logo {
-    font-family: "Birthstone", cursive;
+    font-family: "Raleway", sans-serif;
     a {
       color: rgb(1, 124, 182);
     }
@@ -76,11 +76,6 @@
         }
       }
     }
-    img {
-      height: 24px;
-      width: 24px;
-      object-fit: cover;
-    }
     p {
       font-size: 15px;
       margin-right: 5px;
@@ -92,11 +87,10 @@
 }
 .sidebar {
   display: none;
-  z-index: 4;
   backdrop-filter: blur(5px);
   background-color: rgba($color: rgb(26, 26, 26), $alpha: 1);
   color: white;
-  transform: translateX(800px);
+  transform: translateX(1000px);
   transition: transform 1000ms;
   .material-symbols-outlined {
     cursor: pointer;

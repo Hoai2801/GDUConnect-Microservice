@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Birthstone&display=swap");
 body {
   font-family: "Poppins", sans-serif;
   margin: 60px 0 0 0;
@@ -39,7 +38,7 @@ h6 {
   margin-left: 5px;
 }
 .navbar .logo {
-  font-family: "Birthstone", cursive;
+  font-family: "Raleway", sans-serif;
 }
 .navbar .logo a {
   color: rgb(1, 124, 182);
@@ -105,11 +104,6 @@ h6 {
 .navbar .right-section .user-register button:hover a {
   color: black;
 }
-.navbar .right-section img {
-  height: 24px;
-  width: 24px;
-  object-fit: cover;
-}
 .navbar .right-section p {
   font-size: 15px;
   margin-right: 5px;
@@ -120,11 +114,10 @@ h6 {
 
 .sidebar {
   display: none;
-  z-index: 4;
   backdrop-filter: blur(5px);
   background-color: #1a1a1a;
   color: white;
-  transform: translateX(800px);
+  transform: translateX(1000px);
   transition: transform 1000ms;
 }
 .sidebar .material-symbols-outlined {
@@ -158,6 +151,62 @@ h6 {
   position: absolute;
   top: 18px;
   right: 20px;
+}
+
+.header-home {
+  border-bottom: 1px solid rgb(107, 114, 128);
+}
+
+.nav {
+  background-color: rgb(17, 24, 39);
+}
+
+.nav-list-item {
+  color: #9ca3af;
+  transition: all 0.3s;
+}
+.nav-list-item svg {
+  fill: #9ca3af;
+}
+.nav-list-item:hover {
+  background-color: rgb(31, 41, 55);
+  color: white;
+}
+.nav-list-item:hover svg {
+  fill: white;
+}
+
+.avt-nav-home {
+  clip-path: circle();
+}
+
+.avt-box {
+  border-left: 1px solid rgba(17, 24, 39, 0.1);
+}
+
+#main {
+  grid-template-columns: 2fr 1fr;
+  background-color: #f0f2f5;
+}
+
+.post::-webkit-scrollbar,
+.group-content::-webkit-scrollbar {
+  display: none;
+}
+
+.grid-home {
+  grid-template-columns: 288px 2fr 1fr;
+}
+
+.menubar-home {
+  display: none;
+}
+
+.sidebar-home {
+  position: fixed;
+  transition: transform 500ms;
+  transform: translateX(-400px);
+  background-color: rgb(17, 24, 39);
 }
 
 .clb-box {
@@ -566,68 +615,6 @@ h6 {
   object-fit: cover;
 }
 
-.header-home {
-  border-bottom: 1px solid rgb(107, 114, 128);
-}
-
-.nav {
-  background-color: rgb(17, 24, 39);
-}
-
-.nav-list-item {
-  color: #9ca3af;
-  transition: all 0.3s;
-}
-.nav-list-item svg {
-  fill: #9ca3af;
-}
-.nav-list-item:hover {
-  background-color: rgb(31, 41, 55);
-  color: white;
-}
-.nav-list-item:hover svg {
-  fill: white;
-}
-
-.avt-nav-home {
-  clip-path: circle();
-}
-
-.avt-box {
-  border-left: 1px solid rgba(17, 24, 39, 0.1);
-}
-
-#main {
-  grid-template-columns: 2fr 1fr;
-  background-color: #f0f2f5;
-}
-
-.post::-webkit-scrollbar,
-.group-content::-webkit-scrollbar {
-  display: none;
-}
-
-.grid-home {
-  grid-template-columns: 288px 2fr 1fr;
-}
-
-.menubar-home {
-  display: none;
-}
-
-.sidebar-home {
-  position: fixed;
-  transition: transform 500ms;
-  transform: translateX(-400px);
-  background-color: rgb(17, 24, 39);
-}
-
-.blurbg {
-  transition: all 500ms ease-in-out;
-  background-color: transparent;
-  z-index: 29;
-}
-
 @media (max-width: 1280px) {
   .grid--home {
     grid-template-columns: 188px 1fr 2fr;
@@ -731,11 +718,22 @@ h6 {
     width: 30px;
     height: 30px;
   }
+  .login-vissible {
+    display: none;
+  }
 }
-.login-vissible {
-  display: none;
+@media (max-width: 850px) {
+  .middle-section {
+    display: none;
+  }
+  .navbar .right-section .material-symbols-outlined {
+    display: block;
+    color: #9ca3af;
+  }
+  .sidebar {
+    display: flex;
+  }
 }
-
 @media (max-width: 825px) {
   .navbar .right-section {
     width: auto;
@@ -781,9 +779,6 @@ h6 {
   }
 }
 @media (max-width: 620px) {
-  .sidebar {
-    display: flex;
-  }
   .header-home input {
     display: none;
   }
@@ -801,9 +796,6 @@ h6 {
   .navbar .middle-section ul li {
     display: none;
   }
-  .navbar .right-section .material-symbols-outlined {
-    display: block;
-  }
   .sidebar {
     width: 100%;
   }
@@ -815,6 +807,10 @@ h6 {
   }
 }
 @media (max-width: 540px) {
+  .avt-menu {
+    bottom: -45px;
+    font-size: 14px;
+  }
   .home {
     padding: 0;
   }
@@ -841,14 +837,14 @@ h6 {
     font-size: 25px;
   }
   .navbar .logo {
-    font-size: 32px;
+    font-size: 24px;
   }
   .navbar .right-section p {
     font-size: 12px;
   }
   .navbar .right-section img {
-    height: 22px;
-    width: 22px;
+    height: 30px;
+    width: 30px;
   }
   .navbar .right-section .user-register a {
     font-size: 10px;
@@ -864,6 +860,9 @@ h6 {
   }
 }
 @media (max-width: 375px) {
+  .logo {
+    font-size: 16px;
+  }
   .grid-home {
     grid-template-columns: 1fr;
     width: 100%;
@@ -917,6 +916,17 @@ h6 {
   font-size: 20px;
 }
 
+.blurbg {
+  transition: all 500ms ease-in-out;
+  background-color: transparent;
+  z-index: 29;
+}
+
+.blurbg2 {
+  transition: all 500ms ease-in-out;
+  background-color: transparent;
+}
+
 .active {
   transform: translateX(0);
 }
@@ -925,4 +935,10 @@ h6 {
   background-color: rgba(17, 24, 39, 0.8);
   transition: all 500ms ease-in-out;
   z-index: 40;
+}
+
+.activeblur2 {
+  background-color: rgba(17, 24, 39, 0.8);
+  transition: all 500ms ease-in-out;
+  z-index: 39;
 }

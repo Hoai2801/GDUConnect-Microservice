@@ -146,7 +146,7 @@ const Post = (props) => {
                   <textarea
                     className="ml-[15px] w-full rounded px-2 py-1 "
                     style={{ backgroundColor: " #F0F2F5" }}
-                    placeholder="Viết bình luận..."
+                    placeholder="Thêm phản hồi..."
                   ></textarea>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
