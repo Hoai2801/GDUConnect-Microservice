@@ -64,6 +64,7 @@
         position: relative;
         margin: 0 5px;
         border: 1px solid transparent;
+        color: #ffffff;
         a {
           color: #ffffff;
         }
@@ -91,7 +92,7 @@
   background-color: rgba($color: rgb(26, 26, 26), $alpha: 1);
   color: white;
   transform: translateX(1000px);
-  transition: transform 1000ms;
+  transition: transform 500ms;
   .material-symbols-outlined {
     cursor: pointer;
     background-color: white;

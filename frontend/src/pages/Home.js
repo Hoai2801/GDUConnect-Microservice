@@ -45,6 +45,10 @@ const Home = () => {
     document.querySelector(".blurbg").classList.toggle("activeblur");
     document.querySelector(".sidebar-home").classList.toggle("active");
   }
+  function CloseSideBar() {
+    document.querySelector(".blurbg").classList.remove("activeblur");
+    document.querySelector(".sidebar-home").classList.remove("active");
+  }
   const posts = [
     {
       id: 4,
@@ -423,7 +427,7 @@ const Home = () => {
           <GroupList />
         </div>
       </main>
-      <div className="blurbg inset-0 fixed"></div>
+      <div className="blurbg inset-0 fixed" onClick={CloseSideBar}></div>
       <div className="sidebar-home h-[100vh] flex flex-col px-6 z-50 gap-y-5 shadow col-start-1 col-end-2 row-start-1 row-end-3 w-[288px]">
         <div className="flex justify-between h-[63px] w-full items-center">
           <img className="h-[50px]" src="20231229_043342.png"></img>

@@ -3,18 +3,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 function OpenMenu() {
-  document.querySelector(".blurbg2").classList.toggle("activeblur2");
+  let blurbg = document.querySelector(".blurbg2");
+  blurbg.classList.remove("hidden");
+  blurbg.classList.toggle("activeblur2");
   document.querySelector(".sidebar").classList.toggle("active");
 }
 function CloseMenu() {
+  let blurbg = document.querySelector(".blurbg2");
   document.querySelector(".sidebar").classList.remove("active");
-  document.querySelector(".blurbg2").classList.remove("activeblur2");
+  blurbg.classList.remove("activeblur2");
+  blurbg.classList.add("hidden");
 }
 function HideNone() {
   document.querySelector(".avt-menu").classList.toggle("hidden");
 }
 function User() {
-  const u = 1;
+  const u = 0;
   // const token = Cookies.get("token");
   // const decoded = jwtDecode(token);
 
@@ -27,9 +31,7 @@ function User() {
           menu
         </span>
         <a href="/auth">
-          <button type="button">
-            <a href="#">Đăng Nhập</a>
-          </button>
+          <button type="button">Đăng Nhập</button>
         </a>
       </div>
     );
@@ -42,6 +44,7 @@ function User() {
       <img
         className="w-[35px] h-[35px] object-contain avt-nav-home"
         src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww"
+        alt=""
       ></img>
       <div className="ml-[7px]">
         <p className="text-[13px] mb-[-4px]">Nguyen Van Toan</p>
@@ -148,7 +151,10 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className="blurbg2 inset-0 fixed z-0"></div>
+      <div
+        className="blurbg2 inset-0 fixed z-0 hidden"
+        onClick={CloseMenu}
+      ></div>
       <aside className="sidebar justify-center top-0 h-[100vh] right-0 w-[341px] pb-8 flex flex-col items-center fixed z-40">
         <span onClick={OpenMenu} className="material-symbols-outlined close">
           close

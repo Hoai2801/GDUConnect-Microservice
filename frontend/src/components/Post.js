@@ -16,6 +16,7 @@ const Post = (props) => {
     const today = new Date();
     const timespaces = today - new Date(TimePost);
 
+    const seconds = Math.floor(timespaces / 1000);
     const minutes = Math.floor(timespaces / 60000);
     const hours = Math.floor(timespaces / 3600000);
     const days = Math.floor(timespaces / 86400000);
@@ -23,7 +24,7 @@ const Post = (props) => {
     const years = Math.floor(timespaces / (604800000 * 48));
 
     if (timespaces < 60000) {
-      return `${minutes} giây`;
+      return `${seconds} giây`;
     } else if (timespaces < 3600000) {
       return `${minutes} phút`;
     } else if (timespaces < 86400000) {
@@ -81,15 +82,15 @@ const Post = (props) => {
   }
 
   // Renders a list of user comments.
-  function UserCommentsList() {
-    return (
-      <ul>
-        {data.comments.map((comment) => (
-          <li key={comment.id}>{comment.user[0].fullname}</li>
-        ))}
-      </ul>
-    );
-  }
+  // function UserCommentsList() {
+  //   return (
+  //     <ul>
+  //       {data.comments.map((comment) => (
+  //         <li key={comment.id}>{comment.user[0].fullname}</li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
   // Render the user comments.
   function UserComments() {
