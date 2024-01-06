@@ -7,7 +7,7 @@ const CreatePost = () => {
   // mock api of user
   const [user, setUser] = useState("");
 
-  const [postText, setPostText] = useState('');
+  const [postText, setPostText] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const handleInputChange = (e) => {
@@ -20,19 +20,23 @@ const CreatePost = () => {
     setSelectedFiles(files);
   };
 
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     const config = {
-      headers: { Authorization: `Bearer ${token}` }
-  };
-  console.log(selectedFiles)
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    console.log(selectedFiles);
     const data = {
       userId: jwt.id,
       content: postText,
       groupId: 1,
       file: "",
-    }
-    const response = await axios.post("http://localhost:8080/api/v1/post", data, config);
-    
+    };
+    const response = await axios.post(
+      "http://localhost:8080/api/v1/post",
+      data,
+      config
+    );
+
     console.log(response.data);
   };
 
@@ -98,7 +102,13 @@ const CreatePost = () => {
         className="flex justify-end px-1 w-[40%] gap-5 max-w-[130px] btn-cp"
         style={{ marginLeft: "10px", flexShrink: "0" }}
       >
-        <input type="file" onChange={handleFileChange} id="actual-btn" hidden multiple />
+        <input
+          type="file"
+          onChange={handleFileChange}
+          id="actual-btn"
+          hidden
+          multiple
+        />
         <label htmlFor="actual-btn" className=" hover:cursor-pointer">
           <img
             src="https://cdn.icon-icons.com/icons2/510/PNG/512/image_icon-icons.com_50366.png"
@@ -114,9 +124,7 @@ const CreatePost = () => {
           Submit
         </button>
       </div>
-      <div>
-          
-      </div>
+      <div></div>
     </div>
   );
 };

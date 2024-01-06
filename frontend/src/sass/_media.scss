@@ -64,7 +64,7 @@
 }
 @media (max-width: 900px) {
   #main {
-    display: block;
+    padding: 0;
   }
   .survey {
     display: none;
@@ -76,9 +76,6 @@
   }
   .input-cp {
     max-height: 40px;
-  }
-  .clb-box {
-    display: none;
   }
   .home {
     margin: 0;
@@ -108,6 +105,12 @@
   }
 }
 @media (max-width: 850px) {
+  #main {
+    display: block;
+  }
+  .clb-box {
+    display: none;
+  }
   .middle-section {
     display: none;
   }
@@ -355,7 +358,6 @@
 .blurbg {
   transition: all 500ms ease-in-out;
   background-color: transparent;
-  z-index: 29;
 }
 .blurbg2 {
   transition: all 500ms ease-in-out;
@@ -367,10 +369,10 @@
 .activeblur {
   background-color: rgb(17 24 39 / 0.8);
   transition: all 500ms ease-in-out;
-  z-index: 40;
+  z-index: 10;
 }
 .activeblur2 {
   background-color: rgb(17 24 39 / 0.8);
   transition: all 500ms ease-in-out;
-  z-index: 39;
+  z-index: 30;
 }

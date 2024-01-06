@@ -29,9 +29,9 @@ h6 {
 }
 
 .navbar {
-  z-index: 3;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgb(188, 188, 188);
+  z-index: 1 !important;
 }
 .navbar .material-symbols-outlined {
   cursor: pointer;
@@ -101,6 +101,7 @@ h6 {
 .navbar .right-section .user-register button:hover {
   border-color: black;
   background-color: #ffffff;
+  color: black;
 }
 .navbar .right-section .user-register button:hover a {
   color: black;
@@ -119,7 +120,7 @@ h6 {
   background-color: #1a1a1a;
   color: white;
   transform: translateX(1000px);
-  transition: transform 500ms;
+  transition: transform 700ms;
 }
 .sidebar .material-symbols-outlined {
   cursor: pointer;
@@ -156,10 +157,12 @@ h6 {
 
 .header-home {
   border-bottom: 1px solid rgb(107, 114, 128);
+  z-index: 3;
 }
 
 .nav {
   background-color: rgb(17, 24, 39);
+  z-index: 2;
 }
 
 .nav-list-item {
@@ -395,7 +398,6 @@ h6 {
   border-bottom: 1px solid rgb(101, 103, 107);
 }
 .post-box .reaction-details .box P {
-  font-size: 14px;
   cursor: pointer;
   position: relative;
   transition: all 0.5s;
@@ -472,7 +474,7 @@ h6 {
 }
 
 .pop-up-post {
-  z-index: 5;
+  z-index: 10 !important;
 }
 .pop-up-post .image {
   background-color: black;
@@ -542,7 +544,6 @@ h6 {
 }
 .pop-up-post .comment-container .comment .comment-details .avatar {
   height: 32px;
-  margin-right: 10px;
   width: 32px;
   object-fit: cover;
   clip-path: circle();
@@ -679,7 +680,7 @@ h6 {
 }
 @media (max-width: 900px) {
   #main {
-    display: block;
+    padding: 0;
   }
   .survey {
     display: none;
@@ -691,9 +692,6 @@ h6 {
   }
   .input-cp {
     max-height: 40px;
-  }
-  .clb-box {
-    display: none;
   }
   .home {
     margin: 0;
@@ -723,6 +721,12 @@ h6 {
   }
 }
 @media (max-width: 850px) {
+  #main {
+    display: block;
+  }
+  .clb-box {
+    display: none;
+  }
   .middle-section {
     display: none;
   }
@@ -919,7 +923,6 @@ h6 {
 .blurbg {
   transition: all 500ms ease-in-out;
   background-color: transparent;
-  z-index: 29;
 }
 
 .blurbg2 {
@@ -934,11 +937,11 @@ h6 {
 .activeblur {
   background-color: rgba(17, 24, 39, 0.8);
   transition: all 500ms ease-in-out;
-  z-index: 40;
+  z-index: 10;
 }
 
 .activeblur2 {
   background-color: rgba(17, 24, 39, 0.8);
   transition: all 500ms ease-in-out;
-  z-index: 39;
+  z-index: 30;
 }

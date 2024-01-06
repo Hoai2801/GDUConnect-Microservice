@@ -106,12 +106,15 @@ const Post = (props) => {
             key={comment.id}
             className="comment-details flex pb-[56px] pr-[20px]"
           >
-            <img
-              className="avatar"
-              src={comment.user[0].avatar}
-              loading="lazy"
-              alt=""
-            />
+            <div className="min-w-[32px] min-h-[32px] mr-1">
+              {" "}
+              <img
+                className="avatar"
+                src={comment.user[0].avatar}
+                loading="lazy"
+                alt=""
+              />
+            </div>
             <div align="start" style={{}}>
               <div className="details flex">
                 <div className="text-[15px] name">
@@ -261,7 +264,7 @@ const Post = (props) => {
           align="right"
           onClick={togglePopUpImage}
         >
-          <div>
+          <div className="hover:underline">
             Bình luận: {data.comments.length}
             {/* <UserCommentsList /> */}
           </div>
@@ -342,8 +345,8 @@ const Post = (props) => {
           }`}
         >
           <div>
-            <div className="h-[60px] login-vissible bg-slate-50 px-[15px]">
-              <h1 className="logo text-[24px] flex justify-end text-black text-[24px]">
+            <div className="h-[60px] login-vissible bg-slate-50 px-[15px] justify-center items-center flex">
+              <h1 className="logo text-[24px] flex justify-end text-black text-[24px] font-black">
                 <span>GDU</span>Connect
               </h1>
             </div>

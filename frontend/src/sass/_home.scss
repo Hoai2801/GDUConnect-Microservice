@@ -1,8 +1,10 @@
 .header-home {
   border-bottom: 1px solid rgb(107, 114, 128);
+  z-index: 3;
 }
 .nav {
   background-color: rgb(17, 24, 39);
+  z-index: 2;
 }
 .nav-list-item {
   color: #9ca3af;

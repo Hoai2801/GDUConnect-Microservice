@@ -1,7 +1,7 @@
 .navbar {
-  z-index: 3;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgb(188, 188, 188);
+  z-index: 1 !important;
   .material-symbols-outlined {
     cursor: pointer;
     margin-left: 5px;
@@ -71,6 +71,7 @@
         &:hover {
           border-color: black;
           background-color: #ffffff;
+          color: black;
           a {
             color: black;
           }
@@ -92,7 +93,7 @@
   background-color: rgba($color: rgb(26, 26, 26), $alpha: 1);
   color: white;
   transform: translateX(1000px);
-  transition: transform 500ms;
+  transition: transform 700ms;
   .material-symbols-outlined {
     cursor: pointer;
     background-color: white;

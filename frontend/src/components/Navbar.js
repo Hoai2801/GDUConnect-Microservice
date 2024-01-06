@@ -3,13 +3,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 function OpenMenu() {
-  let blurbg = document.querySelector(".blurbg2");
+  const blurbg = document.querySelector(".blurbg2");
   blurbg.classList.remove("hidden");
   blurbg.classList.toggle("activeblur2");
   document.querySelector(".sidebar").classList.toggle("active");
 }
 function CloseMenu() {
-  let blurbg = document.querySelector(".blurbg2");
+  const blurbg = document.querySelector(".blurbg2");
   document.querySelector(".sidebar").classList.remove("active");
   blurbg.classList.remove("activeblur2");
   blurbg.classList.add("hidden");
@@ -18,7 +18,7 @@ function HideNone() {
   document.querySelector(".avt-menu").classList.toggle("hidden");
 }
 function User() {
-  const u = 0;
+  const u = 1;
   // const token = Cookies.get("token");
   // const decoded = jwtDecode(token);
 
@@ -37,10 +37,15 @@ function User() {
     );
   }
   return (
-    <div className="flex items-center ml-[15px] px-[15px] avt-box w-full relative">
-      <span onClick={OpenMenu} className="material-symbols-outlined menu mr-2">
-        menu
-      </span>
+    <div className="flex items-center ml-[15px] pl-[15px] avt-box w-full relative">
+      <div className="h-[30px] w-[30px] flex items-center justify-center">
+        <span
+          onClick={OpenMenu}
+          className="material-symbols-outlined menu mr-3"
+        >
+          menu
+        </span>
+      </div>
       <img
         className="w-[35px] h-[35px] object-contain avt-nav-home"
         src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww"
@@ -62,7 +67,7 @@ function User() {
         <path d="M480-360 280-560h400L480-360Z" />
       </svg>
       <a href="/auth">
-        <div className="absolute bottom-[-35px] right-0 flex bg-slate-50 shadow-lg rounded px-2 py-1 cursor-pointer avt-menu hidden hover:bg-slate-200 transition items-center justify-center w-[150px]">
+        <div className="absolute bottom-[-35px] right-0 flex bg-slate-50 shadow-lg rounded px-2 py-1 cursor-pointer avt-menu hidden hover:bg-slate-200 transition items-center justify-center w-[150px] ring-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"

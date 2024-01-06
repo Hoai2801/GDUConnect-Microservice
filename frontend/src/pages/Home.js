@@ -22,6 +22,7 @@ const Home = () => {
             <img
               className="w-[35px] h-[35px] object-contain avt-nav-home"
               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww"
+              alt=""
             ></img>
             <div className="ml-[7px]">
               <p className="text-[13px] mb-[-4px]">Nguyen Van Toan</p>
@@ -42,11 +43,15 @@ const Home = () => {
     );
   }
   function OpenSideBar() {
-    document.querySelector(".blurbg").classList.toggle("activeblur");
+    const blurbg = document.querySelector(".blurbg");
+    blurbg.classList.remove("hidden");
+    blurbg.classList.toggle("activeblur");
     document.querySelector(".sidebar-home").classList.toggle("active");
   }
   function CloseSideBar() {
-    document.querySelector(".blurbg").classList.remove("activeblur");
+    const blurbg = document.querySelector(".blurbg");
+    blurbg.classList.remove("activeblur");
+    blurbg.classList.add("hidden");
     document.querySelector(".sidebar-home").classList.remove("active");
   }
   const posts = [
@@ -248,7 +253,7 @@ const Home = () => {
   // );
   return (
     <div className="grid grid-cols-4 mt-[-60px] grid-home">
-      <div className="header-home w-full h-[63px] bg-white z-30 pl-[32px] pr-[32px] flex items-center justify-between shadow col-start-2 col-end-4 overflow-visible">
+      <div className="header-home w-full h-[63px] bg-white pl-[32px] pr-[32px] flex items-center justify-between shadow col-start-2 col-end-4 overflow-visible fixed top-0 right-0 left-0">
         <div className="flex items-center max-w-[500px] w-full">
           <div className="menubar-home pr-[10px]" onClick={OpenSideBar}>
             <svg
@@ -283,9 +288,9 @@ const Home = () => {
           <UserHome />
         </div>
       </div>
-      <div className="nav flex flex-col px-6 w-full z-30 gap-y-5 shadow col-start-1 col-end-2 row-start-1 row-end-3">
+      <div className="nav flex flex-col px-6 w-full gap-y-5 shadow col-start-1 col-end-2 row-start-1 row-end-3">
         <div className="flex justify-start h-[63px] w-full items-center">
-          <img className="h-[50px]" src="20231229_043342.png"></img>
+          <img className="h-[50px]" src="20231229_043342.png" alt=""></img>
         </div>
         <ul className="gap-y-5 flex flex-col">
           <li>
@@ -406,11 +411,11 @@ const Home = () => {
         )}
       </div>
       <main
-        className="px-[40px] grid col-start-2 col-end-4 row-start-2 row-end-3 z-30"
+        className="px-[40px] grid col-start-2 col-end-4 row-start-2 row-end-3 mt-[63px]"
         id="main"
       >
         <div
-          className="col-end-2 col-start-1 max-h-[90vh] overflow-y-scroll post mt-[0.75rem]"
+          className="col-end-2 col-start-1 max-h-[90vh] overflow-y-scroll post pt-[0.75rem]"
           align="center"
         >
           <CreatePost />
@@ -423,14 +428,14 @@ const Home = () => {
             <p>Loading ...</p>
           )}
         </div>
-        <div>
+        <div className="mt-[-0.75rem] pt-[0.75rem]">
           <GroupList />
         </div>
       </main>
-      <div className="blurbg inset-0 fixed" onClick={CloseSideBar}></div>
+      <div className="blurbg inset-0 fixed hidden" onClick={CloseSideBar}></div>
       <div className="sidebar-home h-[100vh] flex flex-col px-6 z-50 gap-y-5 shadow col-start-1 col-end-2 row-start-1 row-end-3 w-[288px]">
         <div className="flex justify-between h-[63px] w-full items-center">
-          <img className="h-[50px]" src="20231229_043342.png"></img>
+          <img className="h-[50px]" src="20231229_043342.png" alt=""></img>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="30"
@@ -457,7 +462,7 @@ const Home = () => {
                   >
                     <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
                   </svg>
-                  Bài đăng
+                  Trang Chủ
                 </li>
               </a>
               <a href="/room">
