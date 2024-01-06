@@ -442,13 +442,13 @@ const Home = () => {
             viewBox="0 -960 960 960"
             width="30"
             style={{ fill: "#9CA3AF" }}
-            onClick={OpenSideBar}
+            onClick={CloseSideBar}
             className="cursor-pointer"
           >
             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
           </svg>
         </div>
-        <ul className="gap-y-5 flex flex-col">
+        <ul className="gap-y-5 flex flex-col" onClick={CloseSideBar}>
           <li>
             <ul>
               <a href="/">
@@ -533,7 +533,10 @@ const Home = () => {
             </li>
           </li>
         </ul>
-        <div className="flex justify-start items-center p-2 nav-list-item">
+        <div
+          className="flex justify-start items-center p-2 nav-list-item"
+          onClick={CloseSideBar}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="30"
@@ -548,7 +551,10 @@ const Home = () => {
         </div>
         {userlogin ? (
           <a href="/auth">
-            <div className="flex justify-start items-center p-2 nav-list-item">
+            <div
+              className="flex justify-start items-center p-2 nav-list-item"
+              onClick={CloseSideBar}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="30"

@@ -119,7 +119,7 @@ h6 {
   backdrop-filter: blur(5px);
   background-color: #1a1a1a;
   color: white;
-  transform: translateX(1000px);
+  transform: translateX(-1000px);
   transition: transform 700ms;
 }
 .sidebar .material-symbols-outlined {
@@ -860,7 +860,7 @@ h6 {
     font-size: 20px;
   }
   .sidebar {
-    transform: translateX(500px);
+    transform: translateX(-500px);
   }
 }
 @media (max-width: 375px) {

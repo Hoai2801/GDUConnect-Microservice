@@ -161,7 +161,7 @@ const Navbar = () => {
         onClick={CloseMenu}
       ></div>
       <aside className="sidebar justify-center top-0 h-[100vh] right-0 w-[341px] pb-8 flex flex-col items-center fixed z-40">
-        <span onClick={OpenMenu} className="material-symbols-outlined close">
+        <span onClick={CloseMenu} className="material-symbols-outlined close">
           close
         </span>
         <div className="sidebarlink flex flex-col" onClick={CloseMenu}>
