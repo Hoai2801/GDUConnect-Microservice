@@ -27,9 +27,17 @@ function User() {
   if (!u) {
     return (
       <div className="user-register flex">
-        <span onClick={OpenMenu} className="material-symbols-outlined menu">
-          menu
-        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="30"
+          viewBox="0 -960 960 960"
+          width="30"
+          className="mr-3"
+          onClick={OpenMenu}
+          style={{ fill: "#9ca3af" }}
+        >
+          <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+        </svg>
         <a href="/auth">
           <button type="button">Đăng Nhập</button>
         </a>
@@ -39,12 +47,17 @@ function User() {
   return (
     <div className="flex items-center ml-[15px] pl-[15px] avt-box w-full relative">
       <div className="h-[30px] w-[30px] flex items-center justify-center">
-        <span
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="30"
+          viewBox="0 -960 960 960"
+          width="30"
+          className="mr-3 cursor-pointer"
           onClick={OpenMenu}
-          className="material-symbols-outlined menu mr-3"
+          style={{ fill: "#9ca3af" }}
         >
-          menu
-        </span>
+          <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+        </svg>
       </div>
       <img
         className="w-[35px] h-[35px] object-contain avt-nav-home"
@@ -160,10 +173,18 @@ const Navbar = () => {
         className="blurbg2 inset-0 fixed z-0 hidden"
         onClick={CloseMenu}
       ></div>
-      <aside className="sidebar justify-center top-0 h-[100vh] right-0 w-[341px] pb-8 flex flex-col items-center fixed z-40">
-        <span onClick={CloseMenu} className="material-symbols-outlined close">
-          close
-        </span>
+      <aside className="sidebar justify-center top-0 h-[100vh] left-0 w-[341px] pb-8 flex flex-col items-center fixed z-40">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="35"
+          viewBox="0 -960 960 960"
+          width="35"
+          onClick={CloseMenu}
+          style={{ fill: "black" }}
+          className="absolute top-[18px] right-[20px] cursor-pointer p-[5px] rounded-[50%] bg-slate-50 "
+        >
+          <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+        </svg>
         <div className="sidebarlink flex flex-col" onClick={CloseMenu}>
           <NavLink
             to="/"

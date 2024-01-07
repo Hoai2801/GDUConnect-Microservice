@@ -94,13 +94,6 @@
   color: white;
   transform: translateX(-1000px);
   transition: transform 700ms;
-  .material-symbols-outlined {
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    padding: 5px;
-    border-radius: 50%;
-  }
   a {
     margin: 10px 12px;
     font-size: 25px;
@@ -120,10 +113,5 @@
     &:hover::after {
       width: 100%;
     }
-  }
-  .material-symbols-outlined {
-    position: absolute;
-    top: 18px;
-    right: 20px;
   }
 }

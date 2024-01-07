@@ -9,21 +9,13 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <title>GDU Connect</title>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,11 +26,157 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <!--Font-->
-    <title>GDU Connect</title>
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <style>
+      .loader-container {
+        z-index: 999;
+        background-color: rgb(17, 24, 39);
+        place-content: center;
+        font-family: "Poppins", sans-serif;
+        position: fixed;
+        inset: 0;
+        display: grid;
+      }
+      .text {
+        width: 40rem;
+        font-weight: 700;
+      }
+      .text text {
+        font-size: 5rem;
+        stroke-width: 2;
+        letter-spacing: -3px;
+      }
+      .text text.text-body {
+        stroke: white;
+        animation: 4s infinite alternate animate-stroke;
+        -webkit-animation: 4s infinite alternate animate-stroke;
+      }
+      @-webkit-keyframes animate-stroke {
+        0% {
+          fill: transparent;
+          stroke: white;
+          stroke-width: 3;
+          stroke-dashoffset: 25%;
+          stroke-dasharray: 0 32%;
+          opacity: 1;
+        }
+        50% {
+          fill: transparent;
+          stroke: white;
+          stroke-width: 3;
+          opacity: 1;
+        }
+        80%,
+        100% {
+          fill: white;
+          stroke: transparent;
+          stroke-width: 0;
+          stroke-dashoffset: -25%;
+          stroke-dasharray: 32% 0;
+          opacity: 1;
+        }
+      }
+      @keyframes animate-stroke {
+        0% {
+          fill: transparent;
+          stroke: white;
+          stroke-width: 3;
+          stroke-dashoffset: 25%;
+          stroke-dasharray: 0 32%;
+          opacity: 1;
+        }
+        50% {
+          fill: transparent;
+          stroke: white;
+          stroke-width: 3;
+          opacity: 1;
+        }
+        80%,
+        100% {
+          fill: white;
+          stroke: transparent;
+          stroke-width: 0;
+          stroke-dashoffset: -25%;
+          stroke-dasharray: 32% 0;
+          opacity: 1;
+        }
+      }
+      #root {
+        display: none;
+        animation-name: animate-vissible;
+        animation-duration: 1s;
+        -webkit-animation-name: animate-vissible;
+        -webkit-animation-duration: 1s;
+      }
+      @-webkit-keyframes animate-vissible {
+        from {
+          bottom: -100px;
+          opacity: 0;
+        }
+        to {
+          bottom: 0;
+          opacity: 1;
+        }
+      }
+      @keyframes animate-vissible {
+        from {
+          opacity: 0;
+          bottom: -100px;
+        }
+        to {
+          opacity: 1;
+          bottom: 0;
+        }
+      }
+      @media (max-width: 1024px) {
+        .text text.text-body {
+          font-size: 70px;
+        }
+      }
+      @media (max-width: 768px) {
+        .text text.text-body {
+          font-size: 60px;
+        }
+      }
+      @media (max-width: 425px) {
+        .text text.text-body {
+          font-size: 45px;
+        }
+      }
+      @media (max-width: 375px) {
+        .text text.text-body {
+          font-size: 40px;
+        }
+      }
+    </style>
   </head>
-  <body>
+  <body onload="load()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="loader-container" id="preloader">
+      <svg viewBox="'0 0 400 160" class="text">
+        <text x="50%" y="50%" dy=".32em" text-anchor="middle" class="text-body">
+          GDUConnect
+        </text>
+        <text
+          x="50%"
+          y="50%"
+          dy=".32em"
+          dx="3.3em"
+          text-anchor="middle"
+          class="text-body"
+        >
+          .
+        </text>
+      </svg>
+    </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -50,5 +188,15 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      let loader;
+      function load() {
+        loader = setTimeout(showPage, 2000);
+      }
+      function showPage() {
+        document.getElementById("preloader").style.display = "none";
+        document.getElementById("root").style.display = "block";
+      }
+    </script>
   </body>
 </html>

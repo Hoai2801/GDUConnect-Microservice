@@ -253,7 +253,7 @@ const Home = () => {
   // );
   return (
     <div className="grid grid-cols-4 mt-[-60px] grid-home">
-      <div className="header-home w-full h-[63px] bg-white pl-[32px] pr-[32px] flex items-center justify-between shadow col-start-2 col-end-4 overflow-visible fixed top-0 right-0 left-0">
+      <div className="header-home w-full h-[63px] bg-white pl-[320px] pr-[32px] flex items-center justify-between shadow col-start-2 col-end-4 overflow-visible fixed top-0 right-0 left-0">
         <div className="flex items-center max-w-[500px] w-full">
           <div className="menubar-home pr-[10px]" onClick={OpenSideBar}>
             <svg
