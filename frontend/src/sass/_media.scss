@@ -1,6 +1,6 @@
 @media (max-width: 1280px) {
-  .grid--home {
-    grid-template-columns: 188px 1fr 2fr;
+  .grid-home {
+    grid-template-columns: 248px 1fr 2fr;
   }
   #main {
     padding: 0 20px;
@@ -23,11 +23,6 @@
     grid-column: span 3;
     margin-left: -10vw;
     grid-row-end: 3;
-  }
-  .survey {
-    grid-column-start: 4;
-    margin-left: -10vw;
-    height: 50vh;
   }
 }
 @media (max-width: 1088px) {
@@ -66,16 +61,14 @@
 @media (max-width: 950px) {
   .pop-up-post .comment-container {
     margin-top: 0;
-    max-height: 100vh;
-    height: 100vh;
   }
 }
 @media (max-width: 900px) {
+  .comment-container {
+    height: auto;
+  }
   #main {
     padding: 0;
-  }
-  .survey {
-    display: none;
   }
   .avatar-cp {
     height: 40px;
@@ -87,8 +80,6 @@
   }
   .home {
     margin: 0;
-  }
-  .home {
     grid-column: span 4;
   }
   .pop-up-post {
@@ -119,16 +110,11 @@
   .clb-box {
     display: none;
   }
+  .menu-nav {
+    display: block;
+  }
   .middle-section {
     display: none;
-  }
-  .navbar {
-    .right-section {
-      .material-symbols-outlined {
-        display: block;
-        color: #9ca3af;
-      }
-    }
   }
   .sidebar {
     display: flex;
@@ -191,11 +177,6 @@
   .header-home input {
     display: none;
   }
-  .navbar .right-section .user-register {
-    padding-left: 5px;
-    border: 1px solid rgb(186, 186, 186);
-    border-radius: 20px;
-  }
   #main {
     padding: 0;
   }
@@ -226,6 +207,20 @@
   }
 }
 @media (max-width: 540px) {
+  .avt-box {
+    position: relative;
+    .dropdown {
+      position: absolute;
+      right: 10px;
+      bottom: -1px;
+      background-color: rgb(70, 70, 70);
+      padding: 1px;
+      border-radius: 20px;
+      border: 1px solid white;
+      width: 15px;
+      height: 15px;
+    }
+  }
   .avt-menu {
     bottom: -45px;
     font-size: 14px;
@@ -372,10 +367,7 @@
     }
   }
 }
-.blurbg {
-  transition: all 500ms ease-in-out;
-  background-color: transparent;
-}
+.blurbg,
 .blurbg2 {
   transition: all 500ms ease-in-out;
   background-color: transparent;
@@ -383,13 +375,9 @@
 .active {
   transform: translateX(0);
 }
-.activeblur {
-  background-color: rgb(17 24 39 / 0.8);
-  transition: all 500ms ease-in-out;
-  z-index: 10;
-}
+.activeblur,
 .activeblur2 {
   background-color: rgb(17 24 39 / 0.8);
   transition: all 500ms ease-in-out;
-  z-index: 30;
+  z-index: 10;
 }

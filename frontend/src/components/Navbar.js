@@ -26,20 +26,22 @@ function User() {
   // if (!decoded.sub)
   if (!u) {
     return (
-      <div className="user-register flex">
+      <div className="flex items-center justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="30"
+          height="24"
           viewBox="0 -960 960 960"
-          width="30"
-          className="mr-3"
+          width="24"
           onClick={OpenMenu}
           style={{ fill: "#9ca3af" }}
+          className="cursor-pointer menu-nav hidden"
         >
           <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
         </svg>
-        <a href="/auth">
-          <button type="button">Đăng Nhập</button>
+        <a href="/auth" className="pl-[5px] text-[13px]">
+          <button className="rounded-[20px] bg-black text-[14px] px-[10px] py-[5px] relative text-white hover:bg-white hover:text-black ring-[1px] ring-black transition duration-500">
+            Đăng Nhập
+          </button>
         </a>
       </div>
     );
@@ -52,7 +54,7 @@ function User() {
           height="30"
           viewBox="0 -960 960 960"
           width="30"
-          className="mr-3 cursor-pointer"
+          className="mr-3 cursor-pointer menu-nav hidden"
           onClick={OpenMenu}
           style={{ fill: "#9ca3af" }}
         >
@@ -73,7 +75,7 @@ function User() {
         height="30"
         viewBox="0 -960 960 960"
         width="30"
-        className="cursor-pointer"
+        className="cursor-pointer dropdown"
         style={{ fill: "#9CA3AF" }}
         onClick={HideNone}
       >
@@ -173,7 +175,7 @@ const Navbar = () => {
         className="blurbg2 inset-0 fixed z-0 hidden"
         onClick={CloseMenu}
       ></div>
-      <aside className="sidebar justify-center top-0 h-[100vh] left-0 w-[341px] pb-8 flex flex-col items-center fixed z-40">
+      <aside className="sidebar justify-center top-0 h-[100vh] left-0 w-[341px] pb-8 flex flex-col items-center fixed z-40 text-white transition duration-700 translate-x-[-1000px]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="35"

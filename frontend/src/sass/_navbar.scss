@@ -2,10 +2,6 @@
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgb(188, 188, 188);
   z-index: 1 !important;
-  .material-symbols-outlined {
-    cursor: pointer;
-    margin-left: 5px;
-  }
   .logo {
     font-family: "Raleway", sans-serif;
     a {
@@ -16,9 +12,6 @@
     }
   }
   .middle-section {
-    ul {
-      display: flex;
-    }
     a {
       margin: 0 10px;
       font-weight: 400;
@@ -40,60 +33,11 @@
       }
     }
   }
-  .right-section {
-    .user-register {
-      padding: 3px 0;
-      align-items: center;
-      justify-content: center;
-      .user-border {
-        border-radius: 20px;
-      }
-      span {
-        color: rgb(143, 143, 143);
-      }
-      a {
-        padding-left: 5px;
-        font-size: 13px;
-      }
-      button {
-        border-radius: 20px;
-        background-color: black;
-        font-size: 14px;
-        padding: 5px 10px;
-        transition: all 0.7s;
-        position: relative;
-        margin: 0 5px;
-        border: 1px solid transparent;
-        color: #ffffff;
-        a {
-          color: #ffffff;
-        }
-        &:hover {
-          border-color: black;
-          background-color: #ffffff;
-          color: black;
-          a {
-            color: black;
-          }
-        }
-      }
-    }
-    p {
-      font-size: 15px;
-      margin-right: 5px;
-    }
-    .material-symbols-outlined {
-      display: none;
-    }
-  }
 }
 .sidebar {
   display: none;
   backdrop-filter: blur(5px);
   background-color: rgba($color: rgb(26, 26, 26), $alpha: 1);
-  color: white;
-  transform: translateX(-1000px);
-  transition: transform 700ms;
   a {
     margin: 10px 12px;
     font-size: 25px;

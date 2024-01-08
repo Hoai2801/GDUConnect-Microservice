@@ -15,14 +15,12 @@ const Post = (props) => {
   function CreatePostTime(TimePost) {
     const today = new Date();
     const timespaces = today - new Date(TimePost);
-
     const seconds = Math.floor(timespaces / 1000);
     const minutes = Math.floor(timespaces / 60000);
     const hours = Math.floor(timespaces / 3600000);
     const days = Math.floor(timespaces / 86400000);
     const weeks = Math.floor(timespaces / 604800000);
     const years = Math.floor(timespaces / (604800000 * 48));
-
     if (timespaces < 60000) {
       return `${seconds} giây`;
     } else if (timespaces < 3600000) {
@@ -37,27 +35,19 @@ const Post = (props) => {
       return `${years} năm`;
     }
   }
-
-  // Toggle the visibility of the pop-up image.
   function togglePopUpImage() {
     setDetailImagesOpen(!isDetailImagesOpen);
   }
-
-  //  Increments the index to display the next image.
   function nextImage() {
     setIndex((currentIndex) =>
       currentIndex === data.images.length - 1 ? 0 : currentIndex + 1
     );
   }
-
-  //  Decrements the index to display the previous image.
   function previousImage() {
     setIndex((i) => {
       if (i === 0) {
-        // If the current index is 0, wrap around to the last index.
         return data.images.length - 1;
       }
-      // Decrement the index by 1.
       return i - 1;
     });
   }
@@ -71,28 +61,18 @@ const Post = (props) => {
           }
           loading="lazy"
           alt=""
+          className="w-[40px] h-[40px] object-cover mr-[10px]"
         />
-        <div style={{ textAlign: "start" }}>
+        <div className="text-[14px] text-black" style={{ textAlign: "start" }}>
           {data.user[0].fullname} <br />{" "}
-          <span>Khoa {data.user[0].department} </span>
-          {/* <span>{data.created_at}</span> */}
+          <span className="text-[12px]">
+            Khoa {data.user[0].department} &#x2022;{" "}
+            {CreatePostTime(data.createdAt)}
+          </span>
         </div>
       </>
     );
   }
-
-  // Renders a list of user comments.
-  // function UserCommentsList() {
-  //   return (
-  //     <ul>
-  //       {data.comments.map((comment) => (
-  //         <li key={comment.id}>{comment.user[0].fullname}</li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
-
-  // Render the user comments.
   function UserComments() {
     return (
       <>
@@ -102,12 +82,8 @@ const Post = (props) => {
           </h3>
         )}
         {data.comments.map((comment) => (
-          <div
-            key={comment.id}
-            className="comment-details flex pb-[56px] pr-[20px]"
-          >
+          <div key={comment.id} className="comment-details flex pr-[20px]">
             <div className="min-w-[32px] min-h-[32px] mr-1">
-              {" "}
               <img
                 className="avatar"
                 src={comment.user[0].avatar}
@@ -127,7 +103,7 @@ const Post = (props) => {
               </div>
               {comment.imageURL ? (
                 <img
-                  className="rounded-xl"
+                  className="rounded-xl max-h-[300px] mt-[3px]"
                   src={comment.imageURL}
                   loading="lazy"
                   alt=""
@@ -182,7 +158,7 @@ const Post = (props) => {
     if (data.images.length === 2)
       return (
         <div
-          className="imagecontainer-2 grid grid-cols-2"
+          className="imagecontainer-2 gap-x-[3px] grid grid-cols-2"
           onClick={togglePopUpImage}
         >
           <img src={data.images[0].imageURL} loading="lazy" alt="" />
@@ -192,7 +168,7 @@ const Post = (props) => {
     if (data.images.length === 3)
       return (
         <div
-          className="imagecontainer-3 grid grid-cols-2"
+          className="imagecontainer-3 gap-[3px] grid grid-cols-2"
           onClick={togglePopUpImage}
         >
           <img src={data.images[0].imageURL} loading="lazy" alt="" />
@@ -203,7 +179,7 @@ const Post = (props) => {
     if (data.images.length === 4)
       return (
         <div
-          className="imagecontainer-4 grid grid-cols-2"
+          className="imagecontainer-4 gap-[3px] grid grid-cols-2"
           onClick={togglePopUpImage}
         >
           <img src={data.images[0].imageURL} loading="lazy" alt="" />
@@ -215,7 +191,7 @@ const Post = (props) => {
     if (data.images.length === 5)
       return (
         <div
-          className="imagecontainer-5 grid grid-cols-6"
+          className="imagecontainer-5 gap-[3px] grid grid-cols-6"
           onClick={togglePopUpImage}
         >
           <img src={data.images[0].imageURL} loading="lazy" alt="" />
@@ -228,23 +204,24 @@ const Post = (props) => {
     if (data.images.length > 5)
       return (
         <div
-          className="imagecontainer-6 grid grid-cols-6"
+          className="imagecontainer-6 gap-[3px] grid grid-cols-6"
           onClick={togglePopUpImage}
         >
           <img src={data.images[0].imageURL} loading="lazy" alt="" />
           <img src={data.images[1].imageURL} loading="lazy" alt="" />
           <img src={data.images[2].imageURL} loading="lazy" alt="" />
           <img src={data.images[3].imageURL} loading="lazy" alt="" />
-          <div>
+          <div className="col-span-2 relative max-h-[200px]">
             <img src={data.images[4].imageURL} loading="lazy" alt="" />
-            <div className="flex plus">+{data.images.length - 5}</div>
+            <div className="flex plus absolute text-white inset-0 text-[20px] items-center justify-center">
+              +{data.images.length - 5}
+            </div>
           </div>
         </div>
       );
   }
-
   return (
-    <article className="post-box bg-slate-50 mb-[16px] flex max-w-[600px] flex-col pb-[12px]">
+    <article className="post-box bg-slate-50 mb-[16px] flex max-w-[600px] flex-col pb-[12px] rounded-[10px]">
       <div className="title-box flex mb-[12px] items-center" align="left">
         <User />
       </div>
@@ -254,10 +231,7 @@ const Post = (props) => {
       <ImgContent />
       <div className="reaction-details flex mx-[16px] py-[10px] justify-between">
         <div className="box" align="left">
-          <p>
-            Thích: {data.likes.length}
-            {/* <UserLikesList /> */}
-          </p>
+          <p>Thích: {data.likes.length}</p>
         </div>
         <div
           className="box cursor-pointer"
@@ -266,12 +240,11 @@ const Post = (props) => {
         >
           <div className="hover:underline">
             Bình luận: {data.comments.length}
-            {/* <UserCommentsList /> */}
           </div>
         </div>
       </div>
       <div className="reaction flex justify-around mb-[8px] text-[15px]">
-        <div className="box">
+        <div className="box flex items-center cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -284,7 +257,10 @@ const Post = (props) => {
           </svg>
           Thích
         </div>
-        <div className="box" onClick={togglePopUpImage}>
+        <div
+          className="box flex items-center cursor-pointer"
+          onClick={togglePopUpImage}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -297,7 +273,7 @@ const Post = (props) => {
           </svg>
           Bình Luận
         </div>
-        <div className="box">
+        <div className="box flex items-center cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -311,32 +287,18 @@ const Post = (props) => {
           Chia sẻ
         </div>
       </div>
-      {/* <div
-          className={`pop-up-like grid ${isDetailLikesOpen ? "" : "hidden"}`}
-          key={data.post_id}
-        >
-          <div className="like-container w-full h-full shadow-lg">
-            <div align="end">
-              <span
-                className="material-symbols-outlined"
-                onClick={OpenPopUpLike}
-              >
-                close
-              </span>
-            </div>
-            <div className="like-content" align="start">
-              <UserLikes />
-            </div>
-          </div>
-        </div> */}
       <div
-        className={`pop-up-post grid grid-cols-5 fixed inset-0
+        className={`pop-up-post max-h-[200vh] grid grid-cols-5 fixed inset-0 z-10
         ${isDetailImagesOpen ? "" : "hidden"}
         ${data.images.length !== 0 ? "" : "bg-slate-800 bg-opacity-90"} `}
         key={data.post_id}
       >
-        <div className={`image ${data.images.length !== 0 ? " " : "hidden"} `}>
-          <div className="image-container flex w-full h-[100vh]">
+        <div
+          className={`image col-span-3 bg-black ${
+            data.images.length !== 0 ? " " : "hidden"
+          } `}
+        >
+          <div className="image-container items-center justify-center relative flex w-full h-[100vh]">
             <img
               src={data.images.length !== 0 ? data.images[index].imageURL : ""}
               alt=""
@@ -344,9 +306,9 @@ const Post = (props) => {
             <div
               style={{ left: 0, position: "absolute" }}
               onClick={previousImage}
-              className="btn-img flex btn-img-left"
+              className="btn-img flex btn-img-left top-0 bottom-0 items-center justify-center w-[70px] transition duration-500 cursor-pointer hover:w-[60px] group"
             >
-              <button className="flex items-center justify-center">
+              <button className="group-hover:bg-white text-black  p-[5px] flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="30"
@@ -359,10 +321,10 @@ const Post = (props) => {
             </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              height="24"
+              height="30"
               viewBox="0 -960 960 960"
-              width="24"
-              className="btn-close text-[25px] right-[20px] absolute top-[20px] cursor-pointer"
+              width="30"
+              className="btn-close text-[25px] right-[20px] absolute top-[20px] cursor-pointer z-[1]"
               onClick={togglePopUpImage}
               style={{ fill: "white" }}
             >
@@ -370,9 +332,9 @@ const Post = (props) => {
             </svg>
             <div
               onClick={nextImage}
-              className="btn-img flex btn-img-right absolute right-0"
+              className="btn-img flex btn-img-right absolute right-0 top-0 bottom-0  items-center justify-center w-[70px] transition duration-500 cursor-pointer hover:w-[60px] group"
             >
-              <button className="flex items-center justify-center">
+              <button className="group-hover:bg-white text-black p-[5px] flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="30"
@@ -386,13 +348,13 @@ const Post = (props) => {
           </div>
         </div>
         <div
-          className={`comment-container max-h-[100vh] bg-slate-50 flex-col w-full h-full flex justify-between relative ${
+          className={`comment-container bg-slate-50 flex-col w-full flex justify-between relative overflow-y-srcoll h-[100vh] ${
             data.images.length !== 0 ? "col-span-2" : "col-start-2 col-end-5"
           }`}
         >
           <div>
             <div className="h-[60px] login-vissible bg-slate-50 px-[15px] justify-center items-center flex">
-              <h1 className="logo text-[24px] flex justify-end text-black text-[24px] font-black">
+              <h1 className="logo text-[24px] flex justify-end text-black text-[24px] font-black italic">
                 <span>GDU</span>Connect
               </h1>
             </div>
@@ -437,11 +399,8 @@ const Post = (props) => {
                 Bình luận: {data.comments.length}
               </div>
             </div>
-            <div
-              className="reaction flex justify-around mb-[8px] text-[15px]"
-              style={{ paddingTop: "10px" }}
-            >
-              <div className="box">
+            <div className="reaction p-[10px] flex justify-around mb-[8px] text-[15px]">
+              <div className="box flex items-center cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -454,7 +413,10 @@ const Post = (props) => {
                 </svg>
                 Thích
               </div>
-              <div className="box" onClick={togglePopUpImage}>
+              <div
+                className="box flex items-center cursor-pointer"
+                onClick={togglePopUpImage}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -467,7 +429,7 @@ const Post = (props) => {
                 </svg>
                 Bình Luận
               </div>
-              <div className="box">
+              <div className="box flex items-center cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -481,7 +443,7 @@ const Post = (props) => {
                 Chia sẻ
               </div>
             </div>
-            <div className="comment max-h-[320px]">
+            <div className="comment mt-[10px] overflow-y-scroll mb-[77px] max-h-[300px] overflow-y-scroll">
               <UserComments />
             </div>
           </div>

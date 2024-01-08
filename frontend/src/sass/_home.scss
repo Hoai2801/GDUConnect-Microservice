@@ -43,8 +43,5 @@
   display: none;
 }
 .sidebar-home {
-  position: fixed;
-  transition: transform 500ms;
-  transform: translateX(-400px);
   background-color: rgb(17, 24, 39);
 }

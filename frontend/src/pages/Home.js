@@ -262,6 +262,7 @@ const Home = () => {
               viewBox="0 -960 960 960"
               width="24"
               style={{ fill: "#9CA3AF" }}
+              className="cursor-pointer"
             >
               <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
             </svg>
@@ -433,7 +434,7 @@ const Home = () => {
         </div>
       </main>
       <div className="blurbg inset-0 fixed hidden" onClick={CloseSideBar}></div>
-      <div className="sidebar-home h-[100vh] flex flex-col px-6 z-50 gap-y-5 shadow col-start-1 col-end-2 row-start-1 row-end-3 w-[288px]">
+      <div className="sidebar-home h-[100vh] flex flex-col px-6 z-50 gap-y-5 shadow col-start-1 col-end-2 row-start-1 row-end-3 w-[288px] fixed transition duration-500 translate-x-[-400px]">
         <div className="flex justify-between h-[63px] w-full items-center">
           <img className="h-[50px]" src="20231229_043342.png" alt=""></img>
           <svg

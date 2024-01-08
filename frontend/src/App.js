@@ -1,4 +1,3 @@
-// import React, { useEffect, useState } from "react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -10,27 +9,7 @@ import Room from "./pages/Room";
 import Shop from "./pages/Shop";
 
 function App() {
-  // const [isLoading, setIsLoading] = useState(true);
-
-  // useEffect(() => {
-  //   const loader = () => {
-  //     setTimeout(() => {
-  //       setIsLoading(false);
-  //     }, 4000);
-  //   };
-  //   loader();
-  // }, []);
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   setTimeout(function () {
-  //     // setIsLoading(false);
-  //     document.getElementById("preloader").classList.remove("hidden");
-  //   }, 4000);
-  //   document.getElementById("preloader").classList.add("hidden");
-  // });
   return (
-    // isLoading ? (
-    //   <Loading />
-    // ) : (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
