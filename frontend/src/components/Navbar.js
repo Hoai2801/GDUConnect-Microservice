@@ -24,29 +24,26 @@ function User() {
 
   // console.log(decoded);
   // if (!decoded.sub)
-  if (!u) {
-    return (
-      <div className="flex items-center justify-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24"
-          viewBox="0 -960 960 960"
-          width="24"
-          onClick={OpenMenu}
-          style={{ fill: "#9ca3af" }}
-          className="cursor-pointer menu-nav hidden"
-        >
-          <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-        </svg>
-        <a href="/auth" className="pl-[5px] text-[13px]">
-          <button className="rounded-[20px] bg-black text-[14px] px-[10px] py-[5px] relative text-white hover:bg-white hover:text-black ring-[1px] ring-black transition duration-500">
-            Đăng Nhập
-          </button>
-        </a>
-      </div>
-    );
-  }
-  return (
+  return !u ? (
+    <div className="flex items-center justify-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24"
+        viewBox="0 -960 960 960"
+        width="24"
+        onClick={OpenMenu}
+        style={{ fill: "#9ca3af" }}
+        className="cursor-pointer menu-nav hidden"
+      >
+        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+      </svg>
+      <a href="/auth" className="pl-[5px] text-[13px]">
+        <button className="rounded-[20px] bg-black text-[14px] px-[10px] py-[5px] relative text-white hover:bg-white hover:text-black ring-[1px] ring-black transition duration-500">
+          Đăng Nhập
+        </button>
+      </a>
+    </div>
+  ) : (
     <div className="flex items-center ml-[15px] pl-[15px] avt-box w-full relative">
       <div className="h-[30px] w-[30px] flex items-center justify-center">
         <svg
@@ -182,8 +179,7 @@ const Navbar = () => {
           viewBox="0 -960 960 960"
           width="35"
           onClick={CloseMenu}
-          style={{ fill: "black" }}
-          className="absolute top-[18px] right-[20px] cursor-pointer p-[5px] rounded-[50%] bg-slate-50 "
+          className="absolute top-[18px] right-[20px] cursor-pointer p-[5px] rounded-[50%] bg-slate-50 fill-black"
         >
           <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
         </svg>

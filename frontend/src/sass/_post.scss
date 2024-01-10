@@ -163,7 +163,6 @@
     }
     .btn-img {
       button {
-        background-color: rgb(156, 156, 156);
         clip-path: circle();
       }
     }
@@ -196,25 +195,6 @@
         margin: 5px 0 0 10px;
         li {
           margin-right: 15px;
-        }
-      }
-      .details {
-        background-color: #f0f2f5;
-        border-radius: 20px;
-        padding: 10px 12px;
-        max-width: 330px;
-        width: 100%;
-        flex-direction: column;
-        align-items: start;
-        .name {
-          font-size: 13px;
-        }
-        p {
-          font-size: 14px;
-        }
-        img {
-          border-radius: 12px;
-          margin-top: 10px;
         }
       }
     }
@@ -253,4 +233,7 @@
       }
     }
   }
+}
+.container-cmt-2 {
+  display: none;
 }

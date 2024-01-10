@@ -64,8 +64,15 @@
   }
 }
 @media (max-width: 900px) {
+  .container-cmt-1 {
+    display: none;
+  }
+  .container-cmt-2 {
+    display: block;
+  }
   .comment-container {
     height: auto;
+    grid-column-start: 1;
   }
   #main {
     padding: 0;

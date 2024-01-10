@@ -291,7 +291,6 @@ h6 {
   cursor: default;
 }
 .image .image-container .btn-img button {
-  background-color: rgb(156, 156, 156);
   clip-path: circle();
 }
 
@@ -323,25 +322,6 @@ h6 {
 .comment-container .comment .comment-details ul li {
   margin-right: 15px;
 }
-.comment-container .comment .comment-details .details {
-  background-color: #f0f2f5;
-  border-radius: 20px;
-  padding: 10px 12px;
-  max-width: 330px;
-  width: 100%;
-  flex-direction: column;
-  align-items: start;
-}
-.comment-container .comment .comment-details .details .name {
-  font-size: 13px;
-}
-.comment-container .comment .comment-details .details p {
-  font-size: 14px;
-}
-.comment-container .comment .comment-details .details img {
-  border-radius: 12px;
-  margin-top: 10px;
-}
 .comment-container .reaction {
   color: rgb(101, 103, 107);
   border-bottom: 1px solid rgb(186, 186, 186);
@@ -371,6 +351,10 @@ h6 {
   width: 40px;
   clip-path: circle();
   object-fit: cover;
+}
+
+.container-cmt-2 {
+  display: none;
 }
 
 @media (max-width: 1280px) {
@@ -437,8 +421,15 @@ h6 {
   }
 }
 @media (max-width: 900px) {
+  .container-cmt-1 {
+    display: none;
+  }
+  .container-cmt-2 {
+    display: block;
+  }
   .comment-container {
     height: auto;
+    grid-column-start: 1;
   }
   #main {
     padding: 0;

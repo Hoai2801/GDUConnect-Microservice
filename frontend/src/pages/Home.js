@@ -104,6 +104,20 @@ const Home = () => {
           imageURL: "https://source.unsplash.com/random",
           createdAt: "2023-12-10 20:17:40",
         },
+        {
+          id: 4,
+          user: [
+            {
+              id: 1,
+              fullname: "Hoaiagafafa",
+              avatar: "https://source.unsplash.com/random",
+              department: "kinh te - quan tri",
+            },
+          ],
+          content: "wowjaljcoac",
+          imageURL: "https://source.unsplash.com/random",
+          createdAt: "2023-12-10 20:17:40",
+        },
       ],
       likes: [
         {
@@ -420,12 +434,9 @@ const Home = () => {
           align="center"
         >
           <CreatePost />
-          {/* nếu biến posts có data thì truyền data vào component Post,
-    nếu không thì thể hiện Loading ... */}
           {posts ? (
             posts.map((post) => <Post postData={post} key={post.id} />)
           ) : (
-            // viết một component loading để thể hiện trực quan hơn
             <p>Loading ...</p>
           )}
         </div>
