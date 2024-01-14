@@ -51,12 +51,21 @@ const Post = (props) => {
       return i - 1;
     });
   }
+
+
+  const [commemtForMain, setCommentForMain] = useState("");
+
+  const createComment = () => {
+    if (commemtForMain !== "") {
+      
+  }
+
   function User() {
     return (
       <>
         <img
           src={
-            data.user[0].avatar ||
+            data.user.avatar ||
             "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
           }
           loading="lazy"
@@ -65,9 +74,9 @@ const Post = (props) => {
           style={{ clipPath: "circle()" }}
         />
         <div className="text-[14px] text-black text-start">
-          {data.user[0].fullname} <br />{" "}
+          {data.user.fullname} <br />{" "}
           <span className="text-[12px]">
-            Khoa {data.user[0].department} &#x2022;{" "}
+            Khoa {data.user.department} &#x2022;{" "}
             {CreatePostTime(data.createdAt)}
           </span>
         </div>
@@ -90,17 +99,17 @@ const Post = (props) => {
             <div className="min-w-[32px] min-h-[32px] max-w-[32px] max-h-[32px] mr-1">
               <img
                 className="avatar object-cover h-[32px] w-[32px]"
-                src={comment.user[0].avatar}
+                src={comment.user.avatar}
                 loading="lazy"
                 alt=""
                 style={{ clipPath: "circle()" }}
               />
             </div>
-            <div align="start">
-              <div className="inline-block bg-gray-200 p-3 rounded-[20px]">
+            <div className="flex flex-col justify-start">
+              <div className="bg-gray-200 p-3 rounded-[20px] flex flex-col items-start">
                 <p className="text-[15px]">
-                  {comment.user[0].fullname} &#x2022;{" "}
-                  {comment.user[0].department}
+                  {comment.user.fullname} &#x2022;{" "}
+                  {comment.user.department}
                 </p>
                 <p className="text-[15px]">{comment.content}</p>
               </div>
@@ -117,12 +126,11 @@ const Post = (props) => {
               <ul className="text-[12px] flex space-x-[10px]">
                 <li>{CreatePostTime(comment.createdAt)}</li>
                 <li className="cursor-pointer">Thích</li>
-                <li className="cursor-pointer">Phản hồi</li>
               </ul>
               <div className="flex mt-2 max-w-[300px]">
                 <img
                   src={
-                    data.user[0].avatar ||
+                    data.user.avatar ||
                     "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
                   }
                   className="h-[30px] w-[30px]"
@@ -376,7 +384,7 @@ const Post = (props) => {
                   <div className="flex items-center">
                     <img
                       src={
-                        data.user[0].avatar ||
+                        data.user.avatar ||
                         "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
                       }
                       loading="lazy"
@@ -385,9 +393,9 @@ const Post = (props) => {
                       style={{ clipPath: "circle()" }}
                     ></img>
                     <div className="text-[14px] text-black text-start">
-                      {data.user[0].fullname} <br />{" "}
+                      {data.user.fullname} <br />{" "}
                       <span className="text-[12px]">
-                        Khoa {data.user[0].department} &#x2022;{" "}
+                        Khoa {data.user.department} &#x2022;{" "}
                         {CreatePostTime(data.createdAt)}
                       </span>
                     </div>
@@ -417,7 +425,7 @@ const Post = (props) => {
               <div className="flex items-center">
                 <img
                   src={
-                    data.user[0].avatar ||
+                    data.user.avatar ||
                     "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
                   }
                   loading="lazy"
@@ -426,9 +434,9 @@ const Post = (props) => {
                   style={{ clipPath: "circle()" }}
                 ></img>
                 <div className="text-[14px] text-black text-start">
-                  {data.user[0].fullname} <br />{" "}
+                  {data.user.fullname} <br />{" "}
                   <span className="text-[12px]">
-                    Khoa {data.user[0].department} &#x2022;{" "}
+                    Khoa {data.user.department} &#x2022;{" "}
                     {CreatePostTime(data.createdAt)}
                   </span>
                 </div>
@@ -452,7 +460,7 @@ const Post = (props) => {
           <div className="flex absolute right-0 left-0 bottom-0 pt-3 bg-white pl-[15px]">
             <img
               src={
-                data.user[0].avatar ||
+                data.user.avatar ||
                 "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
               }
               className="h-[30px] w-[30px]"
