@@ -15,6 +15,7 @@
         <module>api-gateway</module>
         <module>notification-service</module>
         <module>group-service</module>
+        <module>survey-services</module>
     </modules>
 
     <properties>
