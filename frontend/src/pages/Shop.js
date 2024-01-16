@@ -5,8 +5,6 @@ import Sidebar from "../components/Sidebar";
 const Shop = () => {
   return (
     <>
-      <Navbar />
-      <Sidebar />
       <div>Shop</div>
       <Footer />
     </>

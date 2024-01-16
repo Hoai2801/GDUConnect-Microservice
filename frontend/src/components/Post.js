@@ -103,8 +103,8 @@ const Post = (props) => {
                 style={{ clipPath: "circle()" }}
               />
             </div>
-            <div align="start">
-              <div className="inline-block bg-gray-200 p-3 rounded-[20px]">
+            <div className="flex flex-col items-start">
+              <div className="bg-gray-200 p-3 rounded-[20px] flex justify-start">
                 <p className="text-[15px]">
                   {comment.user.fullname} &#x2022; {comment.user.department}
                 </p>

@@ -23,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/survey-services" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,7 +50,7 @@
     "Spring Boot.DiscoveryServiceApplication.executor": "Run",
     "Spring Boot.GroupServiceApplication.executor": "Run",
     "Spring Boot.NotificationServiceApplication.executor": "Run",
-    "Spring Boot.PostServiceApplication.executor": "Run",
+    "Spring Boot.PostServiceApplication.executor": "Debug",
     "Spring Boot.SurveyServicesApplication.executor": "Run",
     "Spring Boot.UserServiceApplication.executor": "Run",
     "git-widget-placeholder": "main",
@@ -138,7 +138,19 @@
       <workItem from="1704373438574" duration="359000" />
       <workItem from="1704378274607" duration="2312000" />
       <workItem from="1705320961104" duration="5367000" />
+      <workItem from="1705406148465" duration="5856000" />
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Service/PostService.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

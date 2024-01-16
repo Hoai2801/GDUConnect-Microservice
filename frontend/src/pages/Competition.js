@@ -6,8 +6,6 @@ import Sidebar from "../components/Sidebar";
 const Competition = () => {
   return (
     <>
-      <Navbar />
-      <Sidebar />
       <div>Competition</div>
       <Footer />
     </>

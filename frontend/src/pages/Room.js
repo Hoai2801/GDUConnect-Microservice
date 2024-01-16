@@ -5,8 +5,8 @@ import Sidebar from "../components/Sidebar";
 const Room = () => {
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      {/* <Navbar /> */}
+      {/* <Sidebar /> */}
       <div>Room</div>
       <Footer />
     </>

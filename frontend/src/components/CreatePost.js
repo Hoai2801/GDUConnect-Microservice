@@ -24,7 +24,7 @@ const CreatePost = () => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    console.log(selectedFiles);
+    
     const data = {
       userId: jwt.id,
       content: postText,
