@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8d5aea4-48a8-450f-a2f3-671d400e632c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services/dsad.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services/pom.xml" afterDir="false" />
@@ -28,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/survey-services" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -56,7 +51,7 @@
     "Spring Boot.GroupServiceApplication.executor": "Run",
     "Spring Boot.NotificationServiceApplication.executor": "Run",
     "Spring Boot.PostServiceApplication.executor": "Run",
-    "Spring Boot.SurveyServicesApplication.executor": "Debug",
+    "Spring Boot.SurveyServicesApplication.executor": "Run",
     "Spring Boot.UserServiceApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -142,7 +137,7 @@
       <workItem from="1704370679471" duration="484000" />
       <workItem from="1704373438574" duration="359000" />
       <workItem from="1704378274607" duration="2312000" />
-      <workItem from="1705320961104" duration="4525000" />
+      <workItem from="1705320961104" duration="5367000" />
     </task>
     <servers />
   </component>
