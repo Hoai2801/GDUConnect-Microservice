@@ -1,6 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
+import Footer from "../components/Footer";
+import NavbarLogin from "../components/NavbarLogin";
 
 const Login = () => {
   // State variables to track email and password input
@@ -49,7 +51,8 @@ const Login = () => {
     }
   }
   return (
-    <div>
+    <>
+      <NavbarLogin />
       <section class="flex flex-col md:flex-row h-screen items-center">
         <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
           <img
@@ -186,7 +189,8 @@ const Login = () => {
           </div>
         </div>
       </section>
-    </div>
+      <Footer />
+    </>
   );
 };
 

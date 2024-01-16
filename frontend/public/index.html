@@ -141,7 +141,7 @@
       }
     </style>
   </head>
-  <body onload="load()">
+  <body onload="showPage()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="loader-container" id="preloader">
       <svg viewBox="'0 0 400 160" class="text">
@@ -152,10 +152,6 @@
     </div>
     <div id="root"></div>
     <script>
-      let loader;
-      function load() {
-        loader = setTimeout(showPage, 2000); // ????????
-      }
       function showPage() {
         document.getElementById("preloader").style.display = "none";
         document.getElementById("root").style.display = "block";

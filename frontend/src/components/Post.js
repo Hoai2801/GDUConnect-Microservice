@@ -52,13 +52,11 @@ const Post = (props) => {
     });
   }
 
+  // const [commemtForMain, setCommentForMain] = useState("");
 
-  const [commemtForMain, setCommentForMain] = useState("");
-
-  const createComment = () => {
-    if (commemtForMain !== "") {
-      
-  }
+  // const createComment = () => {
+  //   if (commemtForMain !== "") {
+  //   }
 
   function User() {
     return (
@@ -105,11 +103,10 @@ const Post = (props) => {
                 style={{ clipPath: "circle()" }}
               />
             </div>
-            <div className="flex flex-col justify-start">
-              <div className="bg-gray-200 p-3 rounded-[20px] flex flex-col items-start">
+            <div align="start">
+              <div className="inline-block bg-gray-200 p-3 rounded-[20px]">
                 <p className="text-[15px]">
-                  {comment.user.fullname} &#x2022;{" "}
-                  {comment.user.department}
+                  {comment.user.fullname} &#x2022; {comment.user.department}
                 </p>
                 <p className="text-[15px]">{comment.content}</p>
               </div>
@@ -489,4 +486,5 @@ const Post = (props) => {
     </article>
   );
 };
+// };
 export default Post;
