@@ -47,8 +47,9 @@ public class PostService {
    */
   public ResponseEntity<String> createPost(PostDTO postDTO) throws IOException {
     // Retrieve the user based on the userId from the postDTO
+    log.info(String.valueOf(postDTO.getUserId()));
     UserDTO user = retrieveUserId(postDTO.getUserId());
-
+    log.info("User: " + user);
     // If the user cannot be found, return a bad request response
     if (user == null) {
       return ResponseEntity.badRequest().body("Cannot find user!");
@@ -67,8 +68,9 @@ public class PostService {
     // Save the images associated with the post
     saveImages(postDTO.getFile(), newPostId);
 
+    log.info("Created post successfully!!!!!!1!");
     // Send a success notification event to the notificationTopic Kafka topic
-    kafkaTemplate.send("notificationTopic", new PostEvent("Success"));
+//    kafkaTemplate.send("notificationTopic", new PostEvent("Success"));
 
     // Return a success response
     return ResponseEntity.ok().body("Created post successfully!");

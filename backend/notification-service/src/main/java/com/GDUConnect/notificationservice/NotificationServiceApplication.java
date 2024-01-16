@@ -16,7 +16,6 @@ public class NotificationServiceApplication {
 
 	@KafkaListener(topics = "notificationTopic")
 	public void handleNotification(PostEvent postEvent) {
-
 		// send out an email notification
 		log.info("Create status: {}", postEvent.getStatus());
 	}

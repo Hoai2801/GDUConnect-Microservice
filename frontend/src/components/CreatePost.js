@@ -22,15 +22,22 @@ const CreatePost = () => {
 
   const handleSubmit = async () => {
     const config = {
-      headers: { Authorization: `Bearer ${token}` },
+      // headers: { Authorization: `Bearer ${token}` },
+      headers: { Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJpZCI6MSwibmFtZSI6IkhvYWkiLCJkZXBhcnRtZW50IjoiQ05UVCIsImNsYXNzcm9vbSI6IjIyMTQwMSIsImlhdCI6MTcwNTQxNzkxNiwiZXhwIjoxNzA1NDE5MzU2fQ.MGdFedQY_E_1a3_Lb_GJQcc6roK8fankvpfPJLLs_yJG6h6-iVsF_dbPjgSLCr7DmpC7Jli1vZOtLmwdDoDh1g`},
     };
-    
-    const data = {
-      userId: jwt.id,
-      content: postText,
-      groupId: 1,
-      file: "",
-    };
+    const data = new FormData();
+    data.append("userId", 1);
+    data.append("content", postText);
+    data.append("groupId", 1);
+    selectedFiles.forEach((file) => {
+      data.append("file", file);
+    });
+    // const data = {
+    //   userId: 1,
+    //   content: postText,
+    //   groupId: 1,
+    //   file: selectedFiles,
+    // };
     const response = await axios.post(
       "http://localhost:8080/api/v1/post",
       data,
