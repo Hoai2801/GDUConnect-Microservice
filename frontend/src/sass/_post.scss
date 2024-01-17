@@ -1,14 +1,11 @@
 .clb-box {
   border-radius: 16px;
-  overflow: hidden;
   display: flex;
+  overflow-y: scroll;
   background-color: #f0f2f5;
   flex-direction: column;
   &::-webkit-scrollbar {
     display: none;
-  }
-  &:hover {
-    overflow-y: scroll;
   }
   .avt-clb {
     clip-path: circle();

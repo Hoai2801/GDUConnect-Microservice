@@ -16,8 +16,8 @@ function App() {
         <Route path="/room" element={<Room />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/competition" element={<Competition />} />
-        <Route path="/auth" element={<Login />} />
       </Route>
+      <Route path="/auth" element={<Login />} />
     </Routes>
   );
 }

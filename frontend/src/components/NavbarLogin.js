@@ -153,7 +153,7 @@ function Nav() {
 const NavbarLogin = () => {
   return (
     <>
-      <nav className="navbar fixed inset-0 h-[60px] flex justify-between items-center px-[30px] bg-slate-50">
+      <div className="navbar fixed inset-0 h-[60px] flex justify-between items-center px-[30px] bg-slate-50">
         <h1 className="logo text-[28px] italic font-black">
           <a href="/">
             <span>GDU</span>Connect
@@ -167,12 +167,12 @@ const NavbarLogin = () => {
             <User />
           </div>
         </div>
-      </nav>
+      </div>
       <div
         className="blurbg2 inset-0 fixed z-0 hidden"
         onClick={CloseMenu}
       ></div>
-      <aside className="sidebar justify-center top-0 h-[100vh] left-0 w-[341px] pb-8 flex flex-col items-center fixed z-40 text-white transition duration-700 translate-x-[-1000px]">
+      <div className="sidebar justify-center top-0 h-[100vh] left-0 w-[341px] pb-8 flex flex-col items-center fixed z-40 text-white transition duration-700 translate-x-[-1000px]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="35"
@@ -233,7 +233,7 @@ const NavbarLogin = () => {
             Cuộc thi
           </NavLink>
         </div>
-      </aside>
+      </div>
     </>
   );
 };

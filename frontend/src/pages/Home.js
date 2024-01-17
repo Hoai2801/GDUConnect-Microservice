@@ -1,9 +1,7 @@
 import React from "react";
 import CreatePost from "../components/CreatePost";
 import GroupList from "../components/GroupList";
-import Navbar from "../components/Navbar";
 import Post from "../components/Post";
-import Sidebar from "../components/Sidebar";
 const Home = () => {
   const posts = [
     {
@@ -197,11 +195,9 @@ const Home = () => {
   // }, []);
   return (
     <>
-      <Navbar />
-      <Sidebar />
-      <main className="px-[40px] grid mt-[63px] ml-[288px]" id="main">
+      <div className="grid px-3" id="home">
         <div
-          className="col-end-2 col-start-1 max-h-[90vh] overflow-y-scroll post pt-[0.75rem] post-display"
+          className="col-end-2 col-start-1 max-h-[calc(100vh-63px)] overflow-y-scroll post pt-[0.75rem] post-display"
           align="center"
         >
           <CreatePost />
@@ -231,7 +227,7 @@ const Home = () => {
           </div>
           <GroupList />
         </div>
-      </main>
+      </div>
     </>
   );
 };

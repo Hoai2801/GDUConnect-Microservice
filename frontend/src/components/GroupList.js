@@ -124,7 +124,7 @@ const GroupList = () => {
 
   return (
     <div
-      className="ml-5 h-[90vh] rounded-lg overflow-scroll  lg:block hidden clb-box"
+      className="ml-5 h-[calc(100vh-63px)] rounded-lg overflow-scroll  lg:block hidden clb-box"
       align="center"
     >
       {data.map((group) => (
