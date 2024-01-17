@@ -3,7 +3,7 @@
   z-index: 3;
 }
 .nav {
-  background-color: rgb(17, 24, 39);
+  background: linear-gradient(45deg, rgb(0, 6, 14), rgb(0, 26, 63));
   z-index: 3;
 }
 .nav-list-item {
@@ -42,5 +42,5 @@
   display: none;
 }
 .sidebar-home {
-  background-color: rgb(17, 24, 39);
+  background: linear-gradient(45deg, rgb(0, 6, 14), rgb(0, 26, 63));
 }
