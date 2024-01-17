@@ -23,7 +23,9 @@ const CreatePost = () => {
   const handleSubmit = async () => {
     const config = {
       // headers: { Authorization: `Bearer ${token}` },
-      headers: { Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJpZCI6MSwibmFtZSI6IkhvYWkiLCJkZXBhcnRtZW50IjoiQ05UVCIsImNsYXNzcm9vbSI6IjIyMTQwMSIsImlhdCI6MTcwNTQxNzkxNiwiZXhwIjoxNzA1NDE5MzU2fQ.MGdFedQY_E_1a3_Lb_GJQcc6roK8fankvpfPJLLs_yJG6h6-iVsF_dbPjgSLCr7DmpC7Jli1vZOtLmwdDoDh1g`},
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjMiLCJpZCI6MSwibmFtZSI6IkhvYWkiLCJkZXBhcnRtZW50IjoiQ05UVCIsImNsYXNzcm9vbSI6IjIyMTQwMSIsImlhdCI6MTcwNTQxNzkxNiwiZXhwIjoxNzA1NDE5MzU2fQ.MGdFedQY_E_1a3_Lb_GJQcc6roK8fankvpfPJLLs_yJG6h6-iVsF_dbPjgSLCr7DmpC7Jli1vZOtLmwdDoDh1g`,
+      },
     };
     const data = new FormData();
     data.append("userId", 1);
@@ -74,7 +76,7 @@ const CreatePost = () => {
 
   return (
     <div
-      className="shadow-lg border-black rounded-lg max-w-[600px] w-full h-fit py-5 bg-white flex px-5 create-post"
+      className="shadow-lg border-black rounded-lg max-w-[1200px] w-full h-fit py-5 bg-white flex px-5 create-post"
       style={{ marginBottom: "16px" }}
     >
       <div className="flex gap-5 w-full">

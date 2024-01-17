@@ -372,9 +372,6 @@ h6 {
   .navbar .middle-section a {
     margin: 0 10px;
   }
-  .clb-box {
-    overflow-y: scroll;
-  }
   .home {
     grid-row-start: 1;
     grid-column: span 3;

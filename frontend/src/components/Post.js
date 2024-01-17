@@ -233,7 +233,7 @@ const Post = (props) => {
       );
   }
   return (
-    <article className="post-box bg-slate-50 mb-[16px] flex max-w-[600px] flex-col pb-[12px] rounded-[10px]">
+    <article className="post-box bg-slate-50 mb-[16px] flex max-w-[1200px] flex-col pb-[12px] rounded-[10px]">
       <div className="title-box flex mb-[12px] items-center" align="left">
         <User />
       </div>
@@ -454,7 +454,7 @@ const Post = (props) => {
           <div className="overflow-y-scroll h-[calc(100vh-85px)] pb-[68px] pt-2 container-cmt-2">
             <UserComments />
           </div>
-          <div className="flex absolute right-0 left-0 bottom-0 pt-3 bg-white pl-[15px]">
+          <div className="flex absolute right-0 left-0 bottom-0 pt-3 bg-white pl-[15px] ring-1 ring-black pb-2">
             <img
               src={
                 data.user.avatar ||
