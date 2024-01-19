@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-
 const Post = (props) => {
   const [index, setIndex] = useState(0);
   const data = props.postData;
-
   // state quản lý trạng thái đóng mở của detail images component
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
-
   /**
    * Returns a string representing the time difference between the current time and the given time.
    * @param {string} TimePost - The time to compare to the current time.
@@ -51,13 +48,10 @@ const Post = (props) => {
       return i - 1;
     });
   }
-
   // const [commemtForMain, setCommentForMain] = useState("");
-
   // const createComment = () => {
   //   if (commemtForMain !== "") {
   //   }
-
   function User() {
     return (
       <>
@@ -104,22 +98,25 @@ const Post = (props) => {
               />
             </div>
             <div className="flex flex-col items-start">
-              <div className="bg-gray-200 p-3 rounded-[20px] flex justify-start">
-                <p className="text-[15px]">
-                  {comment.user.fullname} &#x2022; {comment.user.department}
-                </p>
-                <p className="text-[15px]">{comment.content}</p>
+              <div className="bg-gray-200 p-3 rounded-[20px] text-start">
+                <div>
+                  <p className="text-[15px]">
+                    {comment.user[0].fullname} &#x2022;{" "}
+                    {comment.user[0].department}
+                  </p>{" "}
+                  <p className="text-[15px]">{comment.content}</p>
+                </div>
+                {comment.imageURL ? (
+                  <img
+                    className="rounded-xl max-h-[300px] mt-[3px]"
+                    src={comment.imageURL}
+                    loading="lazy"
+                    alt=""
+                  />
+                ) : (
+                  " "
+                )}
               </div>
-              {comment.imageURL ? (
-                <img
-                  className="rounded-xl max-h-[300px] mt-[3px]"
-                  src={comment.imageURL}
-                  loading="lazy"
-                  alt=""
-                />
-              ) : (
-                " "
-              )}
               <ul className="text-[12px] flex space-x-[10px]">
                 <li>{CreatePostTime(comment.createdAt)}</li>
                 <li className="cursor-pointer">Thích</li>
@@ -414,7 +411,7 @@ const Post = (props) => {
             </div>
           </div>
           <div
-            className="mb-[12px] items-center py-2 container-cmt-2"
+            className="items-center py-2 container-cmt-2"
             align="left"
             style={{ borderBottom: "1px solid rgb(101, 103, 107)" }}
           >
@@ -449,12 +446,42 @@ const Post = (props) => {
                 <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
               </svg>
             </div>
-            <div className="text-[15px]">{data.content}</div>
+            <div className="text-[15px] pr-[15px]">{data.content}</div>
           </div>
-          <div className="overflow-y-scroll h-[calc(100vh-85px)] pb-[68px] pt-2 container-cmt-2">
+          <div
+            className="flex py-3 textarea-2 hidden"
+            style={{ borderBottom: "1px solid rgb(101, 103, 107)" }}
+          >
+            <img
+              src={
+                data.user.avatar ||
+                "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
+              }
+              className="h-[30px] w-[30px]"
+              alt=""
+              style={{ clipPath: "circle()" }}
+            ></img>
+            <div className="flex justify-center items-center w-full relative">
+              <textarea
+                className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
+                style={{ backgroundColor: " #F0F2F5" }}
+                placeholder="Viết bình luận..."
+              ></textarea>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+                className="cursor-pointer absolute bottom-[5px] right-[5px]"
+              >
+                <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+              </svg>
+            </div>
+          </div>
+          <div className="overflow-y-scroll h-[calc(100vh-85px)] pb-[32px] pt-2 container-cmt-2">
             <UserComments />
           </div>
-          <div className="flex absolute right-0 left-0 bottom-0 pt-3 bg-white pl-[15px] ring-1 ring-black pb-2">
+          <div className="flex absolute right-0 left-0 bottom-0 pt-3 bg-white pl-[15px] ring-1 ring-black pb-2 textarea-1">
             <img
               src={
                 data.user.avatar ||

@@ -20,6 +20,15 @@
     }
   }
 }
+.nav-list-item-active {
+  li {
+    background-color: rgb(31, 41, 55);
+    color: white;
+  }
+  svg {
+    fill: white;
+  }
+}
 .avt-nav-home {
   clip-path: circle();
 }
