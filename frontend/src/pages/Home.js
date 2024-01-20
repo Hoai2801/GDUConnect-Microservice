@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CreatePost from "../components/CreatePost";
 import GroupList from "../components/GroupList";
-import Navbar from "../components/Navbar";
 import Post from "../components/Post";
-import Sidebar from "../components/Sidebar";
 const Home = () => {
   // const posts = [
   //   {
@@ -17,7 +15,8 @@ const Home = () => {
   //       },
   //     ],
   //     createdAt: "2023-12-26 00:00:00",
-  //     content: "Hello nha",
+  //     content:
+  //       "Hello nhaháhsaiụd   úiHDÚApu e ú8uyd8{ udxjKSDJ h HD io;ỤEkdhs  dshdsJfdlKHJd jkdH K fdHfiewuy8euỳ idj jk jkhsDKHsuHSKhjdksueuhjckx  jhgdhd fhfhjKSHdf jEH f dfhKDJFkhhsjndkfHHJDJKNjk dsuIYHdsf dehjsiuh dkjhKHfdSHdfkjEHU dJKH",
   //     images: [
   //       {
   //         id: 7,
@@ -187,6 +186,7 @@ const Home = () => {
         }
 
         const result = await response.json();
+        console.log(result)
         setPosts(result);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -197,39 +197,28 @@ const Home = () => {
   }, []);
   return (
     <>
-      <main className="grid" id="main">
+      <div className="grid px-5" id="home">
         <div
-          className="col-end-2 col-start-1 max-h-[90vh] overflow-y-scroll post pt-[0.75rem] post-display"
+          className="col-end-2 col-start-1 max-h-[calc(100vh-63px)] post pt-[0.75rem] post-display"
           align="center"
         >
+          {/* create new post */}
           <CreatePost />
+
+          {/* post list */}
           {posts ? (
             posts.map((post) => <Post postData={post} key={post.id} />)
           ) : (
             <p>Loading ...</p>
           )}
         </div>
-        <div className="mt-[-0.75rem] pt-[0.75rem] grouplist-none">
+
+        {/* group list  */}
+
+        {/* <div className="mt-[-0.75rem] pt-[0.75rem] grouplist-none">
           <GroupList />
-        </div>
-        <div className="mt-[-0.75rem] pt-[0.75rem] grouplist-display relative hidden">
-          <div
-            className="absolute top-3 left-3 mt-[12px] p-2 bg-slate-300 group hover:bg-black cursor-pointer trasition duration-300"
-            style={{ clipPath: "circle()" }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 -960 960 960"
-              width="24"
-              className="group-hover:fill-white"
-            >
-              <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
-            </svg>
-          </div>
-          <GroupList />
-        </div>
-      </main>
+        </div> */}
+      </div>
     </>
   );
 };

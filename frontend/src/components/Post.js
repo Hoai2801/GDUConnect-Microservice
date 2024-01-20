@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-
 const Post = (props) => {
   const [index, setIndex] = useState(0);
+
   const data = props.postData;
+
+  const [subComment, setSubComment] = useState();
 
   // state quản lý trạng thái đóng mở của detail images component
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
-
   /**
    * Returns a string representing the time difference between the current time and the given time.
    * @param {string} TimePost - The time to compare to the current time.
@@ -51,13 +52,13 @@ const Post = (props) => {
       return i - 1;
     });
   }
-
-  // const [commemtForMain, setCommentForMain] = useState("");
-
-  // const createComment = () => {
-  //   if (commemtForMain !== "") {
-  //   }
-
+  const [mainCommmet, setMainComment] = useState("");
+  const createComment = () => {
+    if (mainCommmet !== "") {
+    } else {
+      alert("Vui lý nhập comment");
+    }
+  };
   function User() {
     return (
       <>
@@ -84,16 +85,19 @@ const Post = (props) => {
   function UserComments() {
     return (
       <>
+        {/* No one has commented yet       */}
         {data.comments.length === 0 && (
           <h3 className="text-[15px] font-bold">
             Bài viết chưa có bình luận nào, bạn hãy trở thành người đầu tiên
           </h3>
         )}
+        {/* Comments */}
         {data.comments.map((comment) => (
           <div
             key={comment.id}
             className="comment-details grid grid-cols-[40px_1fr] mb-[12px]"
           >
+            {/* user avatar */}
             <div className="min-w-[32px] min-h-[32px] max-w-[32px] max-h-[32px] mr-1">
               <img
                 className="avatar object-cover h-[32px] w-[32px]"
@@ -103,27 +107,30 @@ const Post = (props) => {
                 style={{ clipPath: "circle()" }}
               />
             </div>
+            {/* comment content */}
             <div className="flex flex-col items-start">
               <div className="bg-gray-200 p-3 rounded-[20px] flex flex-col items-start">
                 <p className="text-[15px]">
                   {comment.user.fullname} &#x2022; {comment.user.department}
                 </p>
                 <p className="text-[15px]">{comment.content}</p>
-              {comment.imageURL ? (
-                <img
-                  className="rounded-xl max-h-[300px] mt-[3px]"
-                  src={comment.imageURL}
-                  loading="lazy"
-                  alt=""
-                />
-              ) : (
-                " "
-              )}
+                {comment.imageURL ? (
+                  <img
+                    className="rounded-xl max-h-[300px] mt-[3px]"
+                    src={comment.imageURL}
+                    loading="lazy"
+                    alt=""
+                  />
+                ) : (
+                  " "
+                )}
               </div>
+              {/* comment actions */}
               <ul className="text-[12px] flex space-x-[10px]">
                 <li>{CreatePostTime(comment.createdAt)}</li>
                 <li className="cursor-pointer">Thích</li>
               </ul>
+
               <div className="flex mt-2 max-w-[300px]">
                 <img
                   src={
@@ -133,22 +140,24 @@ const Post = (props) => {
                   className="h-[30px] w-[30px]"
                   alt=""
                   style={{ clipPath: "circle()" }}
-                ></img>
+                />
                 <div className="flex justify-center items-center w-full relative">
                   <textarea
                     className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                     style={{ backgroundColor: " #F0F2F5" }}
                     placeholder="Phản hồi..."
                   ></textarea>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24"
-                    viewBox="0 -960 960 960"
-                    width="24"
-                    className="cursor-pointer absolute bottom-[5px] right-[5px]"
-                  >
-                    <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
-                  </svg>
+                  <button onClick={() => console.log("cmt")}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24"
+                      viewBox="0 -960 960 960"
+                      width="24"
+                      className="cursor-pointer absolute bottom-[5px] right-[5px]"
+                    >
+                      <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -157,7 +166,13 @@ const Post = (props) => {
       </>
     );
   }
+
+  /**
+   * Render the images based on the number of images in the data array.
+   * @returns {JSX.Element} - The JSX element to render the images.
+   */
   function ImgContent() {
+    // If there is only one image
     if (data.images.length === 1)
       return (
         <img
@@ -167,6 +182,7 @@ const Post = (props) => {
           alt=""
         />
       );
+    // If there are two images
     if (data.images.length === 2)
       return (
         <div
@@ -177,6 +193,7 @@ const Post = (props) => {
           <img src={data.images[1].imageURL} loading="lazy" alt="" />
         </div>
       );
+    // If there are three images
     if (data.images.length === 3)
       return (
         <div
@@ -188,6 +205,7 @@ const Post = (props) => {
           <img src={data.images[2].imageURL} loading="lazy" alt="" />
         </div>
       );
+    // If there are four images
     if (data.images.length === 4)
       return (
         <div
@@ -200,6 +218,7 @@ const Post = (props) => {
           <img src={data.images[3].imageURL} loading="lazy" alt="" />
         </div>
       );
+    // If there are five images
     if (data.images.length === 5)
       return (
         <div
@@ -213,6 +232,7 @@ const Post = (props) => {
           <img src={data.images[4].imageURL} loading="lazy" alt="" />
         </div>
       );
+    // If there are more than five images
     if (data.images.length > 5)
       return (
         <div
@@ -232,8 +252,9 @@ const Post = (props) => {
         </div>
       );
   }
+
   return (
-    <article className="post-box bg-slate-50 mb-[16px] flex max-w-[600px] flex-col pb-[12px] rounded-[10px]">
+    <article className="post-box bg-slate-50 mb-[16px] flex max-w-[1200px] flex-col pb-[12px] rounded-[10px]">
       <div className="title-box flex mb-[12px] items-center" align="left">
         <User />
       </div>
@@ -414,7 +435,7 @@ const Post = (props) => {
             </div>
           </div>
           <div
-            className="mb-[12px] items-center py-2 container-cmt-2"
+            className="items-center py-2 container-cmt-2"
             align="left"
             style={{ borderBottom: "1px solid rgb(101, 103, 107)" }}
           >
@@ -449,12 +470,12 @@ const Post = (props) => {
                 <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
               </svg>
             </div>
-            <div className="text-[15px]">{data.content}</div>
+            <div className="text-[15px] pr-[15px]">{data.content}</div>
           </div>
-          <div className="overflow-y-scroll h-[calc(100vh-85px)] pb-[68px] pt-2 container-cmt-2">
+          <div className="overflow-y-scroll h-[calc(100vh-85px)] pb-[32px] pt-2 container-cmt-2">
             <UserComments />
           </div>
-          <div className="flex absolute right-0 left-0 bottom-0 pt-3 bg-white pl-[15px]">
+          <div className="flex absolute right-0 left-0 bottom-0 pt-3 bg-white pl-[15px] ring-1 ring-black pb-2 textarea-1">
             <img
               src={
                 data.user.avatar ||
@@ -486,5 +507,4 @@ const Post = (props) => {
     </article>
   );
 };
-// };
 export default Post;

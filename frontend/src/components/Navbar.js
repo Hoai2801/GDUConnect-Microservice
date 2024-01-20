@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
   const userlogin = 1;
   function UserHome() {
@@ -43,7 +45,7 @@ const Navbar = () => {
   }
   return (
     <>
-      <div className="header-home w-full h-[63px] bg-white pl-[320px] pr-[32px] flex items-center justify-between shadow col-start-2 col-end-4 overflow-visible fixed top-0 right-0 left-0">
+      <nav className="header-home w-full h-[63px] bg-white pl-[320px] pr-[32px] flex items-center justify-between shadow col-start-2 col-end-4 overflow-visible fixed top-0">
         <div className="flex items-center max-w-[500px] w-full">
           <div className="menubar-home pr-[10px]" onClick={OpenSideBar}>
             <svg
@@ -78,15 +80,24 @@ const Navbar = () => {
         <div className="flex items-center shrink-0 relative">
           <UserHome />
         </div>
-      </div>
-      <div className="nav flex flex-col px-6 w-[288px] gap-y-5 shadow fixed left-0 top-0 bottom-0">
+      </nav>
+      <aside className="nav flex flex-col px-6 w-[288px] gap-y-5 shadow col-start-1 row-start-1 row-end-3 fixed top-0 bottom-0 left-0">
         <div className="flex justify-start h-[63px] w-full items-center">
           <img className="h-[50px]" src="20231229_043342.png" alt=""></img>
         </div>
         <ul className="gap-y-5 flex flex-col">
           <li>
-            <ul>
-              <a href="/">
+            <ul className="navlink">
+              <NavLink
+                to="/"
+                className={({ isActive, isPending, isTransitioning }) =>
+                  [
+                    isPending ? "pending" : "",
+                    isActive ? "nav-list-item-active" : "",
+                    isTransitioning ? "transitioning" : "",
+                  ].join("")
+                }
+              >
                 <li className="h-[40px] p-2 w-full flex items-center nav-list-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -99,8 +110,17 @@ const Navbar = () => {
                   </svg>
                   Trang chủ
                 </li>
-              </a>
-              <a href="/room">
+              </NavLink>
+              <NavLink
+                to="/room"
+                className={({ isActive, isPending, isTransitioning }) =>
+                  [
+                    isPending ? "pending" : "",
+                    isActive ? "nav-list-item-active" : "",
+                    isTransitioning ? "transitioning" : "",
+                  ].join("")
+                }
+              >
                 <li className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -113,8 +133,17 @@ const Navbar = () => {
                   </svg>
                   Phòng trọ
                 </li>
-              </a>
-              <a href="shop">
+              </NavLink>
+              <NavLink
+                to="/shop"
+                className={({ isActive, isPending, isTransitioning }) =>
+                  [
+                    isPending ? "pending" : "",
+                    isActive ? "nav-list-item-active" : "",
+                    isTransitioning ? "transitioning" : "",
+                  ].join("")
+                }
+              >
                 <li className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -127,8 +156,17 @@ const Navbar = () => {
                   </svg>
                   Buôn bán
                 </li>
-              </a>
-              <a href="/competition">
+              </NavLink>
+              <NavLink
+                to="/competition"
+                className={({ isActive, isPending, isTransitioning }) =>
+                  [
+                    isPending ? "pending" : "",
+                    isActive ? "nav-list-item-active" : "",
+                    isTransitioning ? "transitioning" : "",
+                  ].join("")
+                }
+              >
                 <li className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +179,7 @@ const Navbar = () => {
                   </svg>
                   Cuộc thi
                 </li>
-              </a>
+              </NavLink>
             </ul>
           </li>
           <li>
@@ -200,7 +238,7 @@ const Navbar = () => {
         ) : (
           ""
         )}
-      </div>
+      </aside>
     </>
   );
 };

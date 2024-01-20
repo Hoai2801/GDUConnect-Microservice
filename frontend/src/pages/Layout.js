@@ -5,12 +5,15 @@ import Sidebar from "../components/Sidebar";
 
 const Layout = () => {
   return (
-    <div className="bg-[#f0f2f5]">
-      <Navbar />
-      <div className="w-full pl-[290px]">
-        <Outlet />
+    <>
+      <div className="layout">
+        <Navbar />
+        <Sidebar />
+        <div className="respon ml-[288px]">
+          <Outlet />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

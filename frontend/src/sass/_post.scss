@@ -1,14 +1,11 @@
 .clb-box {
   border-radius: 16px;
-  overflow: hidden;
   display: flex;
+  overflow-y: scroll;
   background-color: #f0f2f5;
   flex-direction: column;
   &::-webkit-scrollbar {
     display: none;
-  }
-  &:hover {
-    overflow-y: scroll;
   }
   .avt-clb {
     clip-path: circle();
@@ -128,25 +125,6 @@
       cursor: pointer;
       position: relative;
       transition: all 0.5s;
-      ul {
-        display: none;
-        li {
-          text-wrap: nowrap;
-        }
-      }
-      &:hover {
-        text-decoration: underline;
-        ul {
-          display: inline-block;
-          position: absolute;
-          background-color: rgba(26, 26, 26, 0.836);
-          bottom: -50px;
-          color: white;
-          padding: 5px 10px;
-          border-radius: 5px;
-          left: 0;
-        }
-      }
     }
   }
 }
@@ -169,15 +147,6 @@
   }
 }
 .comment-container {
-  .login-vissible {
-    border-bottom: 1px solid rgb(186, 186, 186);
-    .logo {
-      color: rgb(1, 124, 182);
-      span {
-        color: rgb(252, 210, 0);
-      }
-    }
-  }
   .comment {
     &::-webkit-scrollbar {
       display: none;

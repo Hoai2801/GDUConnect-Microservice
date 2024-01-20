@@ -68,9 +68,8 @@ public class PostService {
     // Save the images associated with the post
     saveImages(postDTO.getFile(), newPostId);
 
-    log.info("Created post successfully!!!!!!1!");
     // Send a success notification event to the notificationTopic Kafka topic
-//    kafkaTemplate.send("notificationTopic", new PostEvent("Success"));
+    kafkaTemplate.send("notificationTopic", new PostEvent("Success"));
 
     // Return a success response
     return ResponseEntity.ok().body("Created post successfully!");
