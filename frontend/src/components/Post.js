@@ -104,12 +104,11 @@ const Post = (props) => {
               />
             </div>
             <div className="flex flex-col items-start">
-              <div className="bg-gray-200 p-3 rounded-[20px] flex justify-start">
+              <div className="bg-gray-200 p-3 rounded-[20px] flex flex-col items-start">
                 <p className="text-[15px]">
                   {comment.user.fullname} &#x2022; {comment.user.department}
                 </p>
                 <p className="text-[15px]">{comment.content}</p>
-              </div>
               {comment.imageURL ? (
                 <img
                   className="rounded-xl max-h-[300px] mt-[3px]"
@@ -120,6 +119,7 @@ const Post = (props) => {
               ) : (
                 " "
               )}
+              </div>
               <ul className="text-[12px] flex space-x-[10px]">
                 <li>{CreatePostTime(comment.createdAt)}</li>
                 <li className="cursor-pointer">Thích</li>

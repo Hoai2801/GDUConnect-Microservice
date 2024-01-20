@@ -18,7 +18,7 @@ function HideNone() {
   document.querySelector(".avt-menu").classList.toggle("hidden");
 }
 function User() {
-  const u = 1;
+  const u = 0;
   // const token = Cookies.get("token");
   // const decoded = jwtDecode(token);
 
