@@ -1,6 +1,5 @@
 package com.GDUConnect.postservice.DTO;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 

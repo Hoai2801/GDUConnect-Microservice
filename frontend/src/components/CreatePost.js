@@ -24,7 +24,7 @@ const CreatePost = () => {
     const config = {
       // headers: { Authorization: `Bearer ${token}` },
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     };
     const data = new FormData();

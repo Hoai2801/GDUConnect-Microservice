@@ -144,24 +144,38 @@ public class PostService {
   public ResponseEntity<?> createComment(CommentDTO commentDTO, long id) throws IOException {
     // Find the existing post
     PostModel existingPost = postRepository.findById(id)
-      .orElseThrow(() -> new EntityNotFoundException("Cannot find your post"));
+            .orElseThrow(() -> new EntityNotFoundException("Cannot find your post"));
 
-    // Get the image file from the comment DTO
-    MultipartFile imageFile = commentDTO.getImage();
+    // If the comment contains an image
+    if (commentDTO.getImage() != null) {
+      // Get the image file from the comment DTO
+      MultipartFile imageFile = commentDTO.getImage();
 
-    // Upload the image to Cloudinary and get the image URL
-    String imageURL = uploadImageToCloudinary(imageFile);
+      // Upload the image to Cloudinary and get the image URL
+      String imageURL = uploadImageToCloudinary(imageFile);
 
-    // Create the comment model
-    CommentModel comment = CommentModel.builder()
-      .postId(existingPost)
-      .content(commentDTO.getContent())
-      .userId(commentDTO.getUserId())
-      .imgURL(imageURL)
-      .build();
+      // Create the comment model with image
+      CommentModel comment = CommentModel.builder()
+              .postId(existingPost)
+              .content(commentDTO.getContent())
+              .userId(commentDTO.getUserId())
+              .imgURL(imageURL)
+              .build();
 
-    // Save the comment
-    commentRepository.save(comment);
+      // Save the comment with image
+      commentRepository.save(comment);
+    } else {
+      // Create the comment model without image
+      CommentModel comment = CommentModel.builder()
+              .postId(existingPost)
+              .content(commentDTO.getContent())
+              .userId(commentDTO.getUserId())
+              .imgURL(null)
+              .build();
+
+      // Save the comment without image
+      commentRepository.save(comment);
+    }
 
     // Return the response entity with a success message
     return ResponseEntity.ok().body("create comment successfully");

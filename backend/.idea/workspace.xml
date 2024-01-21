@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b8d5aea4-48a8-450f-a2f3-671d400e632c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/DTO/CommentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/DTO/CommentDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Service/PostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services/dsad.java" beforeDir="false" />
@@ -18,9 +19,6 @@
       <change beforePath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/JoinSurveyServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/JoinSurveyServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/ScoreServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/ScoreServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/SurveyServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/SurveyServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/NavbarLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/NavbarLogin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,7 @@
     "Spring Boot.PostServiceApplication.executor": "Run",
     "Spring Boot.SurveyServicesApplication.executor": "Run",
     "Spring Boot.UserServiceApplication.executor": "Run",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/talos/Desktop/GDUConnect-Microservice/backend",
     "node.js.detected.package.eslint": "true",
@@ -158,6 +156,7 @@
       <workItem from="1705669442207" duration="410000" />
       <workItem from="1705669862144" duration="5000" />
       <workItem from="1705759194166" duration="3847000" />
+      <workItem from="1705840784827" duration="5532000" />
     </task>
     <servers />
   </component>

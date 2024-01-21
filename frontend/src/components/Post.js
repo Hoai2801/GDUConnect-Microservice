@@ -1,3 +1,6 @@
+import axios from "axios";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import React, { useState } from "react";
 const Post = (props) => {
   const [index, setIndex] = useState(0);
@@ -5,6 +8,21 @@ const Post = (props) => {
   const data = props.postData;
 
   const [subComment, setSubComment] = useState();
+
+  const [textareaValue, setTextareaValue] = useState('');
+
+  const handleTextareaChange = (event) => {
+    setTextareaValue(event.target.value);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    // Do something with the textareaValue, e.g., send it to a server or perform some action
+    console.log('Textarea value:', textareaValue);
+  };
+
+  const token = Cookies.get("token");
+  const jwt = token ? jwtDecode(token) : "";
 
   // state quản lý trạng thái đóng mở của detail images component
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
@@ -52,13 +70,44 @@ const Post = (props) => {
       return i - 1;
     });
   }
-  const [mainCommmet, setMainComment] = useState("");
-  const createComment = () => {
-    if (mainCommmet !== "") {
-    } else {
-      alert("Vui lý nhập comment");
-    }
+  const [mainComment, setMainComment] = useState("");
+
+  const handleMainComment = (event) => {
+    setMainComment(event.target.value);
   };
+
+/**
+ * Asynchronous function to create a comment
+ */
+const createComment = async (id) => {
+  // Check if mainComment is empty
+  if (mainComment === "") {
+    return;
+  } else {
+    console.log("mainComment: " + mainComment);
+    // If mainComment is not empty, create the comment
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const data = new FormData();
+    data.append("userId", jwt.id);
+    data.append("content", mainComment);
+    // data.append("image", []);
+
+    // Make a POST request to create the comment
+    const response = await axios.post(
+      "http://localhost:8080/api/v1/post/comment/" + id,
+      data,
+      config
+    );
+
+    // Reset mainComment and log the response data
+    setMainComment("");
+    console.log(response.data);
+  }
+};
   function User() {
     return (
       <>
@@ -409,7 +458,7 @@ const Post = (props) => {
                       alt=""
                       className="w-[32px] h-[32px] object-cover mr-[8px]"
                       style={{ clipPath: "circle()" }}
-                    ></img>
+                    />
                     <div className="text-[14px] text-black text-start">
                       {data.user.fullname} <br />{" "}
                       <span className="text-[12px]">
@@ -484,22 +533,26 @@ const Post = (props) => {
               className="h-[30px] w-[30px]"
               alt=""
               style={{ clipPath: "circle()" }}
-            ></img>
+            />
             <div className="flex justify-center items-center w-full relative">
               <textarea
                 className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                 style={{ backgroundColor: " #F0F2F5" }}
                 placeholder="Viết bình luận..."
-              ></textarea>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24"
-                viewBox="0 -960 960 960"
-                width="24"
-                className="cursor-pointer absolute bottom-[5px] right-[5px]"
-              >
-                <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
-              </svg>
+                value={mainComment}
+                onChange={handleMainComment}
+              />
+              <button onClick={async() => createComment(data.id)}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                    className="cursor-pointer absolute bottom-[5px] right-[5px]"
+                    >
+                    <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+                  </svg>
+              </button>
             </div>
           </div>
         </div>
