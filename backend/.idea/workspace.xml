@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b8d5aea4-48a8-450f-a2f3-671d400e632c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/DTO/CommentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/DTO/CommentDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/post-service/src/main/java/com/GDUConnect/postservice/Service/PostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services/dsad.java" beforeDir="false" />
@@ -19,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/JoinSurveyServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/JoinSurveyServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/ScoreServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/ScoreServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/SurveyServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/survey-services/src/main/java/survey/com/example/survey_services/services/SurveyServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Post.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,32 +39,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Hoai.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ApiGatewayApplication.executor": "Run",
-    "Spring Boot.DiscoveryServiceApplication.executor": "Run",
-    "Spring Boot.GroupServiceApplication.executor": "Run",
-    "Spring Boot.NotificationServiceApplication.executor": "Run",
-    "Spring Boot.PostServiceApplication.executor": "Run",
-    "Spring Boot.SurveyServicesApplication.executor": "Run",
-    "Spring Boot.UserServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/talos/Desktop/GDUConnect-Microservice/backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Hoai.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DiscoveryServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GroupServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.NotificationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.PostServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.SurveyServicesApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/talos/Desktop/GDUConnect-Microservice/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -157,6 +156,7 @@
       <workItem from="1705669862144" duration="5000" />
       <workItem from="1705759194166" duration="3847000" />
       <workItem from="1705840784827" duration="5532000" />
+      <workItem from="1705905952460" duration="1923000" />
     </task>
     <servers />
   </component>

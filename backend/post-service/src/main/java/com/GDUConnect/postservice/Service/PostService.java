@@ -49,7 +49,6 @@ public class PostService {
     // Retrieve the user based on the userId from the postDTO
     log.info(String.valueOf(postDTO.getUserId()));
     UserDTO user = retrieveUserId(postDTO.getUserId());
-    log.info("User: " + user);
     // If the user cannot be found, return a bad request response
     if (user == null) {
       return ResponseEntity.badRequest().body("Cannot find user!");
@@ -65,8 +64,10 @@ public class PostService {
     // Save the post to the repository and get the new post ID
     Long newPostId = postRepository.save(postModel).getId();
 
-    // Save the images associated with the post
-    saveImages(postDTO.getFile(), newPostId);
+    if (postDTO.getFile() != null) {
+      // Save the images associated with the post
+      saveImages(postDTO.getFile(), newPostId);
+    }
 
     // Send a success notification event to the notificationTopic Kafka topic
     kafkaTemplate.send("notificationTopic", new PostEvent("Success"));
@@ -194,7 +195,6 @@ public class PostService {
   // save image into repository
   private void saveImages(List<MultipartFile> files, Long postId) throws IOException {
     PostModel postModelOptional = postRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("PostModel not found with ID: " + postId));
-    ;
     for (MultipartFile file : files) {
       String imageURL = uploadImageToCloudinary(file);
       ImageModel newImageModel = ImageModel.builder()

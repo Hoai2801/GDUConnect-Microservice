@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import React, { useState } from "react";
+import { redirect } from "react-router-dom";
 const Post = (props) => {
   const [index, setIndex] = useState(0);
 
@@ -22,7 +23,7 @@ const Post = (props) => {
   };
 
   const token = Cookies.get("token");
-  const jwt = token ? jwtDecode(token) : "";
+  const jwt = token ? jwtDecode(token) : redirect("/auth");
 
   // state quản lý trạng thái đóng mở của detail images component
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
@@ -84,7 +85,6 @@ const createComment = async (id) => {
   if (mainComment === "") {
     return;
   } else {
-    console.log("mainComment: " + mainComment);
     // If mainComment is not empty, create the comment
     const config = {
       headers: {

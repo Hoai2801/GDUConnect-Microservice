@@ -7,33 +7,55 @@ const CreatePost = () => {
   // mock api of user
   const [user, setUser] = useState("");
 
-  const [postText, setPostText] = useState("");
+  const [postContent, setPostContent] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
 
+  // State to hold image previews
+  const [imagePreviews, setImagePreviews] = useState([]);
+
+  //jwt decode
+  const token = Cookies.get("token");
+  const jwt = token ? jwtDecode(token) : "";
+
   const handleInputChange = (e) => {
-    setPostText(e.target.value);
+    setPostContent(e.target.value);
   };
 
   const handleFileChange = (e) => {
-    // Handle multiple file selection
     const files = Array.from(e.target.files);
+
+    // Create image previews for selected files
+    const previews = files.map((file) => URL.createObjectURL(file));
+    setImagePreviews(previews);
+
     setSelectedFiles(files);
   };
 
+  // Cleanup for image previews when component unmounts
+  useEffect(() => {
+    return () => {
+      imagePreviews.forEach((preview) => URL.revokeObjectURL(preview));
+    };
+  }, [imagePreviews]);
+
   const handleSubmit = async () => {
     const config = {
-      // headers: { Authorization: `Bearer ${token}` },
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
+    if (postContent === "") {
+      return;
+    }
     const data = new FormData();
-    data.append("userId", 1);
-    data.append("content", postText);
+    data.append("userId", jwt.id);
+    data.append("content", postContent);
     data.append("groupId", 1);
-    selectedFiles.forEach((file) => {
-      data.append("file", file);
-    });
+    if (selectedFiles.length > 0) {
+      selectedFiles.forEach((file) => {
+        data.append("file", file);
+      });
+    }
 
     const response = await axios.post(
       "http://localhost:8080/api/v1/post",
@@ -41,11 +63,23 @@ const CreatePost = () => {
       config
     );
 
+    // console.log(response)
+    // if (response.status === 200) {
+    // }
+    setSelectedFiles([]);
+    setPostContent("");
+    setImagePreviews([]);
+
+    console.log(postContent)
+
     console.log(response.data);
   };
 
-  const token = Cookies.get("token");
-  const jwt = token ? jwtDecode(token) : "";
+  // get last name of user from session or cookies
+  const getLastName = (name) => {
+    const arrName = name.split(" ");
+    return arrName[arrName.length - 1];
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -54,24 +88,17 @@ const CreatePost = () => {
           "http://localhost:8080/api/v1/user/" + jwt.id
         );
         setUser(response.data);
-        console.log(response);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchUser();
-  }, []);
-
-  // get last name of user from session or cookies
-  const getLastName = (name) => {
-    const arrName = name.split(" ");
-    return arrName[arrName.length - 1];
-  };
+  }, [jwt.id]);
 
   return (
     <div
-      className="shadow-lg border-black rounded-lg max-w-[1200px] w-full h-fit py-5 bg-white flex px-5 create-post"
+      className="shadow-lg border-black rounded-lg max-w-[1200px] w-full h-fit py-5 bg-white flex px-5 create-post flex-col"
       style={{ marginBottom: "16px" }}
     >
       <div className="flex gap-5 w-full">
@@ -93,6 +120,7 @@ const CreatePost = () => {
             type="text"
             name=""
             id=""
+            value={postContent}
             onChange={handleInputChange}
             placeholder={`Chào ${getLastName(
               user ? user.fullname : ""
@@ -100,35 +128,45 @@ const CreatePost = () => {
             className="w-full h-full bg-gray-200 rounded-md p-5 input-cp"
           />
         </div>
-      </div>
-      {/* button */}
-      <div
-        className="flex justify-end px-1 w-[40%] gap-5 max-w-[130px] btn-cp"
-        style={{ marginLeft: "10px", flexShrink: "0" }}
-      >
-        <input
-          type="file"
-          onChange={handleFileChange}
-          id="actual-btn"
-          hidden
-          multiple
-        />
-        <label htmlFor="actual-btn" className=" hover:cursor-pointer">
-          <img
-            src="https://cdn.icon-icons.com/icons2/510/PNG/512/image_icon-icons.com_50366.png"
-            alt=""
-            className="w-10 h-10 mt-2 add-img"
-          />
-        </label>
-        {/* submit the post */}
-        <button
-          onClick={handleSubmit}
-          className="bg-blue-400 px-1 h-fit py-2 mt-2 rounded-lg btn-submit"
+        {/* image button */}
+        <div
+          className="flex justify-end px-1 w-[40%] gap-5 max-w-[130px] btn-cp"
+          style={{ marginLeft: "10px", flexShrink: "0" }}
         >
-          Submit
-        </button>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            id="actual-btn"
+            hidden
+            multiple
+          />
+          <label htmlFor="actual-btn" className="hover:cursor-pointer">
+            <img
+              src="https://cdn.icon-icons.com/icons2/510/PNG/512/image_icon-icons.com_50366.png"
+              alt=""
+              className="w-10 h-10 mt-2 add-img"
+            />
+          </label>
+          {/* submit the post */}
+          <button
+            onClick={handleSubmit}
+            className="bg-blue-400 px-1 h-fit py-2 mt-2 rounded-lg btn-submit"
+          >
+            Submit
+          </button>
+        </div>
       </div>
-      <div></div>
+      {/* Display image previews */}
+      <div className="flex gap-2">
+        {imagePreviews.map((preview, index) => (
+          <img
+            key={index}
+            src={preview}
+            alt={`Preview ${index}`}
+            className="w-16 h-16 object-cover rounded-md mt-2"
+          />
+        ))}
+      </div>
     </div>
   );
 };
