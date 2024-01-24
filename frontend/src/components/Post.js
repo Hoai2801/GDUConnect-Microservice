@@ -12,11 +12,11 @@ const Post = (props) => {
 
   const [textareaValue, setTextareaValue] = useState('');
 
-  const handleTextareaChange = (event) => {
+  const handleSubCommentChange = (event) => {
     setTextareaValue(event.target.value);
   };
 
-  const handleFormSubmit = (event) => {
+  const handleSubCommentSubmit = (event) => {
     event.preventDefault();
     // Do something with the textareaValue, e.g., send it to a server or perform some action
     console.log('Textarea value:', textareaValue);
@@ -27,42 +27,55 @@ const Post = (props) => {
 
   // state quản lý trạng thái đóng mở của detail images component
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
+
   /**
    * Returns a string representing the time difference between the current time and the given time.
    * @param {string} TimePost - The time to compare to the current time.
    * @returns {string} - A string representing the time difference.
    */
   function CreatePostTime(TimePost) {
-    const today = new Date();
-    const timespaces = today - new Date(TimePost);
-    const seconds = Math.floor(timespaces / 1000);
-    const minutes = Math.floor(timespaces / 60000);
-    const hours = Math.floor(timespaces / 3600000);
-    const days = Math.floor(timespaces / 86400000);
-    const weeks = Math.floor(timespaces / 604800000);
-    const years = Math.floor(timespaces / (604800000 * 48));
+    let today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let datetime = date + " " + time;
+    let timespaces = Date.parse(datetime) - Date.parse(TimePost);
     if (timespaces < 60000) {
-      return `${seconds} giây`;
+      let resuit = Math.floor(timespaces / 1000);
+      return `${resuit} giây`;
     } else if (timespaces < 3600000) {
-      return `${minutes} phút`;
+      let resuit = Math.floor(timespaces / 60000);
+      return `${resuit} phút`;
     } else if (timespaces < 86400000) {
-      return `${hours} giờ`;
+      let resuit = Math.floor(timespaces / 3600000);
+      return `${resuit} giờ`;
     } else if (timespaces < 604800000) {
-      return `${days} ngày`;
+      let resuit = Math.floor(timespaces / 86400000);
+      return `${resuit} ngày`;
     } else if (timespaces < 604800000 * 48) {
-      return `${weeks} tuần`;
+      let resuit = Math.floor(timespaces / 604800000);
+      return `${resuit} tuần`;
     } else {
-      return `${years} năm`;
+      let resuit = Math.floor(timespaces / (604800000 * 48));
+      return `${resuit} năm`;
     }
   }
+
   function togglePopUpImage() {
     setDetailImagesOpen(!isDetailImagesOpen);
   }
+
   function nextImage() {
     setIndex((currentIndex) =>
       currentIndex === data.images.length - 1 ? 0 : currentIndex + 1
     );
   }
+
   function previousImage() {
     setIndex((i) => {
       if (i === 0) {
@@ -71,6 +84,7 @@ const Post = (props) => {
       return i - 1;
     });
   }
+
   const [mainComment, setMainComment] = useState("");
 
   const handleMainComment = (event) => {
@@ -131,6 +145,7 @@ const createComment = async (id) => {
       </>
     );
   }
+
   function UserComments() {
     return (
       <>

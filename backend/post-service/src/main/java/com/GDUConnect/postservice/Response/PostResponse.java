@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -26,4 +27,6 @@ public class PostResponse {
     private List<CommentResponse> comments;
 
     private List<LikeModel> likes;
+
+    private LocalDate createdAt;
 }

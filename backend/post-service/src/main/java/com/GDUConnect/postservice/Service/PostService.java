@@ -77,9 +77,9 @@ public class PostService {
   }
 
   public List<PostResponse> getAllPosts() {
-    List<PostModel> postModelList = postRepository.findAll();
-    // Convert List<PostModel> to List<PostResponse>
+    List<PostModel> postModelList = postRepository.getAllOrderByIdDesc();
 
+    // Convert List<PostModel> to List<PostResponse>
     return postModelList.stream()
       .map(this::convertToPostResponse)
       .collect(Collectors.toList());

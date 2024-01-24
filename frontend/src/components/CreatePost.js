@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
+import { redirect } from "react-router-dom";
 
 const CreatePost = () => {
   // mock api of user
@@ -63,16 +64,11 @@ const CreatePost = () => {
       config
     );
 
-    // console.log(response)
-    // if (response.status === 200) {
-    // }
-    setSelectedFiles([]);
-    setPostContent("");
-    setImagePreviews([]);
-
-    console.log(postContent)
-
-    console.log(response.data);
+    if (response.status === 200) {
+      setSelectedFiles([]);
+      setPostContent("");
+      setImagePreviews([]);
+    }
   };
 
   // get last name of user from session or cookies
@@ -84,6 +80,9 @@ const CreatePost = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
+        if (jwt.id === undefined) {
+          redirect("/auth")
+        }
         const response = await axios.get(
           "http://localhost:8080/api/v1/user/" + jwt.id
         );

@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const userlogin = 1;
+  const userlogin = Cookies.get("token") ? true : false;
   function UserHome() {
     return userlogin ? (
       <>
@@ -220,8 +221,10 @@ const Navbar = () => {
           Cài đặt
         </div>
         {userlogin ? (
-          <a href="/auth">
-            <div className="flex justify-start items-center p-2 nav-list-item">
+          <Link to="/auth">
+            <button className="flex justify-start items-center p-2 nav-list-item w-full"
+              onClick={() => Cookies.set("token", "")}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="30"
@@ -233,8 +236,8 @@ const Navbar = () => {
                 <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
               </svg>
               Đăng xuất
-            </div>
-          </a>
+            </button>
+          </Link>
         ) : (
           ""
         )}

@@ -1,6 +1,5 @@
 package com.GDUConnect.postservice.Model;
 
-import com.GDUConnect.postservice.DTO.UserDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,7 +22,7 @@ public class PostModel extends BaseEntity {
     @Column(name = "user_id")
     private int user;
 
-    @JsonManagedReference("contentt")
+    @JsonManagedReference("content")
     private String content;
 
     @Column(name = "group_id")
