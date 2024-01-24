@@ -77,7 +77,7 @@ const Login = () => {
                   value={studentCode}
                   onChange={handleStudentCodeChange}
                   placeholder="Nhập mã số sinh viên"
-                  class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                  class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
                   autofocus
                   autocomplete
                   required
@@ -93,9 +93,7 @@ const Login = () => {
                   onChange={handlePasswordChange}
                   placeholder="Enter Password"
                   minlength="6"
-                  class="w-full pl-4 pr-12 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                focus:bg-white focus:outline-none"
-                  style={{ transition: "all 0.5s" }}
+                  class="w-full pl-4 pr-12 py-3 rounded-lg bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
                   required
                 />
                 <svg
@@ -124,7 +122,7 @@ const Login = () => {
               <div class="text-right mt-2">
                 <a
                   href="/"
-                  class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"
+                  class="text-sm font-semibold text-gray-700 hover:text-blue-700 hover:underline focus:text-blue-700"
                 >
                   Forgot Password?
                 </a>
@@ -175,7 +173,7 @@ const Login = () => {
               Need an account?{" "}
               <a
                 href="/"
-                class="text-blue-500 hover:text-blue-700 font-semibold"
+                class="text-blue-500 hover:text-blue-700 font-semibold hover:underline"
               >
                 Create an account
               </a>

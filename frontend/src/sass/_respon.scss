@@ -64,14 +64,18 @@
   }
 }
 @media (max-width: 900px) {
-  .textarea-2 {
+  .btn-pu-cmt {
     display: flex;
+  }
+  .btn-pu-p {
+    display: none;
+  }
+  .rc-img {
+    display: flex;
+    background-color: rgb(0, 0, 0, 0.7);
   }
   .textarea-1 {
     display: none;
-  }
-  .image-container {
-    height: 70vh;
   }
   .container-cmt-1 {
     display: none;
@@ -101,6 +105,9 @@
   .pop-up-post {
     grid-template-columns: 1fr;
     overflow-y: scroll;
+  }
+  .comment-container {
+    display: none;
   }
   .pop-up-post .image .image-container .btn-img-right {
     top: 50px;
@@ -201,6 +208,9 @@
   }
 }
 @media (max-width: 540px) {
+  #home {
+    padding: 0;
+  }
   .avt-box {
     position: relative;
     .dropdown {

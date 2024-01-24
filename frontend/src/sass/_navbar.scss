@@ -34,28 +34,3 @@
     }
   }
 }
-.sidebar {
-  display: none;
-  backdrop-filter: blur(5px);
-  background-color: rgba($color: rgb(26, 26, 26), $alpha: 1);
-  a {
-    margin: 10px 12px;
-    font-size: 25px;
-    position: relative;
-    color: #ffffff;
-    &::after {
-      content: "";
-      position: absolute;
-      height: 1px;
-      width: 0%;
-      left: 0;
-      right: 0;
-      background-color: black;
-      bottom: -1px;
-      transition: all 0.5s;
-    }
-    &:hover::after {
-      width: 100%;
-    }
-  }
-}

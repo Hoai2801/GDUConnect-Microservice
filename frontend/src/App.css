@@ -130,7 +130,7 @@ h6 {
   fill: white;
 }
 
-.nav-list-item-active li {
+.nav-list-item-active div {
   background-color: rgb(31, 41, 55);
   color: white;
 }
@@ -196,20 +196,21 @@ h6 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-.imagecontainer-2 img {
-  object-fit: cover;
-  max-height: 300px;
+.imagecontainer-2 img,
+.imagecontainer-3 img,
+.imagecontainer-6 img {
   height: 100%;
+  object-fit: cover;
   width: 100%;
   cursor: pointer;
 }
 
-.imagecontainer-3 img {
-  object-fit: cover;
-  cursor: pointer;
-  width: 100%;
+.imagecontainer-2 img {
   max-height: 300px;
-  height: 100%;
+}
+
+.imagecontainer-3 img {
+  max-height: 300px;
 }
 
 .imagecontainer-3 img:nth-child(1) {
@@ -255,6 +256,7 @@ h6 {
 .imagecontainer-6 img:nth-child(1),
 .imagecontainer-6 img:nth-child(2) {
   grid-column: span 3;
+  max-height: 300px;
 }
 
 .imagecontainer-6 img:nth-child(3),
@@ -458,18 +460,19 @@ h6 {
 }
 
 @media (max-width: 900px) {
-  .textarea-2 {
+  .btn-pu-cmt {
     display: flex;
   }
-
+  .btn-pu-p {
+    display: none;
+  }
+  .rc-img {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
   .textarea-1 {
     display: none;
   }
-
-  .image-container {
-    height: 70vh;
-  }
-
   .container-cmt-1 {
     display: none;
   }
@@ -506,7 +509,9 @@ h6 {
     grid-template-columns: 1fr;
     overflow-y: scroll;
   }
-
+  .comment-container {
+    display: none;
+  }
   .pop-up-post .image .image-container .btn-img-right {
     top: 50px;
     padding-bottom: 50px;
@@ -618,6 +623,9 @@ h6 {
 }
 
 @media (max-width: 540px) {
+  #home {
+    padding: 0;
+  }
   .avt-box {
     position: relative;
   }
