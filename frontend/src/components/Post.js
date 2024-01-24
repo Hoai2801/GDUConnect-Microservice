@@ -1,7 +1,30 @@
+import axios from "axios";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import React, { useState } from "react";
+import { redirect } from "react-router-dom";
 const Post = (props) => {
   const [index, setIndex] = useState(0);
+
   const data = props.postData;
+
+  const [subComment, setSubComment] = useState();
+
+  const [textareaValue, setTextareaValue] = useState("");
+
+  const handleTextareaChange = (event) => {
+    setTextareaValue(event.target.value);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    // Do something with the textareaValue, e.g., send it to a server or perform some action
+    console.log("Textarea value:", textareaValue);
+  };
+
+  const token = Cookies.get("token");
+  const jwt = token ? jwtDecode(token) : redirect("/auth");
+
   // state quản lý trạng thái đóng mở của detail images component
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
   //for mobile devices
@@ -58,10 +81,43 @@ const Post = (props) => {
       return i - 1;
     });
   }
-  // const [commemtForMain, setCommentForMain] = useState("");
-  // const createComment = () => {
-  //   if (commemtForMain !== "") {
-  //   }
+  const [mainComment, setMainComment] = useState("");
+
+  const handleMainComment = (event) => {
+    setMainComment(event.target.value);
+  };
+
+  /**
+   * Asynchronous function to create a comment
+   */
+  const createComment = async (id) => {
+    // Check if mainComment is empty
+    if (mainComment === "") {
+      return;
+    } else {
+      // If mainComment is not empty, create the comment
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const data = new FormData();
+      data.append("userId", jwt.id);
+      data.append("content", mainComment);
+      // data.append("image", []);
+
+      // Make a POST request to create the comment
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/post/comment/" + id,
+        data,
+        config
+      );
+
+      // Reset mainComment and log the response data
+      setMainComment("");
+      console.log(response.data);
+    }
+  };
   function User() {
     return (
       <>
@@ -88,16 +144,19 @@ const Post = (props) => {
   function UserComments() {
     return (
       <>
+        {/* No one has commented yet       */}
         {data.comments.length === 0 && (
           <h3 className="text-[15px] font-bold">
             Bài viết chưa có bình luận nào, bạn hãy trở thành người đầu tiên
           </h3>
         )}
+        {/* Comments */}
         {data.comments.map((comment) => (
           <div
             key={comment.id}
             className="comment-details grid grid-cols-[40px_1fr] mb-[12px]"
           >
+            {/* user avatar */}
             <div className="min-w-[32px] min-h-[32px] max-w-[32px] max-h-[32px] mr-1">
               <img
                 className="avatar object-cover h-[32px] w-[32px]"
@@ -107,15 +166,13 @@ const Post = (props) => {
                 style={{ clipPath: "circle()" }}
               />
             </div>
+            {/* comment content */}
             <div className="flex flex-col items-start">
-              <div className="bg-gray-200 p-3 rounded-[20px] text-start">
-                <div>
-                  <p className="text-[15px]">
-                    {comment.user[0].fullname} &#x2022;{" "}
-                    {comment.user[0].department}
-                  </p>{" "}
-                  <p className="text-[15px]">{comment.content}</p>
-                </div>
+              <div className="bg-gray-200 p-3 rounded-[20px] flex flex-col items-start">
+                <p className="text-[15px]">
+                  {comment.user.fullname} &#x2022; {comment.user.department}
+                </p>
+                <p className="text-[15px]">{comment.content}</p>
                 {comment.imageURL ? (
                   <img
                     className="rounded-xl max-h-[300px] mt-[3px]"
@@ -127,10 +184,12 @@ const Post = (props) => {
                   " "
                 )}
               </div>
+              {/* comment actions */}
               <ul className="text-[12px] flex space-x-[10px]">
                 <li>{CreatePostTime(comment.createdAt)}</li>
                 <li className="cursor-pointer">Thích</li>
               </ul>
+
               <div className="flex mt-2 max-w-[300px]">
                 <img
                   src={
@@ -140,22 +199,24 @@ const Post = (props) => {
                   className="h-[30px] w-[30px]"
                   alt=""
                   style={{ clipPath: "circle()" }}
-                ></img>
+                />
                 <div className="flex justify-center items-center w-full relative">
                   <textarea
                     className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                     style={{ backgroundColor: " #F0F2F5" }}
                     placeholder="Phản hồi..."
                   ></textarea>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24"
-                    viewBox="0 -960 960 960"
-                    width="24"
-                    className="cursor-pointer absolute bottom-[5px] right-[5px]"
-                  >
-                    <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
-                  </svg>
+                  <button onClick={() => console.log("cmt")}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24"
+                      viewBox="0 -960 960 960"
+                      width="24"
+                      className="cursor-pointer absolute bottom-[5px] right-[5px]"
+                    >
+                      <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -164,7 +225,13 @@ const Post = (props) => {
       </>
     );
   }
+
+  /**
+   * Render the images based on the number of images in the data array.
+   * @returns {JSX.Element} - The JSX element to render the images.
+   */
   function ImgContent() {
+    // If there is only one image
     if (data.images.length === 1)
       return (
         <img
@@ -174,6 +241,7 @@ const Post = (props) => {
           alt=""
         />
       );
+    // If there are two images
     if (data.images.length === 2)
       return (
         <div
@@ -184,6 +252,7 @@ const Post = (props) => {
           <img src={data.images[1].imageURL} loading="lazy" alt="" />
         </div>
       );
+    // If there are three images
     if (data.images.length === 3)
       return (
         <div
@@ -195,6 +264,7 @@ const Post = (props) => {
           <img src={data.images[2].imageURL} loading="lazy" alt="" />
         </div>
       );
+    // If there are four images
     if (data.images.length === 4)
       return (
         <div
@@ -235,6 +305,7 @@ const Post = (props) => {
         </div>
       );
   }
+
   return (
     <>
       <article className="post-box bg-slate-50 mb-[16px] flex max-w-[1200px] flex-col pb-[12px] rounded-[10px]">
@@ -542,22 +613,26 @@ const Post = (props) => {
               className="h-[30px] w-[30px]"
               alt=""
               style={{ clipPath: "circle()" }}
-            ></img>
+            />
             <div className="flex justify-center items-center w-full relative">
               <textarea
                 className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                 style={{ backgroundColor: " #F0F2F5" }}
                 placeholder="Viết bình luận..."
-              ></textarea>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24"
-                viewBox="0 -960 960 960"
-                width="24"
-                className="cursor-pointer absolute bottom-[5px] right-[5px]"
-              >
-                <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
-              </svg>
+                value={mainComment}
+                onChange={handleMainComment}
+              />
+              <button onClick={async () => createComment(data.id)}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                  className="cursor-pointer absolute bottom-[5px] right-[5px]"
+                >
+                  <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -565,5 +640,4 @@ const Post = (props) => {
     </>
   );
 };
-// };
 export default Post;

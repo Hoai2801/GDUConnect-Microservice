@@ -53,10 +53,10 @@ const Login = () => {
   return (
     <>
       <NavbarLogin />
-      <section class="flex flex-col md:flex-row h-screen items-center mt-[60px]">
-        <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
+      <section class="flex flex-col md:flex-row h-screen items-center">
+        <div class="bg-indigo-600 hidden lg:block w-full md:w-1/3 xl:w-1/3 h-screen">
           <img
-            src="https://source.unsplash.com/random"
+            src="./20231229_043342.png"
             alt=""
             class="w-full h-full object-cover"
           />
