@@ -85,9 +85,9 @@ const Navbar = () => {
         <div className="flex justify-start h-[63px] w-full items-center">
           <img className="h-[50px]" src="20231229_043342.png" alt=""></img>
         </div>
-        <ul className="gap-y-5 flex flex-col">
-          <li>
-            <ul className="navlink">
+        <div className="gap-y-5 flex flex-col">
+          <div className="navlink">
+            <div>
               <NavLink
                 to="/"
                 className={({ isActive, isPending, isTransitioning }) =>
@@ -98,7 +98,7 @@ const Navbar = () => {
                   ].join("")
                 }
               >
-                <li className="h-[40px] p-2 w-full flex items-center nav-list-item">
+                <div className="h-[40px] p-2 w-full flex items-center nav-list-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="30"
@@ -109,8 +109,10 @@ const Navbar = () => {
                     <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
                   </svg>
                   Trang chủ
-                </li>
+                </div>
               </NavLink>
+            </div>
+            <div>
               <NavLink
                 to="/room"
                 className={({ isActive, isPending, isTransitioning }) =>
@@ -121,7 +123,7 @@ const Navbar = () => {
                   ].join("")
                 }
               >
-                <li className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
+                <div className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="30"
@@ -132,8 +134,10 @@ const Navbar = () => {
                     <path d="M680-600h80v-80h-80v80Zm0 160h80v-80h-80v80Zm0 160h80v-80h-80v80Zm0 160v-80h160v-560H480v56l-80-58v-78h520v720H680Zm-640 0v-400l280-200 280 200v400H360v-200h-80v200H40Zm80-80h80v-200h240v200h80v-280L320-622 120-480v280Zm560-360ZM440-200v-200H200v200-200h240v200Z" />
                   </svg>
                   Phòng trọ
-                </li>
+                </div>
               </NavLink>
+            </div>
+            <div>
               <NavLink
                 to="/shop"
                 className={({ isActive, isPending, isTransitioning }) =>
@@ -144,7 +148,7 @@ const Navbar = () => {
                   ].join("")
                 }
               >
-                <li className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
+                <div className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="30"
@@ -155,8 +159,10 @@ const Navbar = () => {
                     <path d="M200-80q-33 0-56.5-23.5T120-160v-480q0-33 23.5-56.5T200-720h80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720h80q33 0 56.5 23.5T840-640v480q0 33-23.5 56.5T760-80H200Zm0-80h560v-480H200v480Zm280-240q83 0 141.5-58.5T680-600h-80q0 50-35 85t-85 35q-50 0-85-35t-35-85h-80q0 83 58.5 141.5T480-400ZM360-720h240q0-50-35-85t-85-35q-50 0-85 35t-35 85ZM200-160v-480 480Z" />
                   </svg>
                   Buôn bán
-                </li>
+                </div>
               </NavLink>
+            </div>
+            <div>
               <NavLink
                 to="/competition"
                 className={({ isActive, isPending, isTransitioning }) =>
@@ -167,7 +173,7 @@ const Navbar = () => {
                   ].join("")
                 }
               >
-                <li className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
+                <div className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="30"
@@ -178,15 +184,15 @@ const Navbar = () => {
                     <path d="M280-880h400v314q0 23-10 41t-28 29l-142 84 28 92h152l-124 88 48 152-124-94-124 94 48-152-124-88h152l28-92-142-84q-18-11-28-29t-10-41v-314Zm80 80v234l80 48v-282h-80Zm240 0h-80v282l80-48v-234ZM480-647Zm-40-12Zm80 0Z" />
                   </svg>
                   Cuộc thi
-                </li>
+                </div>
               </NavLink>
-            </ul>
-          </li>
-          <li>
+            </div>
+          </div>
+          <div>
             <div style={{ color: "#9CA3AF" }} className="pl-[8px] text-[12px]">
               Khác
             </div>
-            <li className="h-[40px] p-2 w-full  flex items-center mt-[5px] nav-list-item cursor-pointer">
+            <div className="h-[40px] p-2 w-full  flex items-center mt-[5px] nav-list-item cursor-pointer">
               <div
                 className="rounded px-[5px] border border-slate-600 mr-[10px] h-[24px] w-[24px] flex items-center justify-center"
                 style={{ backgroundColor: "rgb(31,41,55)" }}
@@ -194,8 +200,8 @@ const Navbar = () => {
                 C
               </div>
               Câu lạc bộ
-            </li>
-            <li className="h-[40px] p-2 w-full  mt-[5px] flex items-center nav-list-item cursor-pointer">
+            </div>
+            <div className="h-[40px] p-2 w-full  mt-[5px] flex items-center nav-list-item cursor-pointer">
               <div
                 className="rounded px-[5px]  border border-slate-600 mr-[10px] w-[24px] h-[24px] flex items-center justify-center"
                 style={{ backgroundColor: "#1F2937" }}
@@ -203,9 +209,9 @@ const Navbar = () => {
                 K
               </div>
               Khảo sát
-            </li>
-          </li>
-        </ul>
+            </div>
+          </div>
+        </div>
         <div className="flex justify-start items-center p-2 nav-list-item">
           <svg
             xmlns="http://www.w3.org/2000/svg"

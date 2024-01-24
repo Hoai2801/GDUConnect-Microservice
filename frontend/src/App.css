@@ -67,32 +67,6 @@ h6 {
   width: 100%;
 }
 
-.sidebar {
-  display: none;
-  backdrop-filter: blur(5px);
-  background-color: #1a1a1a;
-}
-.sidebar a {
-  margin: 10px 12px;
-  font-size: 25px;
-  position: relative;
-  color: #ffffff;
-}
-.sidebar a::after {
-  content: "";
-  position: absolute;
-  height: 1px;
-  width: 0%;
-  left: 0;
-  right: 0;
-  background-color: black;
-  bottom: -1px;
-  transition: all 0.5s;
-}
-.sidebar a:hover::after {
-  width: 100%;
-}
-
 .header-home {
   border-bottom: 1px solid rgb(107, 114, 128);
   z-index: 3;
@@ -118,7 +92,7 @@ h6 {
   fill: white;
 }
 
-.nav-list-item-active li {
+.nav-list-item-active div {
   background-color: rgb(31, 41, 55);
   color: white;
 }
@@ -181,57 +155,29 @@ h6 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-.imagecontainer-2 img {
-  object-fit: cover;
-  max-height: 300px;
+.imagecontainer-2 img,
+.imagecontainer-3 img,
+.imagecontainer-6 img {
   height: 100%;
+  object-fit: cover;
   width: 100%;
   cursor: pointer;
 }
 
-.imagecontainer-3 img {
-  object-fit: cover;
-  cursor: pointer;
-  width: 100%;
+.imagecontainer-2 img {
   max-height: 300px;
-  height: 100%;
+}
+
+.imagecontainer-3 img {
+  max-height: 300px;
 }
 .imagecontainer-3 img:nth-child(1) {
   grid-column: span 2;
 }
 
-.imagecontainer-4 img {
-  object-fit: cover;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-  max-height: 300px;
-}
-
-.imagecontainer-5 img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  max-height: 300px;
-}
-.imagecontainer-5 img:nth-child(1), .imagecontainer-5 img:nth-child(2) {
-  grid-column: span 3;
-}
-.imagecontainer-5 img:nth-child(3), .imagecontainer-5 img:nth-child(4), .imagecontainer-5 img:nth-child(5) {
-  grid-column: span 2;
-  max-height: 200px;
-}
-
-.imagecontainer-6 img {
-  object-fit: cover;
-  height: 100%;
-  cursor: pointer;
-  width: 100%;
-  max-height: 300px;
-}
 .imagecontainer-6 img:nth-child(1), .imagecontainer-6 img:nth-child(2) {
   grid-column: span 3;
+  max-height: 300px;
 }
 .imagecontainer-6 img:nth-child(3), .imagecontainer-6 img:nth-child(4) {
   grid-column: span 2;
@@ -401,14 +347,18 @@ h6 {
   }
 }
 @media (max-width: 900px) {
-  .textarea-2 {
+  .btn-pu-cmt {
     display: flex;
+  }
+  .btn-pu-p {
+    display: none;
+  }
+  .rc-img {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.7);
   }
   .textarea-1 {
     display: none;
-  }
-  .image-container {
-    height: 70vh;
   }
   .container-cmt-1 {
     display: none;
@@ -438,6 +388,9 @@ h6 {
   .pop-up-post {
     grid-template-columns: 1fr;
     overflow-y: scroll;
+  }
+  .comment-container {
+    display: none;
   }
   .pop-up-post .image .image-container .btn-img-right {
     top: 50px;
@@ -526,6 +479,9 @@ h6 {
   }
 }
 @media (max-width: 540px) {
+  #home {
+    padding: 0;
+  }
   .avt-box {
     position: relative;
   }
