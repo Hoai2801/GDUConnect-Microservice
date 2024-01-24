@@ -186,7 +186,6 @@ const Home = () => {
         }
 
         const result = await response.json();
-        console.log(result)
         setPosts(result);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -199,25 +198,19 @@ const Home = () => {
     <>
       <div className="grid px-5" id="home">
         <div
-          className="col-end-2 col-start-1 max-h-[calc(100vh-63px)] post pt-[0.75rem] post-display"
+          className="col-end-2 col-start-1 max-h-[calc(100vh-63px)] overflow-y-scroll post pt-[0.75rem] post-display"
           align="center"
         >
-          {/* create new post */}
           <CreatePost />
-
-          {/* post list */}
           {posts ? (
             posts.map((post) => <Post postData={post} key={post.id} />)
           ) : (
             <p>Loading ...</p>
           )}
         </div>
-
-        {/* group list  */}
-
-        {/* <div className="mt-[-0.75rem] pt-[0.75rem] grouplist-none">
+        <div className="mt-[-0.75rem] pt-[0.75rem]">
           <GroupList />
-        </div> */}
+        </div>
       </div>
     </>
   );
