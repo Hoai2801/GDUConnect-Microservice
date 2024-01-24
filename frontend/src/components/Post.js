@@ -295,12 +295,9 @@ const Post = (props) => {
               </div>
             </div>
           ) : (
-            <img
-              className="col-span-2 max-h-[200px]"
-              src={data.images[4].imageURL}
-              loading="lazy"
-              alt=""
-            />
+            <div className="col-span-2 max-h-[200px]">
+              <img src={data.images[4].imageURL} loading="lazy" alt="" />
+            </div>
           )}
         </div>
       );
