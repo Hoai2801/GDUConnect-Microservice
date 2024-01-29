@@ -79,12 +79,8 @@ public class PostController {
                                            @ModelAttribute CommentDTO commentDTO
     ) {
         try {
-            log.info("Create comment: {}", commentDTO.getImage());
-            log.info("Create comment: {}", commentDTO.getContent());
-            log.info("Create comment: {}", commentDTO.getUserId());
             PostModel post = postService.getPostWithId(id);
             if (post.toString() != null) {
-                log.info("here");
                 return postService.createComment(commentDTO, id);
             }
             return ResponseEntity.badRequest().body("Cannot find the post!");
