@@ -193,7 +193,6 @@ const Post = (props) => {
                 <li>{CreatePostTime(comment.createdAt)}</li>
                 <li className="cursor-pointer">Thích</li>
               </ul>
-
               <div className="flex mt-2 max-w-[300px]">
                 <img
                   src={
@@ -229,7 +228,6 @@ const Post = (props) => {
       </>
     );
   }
-
   /**
    * Render the images based on the number of images in the data array.
    * @returns {JSX.Element} - The JSX element to render the images.

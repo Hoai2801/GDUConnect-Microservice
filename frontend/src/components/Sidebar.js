@@ -1,6 +1,7 @@
+import Cookies from "js-cookie";
 import { NavLink } from "react-router-dom";
 const Sidebar = () => {
-  const userlogin = 1;
+  const userlogin = Cookies.get("token") ? true : false;
   function CloseSideBar() {
     const blurbg = document.querySelector(".blurbg");
     blurbg.classList.remove("activeblur");

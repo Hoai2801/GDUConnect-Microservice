@@ -451,6 +451,9 @@ h6 {
   .text text.text-body {
     font-size: 70px;
   }
+  .login-section {
+    max-width: 450px;
+  }
 }
 
 @media (max-width: 950px) {

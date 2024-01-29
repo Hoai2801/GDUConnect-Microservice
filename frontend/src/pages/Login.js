@@ -53,18 +53,11 @@ const Login = () => {
   return (
     <>
       <NavbarLogin />
-      <section class="flex flex-col md:flex-row h-screen items-center">
-        <div class="bg-indigo-600 hidden lg:block w-full md:w-1/3 xl:w-1/3 h-screen">
-          <img
-            src="./20231229_043342.png"
-            alt=""
-            class="w-full h-full object-cover"
-          />
+      <section class="flex md:flex-row h-screen items-center justify-center">
+        <div class="bg-indigo-600 hidden lg:flex justify-center items-center w-full h-screen">
+          <img src="./20231229_043342.png" alt="" class="w-1/2 object-cover" />
         </div>
-        <div
-          class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
-        flex items-center justify-center"
-        >
+        <div class="bg-white lg:w-1/2 w-full px-10 h-screen flex items-center justify-center login-section">
           <div class="w-full h-100">
             <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">
               Log in to your account
@@ -170,7 +163,7 @@ const Login = () => {
               </div>
             </button>
             <p class="mt-8">
-              Need an account?{" "}
+              Need an account?
               <a
                 href="/"
                 class="text-blue-500 hover:text-blue-700 font-semibold hover:underline"
