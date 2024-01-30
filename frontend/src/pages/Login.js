@@ -3,8 +3,10 @@ import Cookies from "js-cookie";
 import React, { useState } from "react";
 import Footer from "../components/Footer";
 import NavbarLogin from "../components/NavbarLogin";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   // State variables to track email and password input
   const [studentCode, setStudentCode] = useState("");
   const [password, setPassword] = useState("");
@@ -21,19 +23,20 @@ const Login = () => {
   // Event handler for form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const url = "http://localhost:8081/api/v1/user/login";
+    
+    const url = "http://localhost:8080/api/v1/user/login";
     const data = {
       studentCode: studentCode,
       password: password,
     };
-    console.log(data);
 
     axios
       .post(url, data)
       .then((response) => {
-        console.log(response.data);
+        //store token in cookie
         Cookies.set("token", response.data.token);
+        // redirect to home page
+        navigate("/")
       })
       .catch((error) => {
         console.error(error);
@@ -53,40 +56,40 @@ const Login = () => {
   return (
     <>
       <NavbarLogin />
-      <section class="flex md:flex-row h-screen items-center justify-center">
-        <div class="bg-indigo-600 hidden lg:flex justify-center items-center w-full h-screen">
-          <img src="./20231229_043342.png" alt="" class="w-1/2 object-cover" />
+      <section className="flex md:flex-row h-screen items-center justify-center">
+        <div className="bg-indigo-600 hidden lg:flex justify-center items-center w-full h-screen">
+          <img src="./20231229_043342.png" alt="" className="w-1/2 object-cover" />
         </div>
-        <div class="bg-white lg:w-1/2 w-full px-10 h-screen flex items-center justify-center login-section">
-          <div class="w-full h-100">
-            <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">
+        <div className="bg-white lg:w-1/2 w-full px-10 h-screen flex items-center justify-center login-section">
+          <div className="w-full h-100">
+            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">
               Log in to your account
             </h1>
-            <form class="mt-6" onSubmit={handleSubmit}>
+            <form className="mt-6" onSubmit={handleSubmit}>
               <div>
-                <label class="block text-gray-700">Mã số sinh viên</label>
+                <label className="block text-gray-700">Mã số sinh viên</label>
                 <input
                   type="text"
                   value={studentCode}
                   onChange={handleStudentCodeChange}
                   placeholder="Nhập mã số sinh viên"
-                  class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
-                  autofocus
-                  autocomplete
+                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+                  autoFocus
+                  autoComplete="true"
                   required
                   style={{ transition: "all 0.5s" }}
                 />
               </div>
-              <div class="mt-4 relative">
-                <label class="block text-gray-700">Password</label>
+              <div className="mt-4 relative">
+                <label className="block text-gray-700">Password</label>
                 <input
                   id="password-js"
                   type="password"
                   value={password}
                   onChange={handlePasswordChange}
                   placeholder="Enter Password"
-                  minlength="6"
-                  class="w-full pl-4 pr-12 py-3 rounded-lg bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+                  minLength="6"
+                  className="w-full pl-4 pr-12 py-3 rounded-lg bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
                   required
                 />
                 <svg
@@ -112,28 +115,28 @@ const Login = () => {
                   <path d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z" />
                 </svg>
               </div>
-              <div class="text-right mt-2">
+              <div className="text-right mt-2">
                 <a
                   href="/"
-                  class="text-sm font-semibold text-gray-700 hover:text-blue-700 hover:underline focus:text-blue-700"
+                  className="text-sm font-semibold text-gray-700 hover:text-blue-700 hover:underline focus:text-blue-700"
                 >
                   Forgot Password?
                 </a>
               </div>
               <button
                 type="submit"
-                class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
+                className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
               px-4 py-3 mt-6 transition duration-200"
               >
                 Log In
               </button>
             </form>
-            <hr class="my-6 border-gray-300 w-full" />
+            <hr className="my-6 border-gray-300 w-full" />
             <button
               type="button"
-              class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300 transition duration-200"
+              className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300 transition duration-200"
             >
-              <div class="flex items-center justify-center">
+              <div className="flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   x="0px"
@@ -159,14 +162,14 @@ const Login = () => {
                     d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
                   ></path>
                 </svg>
-                <span class="ml-4">Log in with Google</span>
+                <span className="ml-4">Log in with Google</span>
               </div>
             </button>
-            <p class="mt-8">
+            <p className="mt-8">
               Need an account?
               <a
                 href="/"
-                class="text-blue-500 hover:text-blue-700 font-semibold hover:underline"
+                className="text-blue-500 hover:text-blue-700 font-semibold hover:underline"
               >
                 Create an account
               </a>

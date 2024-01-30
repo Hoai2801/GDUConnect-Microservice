@@ -1,12 +1,29 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-import React, { useState } from "react";
-import { redirect } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 const Post = (props) => {
+  const navigator = useNavigate();
   const [index, setIndex] = useState(0);
 
   const data = props.postData;
+  // console.log(data)
+
+  const token = Cookies.get("token");
+  const jwt = token ? jwtDecode(token) : redirect("/auth");
+
+  const [isLiked, setIsLiked] = useState(false);
+  // const [isLiked, setIsLiked] = data && Array.isArray(data.likes) ? [data.likes.some(like => like.userId === jwt.id), () => {}] : [false, () => {}];
+
+  useEffect(() => {
+    // Update isLiked whenever data or jwt changes
+    if (data && Array.isArray(data.likes)) {
+      setIsLiked(data.likes.some((like) => like.userId === jwt.id));
+    } else {
+      setIsLiked(false);
+    }
+  }, []);
 
   const [subComment, setSubComment] = useState();
 
@@ -21,9 +38,6 @@ const Post = (props) => {
     // Do something with the textareaValue, e.g., send it to a server or perform some action
     console.log("Textarea value:", textareaValue);
   };
-
-  const token = Cookies.get("token");
-  const jwt = token ? jwtDecode(token) : redirect("/auth");
 
   // state quản lý trạng thái đóng mở của detail images component
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
@@ -58,6 +72,54 @@ const Post = (props) => {
     }
   }
 
+  const toggleLike = async () => {
+    if (token === undefined || token === "") {
+      navigator("/auth");
+      return;
+    }
+    if (isLiked === true) {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const likeData = {
+        userId: jwt.id,
+        postId: data.id,
+      };
+
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/post/unlike",
+        likeData,
+        config
+      );
+      data.likes.length--;
+      setIsLiked(false);
+      console.log(isLiked + " " + data.id);
+    } else {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const likeData = {
+        userId: jwt.id,
+        postId: data.id,
+      };
+
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/post/like",
+        likeData,
+        config
+      );
+      data.likes.length++;
+      setIsLiked(true);
+      console.log(isLiked + " " + data.id);
+    }
+  };
+
   function togglePopUpImage() {
     setDetailImagesOpen(!isDetailImagesOpen);
   }
@@ -84,6 +146,7 @@ const Post = (props) => {
     });
   }
 
+  // State to hold main comment
   const [mainComment, setMainComment] = useState("");
 
   const handleMainComment = (event) => {
@@ -121,6 +184,7 @@ const Post = (props) => {
       console.log(response.data);
     }
   };
+
   function User() {
     return (
       <>
@@ -208,7 +272,7 @@ const Post = (props) => {
                     className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                     style={{ backgroundColor: " #F0F2F5" }}
                     placeholder="Phản hồi..."
-                  ></textarea>
+                  />
                   <button onClick={() => console.log("cmt")}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -330,19 +394,31 @@ const Post = (props) => {
           </div>
         </div>
         <div className="reaction flex justify-around mb-[8px] text-[15px]">
-          <div className="box flex items-center cursor-pointer">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 -960 960 960"
-              width="24"
-              className="mr-[5px] cursor-pointer"
-              style={{ fill: "rgb(101, 103, 107)" }}
-            >
-              <path d="M720-120H280v-520l280-280 50 50q7 7 11.5 19t4.5 23v14l-44 174h258q32 0 56 24t24 56v80q0 7-2 15t-4 15L794-168q-9 20-30 34t-44 14Zm-360-80h360l120-280v-80H480l54-220-174 174v406Zm0-406v406-406Zm-80-34v80H160v360h120v80H80v-520h200Z" />
-            </svg>
-            Thích
-          </div>
+          <button onClick={() => toggleLike()}>
+            <div className="box flex items-center cursor-pointer">
+              {isLiked ? (
+                <div className="w-[20px]">
+                  <img
+                    src="https://www.freeiconspng.com/thumbs/like-icon-png/black-like-icon-png-13.png"
+                    loading="lazy"
+                    alt=""
+                  />
+                </div>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                  className="mr-[5px] cursor-pointer"
+                  style={{ fill: "rgb(101, 103, 107)" }}
+                >
+                  <path d="M720-120H280v-520l280-280 50 50q7 7 11.5 19t4.5 23v14l-44 174h258q32 0 56 24t24 56v80q0 7-2 15t-4 15L794-168q-9 20-30 34t-44 14Zm-360-80h360l120-280v-80H480l54-220-174 174v406Zm0-406v406-406Zm-80-34v80H160v360h120v80H80v-520h200Z" />
+                </svg>
+              )}
+              Thích
+            </div>
+          </button>
           <div>
             <div
               className="box flex items-center cursor-pointer btn-pu-p"
@@ -563,13 +639,13 @@ const Post = (props) => {
                 className="h-[30px] w-[30px]"
                 alt=""
                 style={{ clipPath: "circle()" }}
-              ></img>
+              />
               <div className="flex justify-center items-center w-full relative">
                 <textarea
                   className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                   style={{ backgroundColor: " #F0F2F5" }}
                   placeholder="Viết bình luận..."
-                ></textarea>
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"

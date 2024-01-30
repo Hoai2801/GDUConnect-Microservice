@@ -1,8 +1,13 @@
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const userlogin = Cookies.get("token") ? true : false;
+
+  //jwt decode
+  const token = Cookies.get("token");
+  const jwt = token ? jwtDecode(token) : "";
   function UserHome() {
     return userlogin ? (
       <>
@@ -23,8 +28,8 @@ const Navbar = () => {
             alt=""
           ></img>
           <div className="ml-[7px]">
-            <p className="text-[13px] mb-[-4px]">Nguyen Van Toan</p>
-            <span className="text-[12px]">Khoa công nghệ thông tin</span>
+            <p className="text-[13px] mb-[-4px]">{jwt.name}</p>
+            <span className="text-[12px]">Khoa {jwt.department}</span>
           </div>
         </div>
       </>
@@ -32,7 +37,7 @@ const Navbar = () => {
       <>
         <a href="/auth">
           <button className="bg-slate-900 text-white px-[12px] py-[7px] rounded-2xl text-[14px] ring-1 ring-slate-900 hover:bg-slate-50 hover:text-black transition-all">
-            Đăng nhập
+            Đăng nhập 
           </button>
         </a>
       </>
