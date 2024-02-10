@@ -208,7 +208,6 @@ const Post = (props) => {
       </>
     );
   }
-
   function UserComments() {
     return (
       <>
@@ -368,7 +367,6 @@ const Post = (props) => {
         </div>
       );
   }
-
   return (
     <>
       <article className="post-box bg-slate-50 mb-[16px] flex max-w-[1200px] flex-col pb-[12px] rounded-[10px]">

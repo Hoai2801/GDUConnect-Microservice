@@ -64,6 +64,24 @@
   }
 }
 @media (max-width: 900px) {
+  .login-illustion {
+    display: none;
+  }
+  .login-box {
+    justify-content: center;
+    padding-left: 40px;
+    h1 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 14px;
+    }
+    button {
+      font-size: 14px;
+      margin-right: 20px;
+      padding: 14px 20px;
+    }
+  }
   .btn-pu-cmt {
     display: flex;
   }
@@ -188,6 +206,9 @@
   }
 }
 @media (max-width: 620px) {
+  .nav-login {
+    font-size: 24px;
+  }
   .header-home input {
     display: none;
   }
@@ -208,6 +229,15 @@
   }
 }
 @media (max-width: 540px) {
+  .login-nav {
+    padding: 0 20px;
+  }
+  .login-box {
+    padding-left: 20px;
+    form {
+      padding-right: 10px;
+    }
+  }
   #home {
     padding: 0;
   }
@@ -241,6 +271,12 @@
   }
 }
 @media (max-width: 425px) {
+  .login-nav {
+    padding: 0 5px;
+  }
+  .login-box {
+    padding-left: 5px;
+  }
   .avt-box {
     p,
     span {
@@ -263,6 +299,14 @@
   }
 }
 @media (max-width: 375px) {
+  .nav-login-text-right {
+    font-size: 14px;
+  }
+  .login-box {
+    button {
+      margin-right: 10px;
+    }
+  }
   .text text.text-body {
     font-size: 40px;
   }

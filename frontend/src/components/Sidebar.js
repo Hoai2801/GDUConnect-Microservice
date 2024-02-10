@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import { NavLink } from "react-router-dom";
+import Image from "../image";
 const Sidebar = () => {
   const userlogin = Cookies.get("token") ? true : false;
   function CloseSideBar() {
@@ -13,7 +14,7 @@ const Sidebar = () => {
       <div className="blurbg inset-0 fixed hidden" onClick={CloseSideBar}></div>
       <div className="sidebar-home h-[100vh] flex flex-col px-6 z-50 gap-y-5 shadow w-[288px] fixed transition duration-500 translate-x-[-400px] top-0">
         <div className="flex justify-between h-[63px] w-full items-center">
-          <img className="h-[50px]" src="20231229_043342.png" alt=""></img>
+          <img className="h-[50px]" src={Image.Logo} alt=""></img>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="30"
