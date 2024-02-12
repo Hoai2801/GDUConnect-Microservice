@@ -34,3 +34,33 @@
     }
   }
 }
+.nav {
+  background-color: rgb(17, 24, 39);
+  z-index: 3;
+}
+.nav-list-item {
+  color: #9ca3af;
+  transition: all 0.3s;
+  svg {
+    fill: #9ca3af;
+  }
+  &:hover {
+    background-color: rgb(31, 41, 55);
+    color: white;
+    svg {
+      fill: white;
+    }
+  }
+}
+.nav-list-item-active {
+  div {
+    background-color: rgb(31, 41, 55);
+    color: white;
+  }
+  svg {
+    fill: white;
+  }
+}
+.avt-nav-home {
+  clip-path: circle();
+}

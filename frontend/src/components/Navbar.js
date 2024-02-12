@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { Link, NavLink } from "react-router-dom";
-
+import Image from "../image";
 const Navbar = () => {
   const userlogin = Cookies.get("token") ? true : false;
 
@@ -37,7 +37,7 @@ const Navbar = () => {
       <>
         <a href="/auth">
           <button className="bg-slate-900 text-white px-[12px] py-[7px] rounded-2xl text-[14px] ring-1 ring-slate-900 hover:bg-slate-50 hover:text-black transition-all">
-            Đăng nhập 
+            Đăng nhập
           </button>
         </a>
       </>
@@ -89,7 +89,7 @@ const Navbar = () => {
       </nav>
       <aside className="nav flex flex-col px-6 w-[288px] gap-y-5 shadow col-start-1 row-start-1 row-end-3 fixed top-0 bottom-0 left-0">
         <div className="flex justify-start h-[63px] w-full items-center">
-          <img className="h-[50px]" src="20231229_043342.png" alt=""></img>
+          <img className="h-[50px]" src={Image.Logo} alt=""></img>
         </div>
         <div className="gap-y-5 flex flex-col">
           <div className="navlink">
@@ -233,7 +233,8 @@ const Navbar = () => {
         </div>
         {userlogin ? (
           <Link to="/auth">
-            <button className="flex justify-start items-center p-2 nav-list-item w-full"
+            <button
+              className="flex justify-start items-center p-2 nav-list-item w-full"
               onClick={() => Cookies.set("token", "")}
             >
               <svg

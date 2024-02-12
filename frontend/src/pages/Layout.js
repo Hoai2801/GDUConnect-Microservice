@@ -9,7 +9,7 @@ const Layout = () => {
       <div className="layout">
         <Navbar />
         <Sidebar />
-        <div className="respon ml-[288px]">
+        <div className="respon ml-[288px] mt-[60px]">
           <Outlet />
         </div>
       </div>
