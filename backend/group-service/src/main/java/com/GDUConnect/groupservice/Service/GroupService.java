@@ -6,11 +6,13 @@ import com.GDUConnect.groupservice.Repository.GroupReposiory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
 @RequiredArgsConstructor
 public class GroupService {
     private final GroupReposiory groupReposiory;
+    private final WebClient.Builder webClientBuilder;
 
     public ResponseEntity<?> getAllGroups() {
         return ResponseEntity.ok().body(groupReposiory.findAllByIdGreaterThanID(2L));
@@ -57,4 +59,13 @@ public class GroupService {
         }
         return ResponseEntity.ok().body("delete successfully");
     }
+
+//    public ResponseEntity<?> getPostsOfGroup(Long id) {
+//        return webClientBuilder.build()
+//                .get()
+//                .uri("http://post-service/api/v1/user/" + userId)
+//                .retrieve()
+//                .bodyToMono(UserDTO.class)
+//                .block();
+//    }
 }

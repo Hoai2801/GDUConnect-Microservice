@@ -6,16 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="b8d5aea4-48a8-450f-a2f3-671d400e632c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/GDUConnect/apigateway/Config/ApplicationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/group-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/group-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Controller/GroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Service/GroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Service/GroupService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -52,10 +57,13 @@
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/talos/Desktop/Project/GDUConnect-Microservice/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="ReactorSettings">
@@ -169,7 +177,17 @@
       <workItem from="1706529114497" duration="917000" />
       <workItem from="1706588759523" duration="3000" />
       <workItem from="1706590248995" duration="338000" />
-      <workItem from="1706591324756" duration="1857000" />
+      <workItem from="1706591324756" duration="2021000" />
+      <workItem from="1706613900423" duration="876000" />
+      <workItem from="1706615110337" duration="11000" />
+      <workItem from="1706768614953" duration="204000" />
+      <workItem from="1706768825257" duration="261000" />
+      <workItem from="1706769097913" duration="620000" />
+      <workItem from="1706774464881" duration="842000" />
+      <workItem from="1706779196978" duration="434000" />
+      <workItem from="1706780064441" duration="56000" />
+      <workItem from="1706958698067" duration="1418000" />
+      <workItem from="1707502132678" duration="318000" />
     </task>
     <servers />
   </component>

@@ -48,4 +48,9 @@ public class GroupController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    
+//    @GetMapping("/group/{id}")
+//    public ResponseEntity<?> getPostsOfGroup(@PathVariable Long id) {
+//        return groupService.getPostsOfGroup(id);
+//    }
 }
