@@ -1,41 +1,5 @@
-.navbar {
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgb(188, 188, 188);
-  z-index: 1 !important;
-  .logo {
-    font-family: "Raleway", sans-serif;
-    a {
-      color: rgb(1, 124, 182);
-    }
-    span {
-      color: rgb(252, 210, 0);
-    }
-  }
-  .middle-section {
-    a {
-      margin: 0 10px;
-      font-weight: 400;
-      font-size: 15px;
-      position: relative;
-      &::after {
-        content: "";
-        position: absolute;
-        height: 1px;
-        width: 0%;
-        left: 0;
-        right: 0;
-        background-color: black;
-        bottom: -1px;
-        transition: all 0.5s;
-      }
-      &:hover::after {
-        width: 100%;
-      }
-    }
-  }
-}
 .nav {
-  background-color: rgb(17, 24, 39);
+  background: linear-gradient(45deg, rgb(0, 6, 14), rgb(0, 26, 63));
   z-index: 3;
 }
 .nav-list-item {
