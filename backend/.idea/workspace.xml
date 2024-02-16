@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8d5aea4-48a8-450f-a2f3-671d400e632c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/group-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/group-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Controller/GroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Service/GroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/group-service/src/main/java/com/GDUConnect/groupservice/Service/GroupService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +185,7 @@
       <workItem from="1706780064441" duration="56000" />
       <workItem from="1706958698067" duration="1418000" />
       <workItem from="1707502132678" duration="318000" />
+      <workItem from="1708047303182" duration="606000" />
     </task>
     <servers />
   </component>

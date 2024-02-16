@@ -7,6 +7,7 @@ import Layout from "./pages/Layout";
 import Login from "./pages/Login";
 import Room from "./pages/Room";
 import Shop from "./pages/Shop";
+import Group from "./pages/Group";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/room" element={<Room />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/competition" element={<Competition />} />
+        <Route path="/group/:id" element={<Group />} />
       </Route>
       <Route path="/auth" element={<Login />} />
     </Routes>
