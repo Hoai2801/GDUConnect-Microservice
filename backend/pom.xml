@@ -16,6 +16,7 @@
         <module>notification-service</module>
         <module>group-service</module>
         <module>survey-services</module>
+        <module>room-service</module>
     </modules>
 
     <properties>
