@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,5 +33,13 @@ public class RoomService {
 
     public List<RoomModel> getAllRoom() {
         return roomRepository.findAll(); 
+    }
+
+    public String deleteRoomWithId(Long id) {
+        RoomModel existingRoom = roomRepository.findRoomModelById(id);
+        if (existingRoom != null) {
+            roomRepository.deleteById(id);
+            return "Delete successfully";
+        } else return "Cannot find room with id " + id;
     }
 }
