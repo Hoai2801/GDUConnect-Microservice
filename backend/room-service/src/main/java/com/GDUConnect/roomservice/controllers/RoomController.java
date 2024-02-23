@@ -17,6 +17,7 @@ public class RoomController {
     private final RoomService roomService; 
     
     @GetMapping("/")
+    @ResponseStatus(HttpStatus.OK)
     public List<RoomModel> getAllRoom() {
         return roomService.getAllRoom(); 
     } 
@@ -25,5 +26,11 @@ public class RoomController {
     @ResponseStatus(HttpStatus.CREATED)
     public String createRoom(@RequestBody RoomDTO roomDTO) {
         return roomService.createRoom(roomDTO);
+    }
+    
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public String deleteRoomWithId(@PathVariable Long id) {
+        return roomService.deleteRoomWithId(id);
     }
 }
