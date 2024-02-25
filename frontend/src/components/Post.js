@@ -475,9 +475,8 @@ const Post = (props) => {
           key={data.post_id}
         >
           <div
-            className={`image col-span-3 bg-black ${
-              data.images.length !== 0 ? " " : "hidden"
-            } `}
+            className={`image col-span-3 bg-black ${data.images.length !== 0 ? " " : "hidden"
+              } `}
           >
             <div className="image-container items-center justify-center relative flex w-full h-[100vh]">
               <img
@@ -581,9 +580,8 @@ const Post = (props) => {
             </div>
           </div>
           <div
-            className={`comment-container bg-slate-50 flex-col w-full flex relative pl-[15px] ${
-              data.images.length !== 0 ? "col-span-2" : "col-start-2 col-end-5"
-            }`}
+            className={`comment-container bg-slate-50 flex-col w-full flex relative pl-[15px] ${data.images.length !== 0 ? "col-span-2" : "col-start-2 col-end-5"
+              }`}
           >
             <div className="container-cmt-1">
               <div className="overflow-y-scroll h-[100vh] pb-[68px] pt-2">
