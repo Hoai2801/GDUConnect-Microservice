@@ -36,6 +36,7 @@ public class SecurityConfig {
           auth.pathMatchers("/api/v1/auth/**").permitAll();
           auth.pathMatchers(HttpMethod.GET, "/api/v1/post/**").permitAll();
           auth.pathMatchers(HttpMethod.GET, "/api/v1/group/**").permitAll();
+          auth.pathMatchers(HttpMethod.GET, "/api/v1/room/**").permitAll();
           auth.pathMatchers("/api/v1/user/**").permitAll();
           auth.pathMatchers("/eureka/**", "/actuator/**").permitAll();
           auth.anyExchange().authenticated();
