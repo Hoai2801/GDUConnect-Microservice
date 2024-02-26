@@ -64,6 +64,9 @@
   }
 }
 @media (max-width: 900px) {
+  .form-login {
+    padding-right: 0;
+  }
   .login-illustion {
     display: none;
   }

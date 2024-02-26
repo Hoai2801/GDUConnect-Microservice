@@ -2,12 +2,12 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Competition from "./pages/Competition";
+import Group from "./pages/Group";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
 import Room from "./pages/Room";
 import Shop from "./pages/Shop";
-import Group from "./pages/Group";
 
 function App() {
   return (
