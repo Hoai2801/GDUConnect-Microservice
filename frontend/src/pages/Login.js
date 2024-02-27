@@ -92,7 +92,10 @@ const Login = () => {
               <h1 className="text-[30px] font-bold">Welcome Back!</h1>
               <p className="text-slate-600">Login to continue</p>
             </div>
-            <form className="pr-10 flex flex-col justify-between gap-[5vh] form-login" onSubmit={handleSubmit}>
+            <form
+              className="pr-10 flex flex-col justify-between gap-[5vh] form-login"
+              onSubmit={handleSubmit}
+            >
               <div className="pr-10">
                 <div>
                   <label className="block text-gray-700">
@@ -188,8 +191,8 @@ const Login = () => {
                     ></path>
                   </svg>
                 </button>
-              </div></form>
-
+              </div>
+            </form>
           </div>
         </div>
       </section>
