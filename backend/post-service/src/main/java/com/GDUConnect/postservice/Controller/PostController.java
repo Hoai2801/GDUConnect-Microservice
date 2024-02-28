@@ -130,4 +130,13 @@ public class PostController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    
+    @GetMapping("/comment/{id}")
+    public ResponseEntity<?> getCommentsWithId(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok().body(postService.getCommentsWithId(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

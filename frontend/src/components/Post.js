@@ -9,12 +9,14 @@ const Post = (props) => {
 
   const data = props.postData;
   // console.log(data)
+  const [comments, setComment] = useState([]);
 
   const token = Cookies.get("token");
   const jwt = token ? jwtDecode(token) : redirect("/auth");
 
   const [isLiked, setIsLiked] = useState(false);
   // const [isLiked, setIsLiked] = data && Array.isArray(data.likes) ? [data.likes.some(like => like.userId === jwt.id), () => {}] : [false, () => {}];
+  const [isCommentsOpen, setCommentsOpen] = useState(false);
 
   useEffect(() => {
     // Update isLiked whenever data or jwt changes
@@ -23,7 +25,25 @@ const Post = (props) => {
     } else {
       setIsLiked(false);
     }
+    fetch("http://localhost:8080/api/v1/post/comment/" + data.id)
+      .then((response) => response.json())
+      .then((data) => setComment(data))
+      .catch((error) => console.error(error));
   }, []);
+
+  useEffect(() => {
+    if (isDetailImagesOpen) {
+      // Perform your logic here, e.g., using setInterval
+      const intervalId = setInterval(() => {
+        fetch("http://localhost:8080/api/v1/post/comment/" + data.id)
+          .then((response) => response.json())
+          .then((data) => setComment(data))
+          .catch((error) => console.error(error));
+      }, 5000); // Example interval of 5 seconds
+
+      return () => clearInterval(intervalId); // Cleanup function to clear interval
+    }
+  });
 
   const [subComment, setSubComment] = useState();
 
@@ -42,7 +62,6 @@ const Post = (props) => {
   // state quản lý trạng thái đóng mở của detail images component
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
   //for mobile devices
-  const [isCommentsOpen, setCommentsOpen] = useState(false);
   /**
    * Returns a string representing the time difference between the current time and the given time.
    * @param {string} TimePost - The time to compare to the current time.
@@ -89,7 +108,7 @@ const Post = (props) => {
         postId: data.id,
       };
 
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:8080/api/v1/post/unlike",
         likeData,
         config
@@ -109,7 +128,7 @@ const Post = (props) => {
         postId: data.id,
       };
 
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:8080/api/v1/post/like",
         likeData,
         config
@@ -181,7 +200,6 @@ const Post = (props) => {
 
       // Reset mainComment and log the response data
       setMainComment("");
-      console.log(response.data);
     }
   };
 
@@ -208,89 +226,92 @@ const Post = (props) => {
       </>
     );
   }
+
   function UserComments() {
     return (
       <>
         {/* No one has commented yet       */}
-        {data.comments.length === 0 && (
+        {comments && comments.length === 0 && (
           <h3 className="text-[15px] font-bold">
             Bài viết chưa có bình luận nào, bạn hãy trở thành người đầu tiên
           </h3>
         )}
         {/* Comments */}
-        {data.comments.map((comment) => (
-          <div
-            key={comment.id}
-            className="comment-details grid grid-cols-[40px_1fr] mb-[12px]"
-          >
-            {/* user avatar */}
-            <div className="min-w-[32px] min-h-[32px] max-w-[32px] max-h-[32px] mr-1">
-              <img
-                className="avatar object-cover h-[32px] w-[32px]"
-                src={comment.user.avatar}
-                loading="lazy"
-                alt=""
-                style={{ clipPath: "circle()" }}
-              />
-            </div>
-            {/* comment content */}
-            <div className="flex flex-col items-start">
-              <div className="bg-gray-200 p-3 rounded-[20px] flex flex-col items-start">
-                <p className="text-[15px]">
-                  {comment.user.fullname} &#x2022; {comment.user.department}
-                </p>
-                <p className="text-[15px]">{comment.content}</p>
-                {comment.imageURL ? (
-                  <img
-                    className="rounded-xl max-h-[300px] mt-[3px]"
-                    src={comment.imageURL}
-                    loading="lazy"
-                    alt=""
-                  />
-                ) : (
-                  " "
-                )}
-              </div>
-              {/* comment actions */}
-              <ul className="text-[12px] flex space-x-[10px]">
-                <li>{CreatePostTime(comment.createdAt)}</li>
-                <li className="cursor-pointer">Thích</li>
-              </ul>
-              <div className="flex mt-2 max-w-[300px]">
+        {comments &&
+          comments.map((comment) => (
+            <div
+              key={comment.id}
+              className="comment-details grid grid-cols-[40px_1fr] mb-[12px]"
+            >
+              {/* user avatar */}
+              <div className="min-w-[32px] min-h-[32px] max-w-[32px] max-h-[32px] mr-1">
                 <img
-                  src={
-                    data.user.avatar ||
-                    "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
-                  }
-                  className="h-[30px] w-[30px]"
+                  className="avatar object-cover h-[32px] w-[32px]"
+                  src={comment.user.avatar}
+                  loading="lazy"
                   alt=""
                   style={{ clipPath: "circle()" }}
                 />
-                <div className="flex justify-center items-center w-full relative">
-                  <textarea
-                    className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
-                    style={{ backgroundColor: " #F0F2F5" }}
-                    placeholder="Phản hồi..."
+              </div>
+              {/* comment content */}
+              <div className="flex flex-col items-start">
+                <div className="bg-gray-200 p-3 rounded-[20px] flex flex-col items-start">
+                  <p className="text-[15px]">
+                    {comment.user.fullname} &#x2022; {comment.user.department}
+                  </p>
+                  <p className="text-[15px]">{comment.content}</p>
+                  {comment.imageURL ? (
+                    <img
+                      className="rounded-xl max-h-[300px] mt-[3px]"
+                      src={comment.imageURL}
+                      loading="lazy"
+                      alt=""
+                    />
+                  ) : (
+                    " "
+                  )}
+                </div>
+                {/* comment actions */}
+                <ul className="text-[12px] flex space-x-[10px]">
+                  <li>{CreatePostTime(comment.createdAt)}</li>
+                  <li className="cursor-pointer">Thích</li>
+                </ul>
+                <div className="flex mt-2 max-w-[300px]">
+                  <img
+                    src={
+                      data.user.avatar ||
+                      "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
+                    }
+                    className="h-[30px] w-[30px]"
+                    alt=""
+                    style={{ clipPath: "circle()" }}
                   />
-                  <button onClick={() => console.log("cmt")}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24"
-                      viewBox="0 -960 960 960"
-                      width="24"
-                      className="cursor-pointer absolute bottom-[5px] right-[5px]"
-                    >
-                      <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
-                    </svg>
-                  </button>
+                  <div className="flex justify-center items-center w-full relative">
+                    <textarea
+                      className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
+                      style={{ backgroundColor: " #F0F2F5" }}
+                      placeholder="Phản hồi..."
+                    />
+                    <button onClick={() => console.log("cmt")}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24"
+                        viewBox="0 -960 960 960"
+                        width="24"
+                        className="cursor-pointer absolute bottom-[5px] right-[5px]"
+                      >
+                        <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </>
     );
   }
+
   /**
    * Render the images based on the number of images in the data array.
    * @returns {JSX.Element} - The JSX element to render the images.
@@ -387,7 +408,7 @@ const Post = (props) => {
             onClick={togglePopUpImage}
           >
             <div className="hover:underline">
-              Bình luận: {data.comments.length}
+              Bình luận: {comments.length}
             </div>
           </div>
         </div>
@@ -475,8 +496,9 @@ const Post = (props) => {
           key={data.post_id}
         >
           <div
-            className={`image col-span-3 bg-black ${data.images.length !== 0 ? " " : "hidden"
-              } `}
+            className={`image col-span-3 bg-black ${
+              data.images.length !== 0 ? " " : "hidden"
+            } `}
           >
             <div className="image-container items-center justify-center relative flex w-full h-[100vh]">
               <img
@@ -580,8 +602,9 @@ const Post = (props) => {
             </div>
           </div>
           <div
-            className={`comment-container bg-slate-50 flex-col w-full flex relative pl-[15px] ${data.images.length !== 0 ? "col-span-2" : "col-start-2 col-end-5"
-              }`}
+            className={`comment-container bg-slate-50 flex-col w-full flex relative pl-[15px] ${
+              data.images.length !== 0 ? "col-span-2" : "col-start-2 col-end-5"
+            }`}
           >
             <div className="container-cmt-1">
               <div className="overflow-y-scroll h-[100vh] pb-[68px] pt-2">
@@ -641,16 +664,20 @@ const Post = (props) => {
                   className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                   style={{ backgroundColor: " #F0F2F5" }}
                   placeholder="Viết bình luận..."
+                  value={mainComment}
+                  onChange={handleMainComment}
                 />
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24"
-                  viewBox="0 -960 960 960"
-                  width="24"
-                  className="cursor-pointer absolute bottom-[5px] right-[5px]"
-                >
-                  <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
-                </svg>
+                <button onClick={async () => createComment(data.id)}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                    className="cursor-pointer absolute bottom-[5px] right-[5px]"
+                  >
+                    <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -689,7 +716,7 @@ const Post = (props) => {
               <textarea
                 className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                 style={{ backgroundColor: " #F0F2F5" }}
-                placeholder="Viết bình luận..."
+                placeholder="Viết bình luận000..."
                 value={mainComment}
                 onChange={handleMainComment}
               />

@@ -92,8 +92,6 @@ public class PostService {
      * @return The converted PostResponse object.
      */
     private PostResponse convertToPostResponse(PostModel postModel) {
-        // Retrieve the user details
-        UserDTO user = retrieveUserId(postModel.getUser());
 
         // Retrieve the comments of the post
         List<CommentModel> commentsOfPost = commentRepository.findCommentModelByPostId(postModel);
@@ -102,7 +100,7 @@ public class PostService {
         List<CommentResponse> commentResponses = commentsOfPost.stream()
                 .map(commentModel -> CommentResponse.builder()
                         .id(commentModel.getId())
-                        .user(user)
+                        .user(retrieveUserId(commentModel.getUserId()))
                         .content(commentModel.getContent())
                         .imageURL(commentModel.getImgURL())
                         .createdAt(commentModel.getCreatedAt())
@@ -112,7 +110,7 @@ public class PostService {
         // Build and return the PostResponse object
         return PostResponse.builder()
                 .id(postModel.getId())
-                .user(user)
+                .user(retrieveUserId(postModel.getUser()))
                 .content(postModel.getContent())
                 .images(postModel.getImages())
                 .comments(commentResponses)
@@ -222,9 +220,7 @@ public class PostService {
         Map<String, Object> result = cloudinary.uploader().upload(file.getBytes(), options);
 
         // Get the URL of the uploaded image
-        String imageUrl = result.get("url").toString();
-
-        return imageUrl;
+        return result.get("url").toString();
     }
 
     public List<PostResponse> getPostsByGroupId(Long groupId) {
@@ -233,5 +229,20 @@ public class PostService {
         return postModelList.stream()
                 .map(this::convertToPostResponse)
                 .collect(Collectors.toList());
+    }
+
+    public List<CommentResponse> getCommentsWithId(Long id) {
+        PostModel existingPost = postRepository.findById(id).orElseThrow(null);
+        if (existingPost == null) {
+            throw new EntityNotFoundException("Cannot find your post");
+        }
+        List<CommentModel> commentModel = commentRepository.findByPostIdOrderByUpdatedAtDesc(existingPost);
+        return commentModel.stream().map(comment -> CommentResponse.builder()
+                .id(comment.getId())
+                .user(retrieveUserId(comment.getUserId()))
+                .content(comment.getContent())
+                .imageURL(comment.getImgURL())
+                .createdAt(comment.getCreatedAt())
+                .build()).toList();
     }
 }
