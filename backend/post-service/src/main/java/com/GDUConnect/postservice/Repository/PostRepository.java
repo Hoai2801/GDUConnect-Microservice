@@ -9,4 +9,6 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<PostModel, Long> {
     @Query("SELECT p FROM PostModel p ORDER BY p.id DESC")
     List<PostModel> getAllOrderByIdDesc();
+
+    List<PostModel> getByGroupId(Long groupId);
 }

@@ -226,4 +226,12 @@ public class PostService {
 
         return imageUrl;
     }
+
+    public List<PostResponse> getPostsByGroupId(Long groupId) {
+        List<PostModel> postModelList = postRepository.getByGroupId(groupId);
+        // Convert List<PostModel> to List<PostResponse>
+        return postModelList.stream()
+                .map(this::convertToPostResponse)
+                .collect(Collectors.toList());
+    }
 }

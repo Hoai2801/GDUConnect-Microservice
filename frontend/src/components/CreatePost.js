@@ -81,7 +81,7 @@ const CreatePost = () => {
     const fetchUser = async () => {
       try {
         if (jwt.id === undefined) {
-          redirect("/auth")
+          redirect("/auth");
         }
         const response = await axios.get(
           "http://localhost:8080/api/v1/user/" + jwt.id
@@ -149,9 +149,9 @@ const CreatePost = () => {
           {/* submit the post */}
           <button
             onClick={handleSubmit}
-            className="bg-blue-400 px-1 h-fit py-2 mt-2 rounded-lg btn-submit"
+            className="bg-blue-400 px-3 h-fit py-2 mt-2 rounded-lg btn-submit"
           >
-            Submit
+            Đăng
           </button>
         </div>
       </div>

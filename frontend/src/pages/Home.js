@@ -178,21 +178,14 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/v1/post");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-
-        const result = await response.json();
-        setPosts(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
+    fetch("http://localhost:8080/api/v1/post")
+    .then(response => response.json())
+    .then(data => {
+      setPosts(data);
+    })
+    .catch(error => {
+      console.error("Error fetching data:", error);
+    });
   }, []);
   return (
     <>

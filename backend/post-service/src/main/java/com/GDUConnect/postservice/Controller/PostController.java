@@ -121,4 +121,13 @@ public class PostController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    
+    @GetMapping("/{groupId}/posts")
+    public ResponseEntity<?> getPostsByGroupId(@PathVariable("groupId") Long groupId) {
+        try {
+            return ResponseEntity.ok().body(postService.getPostsByGroupId(groupId));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
