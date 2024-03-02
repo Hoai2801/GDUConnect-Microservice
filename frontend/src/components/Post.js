@@ -407,9 +407,7 @@ const Post = (props) => {
             align="right"
             onClick={togglePopUpImage}
           >
-            <div className="hover:underline">
-              Bình luận: {comments.length}
-            </div>
+            <div className="hover:underline">Bình luận: {comments.length}</div>
           </div>
         </div>
         <div className="reaction flex justify-around mb-[8px] text-[15px]">

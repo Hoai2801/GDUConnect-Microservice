@@ -64,6 +64,10 @@
   }
 }
 @media (max-width: 900px) {
+  .register-form {
+    grid-column: span 2;
+    padding-left: 5vh;
+  }
   .form-login {
     padding-right: 0;
   }
@@ -209,6 +213,9 @@
   }
 }
 @media (max-width: 620px) {
+  .grid-register {
+    grid-template-columns: 1fr;
+  }
   .nav-login {
     font-size: 24px;
   }
@@ -232,6 +239,21 @@
   }
 }
 @media (max-width: 540px) {
+  .h1-login {
+    font-size: 24px;
+  }
+  .login-input-box {
+    padding: 0;
+  }
+  .nav-register {
+    margin: 0 5px;
+  }
+  .register-form {
+    padding: 5vh 5px 0 5px;
+  }
+  .link-login {
+    font-size: 14px;
+  }
   .login-nav {
     padding: 0 20px;
   }

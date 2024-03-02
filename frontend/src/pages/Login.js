@@ -74,9 +74,11 @@ const Login = () => {
           </div>
           <div className="nav-login-text text-[17px] nav-login-text-right">
             New User?{" "}
-            <span className="text-blue-500 hover:underline cursor-pointer">
-              Sign Up
-            </span>
+            <a href="/register">
+              <span className="text-blue-500 hover:underline cursor-pointer">
+                Sign Up
+              </span>
+            </a>
           </div>
         </div>
         <div className="h-[90vh] flex login-box">
@@ -96,7 +98,7 @@ const Login = () => {
               className="pr-10 flex flex-col justify-between gap-[5vh] form-login"
               onSubmit={handleSubmit}
             >
-              <div className="pr-10">
+              <div className="pr-10 login-input-box">
                 <div>
                   <label className="block text-gray-700">
                     Mã số sinh viên{" "}
@@ -107,7 +109,7 @@ const Login = () => {
                     value={studentCode}
                     onChange={handleStudentCodeChange}
                     placeholder="Nhập mã số sinh viên"
-                    className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 Ffocus:border-blue-500 focus:bg-white transition duration-300 studentcode"
+                    className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300 studentcode"
                     autoFocus
                     autoComplete="true"
                     required
@@ -151,7 +153,7 @@ const Login = () => {
                   </svg>
                 </div>
               </div>
-              <div className="flex">
+              <div className="flex login-button">
                 <button
                   onClick={RequireInfo}
                   className="py-4 px-[50px] ring-1 ring-black text-white bg-black rounded-[30px] hover:bg-white hover:text-black transition duration-300 mr-10 active:bg-black active:text-white"
