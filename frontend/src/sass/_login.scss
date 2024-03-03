@@ -5,6 +5,10 @@
     color: rgb(1, 124, 182);
   }
 }
-.nav-login-text {
+.nav-login-text,
+.register-text {
   font-family: "Space Mono", monospace;
+}
+.grid-register {
+  grid-template-columns: 1fr 550px;
 }

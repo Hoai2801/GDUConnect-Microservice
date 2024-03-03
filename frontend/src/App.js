@@ -6,15 +6,17 @@ import Group from "./pages/Group";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
+import Notfound from "./pages/Notfound";
+import Register from "./pages/Register";
 import Room from "./pages/Room";
-import Shop from "./pages/Shop";
 import RoomDetail from "./pages/RoomDetail";
+import Shop from "./pages/Shop";
 
 function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
+        <Route index path="/" element={<Home />} />
         <Route path="/room" element={<Room />} />
         <Route path="/room/:id" element={<RoomDetail />} />
         <Route path="/shop" element={<Shop />} />
@@ -22,6 +24,8 @@ function App() {
         <Route path="/group/:id" element={<Group />} />
       </Route>
       <Route path="/auth" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="*" element={<Notfound />} />
     </Routes>
   );
 }
