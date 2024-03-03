@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@500&display=swap");
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #f0f2f5;
+  background-color: white;
 }
 
 a {
@@ -46,6 +46,29 @@ h6 {
 
 .layout {
   grid-template-columns: 288px 1fr;
+}
+
+.notfound {
+  font-family: "Poppin", sans-serif;
+}
+.notfound h1 {
+  font-weight: 700;
+  font-family: "Poppin", sans-serif;
+}
+.notfound button {
+  background: linear-gradient(90deg, #5335cf 0%, #de005e 25%, #f66e48 50%, #de005e 75%, #5335cf 100%);
+  background-size: 400%;
+  animation: animate 15s linear infinite;
+}
+@keyframes animate {
+  to {
+    background-position: 400%;
+  }
+}
+
+.border-room {
+  border-top: 1px solid rgb(229, 231, 235);
+  border-bottom: 1px solid rgb(229, 231, 235);
 }
 
 .nav {
@@ -114,7 +137,7 @@ h6 {
   border-radius: 16px;
   display: flex;
   overflow-y: scroll;
-  background-color: #f0f2f5;
+  background-color: white;
   flex-direction: column;
 }
 .clb-box::-webkit-scrollbar {

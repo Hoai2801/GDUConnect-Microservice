@@ -157,12 +157,7 @@ const Post = (props) => {
   }
 
   function previousImage() {
-    setIndex((i) => {
-      if (i === 0) {
-        return data.images.length - 1;
-      }
-      return i - 1;
-    });
+    setIndex((i) => (i === 0 ? data.images.length - 1 : i - 1));
   }
 
   // State to hold main comment

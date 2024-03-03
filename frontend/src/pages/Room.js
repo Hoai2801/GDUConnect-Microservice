@@ -112,13 +112,13 @@ const Room = () => {
   }
 
   return (
-    <div className="flex justify-center pt-10 pb-[100px]">
+    <div className="flex w-full pl-[20px] pt-5 pb-[100px]">
       <div className="flex flex-col gap-5">
         {data ? (
           data.map((data) => (
             <Link to={`/room/${data.id}`}>
               <div key={data.id} className="flex h-[150px]">
-                <div className="w-[250px] p-0 max-h-[150px] overflow-hidden rounded-lg">
+                <div className="min-w-[250px] max-w-[250px] p-0 max-h-[150px] overflow-hidden rounded-lg">
                   <img
                     src={
                       data?.images?.[0]?.imageURL ||
@@ -128,11 +128,11 @@ const Room = () => {
                   />
                 </div>
                 <div className="px-5 pt-2">
-                  <div className="w-[450px] overflow-hidden text-ellipsis h-[30px]">
+                  <div className="overflow-hidden text-ellipsis h-[30px]">
                     <h2 className="text-2xl font-semibold">{data.title}</h2>
                   </div>
                   <div className="h-[50px]">
-                    <p className="w-[450px] overflow-ellipsis overflow-hidden max-h-[50px]">
+                    <p className="overflow-ellipsis overflow-hidden max-h-[50px]">
                       {data.description}
                     </p>
                   </div>

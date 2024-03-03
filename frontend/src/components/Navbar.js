@@ -90,9 +90,12 @@ const Navbar = () => {
       <aside className="nav flex flex-col px-6 w-[288px] gap-y-5 shadow col-start-1 row-start-1 row-end-3 fixed top-0 bottom-0 left-0">
         <div className="flex justify-start h-[63px] w-full items-center">
           <img className="h-[50px]" src={Image.Logo} alt=""></img>
+          <h1 className="text-white text-[24px] font-semibold ml-2">
+            GDU Connect
+          </h1>
         </div>
         <div className="gap-y-5 flex flex-col">
-          <div className="navlink">
+          <div className="navlink gap-y-2 flex flex-col">
             <div>
               <NavLink
                 to="/"
@@ -194,7 +197,7 @@ const Navbar = () => {
               </NavLink>
             </div>
           </div>
-          <div>
+          <div className="gap-y-2 flex flex-col">
             <div style={{ color: "#9CA3AF" }} className="pl-[8px] text-[12px]">
               Khác
             </div>
