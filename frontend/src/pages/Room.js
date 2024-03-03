@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const Room = () => {
-  const [data, setData] = useState([]);
-  // const mockData = [
+  const [data, setData] = useState([]); // comment this
+  // const mockData = [                 // change name to data
   //   {
   //     id: 4,
   //     userId: 1,
