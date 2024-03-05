@@ -25,7 +25,7 @@ let initRouter = (app) => {
     .put(uploadCloudProduct.array("images", 5), ctrlRating.updateRatingWithId)
     .delete(ctrlRating.deleteRatingWithId);
   router.route("/rating/product/:id").get(ctrlRating.getRatingWithProductId);
-  return app.use("/api/v1", router);
+  return app.use("/api/v1/shop", router);
 };
 
 module.exports = initRouter;
