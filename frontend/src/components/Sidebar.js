@@ -15,6 +15,7 @@ const Sidebar = () => {
       <div className="sidebar-home h-[100vh] flex flex-col px-6 z-50 gap-y-5 shadow w-[288px] fixed transition duration-500 translate-x-[-400px] top-0">
         <div className="flex justify-between h-[63px] w-full items-center">
           <img className="h-[50px]" src={Image.Logo} alt=""></img>
+          <h1 className="text-white text-[20px] font-semibold">GDU Connect</h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="30"
