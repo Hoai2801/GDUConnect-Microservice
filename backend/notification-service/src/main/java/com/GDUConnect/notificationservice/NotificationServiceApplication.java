@@ -24,14 +24,11 @@ public class NotificationServiceApplication {
 	public void handleNotification(@NonNull PostEvent postEvent) {
 		// send out an email notification
 		log.info("Create status: {}", postEvent.getStatus());
+		// Save the notification to the database
 		if (postEvent.getStatus().equals("Success")) {
-			Model model = Model.builder()
-					.title("Create")
-					.fromGroup(0)
-					.userId(1)
-					.isCheck(false)
-					.build();
-			notificationService.sendNotification(model);
+			// save notification to the database
+		} else {
+			// do something else
 		}
 	}
 }

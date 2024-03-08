@@ -117,7 +117,7 @@ const Room = () => {
         {data ? (
           data.map((data) => (
             <Link to={`/room/${data.id}`}>
-              <div key={data.id} className="flex h-[150px]">
+              <div key={data.id} className="flex h-[150px] w-[800px] rounded-lg">
                 <div className="min-w-[250px] max-w-[250px] p-0 max-h-[150px] overflow-hidden rounded-lg">
                   <img
                     src={
@@ -125,6 +125,7 @@ const Room = () => {
                       "https://t3.ftcdn.net/jpg/05/62/05/20/360_F_562052065_yk3KPuruq10oyfeu5jniLTS4I2ky3bYX.jpg"
                     }
                     alt=""
+                    className="object-cover w-full h-full"
                   />
                 </div>
                 <div className="px-5 pt-2">

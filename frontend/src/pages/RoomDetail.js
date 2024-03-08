@@ -25,28 +25,33 @@ const RoomDetail = () => {
     userId: {
       id: 1,
       fullname: "Hoai",
-      avatar: "https://source.unsplash.com/random",
+      avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww",
       department: "CNTT",
     },
-    title: "Phong tro Go Vap",
-    district: "Go Vap",
+    title: "Phòng trọ gần trường cần tìm bạn cùng phòng",
+    district: "Gò Vấp",
     ward: "3",
+    street: "Nguyễn Kiệm ",
     area: 5,
     price: 5000000,
-    description: "LKJklfjalkjglkjalkgjaljglkajglkjaglkjgklajglkjalkgjlkajglkag",
+    description: `Phòng dạng KTX Nam trống 1 giường tầng nha. Phòng như 1 căn hộ mini, đầy đủ nội thất thiết yếu. Phòng rất  rộng và thoải mái không giống như mấy khu phòng KTX khác,
+    - Có sẵn bàn học riêng cho từng người, có tủ quần áo riêng, có khu bàn ghế tiếp khách, khu bếp nấu ăn, tủ lạnh riêng trong phòng, máy lạnh, Toilet riêng, máy giặt ngay ngoài cửa phòng. Ban công, cửa sổ siêu rộng, thoáng mát.
+    - Chỉ dành cho Nam.
+    - Giờ giấc tự do, lối đi lên phòng riêng biệt, để xe bên dưới nhà.
+    - Hiện còn trống 1 giường`,
     facebook: "facebook.com",
     phoneNumber: "0353056313",
     image: [
       {
         id: 1,
         imageURL:
-          "http://res.cloudinary.com/dqqkpgega/image/upload/v1709108126/450bfa4a-77fe-42d7-a925-97641ab42ef0.png",
+          "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9vbXxlbnwwfHwwfHx8MA%3D%3D",
       },
-      {
-        id: 2,
-        imageURL:
-          "http://res.cloudinary.com/dqqkpgega/image/upload/v1709108128/7030baa6-5ead-490e-9c9d-834e9616e296.png",
-      },
+      // {
+      //   id: 2,
+      //   imageURL:
+      //     "http://res.cloudinary.com/dqqkpgega/image/upload/v1709108128/7030baa6-5ead-490e-9c9d-834e9616e296.png",
+      // },
     ],
     created_at: "2024-02-28",
   };
@@ -102,9 +107,9 @@ const RoomDetail = () => {
           </div>
           <div>
             <p className="font-semibold text-[20px]">Thông tin mô tả</p>
-            <p className="mt-[7px]">{data.description}</p>
+            <p className="mt-[7px] w-[50%]">{data.description}</p>
             <p className="font-semibold text-[20px] mt-[35px] mb-[7px]">
-              Xem thêm hình ảnh
+              Hình ảnh
             </p>
             {data.image ? (
               data.image.map((image) => (
