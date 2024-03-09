@@ -171,7 +171,7 @@ const Navbar = () => {
                 </div>
               </NavLink>
             </div>
-            <div>
+            {/* <div>
               <NavLink
                 to="/competition"
                 className={({ isActive, isPending, isTransitioning }) =>
@@ -195,13 +195,13 @@ const Navbar = () => {
                   Cuộc thi
                 </div>
               </NavLink>
-            </div>
+            </div> */}
           </div>
           <div className="gap-y-2 flex flex-col">
             <div style={{ color: "#9CA3AF" }} className="pl-[8px] text-[12px]">
               Khác
             </div>
-            <div className="h-[40px] p-2 w-full  flex items-center mt-[5px] nav-list-item cursor-pointer">
+            {/* <div className="h-[40px] p-2 w-full  flex items-center mt-[5px] nav-list-item cursor-pointer">
               <div
                 className="rounded px-[5px] border border-slate-600 mr-[10px] h-[24px] w-[24px] flex items-center justify-center"
                 style={{ backgroundColor: "rgb(31,41,55)" }}
@@ -209,7 +209,7 @@ const Navbar = () => {
                 C
               </div>
               Câu lạc bộ
-            </div>
+            </div> */}
             <div className="h-[40px] p-2 w-full  mt-[5px] flex items-center nav-list-item cursor-pointer">
               <div
                 className="rounded px-[5px]  border border-slate-600 mr-[10px] w-[24px] h-[24px] flex items-center justify-center"

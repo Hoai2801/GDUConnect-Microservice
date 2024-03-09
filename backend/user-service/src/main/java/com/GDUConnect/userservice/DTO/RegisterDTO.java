@@ -9,8 +9,9 @@ import lombok.*;
 @NoArgsConstructor
 public class RegisterDTO {
     private String fullname;
-    private String classroom;
+//    private String classroom;
+    private String mail;
     private String studentCode;
-    private String department;
+//    private String department;
     private String password;
 }

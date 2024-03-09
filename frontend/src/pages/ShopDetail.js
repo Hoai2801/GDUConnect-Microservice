@@ -198,8 +198,8 @@ const ShopDetail = () => {
             <article>
                 <div class="flex items-center mb-4">
                     <img class="w-10 h-10 me-4 rounded-full" src={"https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"} alt="" />
-                    <div class="font-medium dark:text-white">
-                        <p>Jese Leos <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Joined on August 2014</time></p>
+                    <div class="font-medium ">
+                        <p>Jese Leos <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500">Joined on August 2014</time></p>
                     </div>
                 </div>
                 <div class="flex items-center mb-1 space-x-1 rtl:space-x-reverse">

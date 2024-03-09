@@ -99,7 +99,7 @@ const Sidebar = () => {
                 Buôn bán
               </div>
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to="/competition"
               className={({ isActive, isPending, isTransitioning }) =>
                 [
@@ -121,7 +121,7 @@ const Sidebar = () => {
                 </svg>
                 Cuộc thi
               </div>
-            </NavLink>
+            </NavLink> */}
           </div>
           <div>
             <div style={{ color: "#9CA3AF" }} className="pl-[8px] text-[12px]">
@@ -136,7 +136,7 @@ const Sidebar = () => {
               </div>
               Câu lạc bộ
             </div>
-            <div className="h-[40px] p-2 w-full  mt-[5px] flex items-center nav-list-item cursor-pointer">
+            {/* <div className="h-[40px] p-2 w-full  mt-[5px] flex items-center nav-list-item cursor-pointer">
               <div
                 className="rounded px-[5px]  border border-slate-600 mr-[10px] w-[24px] h-[24px] flex items-center justify-center"
                 style={{ backgroundColor: "#1F2937" }}
@@ -144,7 +144,7 @@ const Sidebar = () => {
                 K
               </div>
               Khảo sát
-            </div>
+            </div> */}
           </div>
         </div>
         <div
