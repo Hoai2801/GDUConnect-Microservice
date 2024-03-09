@@ -1,5 +1,5 @@
 import Product from "../moldes/product";
-
+import Rating from "../moldes/rating"
 const createProduct = async (data, images) => {
   try {
     const { title, content, price, fbUrl, userIdRegister } = data;
@@ -39,11 +39,25 @@ const createProduct = async (data, images) => {
 
 const getProductWithId = async (id) => {
   try {
+    const ratingProduct = await Rating.findOne({ productId: id })
+    .then((rs) => {
+      return rs;
+    })
+    .catch((err) => {
+      return {
+        data : [],
+        mess : `${err}`
+      };
+     
+    });
     const rs = await Product.findOne({ _id: id })
       .then((rs) => {
         return {
           success: true,
-          data: rs,
+          data: {
+            product: rs,
+            rating: ratingProduct
+          },
         };
       })
       .catch((err) => {
@@ -53,7 +67,7 @@ const getProductWithId = async (id) => {
         };
       });
     return rs;
-  } catch (error) {
+    } catch (error) {
     return {
       success: false,
       mess: `${error}`,

@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Room from "./pages/Room";
 import RoomDetail from "./pages/RoomDetail";
 import Shop from "./pages/Shop";
+import ShopDetail from "./pages/ShopDetail";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/room" element={<Room />} />
         <Route path="/room/:id" element={<RoomDetail />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:id" element={<ShopDetail />} />
         <Route path="/competition" element={<Competition />} />
         <Route path="/group/:id" element={<Group />} />
       </Route>
