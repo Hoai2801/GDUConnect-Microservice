@@ -55,16 +55,6 @@ h6 {
   font-weight: 700;
   font-family: "Poppin", sans-serif;
 }
-.notfound button {
-  background: linear-gradient(90deg, #5335cf 0%, #de005e 25%, #f66e48 50%, #de005e 75%, #5335cf 100%);
-  background-size: 400%;
-  animation: animate 15s linear infinite;
-}
-@keyframes animate {
-  to {
-    background-position: 400%;
-  }
-}
 
 .border-room {
   border-top: 1px solid rgb(229, 231, 235);

@@ -97,7 +97,7 @@ const CreatePost = () => {
 
   return (
     <div
-      className="shadow-lg border-black rounded-lg max-w-[1200px] w-full h-fit py-5 bg-white flex px-5 create-post flex-col"
+      className="shadow border-black rounded-lg max-w-[1200px] w-full h-fit py-5 flex px-5 create-post flex-col bg-slate-50"
       style={{ marginBottom: "16px" }}
     >
       <div className="flex gap-5 w-full">

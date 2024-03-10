@@ -1,9 +1,9 @@
+import axios from "axios";
+import Cookies from "js-cookie";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Image from "../image";
-import Cookies from 'js-cookie';
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -12,7 +12,6 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const navigate = useNavigate();
-
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -45,7 +44,7 @@ const Register = () => {
       studentCode: studentId,
       password: password,
       confirmPassword: confirmPassword,
-    }
+    };
 
     const url = "http://localhost:8080/api/v1/user/register";
     axios
@@ -61,7 +60,13 @@ const Register = () => {
       });
     e.preventDefault();
     // You can access the input values here: username, email, studentId, password, confirmPassword
-    console.log("Submitted values:", { username, email, studentId, password, confirmPassword });
+    console.log("Submitted values:", {
+      username,
+      email,
+      studentId,
+      password,
+      confirmPassword,
+    });
     // Add your logic for form submission or API call here
   };
   return (
@@ -82,7 +87,7 @@ const Register = () => {
             </div>
           </a>
         </div>
-        <div className="h-[90vh] grid grid-cols-2 grid-register">
+        <div className="h-full grid grid-cols-2 grid-register">
           <div className="justify-center w-full min-w-[350px] items-center login-illustion flex">
             <img
               className="max-h-[70vh] xl:max-h-[90vh] lg:max-h-[80vh]"
@@ -90,7 +95,7 @@ const Register = () => {
               alt=""
             ></img>
           </div>
-          <form className="flex flex-col justify-between pb-[10vh] pr-[5vh] register-form">
+          <form className="flex flex-col justify-between pr-[5vh] register-form">
             <h1 className="text-[30px] font-bold register-text h1-login">
               Create an acccount
             </h1>
@@ -139,7 +144,10 @@ const Register = () => {
                 onChange={handleConfirmPasswordChange}
               ></input>
             </div>
-            <button className="w-full bg-sky-600 hover:bg-sky-500 text-white py-4 text-[16px]" onClick={handleSubmit}>
+            <button
+              className="w-full bg-sky-600 hover:bg-sky-500 text-white py-4 text-[16px]"
+              onClick={handleSubmit}
+            >
               Continue
             </button>
             <p className="text-gray-700">

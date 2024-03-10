@@ -504,7 +504,7 @@ const Post = (props) => {
                 onClick={previousImage}
                 className="group btn-img flex btn-img-left top-0 bottom-0 items-center justify-center w-[70px] duration-400 transition-all cursor-pointer hover:w-[60px] left-0 absolute"
               >
-                {data.images.length ? (
+                {data.images.length > 1 ? (
                   <button className="bg-gray-400 group-hover:bg-white text-black p-[5px] flex items-center justify-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -533,7 +533,7 @@ const Post = (props) => {
                 onClick={nextImage}
                 className="btn-img flex btn-img-right absolute right-0 top-0 bottom-0  items-center justify-center w-[70px] transition-all duration-400 cursor-pointer hover:w-[60px] group"
               >
-                {data.images.length ? (
+                {data.images.length > 1 ? (
                   <button className="bg-gray-400 group-hover:bg-white text-black p-[5px] flex items-center justify-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

@@ -25,7 +25,8 @@ const RoomDetail = () => {
     userId: {
       id: 1,
       fullname: "Hoai",
-      avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww",
+      avatar:
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww",
       department: "CNTT",
     },
     title: "Phòng trọ gần trường cần tìm bạn cùng phòng",
@@ -81,10 +82,11 @@ const RoomDetail = () => {
     return <span className="text-xl text-red-400">{formattedNumber}</span>;
   }
 
+  // console.log(data.image.length);
   return (
     <>
-      <div className="flex py-10 px-3 justify-center">
-        <div className="min-w-[500px]">
+      <div className="flex py-10 justify-center mx-auto max-w-[936px] flex-col lg:flex-row 2xl:max-w-[1140px]">
+        <div className="ml-4">
           <div>
             <p className="text-[27px] font-semibold">{data.title}</p>
             <p className="text-[14px]">
@@ -107,7 +109,7 @@ const RoomDetail = () => {
           </div>
           <div>
             <p className="font-semibold text-[20px]">Thông tin mô tả</p>
-            <p className="mt-[7px] w-[50%]">{data.description}</p>
+            <p className="mt-[7px] w-[80%]">{data.description}</p>
             <p className="font-semibold text-[20px] mt-[35px] mb-[7px]">
               Hình ảnh
             </p>
@@ -126,7 +128,7 @@ const RoomDetail = () => {
             )}
           </div>
         </div>
-        <div className="w-[208px]">
+        <div className="lg:min-w-[210px] lg:max-w-[210px] 2xl:min-w-[262px] 2xl:max-w-[262px]">
           <div
             className="w-full ring-1 ring-gray-200 rounded p-[14px]"
             align="center"
@@ -184,7 +186,7 @@ const RoomDetail = () => {
             onClick={previousImage}
             className="group btn-img flex btn-img-left top-0 bottom-0 items-center justify-center w-[70px] duration-400 transition-all cursor-pointer hover:w-[60px] left-0 absolute"
           >
-            {data.image.length ? (
+            {data.image.length > 1 ? (
               <button className="bg-gray-400 group-hover:bg-white text-black p-2 flex items-center justify-center rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -203,7 +205,7 @@ const RoomDetail = () => {
             onClick={nextImage}
             className="btn-img flex btn-img-right absolute right-0 top-0 bottom-0  items-center justify-center w-[70px] transition-all duration-400 cursor-pointer hover:w-[60px] group"
           >
-            {data.image.length ? (
+            {data.image.length > 1 ? (
               <button className="bg-gray-400 group-hover:bg-white text-black p-2 flex items-center justify-center rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
