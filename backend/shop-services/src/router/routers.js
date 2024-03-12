@@ -5,6 +5,7 @@ import ctrlRating from "../controller/rating";
 let router = express.Router();
 
 let initRouter = (app) => {
+  // Product
   router
     .route("/product")
     .post(uploadCloudProduct.array("images", 5), ctrlProduct.createNewProduct)
@@ -14,7 +15,7 @@ let initRouter = (app) => {
     .get(ctrlProduct.getProductWithId)
     .put(uploadCloudProduct.array("images", 5), ctrlProduct.updateProductWithId)
     .delete(ctrlProduct.deleteProductWithId);
-
+  // Rating
   router
     .route("/rating")
     .post(uploadCloudProduct.array("images", 5), ctrlRating.createNewRating)
@@ -25,6 +26,11 @@ let initRouter = (app) => {
     .put(uploadCloudProduct.array("images", 5), ctrlRating.updateRatingWithId)
     .delete(ctrlRating.deleteRatingWithId);
   router.route("/rating/product/:id").get(ctrlRating.getRatingWithProductId);
+  // Option
+  router
+    .route("/option")
+    .post(ctrlOption.createNewOption)
+    .get(ctrlOption.getAllOption);
   return app.use("/api/v1", router);
 };
 
