@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 const RoomDetail = () => {
   const [index, setIndex] = useState(0);
 
@@ -34,7 +33,7 @@ const RoomDetail = () => {
     ward: "3",
     street: "Nguyễn Kiệm ",
     area: 5,
-    price: 5000000,
+    price: 4999000,
     description: `Phòng dạng KTX Nam trống 1 giường tầng nha. Phòng như 1 căn hộ mini, đầy đủ nội thất thiết yếu. Phòng rất  rộng và thoải mái không giống như mấy khu phòng KTX khác,
     - Có sẵn bàn học riêng cho từng người, có tủ quần áo riêng, có khu bàn ghế tiếp khách, khu bếp nấu ăn, tủ lạnh riêng trong phòng, máy lạnh, Toilet riêng, máy giặt ngay ngoài cửa phòng. Ban công, cửa sổ siêu rộng, thoáng mát.
     - Chỉ dành cho Nam.
@@ -95,7 +94,7 @@ const RoomDetail = () => {
             <p className="text-[14px]">Ngày đăng: {data.created_at}</p>
           </div>
           <div className="flex mr-4 my-[25px] py-[14px] border-room">
-            <div>
+            <div className="flex flex-col text-xl">
               <p className="text-[14px]">Mức giá</p>
               <NumberFormatter number={data.price} />
               <p className="text-[14px]">vnđ/tháng</p>
@@ -145,9 +144,11 @@ const RoomDetail = () => {
             <div className="p-[14px] mt-[21px] bg-sky-400 rounded font-mono text-white font-bold text-[20px] ring-1">
               {data.phoneNumber}
             </div>
-            <div className="p-[14px] ring-1 rounded ring-gray-500 mt-[7px]">
-              <Link to={`${data.facebook}`}>Facebook</Link>
-            </div>
+            <a href={`//${data.facebook}`}>
+              <div className="p-[14px] ring-1 rounded ring-gray-500 mt-[7px]">
+                Facebook
+              </div>
+            </a>
           </div>
           <a href="/room">
             <div

@@ -124,20 +124,14 @@ const GroupList = () => {
 
   return (
     <div
-      className="ml-5 h-[calc(100vh-63px)] rounded-lg overflow-scroll  lg:block hidden clb-box"
+      className="ml-5 h-[calc(100vh-63px)] rounded-lg overflow-scroll lg:block hidden clb-box"
       align="center"
     >
       {data.map((group) => (
         <div key={group.id}>
           <Link to={"/group/" + group.id}>
-            <div
-              className="flex rounded-lg my-3 bg-slate-50 px-5 shadow-lg"
-              style={{ alignItems: "center" }}
-            >
-              <div
-                className="w-[80px] h-[80px] overflow-hidden flex"
-                style={{ alignItems: "center" }}
-              >
+            <div className="flex rounded-lg my-3 bg-slate-50 px-5 shadow-lg items-center">
+              <div className="w-[80px] h-[80px] overflow-hidden flex items-center">
                 <img
                   src={group.avatar}
                   alt="avatar"

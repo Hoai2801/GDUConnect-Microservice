@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@500&display=swap");
 body {
   font-family: "Poppins", sans-serif;
-  background-color: white;
 }
 
 a {
@@ -127,7 +126,6 @@ h6 {
   border-radius: 16px;
   display: flex;
   overflow-y: scroll;
-  background-color: white;
   flex-direction: column;
 }
 .clb-box::-webkit-scrollbar {

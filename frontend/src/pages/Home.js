@@ -188,8 +188,8 @@ const Home = () => {
   //   });
   // }, []);
   return (
-    <>
-      <div className="grid px-5" id="home">
+    <div className="w-full flex justify-center">
+      <div className="grid  px-5 2xl:max-w-[1140px]" id="home">
         <div
           className="col-end-2 col-start-1 max-h-[calc(100vh-63px)] overflow-y-scroll post pt-[0.75rem] post-display"
           align="center"
@@ -205,7 +205,7 @@ const Home = () => {
           <GroupList />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
