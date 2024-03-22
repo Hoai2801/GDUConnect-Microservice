@@ -216,7 +216,10 @@ const Room = () => {
         {data ? (
           data.map((data) => (
             <Link to={`/room/${data.id}`}>
-              <div key={data.id} className="flex h-[150px] w-[800px] rounded-lg">
+              <div
+                key={data.id}
+                className="flex shadow rounded-lg bg-slate-50 p-4"
+              >
                 <div className="min-w-[250px] max-w-[250px] p-0 max-h-[150px] overflow-hidden rounded-lg">
                   <img
                     src={
