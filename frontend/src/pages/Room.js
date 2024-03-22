@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const Room = () => {
+
+  const [title, setTitle] = useState("");
+  const [district, setDistrict] = useState("");
+  const [ward, setWard] = useState("");
+  const [street, setStreet] = useState("");
+  const [area, setArea] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+
+  const [isShowModal, setShowModal] = useState(false);
+
+  // State to hold image previews
+  const [imagePreviews, setImagePreviews] = useState([]);
+
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+
   // const [data, setData] = useState([]);
   const data = [
     {
@@ -99,6 +116,16 @@ const Room = () => {
   //     });
   // }, []);
 
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files);
+
+    // Create image previews for selected files
+    const previews = files.map((file) => URL.createObjectURL(file));
+    setImagePreviews(previews);
+
+    setSelectedFiles(files);
+  };
+
   function NumberFormatter({ number }) {
     // Use Intl.NumberFormat for accurate formatting
     const formatter = new Intl.NumberFormat("en-US", {
@@ -112,8 +139,80 @@ const Room = () => {
   }
 
   return (
-    <div className="flex w-full pt-5 pb-[100px]">
-      <div className="flex flex-col gap-5 max-w-[936px] 2xl:max-w-[1140px] mx-auto">
+    <div className="flex flex-col w-full pl-[20px] pt-5 pb-[100px]">
+      <div className="flex justify-center w-full">
+        <button className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${isShowModal ? "hidden" : "block"}`} onClick={() => setShowModal(true)}>
+          Tạo bài đăng
+        </button>
+        <div className={`${isShowModal ? "block" : "hidden"}`}>
+          <div>
+            <label className="block text-gray-700">Title</label>
+            <input
+              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue500 focus:bg-white transition duration-300"
+              required
+
+            ></input>
+          </div>
+          <div>
+            <label className="block text-gray-700">Description</label>
+            <input
+              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue500 focus:bg-white transition duration-300"
+              required
+
+            ></input>
+          </div>
+          <div>
+            <label className="block text-gray-700">Price</label>
+            <input
+              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+              required
+
+            ></input>
+          </div>
+          <div>
+            <label className="block text-gray-700">Area</label>
+            <input
+              className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+              required
+
+            ></input>
+          </div>
+
+          <div>
+            <div
+              className="flex px-1 gap-5 w-full btn-cp justify-center my-10"
+              style={{ marginLeft: "10px", flexShrink: "0" }}
+            >
+              <input
+                type="file"
+                onChange={handleFileChange}
+                id="actual-btn"
+                hidden
+                multiple
+              />
+              <label htmlFor="actual-btn" className="hover:cursor-pointer h-[35px] border rounded-lg w-[40%] text-center py-2">
+                Thêm ảnh
+              </label>
+
+            </div>
+            {/* Display image previews */}
+            <div className="flex gap-2 w-[360px] flex-wrap">
+              {imagePreviews.map((preview, index) => (
+                <img
+                  key={index}
+                  src={preview}
+                  alt={`Preview ${index}`}
+                  className="w-16 h-16 object-cover rounded-md mt-2"
+                />
+              ))}
+            </div>
+            <button className="w-full bg-sky-600 hover:bg-sky-500 text-white py-4 text-[16px] mt-5 rounded-lg">
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-5">
         {data ? (
           data.map((data) => (
             <Link to={`/room/${data.id}`}>

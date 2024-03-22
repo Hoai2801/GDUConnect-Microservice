@@ -8,6 +8,7 @@ const productSchema = new Schema(
     price: { type: Number, min: 0, required: true },
     images: { type: Array, default: [] },
     fbUrl: { type: String, required: true },
+    ratings: [{ type: Schema.Types.ObjectId, ref: "Rating" }],
     userIdRegister: {
       type: Number,
       required: true,

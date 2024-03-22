@@ -77,20 +77,35 @@ const getProductWithId = async (id) => {
 
 const getAllProduct = async () => {
   try {
-    const rs = await Product.find()
-      .then((rs) => {
-        return {
-          success: true,
-          data: rs,
-        };
-      })
-      .catch((err) => {
-        return {
-          success: false,
-          mess: `${err}`,
-        };
-      });
-    return rs;
+    const products = await Product.aggregate([
+      {
+        $lookup: {
+          from: "ratings", // The collection to join with
+          localField: "_id", // Field from the current collection
+          foreignField: "productId", // Field from the joined collection
+          as: "ratings", // Name of the field to store the joined documents
+        },
+      },
+      {
+        $addFields: {
+          ratingCount: {
+            $cond: {
+              if: { $isArray: "$ratings" },
+              then: { $size: "$ratings" },
+              else: 0,
+            },
+          },
+          avgRating: {
+            $cond: {
+              if: { $isArray: "$ratings" },
+              then: { $avg: "$ratings.rating" },
+              else: 0,
+            },
+          },
+        },
+      },
+    ]);
+    return products;
   } catch (error) {
     return {
       success: false,
