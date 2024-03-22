@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Competition from "./pages/Competition";
 import Group from "./pages/Group";
@@ -11,16 +11,21 @@ import Register from "./pages/Register";
 import Room from "./pages/Room";
 import RoomDetail from "./pages/RoomDetail";
 import Shop from "./pages/Shop";
+import ShopDetail from "./pages/ShopDetail";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route index path="/" element={<Home />} />
-        <Route path="/room" element={<Room />} />
-        <Route path="/room/:id" element={<RoomDetail />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/competition" element={<Competition />} />
+        <Route path="/" element={<><Outlet /><Footer /></>} >
+          <Route path="/room" element={<Room />} />
+          <Route path="/room/:id" element={<RoomDetail />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/shop/:id" element={<ShopDetail />} />
+          <Route path="/competition" element={<Competition />} />
+        </Route>
         <Route path="/group/:id" element={<Group />} />
       </Route>
       <Route path="/auth" element={<Login />} />

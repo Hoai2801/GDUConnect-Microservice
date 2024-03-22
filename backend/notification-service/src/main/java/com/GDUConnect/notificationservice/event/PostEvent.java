@@ -1,4 +1,4 @@
-package com.GDUConnect.notificationservice;
+package com.GDUConnect.notificationservice.event;
 
 import lombok.*;
 

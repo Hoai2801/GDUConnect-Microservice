@@ -174,7 +174,7 @@ const Home = () => {
   //     ],
   //   },
   // ];
-  // real api
+  // // real api
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {

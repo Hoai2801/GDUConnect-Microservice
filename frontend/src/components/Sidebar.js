@@ -15,6 +15,7 @@ const Sidebar = () => {
       <div className="sidebar-home h-[100vh] flex flex-col px-6 z-50 gap-y-5 shadow w-[288px] fixed transition duration-500 translate-x-[-400px] top-0">
         <div className="flex justify-between h-[63px] w-full items-center">
           <img className="h-[50px]" src={Image.Logo} alt=""></img>
+          <h1 className="text-white text-[20px] font-semibold">GDU Connect</h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="30"
@@ -98,7 +99,7 @@ const Sidebar = () => {
                 Buôn bán
               </div>
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to="/competition"
               className={({ isActive, isPending, isTransitioning }) =>
                 [
@@ -120,7 +121,7 @@ const Sidebar = () => {
                 </svg>
                 Cuộc thi
               </div>
-            </NavLink>
+            </NavLink> */}
           </div>
           <div>
             <div style={{ color: "#9CA3AF" }} className="pl-[8px] text-[12px]">
@@ -135,7 +136,7 @@ const Sidebar = () => {
               </div>
               Câu lạc bộ
             </div>
-            <div className="h-[40px] p-2 w-full  mt-[5px] flex items-center nav-list-item cursor-pointer">
+            {/* <div className="h-[40px] p-2 w-full  mt-[5px] flex items-center nav-list-item cursor-pointer">
               <div
                 className="rounded px-[5px]  border border-slate-600 mr-[10px] w-[24px] h-[24px] flex items-center justify-center"
                 style={{ backgroundColor: "#1F2937" }}
@@ -143,7 +144,7 @@ const Sidebar = () => {
                 K
               </div>
               Khảo sát
-            </div>
+            </div> */}
           </div>
         </div>
         <div

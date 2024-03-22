@@ -24,8 +24,8 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterDTO registerDTO) {
         UserModel user = UserModel.builder()
-                .classroom(registerDTO.getClassroom())
-                .department(registerDTO.getDepartment())
+                .classroom("")
+                .department("")
                 .studentCode(registerDTO.getStudentCode())
                 .fullname(registerDTO.getFullname())
                 .password(passwordEncoder.encode(registerDTO.getPassword()))
