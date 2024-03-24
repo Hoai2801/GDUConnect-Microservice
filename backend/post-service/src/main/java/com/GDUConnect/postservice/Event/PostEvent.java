@@ -9,4 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PostEvent {
     private String status;
+    private String message;
+    private int userId;
+    private int fromGroup;
 }

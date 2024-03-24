@@ -39,7 +39,7 @@ public class RoomController {
         try {
             PostResponse postResponse = roomService.getPostWithId(id);
             if (postResponse == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found with ID: " + id);
             }
             return ResponseEntity.status(HttpStatus.OK).body(postResponse);
         } catch (EntityNotFoundException e) {
@@ -64,6 +64,7 @@ public class RoomController {
     @PostMapping
     public ResponseEntity<String> createPost(@ModelAttribute PostDTO postDTO) throws IOException {
         try {
+            log.info("Go here");
             return roomService.createPost(postDTO);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating post");

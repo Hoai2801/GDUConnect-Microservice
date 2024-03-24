@@ -17,7 +17,7 @@ import java.util.List;
 @Builder
 public class PostResponse {
     private Long id;
-    private UserDTO userId;
+    private UserDTO user;
     private String title;
     private String district;
     private String ward;

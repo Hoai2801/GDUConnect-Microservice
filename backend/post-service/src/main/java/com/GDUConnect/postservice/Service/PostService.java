@@ -45,7 +45,7 @@ public class PostService {
      * @return A ResponseEntity with a success message if the post is created successfully, or a bad request message if the user cannot be found.
      * @throws IOException If there is an error while saving the post images.
      */
-    public ResponseEntity<String> createPost(PostDTO postDTO) throws IOException {
+    public ResponseEntity<String>   createPost(PostDTO postDTO) throws IOException {
         // Retrieve the user based on the userId from the postDTO
         log.info(String.valueOf(postDTO.getUserId()));
         UserDTO user = retrieveUserId(postDTO.getUserId());
@@ -70,7 +70,7 @@ public class PostService {
         }
 
         // Send a success notification event to the notificationTopic Kafka topic
-        kafkaTemplate.send("notificationTopic", new PostEvent("Success"));
+//        kafkaTemplate.send("notificationTopic", new PostEvent("Success", "You just created a new post", user.getId(), postDTO.getGroupId()));
 
         // Return a success response
         return ResponseEntity.ok().body("Created post successfully!");
@@ -115,6 +115,7 @@ public class PostService {
                 .images(postModel.getImages())
                 .comments(commentResponses)
                 .likes(postModel.getLikes())
+                .createdAt(postModel.getCreatedAt())
                 .build();
     }
 

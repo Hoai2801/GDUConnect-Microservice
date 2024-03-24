@@ -29,15 +29,15 @@ public class PostController {
     public final LikeService likeService;
 
     @PostMapping("")
-    @CircuitBreaker(name = "user", fallbackMethod = "fallbackMethodCreate")
-    @TimeLimiter(name = "user")
-    @Retry(name = "user")
+//    @CircuitBreaker(name = "user", fallbackMethod = "fallbackMethodCreate")
+//    @TimeLimiter(name = "user")
+//    @Retry(name = "user")
     public CompletableFuture<ResponseEntity<String>> createPost(@ModelAttribute PostDTO postDTO) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return postService.createPost(postDTO);
             } catch (IOException e) {
-                kafkaTemplate.send("notificationTopic", new PostEvent("Fail"));
+                kafkaTemplate.send("notificationTopic", new PostEvent("Fail", "Cannot create post", postDTO.getUserId(), 1));
                 throw new RuntimeException(e);
             }
         });

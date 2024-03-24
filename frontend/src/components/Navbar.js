@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className="flex items-center ml-[15px] px-[15px] avt-box">
           <img
             className="w-[35px] h-[35px] object-contain avt-nav-home"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww"
+            src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/8-anh-dai-dien-trang-inkythuatso-03-15-26-54.jpg"
             alt=""
           ></img>
           <div className="ml-[7px]">
@@ -210,7 +210,7 @@ const Navbar = () => {
               </div>
               Câu lạc bộ
             </div> */}
-            <div className="h-[40px] p-2 w-full  mt-[5px] flex items-center nav-list-item cursor-pointer">
+            {/* <div className="h-[40px] p-2 w-full  mt-[5px] flex items-center nav-list-item cursor-pointer">
               <div
                 className="rounded px-[5px]  border border-slate-600 mr-[10px] w-[24px] h-[24px] flex items-center justify-center"
                 style={{ backgroundColor: "#1F2937" }}
@@ -218,7 +218,7 @@ const Navbar = () => {
                 K
               </div>
               Khảo sát
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="flex justify-start items-center p-2 nav-list-item">

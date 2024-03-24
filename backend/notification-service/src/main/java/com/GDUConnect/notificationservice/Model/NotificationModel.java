@@ -1,18 +1,20 @@
 package com.GDUConnect.notificationservice.Model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jdk.jfr.Enabled;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Enabled
-@Table(name = "notification_service")
+@Table(name = "notification")
 @Data
 @Builder
-public class Model {
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+public class NotificationModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

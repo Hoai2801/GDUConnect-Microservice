@@ -9,6 +9,7 @@ import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -28,5 +29,5 @@ public class PostResponse {
 
     private List<LikeModel> likes;
 
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 }

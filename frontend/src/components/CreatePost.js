@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
 import { redirect } from "react-router-dom";
+import Toast from "./Toast";
 
 const CreatePost = () => {
   // mock api of user
@@ -10,6 +11,9 @@ const CreatePost = () => {
 
   const [postContent, setPostContent] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const [responseStatus, setResponseStatus] = useState(false);
+  const [contentToast, setContentToast] = useState("Đăng bài thất bại")
 
   // State to hold image previews
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -39,6 +43,13 @@ const CreatePost = () => {
     };
   }, [imagePreviews]);
 
+  const announce = () => {
+    setResponseStatus(true);
+    setTimeout(() => {
+      setResponseStatus(false);
+    }, 5000);
+  };
+
   const handleSubmit = async () => {
     const config = {
       headers: {
@@ -62,12 +73,20 @@ const CreatePost = () => {
       "http://localhost:8080/api/v1/post",
       data,
       config
-    );
+    ).catch((error) => {
+      console.log(error)
+    });
 
-    if (response.status === 200) {
+    if (response) {
+      console.log(response);
+    }
+
+    if (response?.status === 200) {
       setSelectedFiles([]);
       setPostContent("");
       setImagePreviews([]);
+      setContentToast("Đăng bài thành công")
+      announce();
     }
   };
 
@@ -166,6 +185,9 @@ const CreatePost = () => {
           />
         ))}
       </div>
+      {
+        responseStatus ? <Toast content={contentToast} /> : null
+      }
     </div>
   );
 };
