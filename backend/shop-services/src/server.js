@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 initRouter(app);
+
 connectdb();
 
 app.listen(port, async () => {

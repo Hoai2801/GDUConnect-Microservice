@@ -2,6 +2,7 @@ import productServices from "../services/productServices";
 
 const createNewProduct = async (req, res) => {
   try {
+    console.log(req.body.title)
     const { title, content, price, fbUrl, userIdRegister } = req.body;
     const images = req.files;
     if (!title || !content || !price || !fbUrl || !userIdRegister) {

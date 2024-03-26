@@ -2,9 +2,11 @@ const express = require("express");
 import uploadCloudProduct from "../middleware/cloudinary";
 import ctrlProduct from "../controller/product";
 import ctrlRating from "../controller/rating";
+import ctrlOption from "../controller/option"
 let router = express.Router();
 
 let initRouter = (app) => {
+  console.log("first")
   // Product
   router
     .route("/product")
@@ -31,7 +33,7 @@ let initRouter = (app) => {
     .route("/option")
     .post(ctrlOption.createNewOption)
     .get(ctrlOption.getAllOption);
-  return app.use("/api/v1", router);
+  return app.use("/api/v1/shop", router);
 };
 
 module.exports = initRouter;

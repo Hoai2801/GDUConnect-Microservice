@@ -1,18 +1,59 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ShopDetail = () => {
-  const data = {
-    id: 1,
-    title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-    content:
-      "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-    price: 109.95,
-    images: [
-      "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-    ],
-  };
+  // const data = {
+  //   id: 1,
+  //   title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+  //   content:
+  //     "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+  //   price: 109.95,
+  //   images: [
+  //     "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+  //     "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+  //     "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+  //   ],
+  // };
+
+  const [data, setData] = useState([]);
+  const [rating, setRating] = useState([]);
+
+  const { id } = useParams();
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/v1/shop/product/" + id)
+      .then((res) => {
+        setData(res.data)
+        console.log(res.data);
+      }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get("http://localhost:8080/api/v1/shop/rating/" + id)
+      .then((res) => {
+        setRating(res.data)
+        console.log(res.data);
+      }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id])
+
+  function NumberFormatter({ number }) {
+    // Use Intl.NumberFormat for accurate formatting
+    const formatter = new Intl.NumberFormat("en-US", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+
+    const formattedNumber = formatter.format(number);
+
+    return <span className="text-xl text-red-400">{formattedNumber}</span>;
+  }
   return (
     <section class="text-gray-700 body-font overflow-hidden bg-white mx-4">
       <div class="container py-5 mx-auto 2xl:max-w-[1280px]">
@@ -27,7 +68,7 @@ const ShopDetail = () => {
               BRAND NAME
             </h2>
             <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
-              The Catcher in the Rye
+              {data?.data?.product.title}
             </h1>
             <div class="flex mb-4">
               <span class="flex items-center">
@@ -86,7 +127,7 @@ const ShopDetail = () => {
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
-                <span class="text-gray-600 ml-3">4 Reviews</span>
+                <span class="text-gray-600 ml-3">{data?.data?.product.ratings.length} Reviews</span>
               </span>
               <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
                 <a class="text-gray-500 cursor-pointer">
@@ -127,14 +168,8 @@ const ShopDetail = () => {
                 </a>
               </span>
             </div>
-            <p class="leading-relaxed">
-              Fam locavore kickstarter distillery. Mixtape chillwave tumeric
-              sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo
-              juiceramps cornhole raw denim forage brooklyn. Everyday carry +1
-              seitan poutine tumeric. Gastropub blue bottle austin listicle
-              pour-over, neutra jean shorts keytar banjo tattooed umami
-              cardigan.
-            </p>
+            <div dangerouslySetInnerHTML={{ __html: data?.data?.product.content }} class="leading-relaxed">
+            </div>
             <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
               <div class="flex">
                 <span class="mr-3">Color</span>
@@ -169,7 +204,8 @@ const ShopDetail = () => {
             </div>
             <div class="flex">
               <span class="title-font font-medium text-2xl text-gray-900">
-                $58.00
+                <NumberFormatter number={data?.data?.product.price} />
+
               </span>
               <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
                 Button

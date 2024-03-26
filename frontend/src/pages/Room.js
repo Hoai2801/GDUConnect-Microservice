@@ -4,6 +4,7 @@ import Toast from "../components/Toast";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -13,12 +14,14 @@ const Room = () => {
   const jwt = token ? jwtDecode(token) : "";
 
   const [title, setTitle] = useState("");
-  const [district, setDistrict] = useState("afadf");
-  const [ward, setWard] = useState("afaf");
-  const [street, setStreet] = useState("afaf");
+  const [district, setDistrict] = useState("");
+  const [ward, setWard] = useState("");
+  const [street, setStreet] = useState("");
   const [area, setArea] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [facebook, setFacebook] = useState("");
 
   const [isShowModal, setShowModal] = useState(false);
 
@@ -128,6 +131,7 @@ const Room = () => {
       .then((response) => response.json())
       .then((data) => {
         setData(data);
+        console.log(data)
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -142,8 +146,10 @@ const Room = () => {
   }, []);
 
   const handleDistrictChange = (event) => {
-    const districtId = event.target.value;
-    setDistrict(districtId);
+    // console.log("reset" + district + " with " + event.target.value);
+    const parts = event.target.value.split(',')
+    const districtId = parts[0];
+    setDistrict(parts[1]);
     setWard(''); // Reset selected ward
     if (districtId) {
       // Fetch wards for the selected district
@@ -161,46 +167,6 @@ const Room = () => {
   };
 
   const createNewRoom = async () => {
-    // const data = {
-    //   userId: jwt.id,
-    //   title: title,
-    //   district: district,
-    //   ward: ward,
-    //   street: street,
-    //   area: area,
-    //   price: price,
-    //   description: description,
-    //   image: selectedFiles.map((file) => file.name),
-    //   phoneNumber: 1,
-    //   facebook: 1,
-    // }
-    // fetch("http://localhost:8080/api/v1/room", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${jwt}`,
-    //   },
-    //   body: data,
-    // })
-    //   .then((response) => {
-    //     response.json()
-    //     if (response.status === 200) {
-    //       setContentToast("Tạo phòng trọ thành công");
-
-    //       setTitle("");
-    //       setDistrict("");
-    //       setWard("");
-    //       setStreet("");
-    //       setArea("");
-    //       setPrice("");
-    //       setDescription("");
-    //       setImagePreviews([]);
-    //       setSelectedFiles([]);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
 
     const config = {
       headers: {
@@ -208,6 +174,19 @@ const Room = () => {
       },
     };
     if (title === "" || district === "" || ward === "" || street === "" || area === "" || price === "" || description === "") {
+      setContentToast("Vui lòng nhập đầy đủ thông tin");
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
+      return;
+    }
+    if (phoneNumber.length < 10) {
+      setContentToast("Số điện thoại không hợp lệ");
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
       return;
     }
     const data = new FormData();
@@ -219,10 +198,13 @@ const Room = () => {
     data.append("area", area);
     data.append("price", price);
     data.append("description", description);
+    data.append("phoneNumber", phoneNumber);
+    data.append("facebook", facebook);
+
 
     if (selectedFiles.length > 0) {
       selectedFiles.forEach((file) => {
-        data.append("file", file);
+        data.append("image", file);
       });
     }
 
@@ -246,6 +228,8 @@ const Room = () => {
       setDescription("");
       setImagePreviews([]);
       setSelectedFiles([]);
+      setPhoneNumber("");
+      setFacebook("");
     }
 
     setShowToast(true);
@@ -286,13 +270,13 @@ const Room = () => {
         <button className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${isShowModal ? "hidden" : "block"}`} onClick={() => setShowModal(true)}>
           Tạo bài đăng
         </button>
-        <div className={`${isShowModal ? "absolute" : "hidden"} bg-white rounded-lg shadow-lg w-[800px] p-10 border`}>
+        <div className={`${isShowModal ? "fixed" : "hidden"} bg-white rounded-lg shadow-lg w-[800px] p-10 border top-5 h-[80vh] overflow-scroll my-[80px]`}>
           <div>
               
-          <button onClick={null} className="float-right border p-2 rounded-lg w-10 h-10 shadow-2xl">X</button>
+          <button onClick={() => setShowModal(false)} className="float-right border p-2 rounded-lg w-10 h-10 shadow-2xl">X</button>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700">Tiêu đề</label>
+            <label className="block text-gray-700 font-semibold text-lg">Tiêu đề</label>
             <input
               className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue500 focus:bg-white transition duration-300"
               required
@@ -301,35 +285,32 @@ const Room = () => {
             ></input>
           </div>
           <div className="mb-2 mt-3">
-            {/* <label className="block text-gray-700">Miêu tả</label>
-            <input
-              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue500 focus:bg-white transition duration-300"
-              required
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            ></input> */}
             <CKEditor
+                    // Bảng ckeditor cơ bản 
                     editor={ ClassicEditor }
-                    data="<p>Nhập miêu tả căn phòng của bạn (ở ghép, tiện ích, yêu cầu...)</p>"
+                    // như textholder 
+                    data={description}
                     onReady={ editor => {
                         // You can store the "editor" and use when it is needed.
                         console.log( 'Editor is ready to use!', editor );
                     } }
+                    // khi user nhập nội dung
                     onChange={ ( event, editor ) => {
                         const data = editor.getData();
                         setDescription(data);
                     } }
+                    // khi user click chuột ra ngoài
                     onBlur={ ( event, editor ) => {
                         console.log( 'Blur.', editor );
                     } }
+                    // khi user click chuột vào ckeditor
                     onFocus={ ( event, editor ) => {
                         console.log( 'Focus.', editor );
                     } }
-
                 />
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700">Giá</label>
+            <label className="block text-gray-700 font-semibold">Giá</label>
             <input
               className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
               required
@@ -339,36 +320,67 @@ const Room = () => {
           </div>
           <div className="mb-2 mt-3">
    
-          <label className="block text-gray-700">Chọn quận</label>
-          <select value={district} onChange={handleDistrictChange} className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1">
+          <label className="block text-gray-700 font-semibold">Chọn quận</label>
+          <select onChange={handleDistrictChange} className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1">
 
             <option value="" className="block text-gray-700">Chọn quận</option>
             {districtAPI.map(district => (
-              <option key={district.district_id} value={district.district_id}>{district.district_name}</option>
+              <option key={district.district_id} value={[district.district_id, district.district_name]}>{district.district_name}</option>
             ))}
           </select>
           </div>
           <div className="mb-2 mt-3">
 
-          <label className="block text-gray-700">Chọn phường</label>
+          <label className="block text-gray-700 font-semibold">Chọn phường</label>
 
           {/* Ward Dropdown */}
           <select value={ward} onChange={handleWardChange} className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1">
             <option value="">Chọn phường</option>
             {wardAPI.map(ward => (
-              <option key={ward.ward_id} value={ward.ward_id}>{ward.ward_name}</option>
+              <option key={ward.ward_id} value={ward.ward_name}>{ward.ward_name}</option>
             ))}
           </select>
 
+          <div className="mb-2 mt-3">
+            <label className="block text-gray-700 font-semibold">Đường</label>
+            <input
+              className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+              required
+              type="text"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            ></input>
+          </div>
+
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700">Diện tích phòng</label>
+            <label className="block text-gray-700 font-semibold">Diện tích phòng</label>
             <input
               className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
               required
               type="number"
               value={area}
               onChange={(e) => setArea(e.target.value)}
+            ></input>
+          </div>
+          <div className="mb-2 mt-3">
+            <label className="block text-gray-700 font-semibold">Liên lạc bằng số điện thoại</label>
+            <input
+              className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+              required
+              type="text"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            ></input>
+          </div>
+          <div className="mb-2 mt-3">
+            <label className="block text-gray-700 font-semibold">Liên lạc bằng facebook</label>
+            <input
+              className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+              required
+              type="text"
+              value={facebook}
+              onChange={(e) => setFacebook(e.target.value)}
             ></input>
           </div>
 
@@ -420,8 +432,8 @@ const Room = () => {
               >
                 <div className="min-w-[250px] max-w-[250px] p-0 max-h-[150px] overflow-hidden rounded-lg">
                   <img
-                    src={
-                      data?.images?.[0]?.imageURL ||
+                    src={ data.image.length > 0?
+                      data.image[0].imageURL :
                       "https://t3.ftcdn.net/jpg/05/62/05/20/360_F_562052065_yk3KPuruq10oyfeu5jniLTS4I2ky3bYX.jpg"
                     }
                     alt=""
@@ -433,9 +445,8 @@ const Room = () => {
                     <h2 className="text-2xl font-semibold">{data.title}</h2>
                   </div>
                   <div className="h-[50px]">
-                    <p className="overflow-ellipsis overflow-hidden max-h-[50px]">
-                      {data.description}
-                    </p>
+                    <div dangerouslySetInnerHTML={{ __html: data.description }} className="overflow-ellipsis overflow-hidden max-h-[50px]">
+                    </div>
                   </div>
                   <NumberFormatter number={data.price} /> vnđ/tháng
                   <div className="flex justify-between">

@@ -1,7 +1,17 @@
+import axios from "axios";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Toast from "../components/Toast";
 const RoomDetail = () => {
   const [index, setIndex] = useState(0);
+
+  const token = Cookies.get("token") 
+  const jwt = jwtDecode(token);
+
+  const navigate = useNavigate();
+
 
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
 
@@ -20,6 +30,9 @@ const RoomDetail = () => {
   }
   const [data, setData] = useState(null);
   const { id } = useParams();
+
+  const [showToast, setShowToast] = useState(false);
+  const [contentToast, setContentToast] = useState("Xóa bài đăng thành công");
   // const data = {
   //   id: null,
   //   user: {
@@ -70,7 +83,32 @@ const RoomDetail = () => {
 
   }, [id]);
 
-  // console.log(data)
+  const deletePost = async () => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await axios.delete(
+      "http://localhost:8080/api/v1/room/" + data.id + "?user_id=" + jwt.id,
+      config
+    ).catch((error) => {
+      console.log(error)
+    });
+
+    // if (response) {
+    //   console.log(response);
+    // }
+
+    if (response?.status === 200) {
+      setShowToast(true);
+      setTimeout(() => {
+        navigate("/room");
+      }, 3000)
+
+    }
+  };
 
   function NumberFormatter({ number }) {
     // Use Intl.NumberFormat for accurate formatting
@@ -89,8 +127,9 @@ const RoomDetail = () => {
     <>
       {data ?
         <div>
+          {showToast ? <Toast showToast={showToast} content={contentToast} /> : null}
           <div className="flex py-10 justify-center mx-auto max-w-[936px] flex-col lg:flex-row 2xl:max-w-[1140px]">
-            <div className="ml-4">
+            <div className="ml-4 w-[800px]">
               <div>
                 <p className="text-[27px] font-semibold">{data.title}</p>
                 <p className="text-[14px]">
@@ -120,22 +159,25 @@ const RoomDetail = () => {
                 <p className="font-semibold text-[20px] mt-[35px] mb-[7px]">
                   Hình ảnh
                 </p>
+                <div className="flex gap-5">
+                    
                 {data.image.length > 0 ? (
-                  data?.image[0].map((image) => (
+                  data.image.map((image) => (
                     <img
                       key={image.id}
                       src={image.imageURL}
                       alt=""
-                      className="max-w-[50vw] mb-[7px] rounded mr-4 cursor-pointer"
+                      className="max-w-[50vw] mb-[7px] rounded mr-4 cursor-pointer w-[150px] h-[150px]"
                       onClick={togglePopUpImage}
                     ></img>
                   ))
                 ) : (
-                  <p className="text-[14px]">Không có hình ảnh khác</p>
+                  <p className="text-[14px]">Không có hình ảnh</p>
                 )}
+                </div>
               </div>
             </div>
-            <div className="lg:min-w-[210px] lg:max-w-[210px] 2xl:min-w-[262px] 2xl:max-w-[262px]">
+            <div className="lg:min-w-[210px] lg:max-w-[210px] 2xl:min-w-[262px] 2xl:max-w-[262px] mx-[50px]">
               <div
                 className="w-full ring-1 ring-gray-200 rounded p-[14px]"
                 align="center"
@@ -172,6 +214,14 @@ const RoomDetail = () => {
                   <p>Xem thêm phòng trọ</p>
                 </div>
               </a>
+              <div className="mt-4 flex justify-center">
+                  
+              { data.user.id === jwt.id ?
+
+              <button onClick={() => deletePost()} className="bg-red-400 p-[14px] mt-4 rounded cursor-pointer w-full">Xóa bài</button>
+              : ""
+              }
+              </div>
             </div>
           </div>
           <div

@@ -172,6 +172,7 @@ public class RoomService {
         }
         // Build and return the post response with the existing post details
         return PostResponse.builder()
+                .id(existingPost.getId())
                 .title(existingPost.getTitle())
                 .price(existingPost.getPrice())
                 .area(existingPost.getArea())

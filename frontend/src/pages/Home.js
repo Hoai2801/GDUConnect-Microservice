@@ -179,8 +179,12 @@ const Home = () => {
 
   useEffect(() => {
     fetch("http://localhost:8080/api/v1/post")
-    .then(response => response.json())
+    .then(response => 
+      response.json())
     .then(data => {
+      // if (data) {
+      //   return;
+      // }
       setPosts(data);
       console.log(data)
     })
@@ -197,7 +201,7 @@ const Home = () => {
         >
           <CreatePost />
           {posts ? (
-            posts?.map((post) => <Post postData={post} key={post.id} />)
+            posts.map((post) => <Post postData={post} key={post.id} />)
           ) : (
             <p>Loading ...</p>
           )}

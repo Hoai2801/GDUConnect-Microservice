@@ -64,7 +64,6 @@ public class RoomController {
     @PostMapping
     public ResponseEntity<String> createPost(@ModelAttribute PostDTO postDTO) throws IOException {
         try {
-            log.info("Go here");
             return roomService.createPost(postDTO);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating post");
