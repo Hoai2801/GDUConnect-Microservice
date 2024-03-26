@@ -1,15 +1,14 @@
+import axios from "axios";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Toast from "../components/Toast";
-import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
-import axios from "axios";
 
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 
 const Room = () => {
-
   const token = Cookies.get("token");
   const jwt = token ? jwtDecode(token) : "";
 
@@ -27,7 +26,6 @@ const Room = () => {
 
   const [districtAPI, setDistrictAPI] = useState([]);
 
-
   const [wardAPI, setWardAPI] = useState([]);
 
   // State to hold image previews
@@ -36,8 +34,7 @@ const Room = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const [showToast, setShowToast] = useState(false);
-  const [contentToast, setContentToast] = useState("Đăng bài thất baị")
-
+  const [contentToast, setContentToast] = useState("Đăng bài thất baị");
 
   const [data, setData] = useState(null);
   // const data = [
@@ -131,34 +128,36 @@ const Room = () => {
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-        console.log(data)
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-    axios.get('https://vapi.vnappmob.com/api/province/district/79')
-      .then(response => {
+    axios
+      .get("https://vapi.vnappmob.com/api/province/district/79")
+      .then((response) => {
         setDistrictAPI(response.data.results);
       })
-      .catch(error => {
-        console.error('Error fetching districts:', error);
+      .catch((error) => {
+        console.error("Error fetching districts:", error);
       });
   }, []);
 
   const handleDistrictChange = (event) => {
     // console.log("reset" + district + " with " + event.target.value);
-    const parts = event.target.value.split(',')
+    const parts = event.target.value.split(",");
     const districtId = parts[0];
     setDistrict(parts[1]);
-    setWard(''); // Reset selected ward
+    setWard(""); // Reset selected ward
     if (districtId) {
       // Fetch wards for the selected district
-      axios.get(`https://vapi.vnappmob.com/api/province/ward/${districtId}`)
-        .then(response => {
+      axios
+        .get(`https://vapi.vnappmob.com/api/province/ward/${districtId}`)
+        .then((response) => {
           setWardAPI(response.data.results);
         })
-        .catch(error => {
-          console.error('Error fetching wards:', error);
+        .catch((error) => {
+          console.error("Error fetching wards:", error);
         });
     } else {
       // If no district is selected, clear wards
@@ -167,13 +166,20 @@ const Room = () => {
   };
 
   const createNewRoom = async () => {
-
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
-    if (title === "" || district === "" || ward === "" || street === "" || area === "" || price === "" || description === "") {
+    if (
+      title === "" ||
+      district === "" ||
+      ward === "" ||
+      street === "" ||
+      area === "" ||
+      price === "" ||
+      description === ""
+    ) {
       setContentToast("Vui lòng nhập đầy đủ thông tin");
       setShowToast(true);
       setTimeout(() => {
@@ -201,21 +207,17 @@ const Room = () => {
     data.append("phoneNumber", phoneNumber);
     data.append("facebook", facebook);
 
-
     if (selectedFiles.length > 0) {
       selectedFiles.forEach((file) => {
         data.append("image", file);
       });
     }
 
-    const response = await axios.post(
-      "http://localhost:8080/api/v1/room",
-      data,
-      config
-    ).catch((error) => {
-      console.log(error)
-    });
-
+    const response = await axios
+      .post("http://localhost:8080/api/v1/room", data, config)
+      .catch((error) => {
+        console.log(error);
+      });
 
     if (response?.status === 200) {
       setContentToast("Đăng bài thanh cong");
@@ -236,7 +238,7 @@ const Room = () => {
     setTimeout(() => {
       setShowToast(false);
     }, 5000);
-  }
+  };
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
@@ -267,16 +269,31 @@ const Room = () => {
   return (
     <div className="flex flex-col w-full pl-[20px] pt-5 pb-[100px] items-center">
       <div className="flex justify-center w-full mb-5">
-        <button className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${isShowModal ? "hidden" : "block"}`} onClick={() => setShowModal(true)}>
+        <button
+          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ${
+            isShowModal ? "hidden" : "block"
+          }`}
+          onClick={() => setShowModal(true)}
+        >
           Tạo bài đăng
         </button>
-        <div className={`${isShowModal ? "fixed" : "hidden"} bg-white rounded-lg shadow-lg w-[800px] p-10 border top-5 h-[80vh] overflow-scroll my-[80px]`}>
+        <div
+          className={`${
+            isShowModal ? "fixed" : "hidden"
+          } bg-white rounded-lg shadow-lg w-[800px] p-10 border top-5 h-[80vh] overflow-scroll my-[80px]`}
+        >
           <div>
-              
-          <button onClick={() => setShowModal(false)} className="float-right border p-2 rounded-lg w-10 h-10 shadow-2xl">X</button>
+            <button
+              onClick={() => setShowModal(false)}
+              className="float-right border p-2 rounded-lg w-10 h-10 shadow-2xl"
+            >
+              X
+            </button>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold text-lg">Tiêu đề</label>
+            <label className="block text-gray-700 font-semibold text-lg">
+              Tiêu đề
+            </label>
             <input
               className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue500 focus:bg-white transition duration-300"
               required
@@ -286,28 +303,28 @@ const Room = () => {
           </div>
           <div className="mb-2 mt-3">
             <CKEditor
-                    // Bảng ckeditor cơ bản 
-                    editor={ ClassicEditor }
-                    // như textholder 
-                    data={description}
-                    onReady={ editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log( 'Editor is ready to use!', editor );
-                    } }
-                    // khi user nhập nội dung
-                    onChange={ ( event, editor ) => {
-                        const data = editor.getData();
-                        setDescription(data);
-                    } }
-                    // khi user click chuột ra ngoài
-                    onBlur={ ( event, editor ) => {
-                        console.log( 'Blur.', editor );
-                    } }
-                    // khi user click chuột vào ckeditor
-                    onFocus={ ( event, editor ) => {
-                        console.log( 'Focus.', editor );
-                    } }
-                />
+              // Bảng ckeditor cơ bản
+              editor={ClassicEditor}
+              // như textholder
+              data={description}
+              onReady={(editor) => {
+                // You can store the "editor" and use when it is needed.
+                console.log("Editor is ready to use!", editor);
+              }}
+              // khi user nhập nội dung
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setDescription(data);
+              }}
+              // khi user click chuột ra ngoài
+              onBlur={(event, editor) => {
+                console.log("Blur.", editor);
+              }}
+              // khi user click chuột vào ckeditor
+              onFocus={(event, editor) => {
+                console.log("Focus.", editor);
+              }}
+            />
           </div>
           <div className="mb-2 mt-3">
             <label className="block text-gray-700 font-semibold">Giá</label>
@@ -319,42 +336,60 @@ const Room = () => {
             ></input>
           </div>
           <div className="mb-2 mt-3">
-   
-          <label className="block text-gray-700 font-semibold">Chọn quận</label>
-          <select onChange={handleDistrictChange} className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1">
-
-            <option value="" className="block text-gray-700">Chọn quận</option>
-            {districtAPI.map(district => (
-              <option key={district.district_id} value={[district.district_id, district.district_name]}>{district.district_name}</option>
-            ))}
-          </select>
+            <label className="block text-gray-700 font-semibold">
+              Chọn quận
+            </label>
+            <select
+              onChange={handleDistrictChange}
+              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1"
+            >
+              <option value="" className="block text-gray-700">
+                Chọn quận
+              </option>
+              {districtAPI.map((district) => (
+                <option
+                  key={district.district_id}
+                  value={[district.district_id, district.district_name]}
+                >
+                  {district.district_name}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="mb-2 mt-3">
+            <label className="block text-gray-700 font-semibold">
+              Chọn phường
+            </label>
 
-          <label className="block text-gray-700 font-semibold">Chọn phường</label>
+            {/* Ward Dropdown */}
+            <select
+              value={ward}
+              onChange={handleWardChange}
+              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1"
+            >
+              <option value="">Chọn phường</option>
+              {wardAPI.map((ward) => (
+                <option key={ward.ward_id} value={ward.ward_name}>
+                  {ward.ward_name}
+                </option>
+              ))}
+            </select>
 
-          {/* Ward Dropdown */}
-          <select value={ward} onChange={handleWardChange} className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1">
-            <option value="">Chọn phường</option>
-            {wardAPI.map(ward => (
-              <option key={ward.ward_id} value={ward.ward_name}>{ward.ward_name}</option>
-            ))}
-          </select>
-
-          <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">Đường</label>
-            <input
-              className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
-              required
-              type="text"
-              value={street}
-              onChange={(e) => setStreet(e.target.value)}
-            ></input>
+            <div className="mb-2 mt-3">
+              <label className="block text-gray-700 font-semibold">Đường</label>
+              <input
+                className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+                required
+                type="text"
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
+              ></input>
+            </div>
           </div>
-
-          </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">Diện tích phòng</label>
+            <label className="block text-gray-700 font-semibold">
+              Diện tích phòng
+            </label>
             <input
               className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
               required
@@ -364,7 +399,9 @@ const Room = () => {
             ></input>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">Liên lạc bằng số điện thoại</label>
+            <label className="block text-gray-700 font-semibold">
+              Liên lạc bằng số điện thoại
+            </label>
             <input
               className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
               required
@@ -374,7 +411,9 @@ const Room = () => {
             ></input>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">Liên lạc bằng facebook</label>
+            <label className="block text-gray-700 font-semibold">
+              Liên lạc bằng facebook
+            </label>
             <input
               className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
               required
@@ -396,10 +435,12 @@ const Room = () => {
                 hidden
                 multiple
               />
-              <label htmlFor="actual-btn" className="hover:cursor-pointer h-[35px] border rounded-lg w-[40%] text-center py-2">
+              <label
+                htmlFor="actual-btn"
+                className="hover:cursor-pointer h-[35px] border rounded-lg w-[40%] text-center py-2"
+              >
                 Thêm ảnh
               </label>
-
             </div>
             {/* Display image previews */}
             <div className="flex gap-2 w-[360px] flex-wrap">
@@ -412,16 +453,16 @@ const Room = () => {
                 />
               ))}
             </div>
-            <button className="w-full bg-sky-600 hover:bg-sky-500 text-white py-4 text-[16px] mt-5 rounded-lg"
-              onClick={() => createNewRoom()}>
+            <button
+              className="w-full bg-sky-600 hover:bg-sky-500 text-white py-4 text-[16px] mt-5 rounded-lg"
+              onClick={() => createNewRoom()}
+            >
               Đăng bài
             </button>
           </div>
         </div>
       </div>
-      {
-        showToast ? <Toast content={contentToast} /> : null
-      }
+      {showToast ? <Toast content={contentToast} /> : null}
       <div className="flex flex-col gap-5 w-[800px]">
         {data ? (
           data.map((data) => (
@@ -432,9 +473,10 @@ const Room = () => {
               >
                 <div className="min-w-[250px] max-w-[250px] p-0 max-h-[150px] overflow-hidden rounded-lg">
                   <img
-                    src={ data.image.length > 0?
-                      data.image[0].imageURL :
-                      "https://t3.ftcdn.net/jpg/05/62/05/20/360_F_562052065_yk3KPuruq10oyfeu5jniLTS4I2ky3bYX.jpg"
+                    src={
+                      data.image.length > 0
+                        ? data.image[0].imageURL
+                        : "https://t3.ftcdn.net/jpg/05/62/05/20/360_F_562052065_yk3KPuruq10oyfeu5jniLTS4I2ky3bYX.jpg"
                     }
                     alt=""
                     className="object-cover w-full h-full"
@@ -445,12 +487,13 @@ const Room = () => {
                     <h2 className="text-2xl font-semibold">{data.title}</h2>
                   </div>
                   <div className="h-[50px]">
-                    <div dangerouslySetInnerHTML={{ __html: data.description }} className="overflow-ellipsis overflow-hidden max-h-[50px]">
-                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: data.description }}
+                      className="overflow-ellipsis overflow-hidden max-h-[50px]"
+                    ></div>
                   </div>
                   <NumberFormatter number={data.price} /> vnđ/tháng
                   <div className="flex justify-between">
-
                     <p className="justify-end">
                       {data.area} m² - Quận {data.district}
                     </p>

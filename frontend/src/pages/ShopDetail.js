@@ -24,24 +24,22 @@ const ShopDetail = () => {
     axios
       .get("http://localhost:8080/api/v1/shop/product/" + id)
       .then((res) => {
-        setData(res.data)
+        setData(res.data);
         console.log(res.data);
-      }
-      )
+      })
       .catch((err) => {
         console.log(err);
       });
     axios
       .get("http://localhost:8080/api/v1/shop/rating/" + id)
       .then((res) => {
-        setRating(res.data)
+        setRating(res.data);
         console.log(res.data);
-      }
-      )
+      })
       .catch((err) => {
         console.log(err);
       });
-  }, [id])
+  }, [id]);
 
   function NumberFormatter({ number }) {
     // Use Intl.NumberFormat for accurate formatting
@@ -65,7 +63,7 @@ const ShopDetail = () => {
           />
           <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 class="text-sm title-font text-gray-500 tracking-widest">
-              BRAND NAME
+              J.D. Salinger
             </h2>
             <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
               {data?.data?.product.title}
@@ -127,7 +125,9 @@ const ShopDetail = () => {
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
-                <span class="text-gray-600 ml-3">{data?.data?.product.ratings.length} Reviews</span>
+                <span class="text-gray-600 ml-3">
+                  {data?.data?.product.ratings.length} Reviews
+                </span>
               </span>
               <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
                 <a class="text-gray-500 cursor-pointer">
@@ -168,8 +168,10 @@ const ShopDetail = () => {
                 </a>
               </span>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: data?.data?.product.content }} class="leading-relaxed">
-            </div>
+            <div
+              dangerouslySetInnerHTML={{ __html: data?.data?.product.content }}
+              class="leading-relaxed"
+            ></div>
             <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
               <div class="flex">
                 <span class="mr-3">Color</span>
@@ -204,11 +206,11 @@ const ShopDetail = () => {
             </div>
             <div class="flex">
               <span class="title-font font-medium text-2xl text-gray-900">
-                <NumberFormatter number={data?.data?.product.price} />
-
+                {/* <NumberFormatter number={data?.data?.product.price} /> */}
+                280,000 VND
               </span>
               <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-                Button
+                Buy Now
               </button>
               <button class="relative rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 group">
                 <svg
