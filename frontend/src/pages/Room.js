@@ -265,7 +265,7 @@ const Room = () => {
   }
 
   return (
-    <div className="flex flex-col w-full pl-[20px] pt-5 pb-[100px] items-center">
+    <div className="flex flex-col w-full pl-[20px] pt-5 pb-[100px] items-center h-screen">
       <div className="flex justify-center w-full mb-5">
         <button className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${isShowModal ? "hidden" : "block"}`} onClick={() => setShowModal(true)}>
           Tạo bài đăng

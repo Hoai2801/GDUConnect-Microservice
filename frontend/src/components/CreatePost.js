@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { redirect } from "react-router-dom";
 import Toast from "./Toast";
 
-const CreatePost = () => {
+const CreatePost = ({groupId}) => {
   // mock api of user
   const [user, setUser] = useState("");
 
@@ -62,7 +62,7 @@ const CreatePost = () => {
     const data = new FormData();
     data.append("userId", jwt.id);
     data.append("content", postContent);
-    data.append("groupId", 1);
+    data.append("groupId", groupId);
     if (selectedFiles.length > 0) {
       selectedFiles.forEach((file) => {
         data.append("file", file);

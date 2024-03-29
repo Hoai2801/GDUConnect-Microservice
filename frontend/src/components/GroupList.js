@@ -30,96 +30,96 @@ const GroupList = () => {
       avatar:
         "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
     },
-    {
-      id: 3,
-      name: "Cau lac bo cau long",
-      fb: "https://www.facebook.com/khoacongnghethongtinGDU",
-      zalo: "",
-      discord: "",
-      otherLink: "",
-      avatar:
-        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      id: 3,
-      name: "Cau lac bo cau long",
-      fb: "https://www.facebook.com/khoacongnghethongtinGDU",
-      zalo: "",
-      discord: "",
-      otherLink: "",
-      avatar:
-        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      id: 3,
-      name: "Cau lac bo cau long",
-      fb: "https://www.facebook.com/khoacongnghethongtinGDU",
-      zalo: "",
-      discord: "",
-      otherLink: "",
-      avatar:
-        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      id: 3,
-      name: "Cau lac bo cau long",
-      fb: "https://www.facebook.com/khoacongnghethongtinGDU",
-      zalo: "",
-      discord: "",
-      otherLink: "",
-      avatar:
-        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      id: 3,
-      name: "Cau lac bo cau long",
-      fb: "https://www.facebook.com/khoacongnghethongtinGDU",
-      zalo: "",
-      discord: "",
-      otherLink: "",
-      avatar:
-        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      id: 3,
-      name: "Cau lac bo cau long",
-      fb: "https://www.facebook.com/khoacongnghethongtinGDU",
-      zalo: "",
-      discord: "",
-      otherLink: "",
-      avatar:
-        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      id: 3,
-      name: "Cau lac bo cau long",
-      fb: "https://www.facebook.com/khoacongnghethongtinGDU",
-      zalo: "",
-      discord: "",
-      otherLink: "",
-      avatar:
-        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      id: 3,
-      name: "Cau lac bo cau long",
-      fb: "https://www.facebook.com/khoacongnghethongtinGDU",
-      zalo: "",
-      discord: "",
-      otherLink: "",
-      avatar:
-        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      id: 3,
-      name: "Cau lac bo cau long",
-      fb: "https://www.facebook.com/khoacongnghethongtinGDU",
-      zalo: "",
-      discord: "",
-      otherLink: "",
-      avatar:
-        "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
-    },
+    // {
+    //   id: 3,
+    //   name: "Cau lac bo cau long",
+    //   fb: "https://www.facebook.com/khoacongnghethongtinGDU",
+    //   zalo: "",
+    //   discord: "",
+    //   otherLink: "",
+    //   avatar:
+    //     "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
+    // },
+    // {
+    //   id: 3,
+    //   name: "Cau lac bo cau long",
+    //   fb: "https://www.facebook.com/khoacongnghethongtinGDU",
+    //   zalo: "",
+    //   discord: "",
+    //   otherLink: "",
+    //   avatar:
+    //     "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
+    // },
+    // {
+    //   id: 3,
+    //   name: "Cau lac bo cau long",
+    //   fb: "https://www.facebook.com/khoacongnghethongtinGDU",
+    //   zalo: "",
+    //   discord: "",
+    //   otherLink: "",
+    //   avatar:
+    //     "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
+    // },
+    // {
+    //   id: 3,
+    //   name: "Cau lac bo cau long",
+    //   fb: "https://www.facebook.com/khoacongnghethongtinGDU",
+    //   zalo: "",
+    //   discord: "",
+    //   otherLink: "",
+    //   avatar:
+    //     "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
+    // },
+    // {
+    //   id: 3,
+    //   name: "Cau lac bo cau long",
+    //   fb: "https://www.facebook.com/khoacongnghethongtinGDU",
+    //   zalo: "",
+    //   discord: "",
+    //   otherLink: "",
+    //   avatar:
+    //     "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
+    // },
+    // {
+    //   id: 3,
+    //   name: "Cau lac bo cau long",
+    //   fb: "https://www.facebook.com/khoacongnghethongtinGDU",
+    //   zalo: "",
+    //   discord: "",
+    //   otherLink: "",
+    //   avatar:
+    //     "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
+    // },
+    // {
+    //   id: 3,
+    //   name: "Cau lac bo cau long",
+    //   fb: "https://www.facebook.com/khoacongnghethongtinGDU",
+    //   zalo: "",
+    //   discord: "",
+    //   otherLink: "",
+    //   avatar:
+    //     "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
+    // },
+    // {
+    //   id: 3,
+    //   name: "Cau lac bo cau long",
+    //   fb: "https://www.facebook.com/khoacongnghethongtinGDU",
+    //   zalo: "",
+    //   discord: "",
+    //   otherLink: "",
+    //   avatar:
+    //     "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
+    // },
+    // {
+    //   id: 3,
+    //   name: "Cau lac bo cau long",
+    //   fb: "https://www.facebook.com/khoacongnghethongtinGDU",
+    //   zalo: "",
+    //   discord: "",
+    //   otherLink: "",
+    //   avatar:
+    //     "https://images.unsplash.com/photo-1630395822970-acd6a691d97e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNsdWJ8ZW58MHx8MHx8fDA%3D",
+    // },
   ];
 
   return (

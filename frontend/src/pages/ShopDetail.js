@@ -1,6 +1,9 @@
 import axios from "axios";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { format } from 'date-fns';
 
 const ShopDetail = () => {
   // const data = {
@@ -16,33 +19,45 @@ const ShopDetail = () => {
   //   ],
   // };
 
-  const [data, setData] = useState([]);
+  const [post, setData] = useState([]);
   const [rating, setRating] = useState([]);
 
-  const { id } = useParams();
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/v1/shop/product/" + id)
-      .then((res) => {
-        setData(res.data)
-        console.log(res.data);
-      }
-      )
-      .catch((err) => {
-        console.log(err);
-      });
-    axios
-      .get("http://localhost:8080/api/v1/shop/rating/" + id)
-      .then((res) => {
-        setRating(res.data)
-        console.log(res.data);
-      }
-      )
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [id])
+  //rating
+  const [contentRating, setContentRating] = useState("");
+  const [ratingValue, setRatingValue] = useState(0);
+  const images = null;
 
+
+  let token = Cookies.get("token");
+  let jwt = token ? jwtDecode(token) : "";
+
+  // const handleRatingChange = (event) => {
+  //   setRatingValue(event.target.value);
+  // };
+  const handleRatingSubmit = (event) => {
+    const ratingData = {
+      userId: jwt.id,
+      productId: id,
+      comment: contentRating,
+      rating: ratingValue,
+      images: images
+    };
+    //bear token
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    axios
+      .post("http://localhost:8080/api/v1/shop/rating", ratingData, config)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   function NumberFormatter({ number }) {
     // Use Intl.NumberFormat for accurate formatting
     const formatter = new Intl.NumberFormat("en-US", {
@@ -54,26 +69,79 @@ const ShopDetail = () => {
 
     return <span className="text-xl text-red-400">{formattedNumber}</span>;
   }
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetchPost()
+  }, [id])
+
+  async function fetchPost() {
+    fetch("http://localhost:8080/api/v1/shop/product/" + id)
+      .then((res) => res.json()) // Parse the response JSON
+      .then((data) => {
+        console.log(data)
+        setData(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    fetch("http://localhost:8080/api/v1/shop/rating/product/" + id)
+      .then((res) => res.json()) // Parse the response JSON
+      .then((rating) => {
+        console.log(rating)
+        setRating(rating);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+
+  // console.log(post ? post?.data._id : "no data")
+  // console.log(post?.data ? post.data[0] ? post.data[0].images : "no image": "no data")
+
   return (
     <section class="text-gray-700 body-font overflow-hidden bg-white mx-4">
+      {post.data && post.data[0] && (
+        <img
+          alt="ecommerce"
+          class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
+          src={post?.data?.images ? post?.data[0]?.images[0] : ""}
+        />
+
+      )}
       <div class="container py-5 mx-auto 2xl:max-w-[1280px]">
         <div class="lg:w-5/6 mx-auto flex flex-wrap 2xl:mx-0">
           <img
             alt="ecommerce"
             class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
-            src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"
+            src={post?.data?.images[0]}
           />
           <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 class="text-sm title-font text-gray-500 tracking-widest">
               BRAND NAME
             </h2>
             <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
-              {data?.data?.product.title}
+              {post?.data?.title}
             </h1>
             <div class="flex mb-4">
               <span class="flex items-center">
                 <svg
-                  fill="currentColor"
+                  fill={rating?.data?.avgRating >= 1 ? "currentColor" : "none"}
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  class={`w-4 h-4 text-red-500`}
+                  viewBox="0 0 24 24"
+
+                >
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <svg
+                  fill={rating?.data?.avgRating >= 1 ? "currentColor" : "none"}
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -84,7 +152,7 @@ const ShopDetail = () => {
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
                 <svg
-                  fill="currentColor"
+                  fill={rating?.data?.avgRating >= 1 ? "currentColor" : "none"}
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -95,7 +163,7 @@ const ShopDetail = () => {
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
                 <svg
-                  fill="currentColor"
+                  fill={rating?.data?.avgRating >= 1 ? "currentColor" : "none"}
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -106,7 +174,7 @@ const ShopDetail = () => {
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
                 <svg
-                  fill="currentColor"
+                  fill={rating?.data?.avgRating >= 1 ? "currentColor" : "none"}
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -116,18 +184,7 @@ const ShopDetail = () => {
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="w-4 h-4 text-red-500"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                </svg>
-                <span class="text-gray-600 ml-3">{data?.data?.product.ratings.length} Reviews</span>
+                <span class="text-gray-600 ml-3">{rating?.data?.reviews?.length} Reviews</span>
               </span>
               <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
                 <a class="text-gray-500 cursor-pointer">
@@ -168,7 +225,7 @@ const ShopDetail = () => {
                 </a>
               </span>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: data?.data?.product.content }} class="leading-relaxed">
+            <div dangerouslySetInnerHTML={{ __html: post?.data?.content }} class="leading-relaxed">
             </div>
             <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
               <div class="flex">
@@ -204,12 +261,12 @@ const ShopDetail = () => {
             </div>
             <div class="flex">
               <span class="title-font font-medium text-2xl text-gray-900">
-                <NumberFormatter number={data?.data?.product.price} />
+                <NumberFormatter number={30000} />
 
               </span>
-              <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-                Button
-              </button>
+              <a href={"" + post?.data?.fbUrl} class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                Mua ngay
+              </a>
               <button class="relative rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 group">
                 <svg
                   fill="currentColor"
@@ -227,7 +284,7 @@ const ShopDetail = () => {
         </div>
 
         <div className="lg:w-5/6 mx-auto w-full py-10 2xl:mx-0">
-          <div class="flex items-center mb-2">
+          {/* <div class="flex items-center mb-2">
             <svg
               class="w-4 h-4 text-yellow-300 me-1"
               aria-hidden="true"
@@ -282,22 +339,22 @@ const ShopDetail = () => {
             <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
               5
             </p>
-          </div>
+          </div> */}
           <p class="text-sm font-medium text-gray-500 dark:text-gray-400">
-            1,745 global ratings
+            {rating?.data?.reviews?.length} Đánh giá
           </p>
           <div class="flex items-center mt-4">
             <a
               href="#"
               class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline"
             >
-              5 star
+              5 sao
             </a>
             <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-              <div class="h-5 bg-yellow-300 rounded w-[70%]"></div>
+              <div class={`h-5 bg-yellow-300 rounded w-[${(post?.data?.totalStart5 / post?.data?.ratingCount) * 100}%]`}></div>
             </div>
             <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-              70%
+              {(post?.data?.totalStart5 / post?.data?.ratingCount) * 100} %
             </span>
           </div>
           <div class="flex items-center mt-4">
@@ -305,13 +362,13 @@ const ShopDetail = () => {
               href="#"
               class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline"
             >
-              4 star
+              4 sao
             </a>
             <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-              <div class="h-5 bg-yellow-300 rounded w-[17%]"></div>
+              <div class={`h-5 bg-yellow-300 rounded w-[${(post?.data?.totalStart4 / post?.data?.ratingCount) * 100}%]`}></div>
             </div>
             <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-              17%
+              {(post?.data?.totalStart4 / post?.data?.ratingCount) * 100} %
             </span>
           </div>
           <div class="flex items-center mt-4">
@@ -319,13 +376,13 @@ const ShopDetail = () => {
               href="#"
               class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline"
             >
-              3 star
+              3 sao
             </a>
             <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-              <div class="h-5 bg-yellow-300 rounded w-[8%]"></div>
+              <div class={`h-5 bg-yellow-300 rounded w-[${(post?.data?.totalStart3 / post?.data?.ratingCount) * 100}%]`}></div>
             </div>
             <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-              8%
+              {(post?.data?.totalStart3 / post?.data?.ratingCount) * 100} %
             </span>
           </div>
           <div class="flex items-center mt-4">
@@ -333,13 +390,13 @@ const ShopDetail = () => {
               href="#"
               class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline"
             >
-              2 star
+              2 sao
             </a>
             <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-              <div class="h-5 bg-yellow-300 rounded w-[4%]"></div>
+              <div class={`h-5 bg-yellow-300 rounded w-[${(post?.data?.totalStart2 / post?.data?.ratingCount) * 100}%]`}></div>
             </div>
             <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-              4%
+              {(post?.data?.totalStart2 / post?.data?.ratingCount) * 100} %
             </span>
           </div>
           <div class="flex items-center mt-4">
@@ -347,13 +404,13 @@ const ShopDetail = () => {
               href="#"
               class="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline"
             >
-              1 star
+              1 sao
             </a>
             <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-              <div class="h-5 bg-yellow-300 rounded w-[1%]"></div>
+              <div class={`h-5 bg-yellow-300 rounded w-[${(post?.data?.totalStart1 / post?.data?.ratingCount) * 100}%]`}></div>
             </div>
             <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-              1%
+              {(post?.data?.totalStart1 / post?.data?.ratingCount) * 100} %
             </span>
           </div>
         </div>
@@ -371,42 +428,46 @@ const ShopDetail = () => {
                   <div class="flex flex-col items-center py-6 space-y-3">
                     <div class="flex space-x-3">
                       <svg
-                        class="w-12 h-12 text-yellow-500 cursor-pointer"
+                        class={`w-12 h-12 text-yellow-500 cursor-pointer ${ratingValue >= 1 ? "fill-yellow-500" : "fill-gray-300"}`}
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
+                        onMouseEnter={() => setRatingValue(1)}
                       >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                       <svg
-                        class="w-12 h-12 text-yellow-500 cursor-pointer"
+                        class={`w-12 h-12 text-yellow-500 cursor-pointer ${ratingValue >= 2 ? "fill-yellow-500" : "fill-gray-300"}`}
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
+                        onMouseEnter={() => setRatingValue(2)}
                       >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                       <svg
-                        class="w-12 h-12 text-yellow-500 cursor-pointer"
+                        class={`w-12 h-12 text-yellow-500 cursor-pointer ${ratingValue >= 3 ? "fill-yellow-500" : "fill-gray-300"}`}
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
+                        onMouseEnter={() => setRatingValue(3)}
                       >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                       <svg
-                        class="w-12 h-12 text-gray-500 cursor-pointer"
+                        class={`w-12 h-12 text-yellow-500 cursor-pointer ${ratingValue >= 4 ? "fill-yellow-500" : "fill-gray-300"}`}
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
+                        onMouseEnter={() => setRatingValue(4)}
                       >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg
-                        class="w-12 h-12 text-gray-500 cursor-pointer"
+                      </svg><svg
+                        class={`w-12 h-12 text-yellow-500 cursor-pointer ${ratingValue === 5 ? "fill-yellow-500" : "fill-gray-300"}`}
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
+                        onMouseEnter={() => setRatingValue(5)}
                       >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
@@ -417,11 +478,12 @@ const ShopDetail = () => {
                       rows="3"
                       class="p-4 text-gray-500 rounded-xl resize-none"
                       placeholder="Đánh giá của bạn"
+                      value={contentRating}
+                      onChange={(e) => setContentRating(e.target.value)}
                     >
-                      Leave a message, if you want
                     </textarea>
-                    <button class="py-3 my-8 text-lg bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl text-white hover:shadow-lg">
-                      Rate now
+                    <button onClick={() => handleRatingSubmit()} class="py-3 my-8 text-lg bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl text-white hover:shadow-lg">
+                      Đánh giá
                     </button>
                   </div>
                 </div>
@@ -432,121 +494,84 @@ const ShopDetail = () => {
       </div>
 
       <div className="lg:w-5/6 mx-auto w-full py-10 2xl:max-w-[1280px]">
-        <article>
-          <div class="flex items-center mb-4">
-            <img
-              class="w-10 h-10 me-4 rounded-full"
-              src={
-                "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-              }
-              alt=""
-            />
-            <div class="font-medium ">
+        {rating ? rating.data?.reviews.map((review) => {
+          return (
+          <article key={review.id} className="mb-5">
+            <div class="flex items-center mb-4">
+              <img
+                class="w-10 h-10 me-4 rounded-full"
+                src={
+                  "https://inkythuatso.com/uploads/thumbnails/800/2023/03/8-anh-dai-dien-trang-inkythuatso-03-15-26-54.jpg"
+                }
+                alt=""
+              />
+              <div class="font-medium ">
+                <p>
+                  {/* {userData.fullname} */}
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center mb-1 space-x-1 rtl:space-x-reverse">
+              <svg
+                class={`w-4 h-4 text-yellow-300 ${review.rating >= 1 ? "fill-yellow-300" : "fill-gray-300"}`}
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+              <svg
+                class={`w-4 h-4 text-yellow-300 ${review.rating >= 2 ? "fill-yellow-300" : "fill-gray-300"}`}
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+              <svg
+                class={`w-4 h-4 text-yellow-300 ${review.rating >= 3 ? "fill-yellow-300" : "fill-gray-300"}`}
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+              <svg
+                class={`w-4 h-4 text-yellow-300 ${review.rating >= 4 ? "fill-yellow-300" : "fill-gray-300"}`}
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+              <svg
+                class={`w-4 h-4 text-yellow-300 ${review.rating === 5 ? "fill-yellow-300" : "fill-gray-300"}`}
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+              {/* <h3 class="ms-2 text-sm font-semibold text-gray-900 dark:text-white">
+                Thinking to buy another one!
+              </h3> */}
+            </div>
+            <footer class="mb-5 text-sm text-gray-500 dark:text-gray-400">
               <p>
-                Jese Leos{" "}
-                <time
-                  datetime="2014-08-16 19:00"
-                  class="block text-sm text-gray-500"
-                >
-                  Joined on August 2014
-                </time>
+                Đánh giá vào ngày {format(new Date(review.createdAt), 'yyyy-MM-dd')}
               </p>
-            </div>
-          </div>
-          <div class="flex items-center mb-1 space-x-1 rtl:space-x-reverse">
-            <svg
-              class="w-4 h-4 text-yellow-300"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-            </svg>
-            <svg
-              class="w-4 h-4 text-yellow-300"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-            </svg>
-            <svg
-              class="w-4 h-4 text-yellow-300"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-            </svg>
-            <svg
-              class="w-4 h-4 text-yellow-300"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-            </svg>
-            <svg
-              class="w-4 h-4 text-gray-300 dark:text-gray-500"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 22 20"
-            >
-              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-            </svg>
-            <h3 class="ms-2 text-sm font-semibold text-gray-900 dark:text-white">
-              Thinking to buy another one!
-            </h3>
-          </div>
-          <footer class="mb-5 text-sm text-gray-500 dark:text-gray-400">
-            <p>
-              Reviewed in the United Kingdom on{" "}
-              <time datetime="2017-03-03 19:00">March 3, 2017</time>
+            </footer>
+            <p class="mb-2 text-gray-500 dark:text-gray-400">
+              {review.comment}
             </p>
-          </footer>
-          <p class="mb-2 text-gray-500 dark:text-gray-400">
-            This is my third Invicta Pro Diver. They are just fantastic value
-            for money. This one arrived yesterday and the first thing I did was
-            set the time, popped on an identical strap from another Invicta and
-            went in the shower with it to test the waterproofing.... No
-            problems.
-          </p>
-          <p class="mb-3 text-gray-500 dark:text-gray-400">
-            It is obviously not the same build quality as those very expensive
-            watches. But that is like comparing a Citroën to a Ferrari. This
-            watch was well under £100! An absolute bargain.
-          </p>
-          <a
-            href="#"
-            class="block mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-          >
-            Read more
-          </a>
-          <aside>
-            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-              19 people found this helpful
-            </p>
-            <div class="flex items-center mt-3">
-              <a
-                href="#"
-                class="px-2 py-1.5 text-xs font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              >
-                Helpful
-              </a>
-              <a
-                href="#"
-                class="ps-4 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500 border-gray-200 ms-4 border-s md:mb-0 dark:border-gray-600"
-              >
-                Report abuse
-              </a>
-            </div>
-          </aside>
-        </article>
+          </article>
+        )}) : "loading"}
+
       </div>
     </section>
   );

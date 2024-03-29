@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Post from "../components/Post";
+import CreatePost from '../components/CreatePost';
 
 const Group = () => {
   const [group, setGroup] = useState();
@@ -83,16 +84,20 @@ const Group = () => {
       <div>
       </div>
       {/* post of group */}
+      <div className="w-full flex justify-center">
+          
       <div
-        className="col-end-2 col-start-1 post pt-[0.75rem] post-display"
+        className="col-end-2 col-start-1 post pt-[0.75rem] post-display w-[800px]"
         align="center"
-      >
+        >
+        <CreatePost groupId={id} />
         {posts ? (
           posts.map((post) => <Post postData={post} key={post.id} />)
-        ) : (
-          <p>Loading ...</p>
-        )}
+          ) : (
+            <p>Loading ...</p>
+            )}
       </div>
+            </div>
     </div>
   );
 };
