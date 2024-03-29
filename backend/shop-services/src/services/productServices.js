@@ -1,5 +1,6 @@
 import Product from "../moldes/product";
-import Rating from "../moldes/rating"
+import mongoose from "mongoose";
+const ObjectId = mongoose.Types.ObjectId;
 const createProduct = async (data, images) => {
   try {
     const { title, content, price, fbUrl, userIdRegister } = data;
@@ -39,25 +40,100 @@ const createProduct = async (data, images) => {
 
 const getProductWithId = async (id) => {
   try {
-    const ratingProduct = await Rating.findOne({ productId: id })
-    .then((rs) => {
-      return rs;
-    })
-    .catch((err) => {
-      return {
-        data : [],
-        mess : `${err}`
-      };
-     
-    });
-    const rs = await Product.findOne({ _id: id })
+    const productId = new ObjectId(id);
+    const rs = await Product.aggregate([
+      { $match: { _id: productId } },
+      {
+        $lookup: {
+          from: "ratings", // The collection to join with
+          localField: "_id", // Field from the current collection
+          foreignField: "productId", // Field from the joined collection
+          as: "ratings",
+        },
+      },
+      {
+        $lookup: {
+          from: "options", // The collection to join with
+          localField: "_id", // Field from the current collection
+          foreignField: "productId", // Field from the joined collection
+          as: "options",
+        },
+      },
+
+      {
+        $addFields: {
+          ratingCount: {
+            $cond: {
+              if: { $isArray: "$ratings" },
+              then: { $size: "$ratings" },
+              else: 0,
+            },
+          },
+          avgRating: {
+            $cond: {
+              if: { $isArray: "$ratings" },
+              then: { $avg: "$ratings.rating" },
+              else: 0,
+            },
+          },
+        },
+      },
+      { $unwind: { path: "$ratings", preserveNullAndEmptyArrays: true } },
+
+      {
+        $project: {
+          _id: 1,
+          title: 1,
+          name: 1,
+          content: 1,
+          images: 1,
+          fbUrl: 1,
+          userIdRegister: 1,
+          isDelete: 1,
+          createdAt: 1,
+          ratings: 1, // Include empty array for ratings
+          options: 1, // Include empty array for options
+          ratingCount: 1, // Giữ nguyên trường ratingCount
+          avgRating: 1, // Giữ nguyên trường ratingCount
+        },
+      },
+      {
+        $group: {
+          _id: "$_id",
+          title: { $first: "$title" },
+          name: { $first: "$name" },
+          content: { $first: "$content" },
+          images: { $first: "$images" },
+          fbUrl: { $first: "$fbUrl" },
+          userIdRegister: { $first: "$userIdRegister" },
+          isDelete: { $first: "$isDelete" },
+          createdAt: { $first: "$createdAt" },
+          ratings: { $push: "$ratings" },
+          options: { $first: "$options" },
+          ratingCount: { $first: "$ratingCount" }, // Sử dụng $first cho ratingCount
+          avgRating: { $first: "$avgRating" },
+          totalStart5: {
+            $sum: { $cond: [{ $eq: ["$ratings.rating", 5] }, 1, 0] },
+          },
+          totalStart4: {
+            $sum: { $cond: [{ $eq: ["$ratings.rating", 4] }, 1, 0] },
+          },
+          totalStart3: {
+            $sum: { $cond: [{ $eq: ["$ratings.rating", 3] }, 1, 0] },
+          },
+          totalStart2: {
+            $sum: { $cond: [{ $eq: ["$ratings.rating", 2] }, 1, 0] },
+          },
+          totalStart1: {
+            $sum: { $cond: [{ $eq: ["$ratings.rating", 1] }, 1, 0] },
+          },
+        },
+      },
+    ])
       .then((rs) => {
         return {
           success: true,
-          data: {
-            product: rs,
-            rating: ratingProduct
-          },
+          data: rs[0],
         };
       })
       .catch((err) => {
@@ -67,7 +143,7 @@ const getProductWithId = async (id) => {
         };
       });
     return rs;
-    } catch (error) {
+  } catch (error) {
     return {
       success: false,
       mess: `${error}`,

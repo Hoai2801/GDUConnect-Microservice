@@ -1,5 +1,5 @@
 import Rating from "../moldes/rating";
-
+import http from "http";
 const createRating = async (data, images) => {
   try {
     const { comment, rating, productId, userId } = data;
@@ -91,6 +91,9 @@ const getRatingWithProductId = async (id) => {
         console.log(rs);
         const totalRating = rs.reduce((sum, rating) => sum + rating.rating, 0);
         const avgRating = totalRating / rs.length;
+        rs.forEach(rs => {
+          rs.userId = http.get("http://localhost:8080/api/v1/user/" + rs.userId);
+        });
         return {
           success: true,
           data: {

@@ -39,7 +39,8 @@ public class SecurityConfig {
           auth.pathMatchers(HttpMethod.GET, "/api/v1/shop/**").permitAll();
           auth.pathMatchers("/api/v1/user/**").permitAll();
           auth.pathMatchers("/eureka/**", "/actuator/**").permitAll();
-          auth.anyExchange().authenticated();
+//          auth.anyExchange().authenticated();
+          auth.anyExchange().permitAll();
         }
       )
       .addFilterBefore(jwtAuthFilter, SecurityWebFiltersOrder.AUTHENTICATION);

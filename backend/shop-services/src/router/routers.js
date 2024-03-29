@@ -6,7 +6,6 @@ import ctrlOption from "../controller/option"
 let router = express.Router();
 
 let initRouter = (app) => {
-  console.log("first")
   // Product
   router
     .route("/product")
