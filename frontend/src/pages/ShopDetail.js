@@ -22,10 +22,34 @@ const ShopDetail = () => {
   const [post, setData] = useState([]);
   const [rating, setRating] = useState([]);
 
+<<<<<<< HEAD
   //rating
   const [contentRating, setContentRating] = useState("");
   const [ratingValue, setRatingValue] = useState(0);
   const images = null;
+=======
+  const { id } = useParams();
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/v1/shop/product/" + id)
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get("http://localhost:8080/api/v1/shop/rating/" + id)
+      .then((res) => {
+        setRating(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
+>>>>>>> f4e614b60ecdfe8bb9521aba0977bf16ff213853
 
 
   let token = Cookies.get("token");
@@ -121,7 +145,7 @@ const ShopDetail = () => {
           />
           <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 class="text-sm title-font text-gray-500 tracking-widest">
-              BRAND NAME
+              J.D. Salinger
             </h2>
             <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
               {post?.data?.title}

@@ -1,232 +1,237 @@
+<<<<<<< HEAD
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
+=======
+import React from "react";
+>>>>>>> f4e614b60ecdfe8bb9521aba0977bf16ff213853
 import { Link } from "react-router-dom";
 const Shop = () => {
-  // const data = {
-  //   success: true,
-  //   data: [
-  //     {
-  //       _id: "65e48c3348ef7b328d9304e5",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-03T14:38:17.404Z",
-  //       updatedAt: "2024-03-03T14:38:17.404Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb15f91e1030af78cbd7d9",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:42:26.982Z",
-  //       updatedAt: "2024-03-08T13:42:26.982Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb185f3a5bc95a91e53d46",
-  //       title:
-  //         "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak",
-  //       content: "new iphone",
-  //       price: 12000,
-  //       images: [
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
-  //       ],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:53:27.272Z",
-  //       updatedAt: "2024-03-08T13:53:27.272Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65e48c3348ef7b328d9304e5",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-03T14:38:17.404Z",
-  //       updatedAt: "2024-03-03T14:38:17.404Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb15f91e1030af78cbd7d9",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:42:26.982Z",
-  //       updatedAt: "2024-03-08T13:42:26.982Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb185f3a5bc95a91e53d46",
-  //       title:
-  //         "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak",
-  //       content: "new iphone",
-  //       price: 12000,
-  //       images: [
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
-  //       ],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:53:27.272Z",
-  //       updatedAt: "2024-03-08T13:53:27.272Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65e48c3348ef7b328d9304e5",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-03T14:38:17.404Z",
-  //       updatedAt: "2024-03-03T14:38:17.404Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb15f91e1030af78cbd7d9",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:42:26.982Z",
-  //       updatedAt: "2024-03-08T13:42:26.982Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb185f3a5bc95a91e53d46",
-  //       title:
-  //         "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak",
-  //       content: "new iphone",
-  //       price: 12000,
-  //       images: [
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
-  //       ],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:53:27.272Z",
-  //       updatedAt: "2024-03-08T13:53:27.272Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65e48c3348ef7b328d9304e5",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-03T14:38:17.404Z",
-  //       updatedAt: "2024-03-03T14:38:17.404Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb15f91e1030af78cbd7d9",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:42:26.982Z",
-  //       updatedAt: "2024-03-08T13:42:26.982Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb185f3a5bc95a91e53d46",
-  //       title:
-  //         "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak alkjf akjfa akjf jakfj ajfk akjfak akjfka akjf jafk hihi",
-  //       content: "new iphone",
-  //       price: 12000,
-  //       images: [
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
-  //       ],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:53:27.272Z",
-  //       updatedAt: "2024-03-08T13:53:27.272Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65e48c3348ef7b328d9304e5",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-03T14:38:17.404Z",
-  //       updatedAt: "2024-03-03T14:38:17.404Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb15f91e1030af78cbd7d9",
-  //       title: "hello",
-  //       content: "hilajfka",
-  //       price: 600000,
-  //       images: [],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:42:26.982Z",
-  //       updatedAt: "2024-03-08T13:42:26.982Z",
-  //       __v: 0,
-  //     },
-  //     {
-  //       _id: "65eb185f3a5bc95a91e53d46",
-  //       title:
-  //         "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak",
-  //       content: "new iphone",
-  //       price: 12000,
-  //       images: [
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
-  //         "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
-  //       ],
-  //       fbUrl: "facebook.com",
-  //       userIdRegister: 1,
-  //       isDelete: false,
-  //       createdAt: "2024-03-08T13:53:27.272Z",
-  //       updatedAt: "2024-03-08T13:53:27.272Z",
-  //       __v: 0,
-  //     },
-  //   ],
-  // };
+  const data = {
+    success: true,
+    data: [
+      {
+        _id: "65e48c3348ef7b328d9304e5",
+        title: "The Catcher in the Rye",
+        content: "hilajfka",
+        price: 280000,
+        images: ["https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"],
+        fbUrl: "facebook.com",
+        userIdRegister: 1,
+        isDelete: false,
+        createdAt: "2024-03-03T14:38:17.404Z",
+        updatedAt: "2024-03-03T14:38:17.404Z",
+        __v: 0,
+      },
+      // {
+      //   _id: "65eb15f91e1030af78cbd7d9",
+      //   title: "hello",
+      //   content: "hilajfka",
+      //   price: 600000,
+      //   images: [],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:42:26.982Z",
+      //   updatedAt: "2024-03-08T13:42:26.982Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65eb185f3a5bc95a91e53d46",
+      //   title:
+      //     "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak",
+      //   content: "new iphone",
+      //   price: 12000,
+      //   images: [
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
+      //   ],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:53:27.272Z",
+      //   updatedAt: "2024-03-08T13:53:27.272Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65e48c3348ef7b328d9304e5",
+      //   title: "hello",
+      //   content: "hilajfka",
+      //   price: 600000,
+      //   images: [],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-03T14:38:17.404Z",
+      //   updatedAt: "2024-03-03T14:38:17.404Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65eb15f91e1030af78cbd7d9",
+      //   title: "hello",
+      //   content: "hilajfka",
+      //   price: 600000,
+      //   images: [],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:42:26.982Z",
+      //   updatedAt: "2024-03-08T13:42:26.982Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65eb185f3a5bc95a91e53d46",
+      //   title:
+      //     "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak",
+      //   content: "new iphone",
+      //   price: 12000,
+      //   images: [
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
+      //   ],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:53:27.272Z",
+      //   updatedAt: "2024-03-08T13:53:27.272Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65e48c3348ef7b328d9304e5",
+      //   title: "hello",
+      //   content: "hilajfka",
+      //   price: 600000,
+      //   images: [],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-03T14:38:17.404Z",
+      //   updatedAt: "2024-03-03T14:38:17.404Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65eb15f91e1030af78cbd7d9",
+      //   title: "hello",
+      //   content: "hilajfka",
+      //   price: 600000,
+      //   images: [],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:42:26.982Z",
+      //   updatedAt: "2024-03-08T13:42:26.982Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65eb185f3a5bc95a91e53d46",
+      //   title:
+      //     "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak",
+      //   content: "new iphone",
+      //   price: 12000,
+      //   images: [
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
+      //   ],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:53:27.272Z",
+      //   updatedAt: "2024-03-08T13:53:27.272Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65e48c3348ef7b328d9304e5",
+      //   title: "hello",
+      //   content: "hilajfka",
+      //   price: 600000,
+      //   images: [],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-03T14:38:17.404Z",
+      //   updatedAt: "2024-03-03T14:38:17.404Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65eb15f91e1030af78cbd7d9",
+      //   title: "hello",
+      //   content: "hilajfka",
+      //   price: 600000,
+      //   images: [],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:42:26.982Z",
+      //   updatedAt: "2024-03-08T13:42:26.982Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65eb185f3a5bc95a91e53d46",
+      //   title:
+      //     "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak alkjf akjfa akjf jakfj ajfk akjfak akjfka akjf jafk hihi",
+      //   content: "new iphone",
+      //   price: 12000,
+      //   images: [
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
+      //   ],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:53:27.272Z",
+      //   updatedAt: "2024-03-08T13:53:27.272Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65e48c3348ef7b328d9304e5",
+      //   title: "hello",
+      //   content: "hilajfka",
+      //   price: 600000,
+      //   images: [],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-03T14:38:17.404Z",
+      //   updatedAt: "2024-03-03T14:38:17.404Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65eb15f91e1030af78cbd7d9",
+      //   title: "hello",
+      //   content: "hilajfka",
+      //   price: 600000,
+      //   images: [],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:42:26.982Z",
+      //   updatedAt: "2024-03-08T13:42:26.982Z",
+      //   __v: 0,
+      // },
+      // {
+      //   _id: "65eb185f3a5bc95a91e53d46",
+      //   title:
+      //     "Iphone 15 promax aljgkajlgkj jlakjf aljfka lajfkla lajflajfl alsakjflak",
+      //   content: "new iphone",
+      //   price: 12000,
+      //   images: [
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/cofiysj7w4qemn76r4ki.png",
+      //     "https://res.cloudinary.com/dqqkpgega/image/upload/v1709906014/product-images/sadk19jjz0r1rfq7d6zf.png",
+      //   ],
+      //   fbUrl: "facebook.com",
+      //   userIdRegister: 1,
+      //   isDelete: false,
+      //   createdAt: "2024-03-08T13:53:27.272Z",
+      //   updatedAt: "2024-03-08T13:53:27.272Z",
+      //   __v: 0,
+      // },
+    ],
+  };
 
+<<<<<<< HEAD
   const [isShowModal, setShowModal] = useState(false);
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
@@ -286,18 +291,21 @@ const Shop = () => {
   }
 
   const [data, setData] = useState([]);
+=======
+  // const [data, setData] = useState([]);
+>>>>>>> f4e614b60ecdfe8bb9521aba0977bf16ff213853
 
-  useEffect(() => {
-    fetch("http://localhost:8080/api/v1/shop/product")
-      .then(response => response.json())
-      .then((data) => {
-        setData(data);
-        console.log(data)
-      })
-      .catch(error => {
-        console.error("Error fetching data:", error);
-      });
-  }, [])
+  // useEffect(() => {
+  //   fetch("http://localhost:8080/api/v1/shop/product")
+  //     .then(response => response.json())
+  //     .then((data) => {
+  //       setData(data);
+  //       console.log(data)
+  //     })
+  //     .catch(error => {
+  //       console.error("Error fetching data:", error);
+  //     });
+  // }, [])
 
   function NumberFormatter({ number }) {
     // Use Intl.NumberFormat for accurate formatting
@@ -313,6 +321,7 @@ const Shop = () => {
 
   return (
     <div class="flex items-center w-full justify-center">
+<<<<<<< HEAD
       <div className="2xl:max-w-[1140px]">
         <div className="w-full h-[100px] text-center pt-10">
 
@@ -417,9 +426,15 @@ const Shop = () => {
             </button>
           </div>
         </div>
+=======
+      <div className="2xl:max-w-[1140px] flex items-center justify-center flex-col py-10">
+        <button className="max-w-3xl text-center bg-blue-500 text-white font-bold flex items-center justify-center rounded-md py-2 px-4 hover:bg-blue-700 transition duration-300">
+          Thêm sản phẩm
+        </button>
+>>>>>>> f4e614b60ecdfe8bb9521aba0977bf16ff213853
         <div className="flex w-full justify-evenly flex-wrap py-10 gap-5">
           {data &&
-            data.map((post) => {
+            data.data.map((post) => {
               return (
                 <Link to={`/shop/${post._id}`}>
                   <div class="max-w-xl mx-auto w-[300px] shadow rounded-lg overflow-hidden">
@@ -439,7 +454,7 @@ const Shop = () => {
                       </a>
                       <div class="px-5 pb-5">
                         <div className="h-[30px] overflow-hidden w-[275px]">
-                          <h3 class="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">
+                          <h3 class="text-gray-900 font-semibold text-xl tracking-tight dark:text-white pt-2">
                             {post.title}
                           </h3>
                         </div>
@@ -490,10 +505,10 @@ const Shop = () => {
                         </div>
                         <div class="flex items-center justify-between">
                           <NumberFormatter number={post.price} />
-                          <span className="text-white text-[18px]">Vnd</span>
+                          <span className="text-white text-[18px]">VND</span>
                           <a
                             href="#"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition duration-300"
                           >
                             Xem chi tiết
                           </a>
