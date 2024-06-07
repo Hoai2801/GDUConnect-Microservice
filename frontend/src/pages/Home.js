@@ -179,23 +179,23 @@ const Home = () => {
 
   useEffect(() => {
     fetch("http://localhost:8080/api/v1/post")
-    .then(response => response.json())
-    .then(data => {
-      // if (data) {
-      //   return;
-      // }
-      setPosts(data);
-      console.log(data)
-    })
-    .catch(error => {
-      console.error("Error fetching data:", error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        // if (data) {
+        //   return;
+        // }
+        setPosts(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
   return (
-    <div className="w-full flex justify-center">
-      <div className="grid  px-5 2xl:max-w-[1140px]" id="home">
+    <div className="flex w-full justify-center">
+      <div className="grid px-5 2xl:max-w-[1140px]" id="home">
         <div
-          className="col-end-2 col-start-1 max-h-[calc(100vh-63px)] overflow-y-scroll post pt-[0.75rem] post-display"
+          className="post post-display col-start-1 col-end-2 max-h-[calc(100vh-63px)] overflow-y-scroll pt-[0.75rem]"
           align="center"
         >
           <CreatePost />

@@ -72,7 +72,7 @@ const Register = () => {
   return (
     <>
       <section className="min-h-screen w-full bg-white">
-        <div className="flex h-[10vh] justify-between items-center mx-[5vh] nav-register">
+        <div className="nav-register mx-[5vh] flex h-[10vh] items-center justify-between">
           <div>
             <a href="/" className="nav-login nav-login-text text-[30px]">
               GDU<span>Connect</span>
@@ -80,29 +80,29 @@ const Register = () => {
           </div>
           <a href="/auth">
             <div
-              className="text-sky-500 hover:underline cursor-pointer link-login"
+              className="link-login cursor-pointer text-sky-500 hover:underline"
               align="end"
             >
               Already have an acccount?
             </div>
           </a>
         </div>
-        <div className="h-full grid grid-cols-2 grid-register">
-          <div className="justify-center w-full min-w-[350px] items-center login-illustion flex">
+        <div className="grid-register grid h-full grid-cols-2">
+          <div className="login-illustion flex w-full min-w-[350px] items-center justify-center">
             <img
-              className="max-h-[70vh] xl:max-h-[90vh] lg:max-h-[80vh]"
+              className="max-h-[70vh] lg:max-h-[80vh] xl:max-h-[90vh]"
               src={Image.Login_illustration}
               alt=""
             ></img>
           </div>
-          <form className="flex flex-col justify-between pr-[5vh] register-form">
-            <h1 className="text-[30px] font-bold register-text h1-login">
+          <form className="register-form flex flex-col justify-between pr-[5vh]">
+            <h1 className="register-text h1-login text-[30px] font-bold">
               Create an acccount
             </h1>
             <div>
               <label className="block text-gray-700">Username</label>
               <input
-                className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue500 focus:bg-white transition duration-300"
+                className="focus:border-blue500 mt-2 w-full bg-gray-200 px-4 py-3 ring-1 transition duration-300 focus:bg-white"
                 required
                 value={username}
                 onChange={handleUsernameChange}
@@ -111,7 +111,7 @@ const Register = () => {
             <div>
               <label className="block text-gray-700">Gmail</label>
               <input
-                className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue500 focus:bg-white transition duration-300"
+                className="focus:border-blue500 mt-2 w-full bg-gray-200 px-4 py-3 ring-1 transition duration-300 focus:bg-white"
                 required
                 value={email}
                 onChange={handleEmailChange}
@@ -120,7 +120,7 @@ const Register = () => {
             <div>
               <label className="block text-gray-700">Mã số sinh viên</label>
               <input
-                className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+                className="mt-2 w-full bg-gray-200 px-4 py-3 ring-1 transition duration-300 focus:border-blue-500 focus:bg-white"
                 required
                 value={studentId}
                 onChange={handleStudentIdChange}
@@ -129,7 +129,7 @@ const Register = () => {
             <div>
               <label className="block text-gray-700">Mật khẩu</label>
               <input
-                className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+                className="mt-2 w-full bg-gray-200 py-3 pl-4 pr-12 ring-1 transition duration-300 focus:border-blue-500 focus:bg-white"
                 required
                 value={password}
                 onChange={handlePasswordChange}
@@ -138,25 +138,25 @@ const Register = () => {
             <div>
               <label className="block text-gray-700">Nhập lại mật khẩu</label>
               <input
-                className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+                className="mt-2 w-full bg-gray-200 py-3 pl-4 pr-12 ring-1 transition duration-300 focus:border-blue-500 focus:bg-white"
                 required
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
               ></input>
             </div>
             <button
-              className="w-full bg-sky-600 hover:bg-sky-500 text-white py-4 text-[16px]"
+              className="w-full bg-sky-600 py-4 text-[16px] text-white hover:bg-sky-500"
               onClick={handleSubmit}
             >
               Continue
             </button>
             <p className="text-gray-700">
               By registering, you argee to{" "}
-              <span className="text-sky-500 cursor-pointer">
+              <span className="cursor-pointer text-sky-500">
                 Terms of Service
               </span>{" "}
               and{" "}
-              <span className="text-sky-500 cursor-pointer">
+              <span className="cursor-pointer text-sky-500">
                 Privacy Policy
               </span>
             </p>

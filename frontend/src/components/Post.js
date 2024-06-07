@@ -111,7 +111,7 @@ const Post = (props) => {
       await axios.post(
         "http://localhost:8080/api/v1/post/unlike",
         likeData,
-        config
+        config,
       );
       data.likes.length--;
       setIsLiked(false);
@@ -131,7 +131,7 @@ const Post = (props) => {
       await axios.post(
         "http://localhost:8080/api/v1/post/like",
         likeData,
-        config
+        config,
       );
       data.likes.length++;
       setIsLiked(true);
@@ -152,7 +152,7 @@ const Post = (props) => {
   }
   function nextImage() {
     setIndex((currentIndex) =>
-      currentIndex === data.images.length - 1 ? 0 : currentIndex + 1
+      currentIndex === data.images.length - 1 ? 0 : currentIndex + 1,
     );
   }
 
@@ -190,7 +190,7 @@ const Post = (props) => {
       const response = await axios.post(
         "http://localhost:8080/api/v1/post/comment/" + id,
         data,
-        config
+        config,
       );
 
       // Reset mainComment and log the response data
@@ -208,10 +208,10 @@ const Post = (props) => {
           }
           loading="lazy"
           alt=""
-          className="w-[40px] h-[40px] object-cover mr-[10px]"
+          className="mr-[10px] h-[40px] w-[40px] object-cover"
           style={{ clipPath: "circle()" }}
         />
-        <div className="text-[14px] text-black text-start">
+        <div className="text-start text-[14px] text-black">
           {data.user.fullname} <br />{" "}
           <span className="text-[12px]">
             Khoa {data.user.department} &#x2022;{" "}
@@ -236,12 +236,12 @@ const Post = (props) => {
           comments.map((comment) => (
             <div
               key={comment.id}
-              className="comment-details grid grid-cols-[40px_1fr] mb-[12px]"
+              className="comment-details mb-[12px] grid grid-cols-[40px_1fr]"
             >
               {/* user avatar */}
-              <div className="min-w-[32px] min-h-[32px] max-w-[32px] max-h-[32px] mr-1">
+              <div className="mr-1 max-h-[32px] min-h-[32px] min-w-[32px] max-w-[32px]">
                 <img
-                  className="avatar object-cover h-[32px] w-[32px]"
+                  className="avatar h-[32px] w-[32px] object-cover"
                   src={comment.user.avatar}
                   loading="lazy"
                   alt=""
@@ -250,14 +250,14 @@ const Post = (props) => {
               </div>
               {/* comment content */}
               <div className="flex flex-col items-start">
-                <div className="bg-gray-200 p-3 rounded-[20px] flex flex-col items-start">
+                <div className="flex flex-col items-start rounded-[20px] bg-gray-200 p-3">
                   <p className="text-[15px]">
                     {comment.user.fullname} &#x2022; {comment.user.department}
                   </p>
                   <p className="text-[15px]">{comment.content}</p>
                   {comment.imageURL ? (
                     <img
-                      className="rounded-xl max-h-[300px] mt-[3px]"
+                      className="mt-[3px] max-h-[300px] rounded-xl"
                       src={comment.imageURL}
                       loading="lazy"
                       alt=""
@@ -267,11 +267,11 @@ const Post = (props) => {
                   )}
                 </div>
                 {/* comment actions */}
-                <ul className="text-[12px] flex space-x-[10px]">
+                <ul className="flex space-x-[10px] text-[12px]">
                   <li>{CreatePostTime(comment.createdAt)}</li>
                   <li className="cursor-pointer">Thích</li>
                 </ul>
-                <div className="flex mt-2 max-w-[300px]">
+                <div className="mt-2 flex max-w-[300px]">
                   <img
                     src={
                       data.user.avatar ||
@@ -281,7 +281,7 @@ const Post = (props) => {
                     alt=""
                     style={{ clipPath: "circle()" }}
                   />
-                  <div className="flex justify-center items-center w-full relative">
+                  <div className="relative flex w-full items-center justify-center">
                     <textarea
                       className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                       style={{ backgroundColor: " #F0F2F5" }}
@@ -293,7 +293,7 @@ const Post = (props) => {
                         height="24"
                         viewBox="0 -960 960 960"
                         width="24"
-                        className="cursor-pointer absolute bottom-[5px] right-[5px]"
+                        className="absolute bottom-[5px] right-[5px] cursor-pointer"
                       >
                         <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
                       </svg>
@@ -326,7 +326,7 @@ const Post = (props) => {
     if (data.images.length === 2)
       return (
         <div
-          className="imagecontainer-2 gap-x-[3px] grid grid-cols-2"
+          className="imagecontainer-2 grid grid-cols-2 gap-x-[3px]"
           onClick={togglePopUpImage}
         >
           <img src={data.images[0].imageURL} loading="lazy" alt="" />
@@ -337,7 +337,7 @@ const Post = (props) => {
     if (data.images.length === 3)
       return (
         <div
-          className="imagecontainer-3 gap-[3px] grid grid-cols-2"
+          className="imagecontainer-3 grid grid-cols-2 gap-[3px]"
           onClick={togglePopUpImage}
         >
           <img src={data.images[0].imageURL} loading="lazy" alt="" />
@@ -349,7 +349,7 @@ const Post = (props) => {
     if (data.images.length === 4)
       return (
         <div
-          className="imagecontainer-2 gap-[3px] grid grid-cols-2"
+          className="imagecontainer-2 grid grid-cols-2 gap-[3px]"
           onClick={togglePopUpImage}
         >
           <img src={data.images[0].imageURL} loading="lazy" alt="" />
@@ -361,7 +361,7 @@ const Post = (props) => {
     if (data.images.length >= 5)
       return (
         <div
-          className="imagecontainer-6 gap-[3px] grid grid-cols-6"
+          className="imagecontainer-6 grid grid-cols-6 gap-[3px]"
           onClick={togglePopUpImage}
         >
           <img src={data.images[0].imageURL} loading="lazy" alt="" />
@@ -369,9 +369,9 @@ const Post = (props) => {
           <img src={data.images[2].imageURL} loading="lazy" alt="" />
           <img src={data.images[3].imageURL} loading="lazy" alt="" />
           {data.images.length > 5 ? (
-            <div className="col-span-2 relative max-h-[200px]">
+            <div className="relative col-span-2 max-h-[200px]">
               <img src={data.images[4].imageURL} loading="lazy" alt="" />
-              <div className="flex plus absolute text-white inset-0 text-[20px] items-center justify-center">
+              <div className="plus absolute inset-0 flex items-center justify-center text-[20px] text-white">
                 +{data.images.length - 5}
               </div>
             </div>
@@ -385,15 +385,15 @@ const Post = (props) => {
   }
   return (
     <>
-      <article className="post-box bg-slate-50 mb-[16px] flex max-w-[1200px] flex-col pb-[12px] rounded-[10px]">
-        <div className="title-box flex mb-[12px] items-center" align="left">
+      <article className="post-box mb-[16px] flex max-w-[1200px] flex-col rounded-[10px] bg-slate-50 pb-[12px]">
+        <div className="title-box mb-[12px] flex items-center" align="left">
           <User />
         </div>
         <div className="content-box text-[14px]" align="left">
           {data.content}
         </div>
         <ImgContent />
-        <div className="reaction-details flex mx-[16px] py-[10px] justify-between">
+        <div className="reaction-details mx-[16px] flex justify-between py-[10px]">
           <div className="box" align="left">
             <p>Thích: {data.likes.length}</p>
           </div>
@@ -405,9 +405,9 @@ const Post = (props) => {
             <div className="hover:underline">Bình luận: {comments.length}</div>
           </div>
         </div>
-        <div className="reaction flex justify-around mb-[8px] text-[15px]">
+        <div className="reaction mb-[8px] flex justify-around text-[15px]">
           <button onClick={() => toggleLike()}>
-            <div className="box flex items-center cursor-pointer">
+            <div className="box flex cursor-pointer items-center">
               {isLiked ? (
                 <div className="w-[20px]">
                   <img
@@ -433,7 +433,7 @@ const Post = (props) => {
           </button>
           <div>
             <div
-              className="box flex items-center cursor-pointer btn-pu-p"
+              className="box btn-pu-p flex cursor-pointer items-center"
               onClick={togglePopUpImage}
             >
               <svg
@@ -452,7 +452,7 @@ const Post = (props) => {
               // for mobile devices
             }
             <div
-              className="box items-center cursor-pointer hidden btn-pu-cmt"
+              className="box btn-pu-cmt hidden cursor-pointer items-center"
               onClick={closePopupComment}
             >
               <svg
@@ -468,7 +468,7 @@ const Post = (props) => {
               Bình Luận
             </div>
           </div>
-          <div className="box flex items-center cursor-pointer">
+          <div className="box flex cursor-pointer items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24"
@@ -483,9 +483,7 @@ const Post = (props) => {
           </div>
         </div>
         <div
-          className={`pop-up-post max-h-[200vh] grid grid-cols-5 fixed inset-0 z-10
-        ${isDetailImagesOpen ? "" : "hidden"}
-        ${data.images.length !== 0 ? "" : "bg-slate-800 bg-opacity-90"} `}
+          className={`pop-up-post fixed inset-0 z-10 grid max-h-[200vh] grid-cols-5 ${isDetailImagesOpen ? "" : "hidden"} ${data.images.length !== 0 ? "" : "bg-slate-800 bg-opacity-90"} `}
           key={data.post_id}
         >
           <div
@@ -493,7 +491,7 @@ const Post = (props) => {
               data.images.length !== 0 ? " " : "hidden"
             } `}
           >
-            <div className="image-container items-center justify-center relative flex w-full h-[100vh]">
+            <div className="image-container relative flex h-[100vh] w-full items-center justify-center">
               <img
                 src={
                   data.images.length !== 0 ? data.images[index].imageURL : ""
@@ -502,10 +500,10 @@ const Post = (props) => {
               />
               <div
                 onClick={previousImage}
-                className="group btn-img flex btn-img-left top-0 bottom-0 items-center justify-center w-[70px] duration-400 transition-all cursor-pointer hover:w-[60px] left-0 absolute"
+                className="btn-img btn-img-left duration-400 group absolute bottom-0 left-0 top-0 flex w-[70px] cursor-pointer items-center justify-center transition-all hover:w-[60px]"
               >
                 {data.images.length > 1 ? (
-                  <button className="bg-gray-400 group-hover:bg-white text-black p-[5px] flex items-center justify-center">
+                  <button className="flex items-center justify-center bg-gray-400 p-[5px] text-black group-hover:bg-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="30"
@@ -524,17 +522,17 @@ const Post = (props) => {
                 height="30"
                 viewBox="0 -960 960 960"
                 width="30"
-                className="btn-close text-[25px] right-[20px] absolute top-[20px] cursor-pointer z-[1] fill-white"
+                className="btn-close absolute right-[20px] top-[20px] z-[1] cursor-pointer fill-white text-[25px]"
                 onClick={togglePopUpImage}
               >
                 <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
               </svg>
               <div
                 onClick={nextImage}
-                className="btn-img flex btn-img-right absolute right-0 top-0 bottom-0  items-center justify-center w-[70px] transition-all duration-400 cursor-pointer hover:w-[60px] group"
+                className="btn-img btn-img-right duration-400 group absolute bottom-0 right-0 top-0 flex w-[70px] cursor-pointer items-center justify-center transition-all hover:w-[60px]"
               >
                 {data.images.length > 1 ? (
-                  <button className="bg-gray-400 group-hover:bg-white text-black p-[5px] flex items-center justify-center">
+                  <button className="flex items-center justify-center bg-gray-400 p-[5px] text-black group-hover:bg-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="30"
@@ -552,8 +550,8 @@ const Post = (props) => {
             {
               //for mobile devices
             }
-            <div className="absolute bottom-0 left-0 right-0 h-[10vh] justify-between px-4 hidden rc-img">
-              <div className="box flex items-center cursor-pointer fill-white text-white">
+            <div className="rc-img absolute bottom-0 left-0 right-0 hidden h-[10vh] justify-between px-4">
+              <div className="box flex cursor-pointer items-center fill-white text-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -566,7 +564,7 @@ const Post = (props) => {
                 Thích
               </div>
               <div
-                className="box flex items-center cursor-pointer fill-white text-white"
+                className="box flex cursor-pointer items-center fill-white text-white"
                 onClick={togglePopupComment}
               >
                 <svg
@@ -580,7 +578,7 @@ const Post = (props) => {
                 </svg>
                 Bình Luận
               </div>
-              <div className="box flex items-center cursor-pointer fill-white text-white">
+              <div className="box flex cursor-pointer items-center fill-white text-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -595,18 +593,18 @@ const Post = (props) => {
             </div>
           </div>
           <div
-            className={`comment-container bg-slate-50 flex-col w-full flex relative pl-[15px] ${
+            className={`comment-container relative flex w-full flex-col bg-slate-50 pl-[15px] ${
               data.images.length !== 0 ? "col-span-2" : "col-start-2 col-end-5"
             }`}
           >
             <div className="container-cmt-1">
-              <div className="overflow-y-scroll h-[100vh] pb-[68px] pt-2">
+              <div className="h-[100vh] overflow-y-scroll pb-[68px] pt-2">
                 <div
                   className="mb-[12px] items-center py-2"
                   align="left"
                   style={{ borderBottom: "1px solid rgb(101, 103, 107)" }}
                 >
-                  <div className="flex justify-between items-center">
+                  <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <img
                         src={
@@ -615,10 +613,10 @@ const Post = (props) => {
                         }
                         loading="lazy"
                         alt=""
-                        className="w-[32px] h-[32px] object-cover mr-[8px]"
+                        className="mr-[8px] h-[32px] w-[32px] object-cover"
                         style={{ clipPath: "circle()" }}
                       ></img>
-                      <div className="text-[14px] text-black text-start">
+                      <div className="text-start text-[14px] text-black">
                         {data.user.fullname} <br />{" "}
                         <span className="text-[12px]">
                           Khoa {data.user.department} &#x2022;{" "}
@@ -631,7 +629,7 @@ const Post = (props) => {
                       height="30"
                       viewBox="0 -960 960 960"
                       width="30"
-                      className="btn-close text-[25px] cursor-pointer fill-black"
+                      className="btn-close cursor-pointer fill-black text-[25px]"
                       onClick={togglePopUpImage}
                     >
                       <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
@@ -642,7 +640,7 @@ const Post = (props) => {
                 <UserComments />
               </div>
             </div>
-            <div className="flex absolute right-0 left-0 bottom-0 pt-3 bg-white pl-[15px] ring-1 ring-black pb-2 textarea-1">
+            <div className="textarea-1 absolute bottom-0 left-0 right-0 flex bg-white pb-2 pl-[15px] pt-3 ring-1 ring-black">
               <img
                 src={
                   data.user.avatar ||
@@ -652,7 +650,7 @@ const Post = (props) => {
                 alt=""
                 style={{ clipPath: "circle()" }}
               />
-              <div className="flex justify-center items-center w-full relative">
+              <div className="relative flex w-full items-center justify-center">
                 <textarea
                   className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                   style={{ backgroundColor: " #F0F2F5" }}
@@ -666,7 +664,7 @@ const Post = (props) => {
                     height="24"
                     viewBox="0 -960 960 960"
                     width="24"
-                    className="cursor-pointer absolute bottom-[5px] right-[5px]"
+                    className="absolute bottom-[5px] right-[5px] cursor-pointer"
                   >
                     <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
                   </svg>
@@ -676,9 +674,9 @@ const Post = (props) => {
           </div>
         </div>
       </article>
-      <div className={`inset-0 fixed z-10 ${isCommentsOpen ? "" : "hidden"}`}>
-        <div className="h-full w-full bg-white relative">
-          <div className="ring-1 ring-black top-0 left-0 right-0 h-[50px] bg-white absolute flex justify-center items-center z-20">
+      <div className={`fixed inset-0 z-10 ${isCommentsOpen ? "" : "hidden"}`}>
+        <div className="relative h-full w-full bg-white">
+          <div className="absolute left-0 right-0 top-0 z-20 flex h-[50px] items-center justify-center bg-white ring-1 ring-black">
             <p>Bài viết của {data.user.fullname}</p>
           </div>
           <div onClick={closePopupComment}>
@@ -687,15 +685,15 @@ const Post = (props) => {
               height="30"
               viewBox="0 -960 960 960"
               width="30"
-              className="btn-close text-[25px] right-[20px] absolute top-[10px] cursor-pointer fill-black z-30"
+              className="btn-close absolute right-[20px] top-[10px] z-30 cursor-pointer fill-black text-[25px]"
             >
               <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
             </svg>
           </div>
-          <div className="h-[100vh] overflow-y-scroll pt-[60px] pb-[70px]">
+          <div className="h-[100vh] overflow-y-scroll pb-[70px] pt-[60px]">
             <UserComments />
           </div>
-          <div className="flex absolute right-0 left-0 bottom-0 pt-3 bg-white pl-[15px] ring-1 ring-black pb-2">
+          <div className="absolute bottom-0 left-0 right-0 flex bg-white pb-2 pl-[15px] pt-3 ring-1 ring-black">
             <img
               src={
                 data.user.avatar ||
@@ -705,7 +703,7 @@ const Post = (props) => {
               alt=""
               style={{ clipPath: "circle()" }}
             />
-            <div className="flex justify-center items-center w-full relative">
+            <div className="relative flex w-full items-center justify-center">
               <textarea
                 className="ml-[15px] w-full rounded px-2 py-1 text-[14px]"
                 style={{ backgroundColor: " #F0F2F5" }}
@@ -719,7 +717,7 @@ const Post = (props) => {
                   height="24"
                   viewBox="0 -960 960 960"
                   width="24"
-                  className="cursor-pointer absolute bottom-[5px] right-[5px]"
+                  className="absolute bottom-[5px] right-[5px] cursor-pointer"
                 >
                   <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
                 </svg>

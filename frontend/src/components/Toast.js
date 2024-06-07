@@ -1,15 +1,15 @@
 import React from "react";
 
-const Toast = ({content}) => {
+const Toast = ({ content }) => {
   return (
     <div
       id="toast-default"
-      class="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed top-[80px] right-3"
+      class="fixed right-3 top-[80px] flex w-full max-w-xs items-center rounded-lg bg-white p-4 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400"
       role="alert"
     >
-      <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200">
+      <div class="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-500 dark:bg-blue-800 dark:text-blue-200">
         <svg
-          class="w-4 h-4"
+          class="h-4 w-4"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -28,13 +28,13 @@ const Toast = ({content}) => {
       <div class="ms-3 text-sm font-normal">{content}</div>
       <button
         type="button"
-        class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+        class="-mx-1.5 -my-1.5 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-gray-300 dark:bg-gray-800 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white"
         data-dismiss-target="#toast-default"
         aria-label="Close"
       >
         <span class="sr-only">Close</span>
         <svg
-          class="w-3 h-3"
+          class="h-3 w-3"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

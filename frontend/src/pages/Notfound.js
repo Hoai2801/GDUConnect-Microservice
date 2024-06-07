@@ -1,11 +1,11 @@
 const Notfound = () => {
   return (
     <>
-      <section className="h-screen w-full flex justify-center items-center px-4">
+      <section className="flex h-screen w-full items-center justify-center px-4">
         <div align="center" className="notfound">
           {/* <img className="h-[250px]" src={Image.text404} alt=""></img> */}
-          <h1 className="text-[120px] mb-3">404</h1>
-          <h2 className="text-[24px] mt-[-50px] font-semibold">
+          <h1 className="mb-3 text-[120px]">404</h1>
+          <h2 className="mt-[-50px] text-[24px] font-semibold">
             Page not found
           </h2>
           <p className="text-[14px]">
@@ -13,7 +13,7 @@ const Notfound = () => {
             name changed or it temporarily unavailable
           </p>
           <a href="/">
-            <button className="text-white px-3 py-4 rounded-full mt-3 text-[14px] ring-1 ring-black bg-black transition hover:bg-white hover:text-black">
+            <button className="mt-3 rounded-full bg-black px-3 py-4 text-[14px] text-white ring-1 ring-black transition hover:bg-white hover:text-black">
               GO TO HOMEPAGE
             </button>
           </a>

@@ -21,14 +21,14 @@ const Navbar = () => {
         >
           <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z" />
         </svg>
-        <div className="flex items-center ml-[15px] px-[15px] avt-box">
+        <div className="avt-box ml-[15px] flex items-center px-[15px]">
           <img
-            className="w-[35px] h-[35px] object-contain avt-nav-home"
+            className="avt-nav-home h-[35px] w-[35px] object-contain"
             src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/8-anh-dai-dien-trang-inkythuatso-03-15-26-54.jpg"
             alt=""
           ></img>
           <div className="ml-[7px]">
-            <p className="text-[13px] mb-[-4px]">{jwt.name}</p>
+            <p className="mb-[-4px] text-[13px]">{jwt.name}</p>
             <span className="text-[12px]">Khoa {jwt.department}</span>
           </div>
         </div>
@@ -36,7 +36,7 @@ const Navbar = () => {
     ) : (
       <>
         <a href="/auth">
-          <button className="bg-slate-900 text-white px-[12px] py-[7px] rounded-2xl text-[14px] ring-1 ring-slate-900 hover:bg-slate-50 hover:text-black transition-all">
+          <button className="rounded-2xl bg-slate-900 px-[12px] py-[7px] text-[14px] text-white ring-1 ring-slate-900 transition-all hover:bg-slate-50 hover:text-black">
             Đăng nhập
           </button>
         </a>
@@ -51,8 +51,8 @@ const Navbar = () => {
   }
   return (
     <>
-      <nav className="header-home w-full h-[63px] bg-white pl-[320px] pr-[32px] flex items-center justify-between shadow col-start-2 col-end-4 overflow-visible fixed top-0">
-        <div className="flex items-center max-w-[500px] w-full">
+      <nav className="header-home fixed top-0 col-start-2 col-end-4 flex h-[63px] w-full items-center justify-between overflow-visible bg-white pl-[320px] pr-[32px] shadow">
+        <div className="flex w-full max-w-[500px] items-center">
           <div className="menubar-home pr-[10px]" onClick={OpenSideBar}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -80,22 +80,22 @@ const Navbar = () => {
           <input
             placeholder="Search..."
             type="text"
-            className="w-full focus:outline-none ml-[10px]"
+            className="ml-[10px] w-full focus:outline-none"
           ></input>
         </div>
-        <div className="flex items-center shrink-0 relative">
+        <div className="relative flex shrink-0 items-center">
           <UserHome />
         </div>
       </nav>
-      <aside className="nav flex flex-col px-6 w-[288px] gap-y-5 shadow col-start-1 row-start-1 row-end-3 fixed top-0 bottom-0 left-0">
-        <div className="flex justify-start h-[63px] w-full items-center">
+      <aside className="nav fixed bottom-0 left-0 top-0 col-start-1 row-start-1 row-end-3 flex w-[288px] flex-col gap-y-5 px-6 shadow">
+        <div className="flex h-[63px] w-full items-center justify-start">
           <img className="h-[50px]" src={Image.Logo} alt=""></img>
-          <h1 className="text-white text-[24px] font-semibold ml-2">
+          <h1 className="ml-2 text-[24px] font-semibold text-white">
             GDU Connect
           </h1>
         </div>
-        <div className="gap-y-5 flex flex-col">
-          <div className="navlink gap-y-2 flex flex-col">
+        <div className="flex flex-col gap-y-5">
+          <div className="navlink flex flex-col gap-y-2">
             <div>
               <NavLink
                 to="/"
@@ -107,7 +107,7 @@ const Navbar = () => {
                   ].join("")
                 }
               >
-                <div className="h-[40px] p-2 w-full flex items-center nav-list-item">
+                <div className="nav-list-item flex h-[40px] w-full items-center p-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="30"
@@ -132,7 +132,7 @@ const Navbar = () => {
                   ].join("")
                 }
               >
-                <div className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
+                <div className="nav-list-item mt-[5px] flex h-[40px] w-full items-center p-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="30"
@@ -157,7 +157,7 @@ const Navbar = () => {
                   ].join("")
                 }
               >
-                <div className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
+                <div className="nav-list-item mt-[5px] flex h-[40px] w-full items-center p-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="30"
@@ -197,7 +197,7 @@ const Navbar = () => {
               </NavLink>
             </div> */}
           </div>
-          <div className="gap-y-2 flex flex-col">
+          <div className="flex flex-col gap-y-2">
             <div style={{ color: "#9CA3AF" }} className="pl-[8px] text-[12px]">
               Khác
             </div>
@@ -221,7 +221,7 @@ const Navbar = () => {
             </div> */}
           </div>
         </div>
-        <div className="flex justify-start items-center p-2 nav-list-item">
+        <div className="nav-list-item flex items-center justify-start p-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="30"
@@ -237,7 +237,7 @@ const Navbar = () => {
         {userlogin ? (
           <Link to="/auth">
             <button
-              className="flex justify-start items-center p-2 nav-list-item w-full"
+              className="nav-list-item flex w-full items-center justify-start p-2"
               onClick={() => Cookies.set("token", "")}
             >
               <svg

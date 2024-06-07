@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const GroupList = () => {
@@ -125,21 +124,21 @@ const GroupList = () => {
 
   return (
     <div
-      className="ml-5 h-[calc(100vh-63px)] rounded-lg overflow-scroll lg:block hidden clb-box"
+      className="clb-box ml-5 hidden h-[calc(100vh-63px)] overflow-scroll rounded-lg lg:block"
       align="center"
     >
       {data.map((group) => (
         <div key={group.id}>
           <Link to={"/group/" + group.id}>
-            <div className="flex rounded-lg my-3 bg-slate-50 px-5 shadow-lg items-center">
-              <div className="w-[80px] h-[80px] overflow-hidden flex items-center">
+            <div className="my-3 flex items-center rounded-lg bg-slate-50 px-5 shadow-lg">
+              <div className="flex h-[80px] w-[80px] items-center overflow-hidden">
                 <img
                   src={group.avatar}
                   alt="avatar"
-                  className="w-full avt-clb"
+                  className="avt-clb w-full"
                 />
               </div>
-              <p className="text-[16px] w-full">{group.name}</p>
+              <p className="w-full text-[16px]">{group.name}</p>
             </div>
           </Link>
         </div>

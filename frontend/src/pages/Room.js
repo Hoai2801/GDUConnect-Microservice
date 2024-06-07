@@ -267,10 +267,10 @@ const Room = () => {
   }
 
   return (
-    <div className="flex flex-col w-full pl-[20px] pt-5 pb-[100px] items-center h-screen">
-      <div className="flex justify-center w-full mb-5">
+    <div className="flex h-screen w-full flex-col items-center pb-[100px] pl-[20px] pt-5">
+      <div className="mb-5 flex w-full justify-center">
         <button
-          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ${
+          className={`rounded bg-blue-500 px-4 py-2 font-bold text-white transition duration-300 hover:bg-blue-700 ${
             isShowModal ? "hidden" : "block"
           }`}
           onClick={() => setShowModal(true)}
@@ -280,22 +280,22 @@ const Room = () => {
         <div
           className={`${
             isShowModal ? "fixed" : "hidden"
-          } bg-white rounded-lg shadow-lg w-[800px] p-10 border top-5 h-[80vh] overflow-scroll my-[80px]`}
+          } top-5 my-[80px] h-[80vh] w-[800px] overflow-scroll rounded-lg border bg-white p-10 shadow-lg`}
         >
           <div>
             <button
               onClick={() => setShowModal(false)}
-              className="float-right border p-2 rounded-lg w-10 h-10 shadow-2xl"
+              className="float-right h-10 w-10 rounded-lg border p-2 shadow-2xl"
             >
               X
             </button>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold text-lg">
+            <label className="block text-lg font-semibold text-gray-700">
               Tiêu đề
             </label>
             <input
-              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue500 focus:bg-white transition duration-300"
+              className="focus:border-blue500 mt-2 w-full bg-gray-200 px-4 py-3 ring-1 transition duration-300 focus:bg-white"
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -327,21 +327,21 @@ const Room = () => {
             />
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">Giá</label>
+            <label className="block font-semibold text-gray-700">Giá</label>
             <input
-              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+              className="mt-2 w-full bg-gray-200 px-4 py-3 ring-1 transition duration-300 focus:border-blue-500 focus:bg-white"
               required
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             ></input>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">
+            <label className="block font-semibold text-gray-700">
               Chọn quận
             </label>
             <select
               onChange={handleDistrictChange}
-              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1"
+              className="mt-2 w-full bg-gray-200 px-4 py-3 ring-1"
             >
               <option value="" className="block text-gray-700">
                 Chọn quận
@@ -357,7 +357,7 @@ const Room = () => {
             </select>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">
+            <label className="block font-semibold text-gray-700">
               Chọn phường
             </label>
 
@@ -365,7 +365,7 @@ const Room = () => {
             <select
               value={ward}
               onChange={handleWardChange}
-              className="w-full px-4 py-3 bg-gray-200 mt-2 ring-1"
+              className="mt-2 w-full bg-gray-200 px-4 py-3 ring-1"
             >
               <option value="">Chọn phường</option>
               {wardAPI.map((ward) => (
@@ -376,9 +376,9 @@ const Room = () => {
             </select>
 
             <div className="mb-2 mt-3">
-              <label className="block text-gray-700 font-semibold">Đường</label>
+              <label className="block font-semibold text-gray-700">Đường</label>
               <input
-                className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+                className="mt-2 w-full bg-gray-200 py-3 pl-4 pr-12 ring-1 transition duration-300 focus:border-blue-500 focus:bg-white"
                 required
                 type="text"
                 value={street}
@@ -387,11 +387,11 @@ const Room = () => {
             </div>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">
+            <label className="block font-semibold text-gray-700">
               Diện tích phòng
             </label>
             <input
-              className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+              className="mt-2 w-full bg-gray-200 py-3 pl-4 pr-12 ring-1 transition duration-300 focus:border-blue-500 focus:bg-white"
               required
               type="number"
               value={area}
@@ -399,11 +399,11 @@ const Room = () => {
             ></input>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">
+            <label className="block font-semibold text-gray-700">
               Liên lạc bằng số điện thoại
             </label>
             <input
-              className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+              className="mt-2 w-full bg-gray-200 py-3 pl-4 pr-12 ring-1 transition duration-300 focus:border-blue-500 focus:bg-white"
               required
               type="text"
               value={phoneNumber}
@@ -411,11 +411,11 @@ const Room = () => {
             ></input>
           </div>
           <div className="mb-2 mt-3">
-            <label className="block text-gray-700 font-semibold">
+            <label className="block font-semibold text-gray-700">
               Liên lạc bằng facebook
             </label>
             <input
-              className="w-full pl-4 pr-12 py-3 bg-gray-200 mt-2 ring-1 focus:border-blue-500 focus:bg-white transition duration-300"
+              className="mt-2 w-full bg-gray-200 py-3 pl-4 pr-12 ring-1 transition duration-300 focus:border-blue-500 focus:bg-white"
               required
               type="text"
               value={facebook}
@@ -425,7 +425,7 @@ const Room = () => {
 
           <div>
             <div
-              className="flex px-1 gap-5 w-full btn-cp justify-center my-10"
+              className="btn-cp my-10 flex w-full justify-center gap-5 px-1"
               style={{ marginLeft: "10px", flexShrink: "0" }}
             >
               <input
@@ -437,24 +437,24 @@ const Room = () => {
               />
               <label
                 htmlFor="actual-btn"
-                className="hover:cursor-pointer h-[35px] border rounded-lg w-[40%] text-center py-2"
+                className="h-[35px] w-[40%] rounded-lg border py-2 text-center hover:cursor-pointer"
               >
                 Thêm ảnh
               </label>
             </div>
             {/* Display image previews */}
-            <div className="flex gap-2 w-[360px] flex-wrap">
+            <div className="flex w-[360px] flex-wrap gap-2">
               {imagePreviews.map((preview, index) => (
                 <img
                   key={index}
                   src={preview}
                   alt={`Preview ${index}`}
-                  className="w-16 h-16 object-cover rounded-md mt-2"
+                  className="mt-2 h-16 w-16 rounded-md object-cover"
                 />
               ))}
             </div>
             <button
-              className="w-full bg-sky-600 hover:bg-sky-500 text-white py-4 text-[16px] mt-5 rounded-lg"
+              className="mt-5 w-full rounded-lg bg-sky-600 py-4 text-[16px] text-white hover:bg-sky-500"
               onClick={() => createNewRoom()}
             >
               Đăng bài
@@ -463,15 +463,15 @@ const Room = () => {
         </div>
       </div>
       {showToast ? <Toast content={contentToast} /> : null}
-      <div className="flex flex-col gap-5 w-[800px]">
+      <div className="flex w-[800px] flex-col gap-5">
         {data ? (
           data.map((data) => (
             <Link to={`/room/${data.id}`} key={data.id}>
               <div
                 key={data.id}
-                className="flex shadow rounded-lg bg-slate-50 p-4"
+                className="flex rounded-lg bg-slate-50 p-4 shadow"
               >
-                <div className="min-w-[250px] max-w-[250px] p-0 max-h-[150px] overflow-hidden rounded-lg">
+                <div className="max-h-[150px] min-w-[250px] max-w-[250px] overflow-hidden rounded-lg p-0">
                   <img
                     src={
                       data.image.length > 0
@@ -479,17 +479,17 @@ const Room = () => {
                         : "https://t3.ftcdn.net/jpg/05/62/05/20/360_F_562052065_yk3KPuruq10oyfeu5jniLTS4I2ky3bYX.jpg"
                     }
                     alt=""
-                    className="object-cover w-full h-full"
+                    className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="px-5 pt-2">
-                  <div className="overflow-hidden text-ellipsis h-[30px]">
+                  <div className="h-[30px] overflow-hidden text-ellipsis">
                     <h2 className="text-2xl font-semibold">{data.title}</h2>
                   </div>
                   <div className="h-[50px]">
                     <div
                       dangerouslySetInnerHTML={{ __html: data.description }}
-                      className="overflow-ellipsis overflow-hidden max-h-[50px]"
+                      className="max-h-[50px] overflow-hidden overflow-ellipsis"
                     ></div>
                   </div>
                   <NumberFormatter number={data.price} /> vnđ/tháng
@@ -497,7 +497,7 @@ const Room = () => {
                     <p className="justify-end">
                       {data.area} m² - Quận {data.district}
                     </p>
-                    <div className="flex justify-end items-end">
+                    <div className="flex items-end justify-end">
                       <p className="">{data.created_at}</p>
                     </div>
                   </div>

@@ -11,11 +11,11 @@ const Sidebar = () => {
   }
   return (
     <>
-      <div className="blurbg inset-0 fixed hidden" onClick={CloseSideBar}></div>
-      <div className="sidebar-home h-[100vh] flex flex-col px-6 z-50 gap-y-5 shadow w-[288px] fixed transition duration-500 translate-x-[-400px] top-0">
-        <div className="flex justify-between h-[63px] w-full items-center">
+      <div className="blurbg fixed inset-0 hidden" onClick={CloseSideBar}></div>
+      <div className="sidebar-home fixed top-0 z-50 flex h-[100vh] w-[288px] translate-x-[-400px] flex-col gap-y-5 px-6 shadow transition duration-500">
+        <div className="flex h-[63px] w-full items-center justify-between">
           <img className="h-[50px]" src={Image.Logo} alt=""></img>
-          <h1 className="text-white text-[20px] font-semibold">GDU Connect</h1>
+          <h1 className="text-[20px] font-semibold text-white">GDU Connect</h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="30"
@@ -28,7 +28,7 @@ const Sidebar = () => {
             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
           </svg>
         </div>
-        <div className="gap-y-5 flex flex-col" onClick={CloseSideBar}>
+        <div className="flex flex-col gap-y-5" onClick={CloseSideBar}>
           <div>
             <NavLink
               to="/"
@@ -40,7 +40,7 @@ const Sidebar = () => {
                 ].join("")
               }
             >
-              <div className="h-[40px] p-2 w-full flex items-center nav-list-item">
+              <div className="nav-list-item flex h-[40px] w-full items-center p-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="30"
@@ -63,7 +63,7 @@ const Sidebar = () => {
                 ].join("")
               }
             >
-              <div className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
+              <div className="nav-list-item mt-[5px] flex h-[40px] w-full items-center p-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="30"
@@ -86,7 +86,7 @@ const Sidebar = () => {
                 ].join("")
               }
             >
-              <div className="h-[40px] p-2 w-full mt-[5px] flex items-center nav-list-item">
+              <div className="nav-list-item mt-[5px] flex h-[40px] w-full items-center p-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="30"
@@ -127,9 +127,9 @@ const Sidebar = () => {
             <div style={{ color: "#9CA3AF" }} className="pl-[8px] text-[12px]">
               Khác
             </div>
-            <div className="h-[40px] p-2 w-full  flex items-center mt-[5px] nav-list-item cursor-pointer">
+            <div className="nav-list-item mt-[5px] flex h-[40px] w-full cursor-pointer items-center p-2">
               <div
-                className="rounded px-[5px] border border-slate-600 mr-[10px] h-[24px] w-[24px] flex items-center justify-center"
+                className="mr-[10px] flex h-[24px] w-[24px] items-center justify-center rounded border border-slate-600 px-[5px]"
                 style={{ backgroundColor: "rgb(31,41,55)" }}
               >
                 C
@@ -148,7 +148,7 @@ const Sidebar = () => {
           </div>
         </div>
         <div
-          className="flex justify-start items-center p-2 nav-list-item"
+          className="nav-list-item flex items-center justify-start p-2"
           onClick={CloseSideBar}
         >
           <svg
@@ -166,7 +166,7 @@ const Sidebar = () => {
         {userlogin ? (
           <a href="/auth">
             <div
-              className="flex justify-start items-center p-2 nav-list-item"
+              className="nav-list-item flex items-center justify-start p-2"
               onClick={CloseSideBar}
             >
               <svg

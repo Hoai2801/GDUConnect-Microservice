@@ -7,17 +7,16 @@ import Toast from "../components/Toast";
 const RoomDetail = () => {
   const [index, setIndex] = useState(0);
 
-  const token = Cookies.get("token") 
+  const token = Cookies.get("token");
   const jwt = jwtDecode(token);
 
   const navigate = useNavigate();
-
 
   const [isDetailImagesOpen, setDetailImagesOpen] = useState(false);
 
   function nextImage() {
     setIndex((currentIndex) =>
-      currentIndex === data.image.length - 1 ? 0 : currentIndex + 1
+      currentIndex === data.image.length - 1 ? 0 : currentIndex + 1,
     );
   }
 
@@ -72,15 +71,14 @@ const RoomDetail = () => {
 
   useEffect(() => {
     fetch("http://localhost:8080/api/v1/room/" + id)
-      .then(response => response.json())
+      .then((response) => response.json())
       .then((data) => {
         setData(data);
-        console.log(data)
+        console.log(data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching data:", error);
       });
-
   }, [id]);
 
   const deletePost = async () => {
@@ -90,12 +88,14 @@ const RoomDetail = () => {
       },
     };
 
-    const response = await axios.delete(
-      "http://localhost:8080/api/v1/room/" + data.id + "?user_id=" + jwt.id,
-      config
-    ).catch((error) => {
-      console.log(error)
-    });
+    const response = await axios
+      .delete(
+        "http://localhost:8080/api/v1/room/" + data.id + "?user_id=" + jwt.id,
+        config,
+      )
+      .catch((error) => {
+        console.log(error);
+      });
 
     // if (response) {
     //   console.log(response);
@@ -105,8 +105,7 @@ const RoomDetail = () => {
       setShowToast(true);
       setTimeout(() => {
         navigate("/room");
-      }, 3000)
-
+      }, 3000);
     }
   };
 
@@ -125,19 +124,22 @@ const RoomDetail = () => {
   // console.log(data.image.length);
   return (
     <>
-      {data ?
+      {data ? (
         <div>
-          {showToast ? <Toast showToast={showToast} content={contentToast} /> : null}
-          <div className="flex py-10 justify-center mx-auto max-w-[936px] flex-col lg:flex-row 2xl:max-w-[1140px]">
+          {showToast ? (
+            <Toast showToast={showToast} content={contentToast} />
+          ) : null}
+          <div className="mx-auto flex max-w-[936px] flex-col justify-center py-10 lg:flex-row 2xl:max-w-[1140px]">
             <div className="ml-4 w-[800px]">
               <div>
                 <p className="text-[27px] font-semibold">{data.title}</p>
                 <p className="text-[14px]">
-                  Quận {data.district} - Phường {data.ward} - Đường {data.street}
+                  Quận {data.district} - Phường {data.ward} - Đường{" "}
+                  {data.street}
                 </p>
                 <p className="text-[14px]">Ngày đăng: {data.created_at}</p>
               </div>
-              <div className="flex mr-4 my-[25px] py-[14px] border-room">
+              <div className="border-room my-[25px] mr-4 flex py-[14px]">
                 <div className="flex flex-col text-xl">
                   <p className="text-[14px]">Mức giá</p>
                   <NumberFormatter number={data.price} />
@@ -151,85 +153,90 @@ const RoomDetail = () => {
                 </div>
               </div>
               <div>
-                <p className="font-semibold text-[20px]">Thông tin mô tả</p>
+                <p className="text-[20px] font-semibold">Thông tin mô tả</p>
                 {/* <p className="mt-[7px] w-[80%]">{data.description}</p> */}
-                <div dangerouslySetInnerHTML={{ __html: data.description }}>
-                    
-                </div>
-                <p className="font-semibold text-[20px] mt-[35px] mb-[7px]">
+                <div
+                  dangerouslySetInnerHTML={{ __html: data.description }}
+                ></div>
+                <p className="mb-[7px] mt-[35px] text-[20px] font-semibold">
                   Hình ảnh
                 </p>
                 <div className="flex gap-5">
-                    
-                {data.image.length > 0 ? (
-                  data.image.map((image) => (
-                    <img
-                      key={image.id}
-                      src={image.imageURL}
-                      alt=""
-                      className="max-w-[50vw] mb-[7px] rounded mr-4 cursor-pointer w-[150px] h-[150px]"
-                      onClick={togglePopUpImage}
-                    ></img>
-                  ))
-                ) : (
-                  <p className="text-[14px]">Không có hình ảnh</p>
-                )}
+                  {data.image.length > 0 ? (
+                    data.image.map((image) => (
+                      <img
+                        key={image.id}
+                        src={image.imageURL}
+                        alt=""
+                        className="mb-[7px] mr-4 h-[150px] w-[150px] max-w-[50vw] cursor-pointer rounded"
+                        onClick={togglePopUpImage}
+                      ></img>
+                    ))
+                  ) : (
+                    <p className="text-[14px]">Không có hình ảnh</p>
+                  )}
                 </div>
               </div>
             </div>
-            <div className="lg:min-w-[210px] lg:max-w-[210px] 2xl:min-w-[262px] 2xl:max-w-[262px] mx-[50px]">
+            <div className="mx-[50px] lg:min-w-[210px] lg:max-w-[210px] 2xl:min-w-[262px] 2xl:max-w-[262px]">
               <div
-                className="w-full ring-1 ring-gray-200 rounded p-[14px]"
+                className="w-full rounded p-[14px] ring-1 ring-gray-200"
                 align="center"
               >
                 <img
                   className="h-[56px] w-[56px] object-cover"
-                  src={data.user.avatar ? data.user.avatar : "https://inkythuatso.com/uploads/thumbnails/800/2023/03/8-anh-dai-dien-trang-inkythuatso-03-15-26-54.jpg"}
+                  src={
+                    data.user.avatar
+                      ? data.user.avatar
+                      : "https://inkythuatso.com/uploads/thumbnails/800/2023/03/8-anh-dai-dien-trang-inkythuatso-03-15-26-54.jpg"
+                  }
                   alt=""
                   style={{ clipPath: "circle()" }}
                 ></img>
                 <p className="mt-[7px] text-gray-500">Được đăng bởi</p>
-                <p className="font-bold text-[20px]">{data.user.fullname}</p>
+                <p className="text-[20px] font-bold">{data.user.fullname}</p>
                 <p>Khoa {data.user.department}</p>
                 {data.phoneNumber && (
-                  
-                <div className="p-[14px] mt-[21px] bg-sky-400 rounded font-mono text-white font-bold text-[20px] ring-1">
-                  {data.phoneNumber}
-                </div>
+                  <div className="mt-[21px] rounded bg-sky-400 p-[14px] font-mono text-[20px] font-bold text-white ring-1">
+                    {data.phoneNumber}
+                  </div>
                 )}
                 {data.facebook && (
-
-                <a href={`${data.facebook}`}>
-                  <div className="p-[14px] ring-1 rounded ring-gray-500 mt-[7px]">
-                    Facebook
-                  </div>
-                </a>
+                  <a href={`${data.facebook}`}>
+                    <div className="mt-[7px] rounded p-[14px] ring-1 ring-gray-500">
+                      Facebook
+                    </div>
+                  </a>
                 )}
               </div>
               <a href="/room">
                 <div
-                  className="bg-[#F2F2F2] p-[14px] mt-4 rounded cursor-pointer"
+                  className="mt-4 cursor-pointer rounded bg-[#F2F2F2] p-[14px]"
                   align="center"
                 >
                   <p>Xem thêm phòng trọ</p>
                 </div>
               </a>
               <div className="mt-4 flex justify-center">
-                  
-              { data.user.id === jwt.id ?
-
-              <button onClick={() => deletePost()} className="bg-red-400 p-[14px] mt-4 rounded cursor-pointer w-full">Xóa bài</button>
-              : ""
-              }
+                {data.user.id === jwt.id ? (
+                  <button
+                    onClick={() => deletePost()}
+                    className="mt-4 w-full cursor-pointer rounded bg-red-400 p-[14px]"
+                  >
+                    Xóa bài
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
           <div
-            className={`${isDetailImagesOpen ? "" : "hidden"} z-10 inset-0 fixed`}
+            className={`${isDetailImagesOpen ? "" : "hidden"} fixed inset-0 z-10`}
           >
-            <div className="z-20 h-screen w-full relative bg-[rgba(0,0,0,0.7)] flex justify-center items-center">
+            <div className="relative z-20 flex h-screen w-full items-center justify-center bg-[rgba(0,0,0,0.7)]">
               <div
-                className="absolute top-3 right-3 z-50 cursor-pointer"
+                className="absolute right-3 top-3 z-50 cursor-pointer"
                 onClick={togglePopUpImage}
               >
                 <svg
@@ -244,15 +251,15 @@ const RoomDetail = () => {
               </div>
               <img
                 className="max-w-[80vw]"
-                src={data.image.length > 0 ?data.image[index].imageURL : ""}
+                src={data.image.length > 0 ? data.image[index].imageURL : ""}
                 alt=""
               />
               <div
                 onClick={previousImage}
-                className="group btn-img flex btn-img-left top-0 bottom-0 items-center justify-center w-[70px] duration-400 transition-all cursor-pointer hover:w-[60px] left-0 absolute"
+                className="btn-img btn-img-left duration-400 group absolute bottom-0 left-0 top-0 flex w-[70px] cursor-pointer items-center justify-center transition-all hover:w-[60px]"
               >
                 {data.image.length > 1 ? (
-                  <button className="bg-gray-400 group-hover:bg-white text-black p-2 flex items-center justify-center rounded-full">
+                  <button className="flex items-center justify-center rounded-full bg-gray-400 p-2 text-black group-hover:bg-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="30"
@@ -268,10 +275,10 @@ const RoomDetail = () => {
               </div>
               <div
                 onClick={nextImage}
-                className="btn-img flex btn-img-right absolute right-0 top-0 bottom-0  items-center justify-center w-[70px] transition-all duration-400 cursor-pointer hover:w-[60px] group"
+                className="btn-img btn-img-right duration-400 group absolute bottom-0 right-0 top-0 flex w-[70px] cursor-pointer items-center justify-center transition-all hover:w-[60px]"
               >
                 {data.image.length > 1 ? (
-                  <button className="bg-gray-400 group-hover:bg-white text-black p-2 flex items-center justify-center rounded-full">
+                  <button className="flex items-center justify-center rounded-full bg-gray-400 p-2 text-black group-hover:bg-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="30"
@@ -288,7 +295,9 @@ const RoomDetail = () => {
             </div>
           </div>
         </div>
-        : <p>Loading...</p>}
+      ) : (
+        <p>Loading...</p>
+      )}
     </>
   );
 };

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { redirect } from "react-router-dom";
 import Toast from "./Toast";
 
-const CreatePost = ({groupId}) => {
+const CreatePost = ({ groupId }) => {
   // mock api of user
   const [user, setUser] = useState("");
 
@@ -13,7 +13,7 @@ const CreatePost = ({groupId}) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const [responseStatus, setResponseStatus] = useState(false);
-  const [contentToast, setContentToast] = useState("Đăng bài thất bại")
+  const [contentToast, setContentToast] = useState("Đăng bài thất bại");
 
   // State to hold image previews
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -69,13 +69,11 @@ const CreatePost = ({groupId}) => {
       });
     }
 
-    const response = await axios.post(
-      "http://localhost:8080/api/v1/post",
-      data,
-      config
-    ).catch((error) => {
-      console.log(error)
-    });
+    const response = await axios
+      .post("http://localhost:8080/api/v1/post", data, config)
+      .catch((error) => {
+        console.log(error);
+      });
 
     if (response) {
       console.log(response);
@@ -85,7 +83,7 @@ const CreatePost = ({groupId}) => {
       setSelectedFiles([]);
       setPostContent("");
       setImagePreviews([]);
-      setContentToast("Đăng bài thành công")
+      setContentToast("Đăng bài thành công");
       announce();
     }
   };
@@ -103,7 +101,7 @@ const CreatePost = ({groupId}) => {
           redirect("/auth");
         }
         const response = await axios.get(
-          "http://localhost:8080/api/v1/user/" + jwt.id
+          "http://localhost:8080/api/v1/user/" + jwt.id,
         );
         setUser(response.data);
       } catch (error) {
@@ -116,12 +114,12 @@ const CreatePost = ({groupId}) => {
 
   return (
     <div
-      className="shadow border-black rounded-lg max-w-[1200px] w-full h-fit py-5 flex px-5 create-post flex-col bg-slate-50"
+      className="create-post flex h-fit w-full max-w-[1200px] flex-col rounded-lg border-black bg-slate-50 px-5 py-5 shadow"
       style={{ marginBottom: "16px" }}
     >
-      <div className="flex gap-5 w-full">
+      <div className="flex w-full gap-5">
         {/* avatar */}
-        <div className="h-[50px] w-[50px] min-w-[50px] rounded-full overflow-hidden flex items-center box-cp">
+        <div className="box-cp flex h-[50px] w-[50px] min-w-[50px] items-center overflow-hidden rounded-full">
           <img
             src={
               user && user.avatar
@@ -129,11 +127,11 @@ const CreatePost = ({groupId}) => {
                 : "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Image.png"
             }
             alt=""
-            className="w-full object-cover avatar-cp"
+            className="avatar-cp w-full object-cover"
           />
         </div>
         {/* input */}
-        <div className="h-[45px] w-full mt-1">
+        <div className="mt-1 h-[45px] w-full">
           <input
             type="text"
             name=""
@@ -141,14 +139,14 @@ const CreatePost = ({groupId}) => {
             value={postContent}
             onChange={handleInputChange}
             placeholder={`Chào ${getLastName(
-              user ? user.fullname : ""
+              user ? user.fullname : "",
             )}, chia sẻ một chút nhé`}
-            className="w-full h-full bg-gray-200 rounded-md p-5 input-cp"
+            className="input-cp h-full w-full rounded-md bg-gray-200 p-5"
           />
         </div>
         {/* image button */}
         <div
-          className="flex justify-end px-1 w-[40%] gap-5 max-w-[130px] btn-cp"
+          className="btn-cp flex w-[40%] max-w-[130px] justify-end gap-5 px-1"
           style={{ marginLeft: "10px", flexShrink: "0" }}
         >
           <input
@@ -162,13 +160,13 @@ const CreatePost = ({groupId}) => {
             <img
               src="https://cdn.icon-icons.com/icons2/510/PNG/512/image_icon-icons.com_50366.png"
               alt=""
-              className="w-10 h-10 mt-2 add-img"
+              className="add-img mt-2 h-10 w-10"
             />
           </label>
           {/* submit the post */}
           <button
             onClick={handleSubmit}
-            className="bg-blue-400 px-3 h-fit py-2 mt-2 rounded-lg btn-submit"
+            className="btn-submit mt-2 h-fit rounded-lg bg-blue-400 px-3 py-2"
           >
             Đăng
           </button>
@@ -181,13 +179,11 @@ const CreatePost = ({groupId}) => {
             key={index}
             src={preview}
             alt={`Preview ${index}`}
-            className="w-16 h-16 object-cover rounded-md mt-2"
+            className="mt-2 h-16 w-16 rounded-md object-cover"
           />
         ))}
       </div>
-      {
-        responseStatus ? <Toast content={contentToast} /> : null
-      }
+      {responseStatus ? <Toast content={contentToast} /> : null}
     </div>
   );
 };
